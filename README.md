@@ -1,4 +1,4 @@
-# Air-AppGenerator
+# 1.Air-App Icon Generator
 
 <p  align="center"><a href="https://github.com/SaffronCode/Adobe-Air-Assistant/raw/master/build/AppGenerator.exe"><img src=https://github.com/SaffronCode/Adobe-Air-Assistant/blob/master/src/AppIconsForPublish/128.png?raw=true"/><br>Download Icon Generator</a></p>
 
@@ -38,5 +38,5 @@ Move your created icons to AppIconsForPublish and add below icon tag to your man
 
 To create Assets.car file you have to use XCode or <a href="http://www.applicationloader.net/appuploader/icontool.php">this</a> portal.
 
-## JSON to ActionScript - Postman to Saffron service convertor
+# 2.JSON to ActionScript - Postman to Saffron service convertor
 <p  align="center"><a href="https://github.com/SaffronCode/Adobe-Air-Assistant/raw/master/build/PostMan-JSON-Creator.exe"><img src="https://github.com/SaffronCode/Adobe-Air-Assistant/blob/master/jsnon-postman/AppIconsForPublish/128.png?raw=true" align="center"/><br>Download JSON-PostMan convertor</a></p>
