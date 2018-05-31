@@ -59,6 +59,7 @@ package component.xmlPack
 		
 		/**16,32,...*/
 		private var iconsList:Array ;
+		private var androidPermission:AndroidPermission;
 		
 		public function ManifestGenerate(iconsList:Array,airVersion:String)
 		{
@@ -108,6 +109,8 @@ package component.xmlPack
 			
 			android.appendChild(XMLFromId('containsVideo'));
 			
+			androidPermission = new AndroidPermission();
+			
 			
 			//iOS
 			iPhone = new XML(<iPhone/>);
@@ -148,6 +151,7 @@ package component.xmlPack
 		
 		public function toString():String
 		{
+			manifestAdditions.parent().manifestAdditions = new XML("<![CDATA[\n"+androidPermission.toString()+"\n]]>");
 			return '<?xml version="1.0" encoding="utf-8" standalone="no" ?>\n'+mXML.toXMLString();
 		}
 	}
