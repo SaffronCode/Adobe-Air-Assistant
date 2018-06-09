@@ -43,7 +43,6 @@ package
 		{
 			super();
 			
-			iconSizes
 			iconSizes.sort(Array.NUMERIC);
 			
 			iconGenerator = Obj.findThisClass(AppIconGenerator,this);
