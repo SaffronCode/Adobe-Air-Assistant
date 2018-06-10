@@ -143,6 +143,8 @@ package component.xmlPack
 		public function convert(oldAppXML:String):void
 		{
 			var convertedXML:XML ;
+			oldAppXML = oldAppXML.replace(/[\n\r][\t\s]+[\n\r]/gi,'\n');
+			oldAppXML = oldAppXML.replace(/[\n\r]{2,}/gi,'\n');
 			try{
 				convertedXML = XML(oldAppXML);
 			}
