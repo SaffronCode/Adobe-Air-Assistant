@@ -12,7 +12,9 @@ package
 	import dynamicFrame.FrameGenerator;
 	
 	import flash.display.Sprite;
+	import flash.events.MouseEvent;
 	import flash.filesystem.File;
+	import flash.system.System;
 	
 	public class AppGenerator extends Sprite
 	{
@@ -43,10 +45,14 @@ package
 												,167] ;
 		
 		private var iconGenerator:AppIconGenerator ;
+
+		private var manifestGenerate:ManifestGenerate;
 		
 		public function AppGenerator()
 		{
 			super();
+			
+			FrameGenerator.createFrame(stage);
 			
 			iconSizes.sort(Array.NUMERIC);
 			
@@ -54,13 +60,18 @@ package
 			iconGenerator.setIconList(iconSizes);
 			
 			
-			var manifestGenerate:ManifestGenerate = new ManifestGenerate(iconSizes,'29');
+			manifestGenerate = new ManifestGenerate(iconSizes,'29');
 			
+			stage.addEventListener(MouseEvent.CLICK,convertSampleXML);
+		}
+		
+		protected function convertSampleXML(event:MouseEvent):void
+		{
 			manifestGenerate.convert(TextFile.load(File.applicationDirectory.resolvePath('SampleXML/KargozarMellat-app-android.xml')));
 			
-			trace(manifestGenerate.toString());
-			
-			FrameGenerator.createFrame(stage);
+			var newManifest:String = manifestGenerate.toString();
+			System.setClipboard(newManifest);
+			trace(newManifest);
 		}
 	}
 }

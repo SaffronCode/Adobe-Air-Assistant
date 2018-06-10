@@ -18,6 +18,8 @@ package component.xmlPack
 		///Name spaces
 		private var airNameSpace:String = "http://ns.adobe.com/air/application/26.0" ;
 		
+		//Extentions
+		private var extensionsList:Vector.<String> = new Vector.<String>();
 		//Parameters
 		public var 	airVersion:String = '29.0',
 					id:String='com.mteamapps.lego',
@@ -75,6 +77,8 @@ package component.xmlPack
 			this.iconsList = iconsList ;
 			this.airVersion = airVersion ;
 			updateXML();
+			
+			androidPermission = new AndroidPermission();
 		}
 		
 		/**It will creats a final xml based on parameters*/
@@ -120,8 +124,6 @@ package component.xmlPack
 			
 			android.appendChild(XMLFromId('containsVideo'));
 			
-			androidPermission = new AndroidPermission();
-			
 			
 			//iOS
 			iPhone = new XML(<iPhone/>);
@@ -139,7 +141,10 @@ package component.xmlPack
 			//Native extensions
 			extensions = new XML(<extensions/>);
 			mXML.appendChild(extensions);
-			extensions.appendChild(extensionXML('com.distriqt.Core'));
+			for(var j:int = 0 ; j<extensionsList.length ; j++)
+			{
+				extensions.appendChild(extensionXML(extensionsList[j]));
+			}
 		}
 		
 		/**It will catch your old xml file and fit it in the new XML*/
@@ -157,6 +162,15 @@ package component.xmlPack
 				return ;
 			}
 			loadParametersFromXML(convertedXML);
+			
+			//Load extensions
+			var extListContainer:XML = convertedXML.child(new QName(airNameSpace,'extensions'))[0] ;
+			var extList:XMLList = extListContainer.child(new QName(airNameSpace,'extensionID'));
+			for(var i:int = 0 ; i<extList.length() ; i++)
+			{
+				extensionsList.push(extList[i]);
+			}
+			androidPermission.importPermission(convertedXML.child(new QName(airNameSpace,'android')).child(new QName(airNameSpace,'manifestAdditions')));
 			updateXML();
 		}
 		
@@ -222,7 +236,7 @@ package component.xmlPack
 		
 		public function toString():String
 		{
-			manifestAdditions.parent().manifestAdditions = new XML("<![CDATA[\n"+androidPermission.toString()+"\n]]>");
+			manifestAdditions.appendChild(new XML("<![CDATA[\n"+androidPermission.toString()+"\n]]>"));
 			return '<?xml version="1.0" encoding="utf-8" standalone="no" ?>\n'+mXML.toXMLString();
 		}
 	}
