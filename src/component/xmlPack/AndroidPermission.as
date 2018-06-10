@@ -6,8 +6,8 @@ package component.xmlPack
 	public class AndroidPermission
 	{
 		private var main:XML ;
-		
-		private const xmlPerfix:String = ' xmlns:android="android"'
+		private const androidNameSpace:String = "android";
+		private const xmlPerfix:String = ' xmlns:android="'+androidNameSpace+'"';
 		
 		public function AndroidPermission()
 		{
@@ -41,11 +41,29 @@ package component.xmlPack
 		public function add(AndroidPermission:XML):void
 		{
 			//AndroidPermission vs main
-			main = mergeToXML(AndroidPermission,main)
+			main = mergeToXML(AndroidPermission,main);
 		}
-		private function mergeToXML(xml1:XML,xml2:XML):XML
+		private function mergeToXML(mainXML:XML,newXML:XML):XML
 		{
-			return new XML();
+			var mergedXML:XML = mainXML.copy();
+			var newList:XMLList = newXML.children() ;
+			var l:int = newList.length() ;
+			
+			for(var i:int = 0 ; i<l ; i++)
+			{
+				insertNodeToXML(mergedXML,newList[i]);
+			}
+			
+			return mainXML ;
+		}
+		
+		private function insertNodeToXML(newList:XML, node:XML):void
+		{
+			//myXML.item.(@name==e.target.name).@full;
+			//<uses-permission android:name="com.oppo.launcher.permission.READ_SETTINGS" />
+			trace("Can you fine one for me?? "+newList.child(new QName(androidNameSpace,'uses-permission')).toXMLString());
+			trace("newList : "+newList.toXMLString());
+			trace("node : "+node.toXMLString());
 		}
 	}
 }
