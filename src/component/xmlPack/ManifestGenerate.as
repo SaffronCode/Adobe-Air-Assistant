@@ -15,6 +15,9 @@ package component.xmlPack
 		private var Entitlements:XML ;
 		private var extensions:XML ;
 		
+		///Name spaces
+		private var airNameSpace:String = "http://ns.adobe.com/air/application/26.0" ;
+		
 		//Parameters
 		public var 	airVersion:String = '29.0',
 					id:String='com.mteamapps.lego',
@@ -153,8 +156,49 @@ package component.xmlPack
 				Alert(e.message);
 				return ;
 			}
-			trace(convertedXML.toXMLString());
+			loadParametersFromXML(convertedXML.children());
 			updateXML();
+		}
+		
+		/**Search for nodes on xmls*/
+		private function loadParametersFromXML(convertedXML:XMLList):void
+		{
+			var ObjectFromThis:Object = JSON.parse(JSON.stringify(this));
+			for(var i in ObjectFromThis)
+			{
+				lookExactlyFor(convertedXML,i);
+			}
+		}
+		
+		/**Look for this node name on the list. returns true if node founded*/
+		private function lookExactlyFor(convertedXML:XMLList,requiredNodeName:String=null):Boolean
+		{
+			//trace("Search for "+requiredNodeName+" in the list "+convertedXML);
+			var cNode:XMLList = convertedXML.child(new QName(airNameSpace,requiredNodeName)) ; 
+			if(cNode.length()==1)
+			{
+				this[requiredNodeName] = cNode[0] ;
+				trace(">> "+requiredNodeName+" sat to "+this[requiredNodeName]);
+				return true ;
+			}
+			else
+			{
+				for(var j:int = 0 ; j<convertedXML.length() ; j++)
+				{
+					var list:XMLList = XMLList(convertedXML[j]).children() ;
+					if(list.length()>1)
+					{
+						//trace("list.length() : "+list.length());
+						var isFounded:Boolean = lookExactlyFor(list,requiredNodeName);
+						if(isFounded)
+						{
+							return true ;
+						}
+					}
+				}
+				trace("Cannot find "+requiredNodeName);
+				return false ;
+			}
 		}
 		
 		/**Creates an extension id*/
