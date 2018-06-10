@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<application xmlns="http://ns.adobe.com/air/application/26.0">
+  <id>com.mteamapps.PayamGozarMellat</id>
+  <versionNumber>2.1.4</versionNumber>
+  <filename>KargozarMellat</filename>
+  <description/>
+
+<!-- To localize the description, use the following format for the description element.<description><text xml:lang="en">English App description goes here</text><text xml:lang="fr">French App description goes here</text><text xml:lang="ja">Japanese App description goes here</text></description>-->
+  <name>پیامگزارملّت</name>
+  
+  
+<!-- To localize the name, use the following format for the name element.<name><text xml:lang="en">English App name goes here</text><text xml:lang="fr">French App name goes here</text><text xml:lang="ja">Japanese App name goes here</text></name>-->
+  <copyright/>
+  <initialWindow>
+    <content>KargozarMellat.swf</content>
+	  <systemChrome>standard</systemChrome>
+    <transparent>false</transparent>
+    <visible>true</visible>
+    <fullScreen>false</fullScreen>
+    <aspectRatio>portrait</aspectRatio>
+    <renderMode>gpu</renderMode>
+    <autoOrients>true</autoOrients>
+    <maximizable>true</maximizable>
+    <minimizable>true</minimizable>
+    <resizable>true</resizable>
+  </initialWindow>
+  <icon>
+    <image16x16>AppIconsForPublish/16.png</image16x16>
+    <image29x29>AppIconsForPublish/29.png</image29x29>
+    <image32x32>AppIconsForPublish/32.png</image32x32>
+    <image36x36>AppIconsForPublish/36.png</image36x36>
+    <image40x40>AppIconsForPublish/40.png</image40x40>
+    <image48x48>AppIconsForPublish/48.png</image48x48>
+    <image50x50>AppIconsForPublish/50.png</image50x50>
+    <image57x57>AppIconsForPublish/57.png</image57x57>
+    <image58x58>AppIconsForPublish/58.png</image58x58>
+    <image60x60>AppIconsForPublish/60.png</image60x60>
+    <image72x72>AppIconsForPublish/72.png</image72x72>
+    <image76x76>AppIconsForPublish/76.png</image76x76>
+    <image100x100>AppIconsForPublish/100.png</image100x100>
+    <image114x114>AppIconsForPublish/114.png</image114x114>
+    <image120x120>AppIconsForPublish/120.png</image120x120>
+    <image128x128>AppIconsForPublish/128.png</image128x128>
+    <image144x144>AppIconsForPublish/144.png</image144x144>
+    <image152x152>AppIconsForPublish/152.png</image152x152>
+    <image180x180>AppIconsForPublish/180.png</image180x180>
+    <image512x512>AppIconsForPublish/512.png</image512x512>
+    <image1024x1024>AppIconsForPublish/1024.png</image1024x1024>
+  </icon>
+
+<!--icon>
+    <image16x16>AppIconsForPublish/16.png</image16x16>
+    <image29x29>AppIconsForPublish/29.png</image29x29>
+    <image32x32>AppIconsForPublish/32.png</image32x32>
+    <image36x36>AppIconsForPublish/36.png</image36x36>
+    <image40x40>AppIconsForPublish/40.png</image40x40>
+    <image48x48>AppIconsForPublish/48.png</image48x48>
+    <image50x50>AppIconsForPublish/50.png</image50x50>
+    <image57x57>AppIconsForPublish/57.png</image57x57>
+    <image58x58>AppIconsForPublish/58.png</image58x58>
+    <image60x60>AppIconsForPublish/60.png</image60x60>
+    <image72x72>AppIconsForPublish/72.png</image72x72>
+    <image76x76>AppIconsForPublish/76.png</image76x76>
+    <image100x100>AppIconsForPublish/100.png</image100x100>
+    <image114x114>AppIconsForPublish/114.png</image114x114>
+    <image120x120>AppIconsForPublish/120.png</image120x120>
+    <image128x128>AppIconsForPublish/128.png</image128x128>
+    <image144x144>AppIconsForPublish/144.png</image144x144>
+    <image152x152>AppIconsForPublish/152.png</image152x152>
+    <image180x180>AppIconsForPublish/180.png</image180x180>
+    <image512x512>AppIconsForPublish/512.png</image512x512>
+    <image1024x1024>AppIconsForPublish/1024.png</image1024x1024>
+  </icon-->
+  <customUpdateUI>false</customUpdateUI>
+  <allowBrowserInvocation>false</allowBrowserInvocation>
+   <iPhone>
+	   <InfoAdditions> 
+<![CDATA[
+		<key>NSAppTransportSecurity</key>
+		<dict>
+			<key>NSAllowsArbitraryLoads</key><true/>
+		</dict>
+		<key>UIDeviceFamily</key> 
+		<array> 
+			<string>1</string> 
+			<string>2</string> 
+		</array>
+		
+		<key>CFBundleURLTypes</key>
+		<array>
+			<dict>
+				<key>CFBundleURLName</key>
+				<string>com.mteamapps.PayamGozarMellat</string>
+				<key>CFBundleURLSchemes</key>
+				<array>
+					<string>payamgozarmellat</string>
+				</array>
+			</dict>
+		</array>
+    ]]> 
+</InfoAdditions>
+    <requestedDisplayResolution>high</requestedDisplayResolution>
+         <Entitlements>
+			 <![CDATA[
+ 
+	
+				<key>application-identifier</key>
+					<string>A434TU3BVC.com.mteamapps.PayamGozarMellat</string>
+				<key>aps-environment</key>
+					<string>development</string>
+				<key>get-task-allow</key>
+					<true/>
+				<key>keychain-access-groups</key>
+					<array>
+						<string>A434TU3BVC.com.mteamapps.PayamGozarMellat</string>
+					</array>						
+
+                ]]>
+         </Entitlements>
+</iPhone>
+  
+  <android>
+  
+        <manifestAdditions><![CDATA[
+		
+			<manifest android:installLocation="auto">
+				<!--uses-permission android:name="android.permission.WRITE_SMS" /-->
+				<!--uses-permission android:name="android.permission.SEND_SMS"/-->
+				<uses-permission android:name="android.permission.READ_SMS" />
+				<uses-permission android:name="android.permission.RECEIVE_SMS"/>
+				<receiver android:name="com.doitflash.sms.broadcast.RecieveBroadcast">
+					<intent-filter>
+						<action android:name="android.provider.Telephony.SMS_RECEIVED" />
+					</intent-filter>
+				</receiver>
+				
+				
+				<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+				<uses-permission android:name="android.permission.DISABLE_KEYGUARD"/>
+				<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+				
+				<uses-permission android:name="android.permission.CAMERA"/>
+				
+				<uses-sdk android:minSdkVersion="9" android:targetSdkVersion="22" />
+				
+				<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+				<uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+				<uses-permission android:name="android.permission.INTERNET"/>
+				<uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+				<uses-permission android:name="android.permission.WAKE_LOCK"/>
+				<uses-permission android:name="android.permission.VIBRATE"/>
+				<permission android:name="air.com.mteamapps.PayamGozarMellat.permission.C2D_MESSAGE" android:protectionLevel="signature" />
+				<uses-permission android:name="air.com.mteamapps.PayamGozarMellat.permission.C2D_MESSAGE" />
+				<uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+				<uses-permission android:name="android.permission.GET_TASKS"/>
+			
+				<application android:enabled="true" android:hardwareAccelerated="true">
+				
+					
+					<activity android:name="com.distriqt.extension.pdfreader.pdfview.activities.OpenPDFActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar">
+						<!--intent-filter>
+							<action android:name="android.intent.action.MAIN"/>
+							<category android:name="android.intent.category.LAUNCHER"/>
+						</intent-filter>
+						<intent-filter>
+							<action android:name="android.intent.action.VIEW"/>
+							<category android:name="android.intent.category.BROWSABLE"/>
+							<category android:name="android.intent.category.DEFAULT"/>
+							<data android:scheme="payamgozarmellat"/>
+						</intent-filter-->
+					</activity>
+					
+					<provider android:name="android.support.v4.content.FileProvider" android:authorities="air.com.mteamapps.PayamGozarMellat.dt_files" android:grantUriPermissions="true" android:exported="false">
+						<meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/distriqt_paths" />
+					</provider>
+				
+					<!-- manual or onesignal mode -->
+					<receiver android:name="com.milkmangames.extensions.android.push.GCMBroadcastReceiver" android:permission="com.google.android.c2dm.permission.SEND" >
+					  <intent-filter>
+						<action android:name="com.google.android.c2dm.intent.RECEIVE" />
+						<action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+						<category android:name="air.com.mteamapps.PayamGozarMellat" />
+					  </intent-filter>
+					</receiver>
+					
+					<service android:name="com.milkmangames.extensions.android.push.GCMIntentService" />
+					
+				</application>
+				
+			</manifest>
+			
+		]]></manifestAdditions>
+		<containsVideo>true</containsVideo>
+    </android>
+ 
+  
+  
+  <extensions>
+    <extensionID>com.milkmangames.extensions.EasyPush</extensionID>
+    <extensionID>com.distriqt.androidsupport.V4</extensionID>
+    <extensionID>com.distriqt.Core</extensionID>
+    <extensionID>com.distriqt.Share</extensionID>
+    <extensionID>com.doitflash.air.extensions.sms</extensionID>
+    <extensionID>com.distriqt.MediaPlayer</extensionID>
+	<extensionID>com.distriqt.PDFReader</extensionID>
+  </extensions>
+</application>

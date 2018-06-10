@@ -1,5 +1,7 @@
 package component.xmlPack
 {
+	import contents.alert.Alert;
+
 	public class ManifestGenerate
 	{
 		/**Manifest XML file*/
@@ -69,6 +71,12 @@ package component.xmlPack
 			}
 			this.iconsList = iconsList ;
 			this.airVersion = airVersion ;
+			updateXML();
+		}
+		
+		/**It will creats a final xml based on parameters*/
+		private function updateXML():void
+		{
 			///Main
 			mXML = new XML(<application/>);
 			mXML.@xmlns = 'http://ns.adobe.com/air/application/'+airVersion ;
@@ -129,6 +137,22 @@ package component.xmlPack
 			extensions = new XML(<extensions/>);
 			mXML.appendChild(extensions);
 			extensions.appendChild(extensionXML('com.distriqt.Core'));
+		}
+		
+		/**It will catch your old xml file and fit it in the new XML*/
+		public function convert(oldAppXML:String):void
+		{
+			var convertedXML:XML ;
+			try{
+				convertedXML = XML(oldAppXML);
+			}
+			catch(e:Error)
+			{
+				Alert(e.message);
+				return ;
+			}
+			trace(convertedXML.toXMLString());
+			updateXML();
 		}
 		
 		/**Creates an extension id*/

@@ -2,12 +2,17 @@ package
 {
 	import appManager.mains.App;
 	
+	import com.mteamapp.StringFunctions;
+	
 	import component.AppIconGenerator;
 	import component.xmlPack.ManifestGenerate;
+	
+	import contents.TextFile;
 	
 	import dynamicFrame.FrameGenerator;
 	
 	import flash.display.Sprite;
+	import flash.filesystem.File;
 	
 	public class AppGenerator extends Sprite
 	{
@@ -48,9 +53,12 @@ package
 			iconGenerator = Obj.findThisClass(AppIconGenerator,this);
 			iconGenerator.setIconList(iconSizes);
 			
+			
 			var manifestGenerate:ManifestGenerate = new ManifestGenerate(iconSizes,'29');
 			
-			trace(manifestGenerate.toString());
+			manifestGenerate.convert(TextFile.load(File.applicationDirectory.resolvePath('SampleXML/KargozarMellat-app-android.xml')));
+			
+			//trace(manifestGenerate.toString());
 			
 			FrameGenerator.createFrame(stage);
 		}
