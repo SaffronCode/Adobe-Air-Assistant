@@ -12,6 +12,20 @@ package component.xmlPack
 			const androidSchema:String = "http://schemas.android.com/apk/res/android" ;
 			main = <manifest xmlns:android={androidSchema} android:installLocation="auto" />;
 			main.appendChild(<uses-sdk xmlns:android={androidSchema} android:minSdkVersion="9" android:targetSdkVersion="22" />);//Not works
+			main = <manifest  xmlns:android="android" android:installLocation="auto">
+						<uses-permission android:name="android.permission.INTERNET" />
+						<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+						<uses-permission android:name="android.permission.WAKE_LOCK" />
+						<uses-permission android:name="android.permission.VIBRATE" />
+						<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+						<meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
+					</manifest>
+			
+			
+			//Alert.show("main.uses-permission : "+main.@*);
+			//Alert.show("main.uses-permission : "+main['uses-permission'][0].@*);
+				//Done
+			//Alert.show("main.meta-data : "+XML(main['meta-data'][0]).attribute(new QName('android','name')));
 			//var U:XML = <uses-sdk android:minSdkVersion="9" android:targetSdkVersion="22" />;
 			//main = <manifest xmlns:android="http://schemas.android.com/apk/res/android" android:installLocation="auto" />;
 			
