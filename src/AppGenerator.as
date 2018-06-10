@@ -58,7 +58,7 @@ package
 			
 			manifestGenerate.convert(TextFile.load(File.applicationDirectory.resolvePath('SampleXML/KargozarMellat-app-android.xml')));
 			
-			//trace(manifestGenerate.toString());
+			trace(manifestGenerate.toString());
 			
 			FrameGenerator.createFrame(stage);
 		}

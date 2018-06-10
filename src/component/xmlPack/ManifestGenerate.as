@@ -156,12 +156,12 @@ package component.xmlPack
 				Alert(e.message);
 				return ;
 			}
-			loadParametersFromXML(convertedXML.children());
+			loadParametersFromXML(convertedXML);
 			updateXML();
 		}
 		
 		/**Search for nodes on xmls*/
-		private function loadParametersFromXML(convertedXML:XMLList):void
+		private function loadParametersFromXML(convertedXML:XML):void
 		{
 			var ObjectFromThis:Object = JSON.parse(JSON.stringify(this));
 			for(var i in ObjectFromThis)
@@ -171,7 +171,7 @@ package component.xmlPack
 		}
 		
 		/**Look for this node name on the list. returns true if node founded*/
-		private function lookExactlyFor(convertedXML:XMLList,requiredNodeName:String=null):Boolean
+		private function lookExactlyFor(convertedXML:XML,requiredNodeName:String=null):Boolean
 		{
 			//trace("Search for "+requiredNodeName+" in the list "+convertedXML);
 			var cNode:XMLList = convertedXML.child(new QName(airNameSpace,requiredNodeName)) ; 
@@ -183,20 +183,21 @@ package component.xmlPack
 			}
 			else
 			{
-				for(var j:int = 0 ; j<convertedXML.length() ; j++)
+				var list:XMLList = convertedXML.children() ;
+				var l:uint = list.length() ;
+				//trace("list:"+list);
+				//trace("length : "+lenght);
+				for(var j:int = 0 ; l>1 && j<l ; j++)
 				{
-					var list:XMLList = XMLList(convertedXML[j]).children() ;
-					if(list.length()>1)
+					//trace(" \n\n\n\n\nItem is : "+list[j]+" is it xml? "+XML(list[j]));
+					var isFounded:Boolean;
+					isFounded = lookExactlyFor(XML(list[j]),requiredNodeName);
+					if(isFounded)
 					{
-						//trace("list.length() : "+list.length());
-						var isFounded:Boolean = lookExactlyFor(list,requiredNodeName);
-						if(isFounded)
-						{
-							return true ;
-						}
+						return true ;
 					}
 				}
-				trace("Cannot find "+requiredNodeName);
+				//trace("Cannot find "+requiredNodeName);
 				return false ;
 			}
 		}
