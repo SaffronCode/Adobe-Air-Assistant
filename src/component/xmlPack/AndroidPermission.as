@@ -37,5 +37,15 @@ package component.xmlPack
 			stringFormat = stringFormat.replace(xmlPerfix,'');
 			return stringFormat;
 		}
+		
+		public function add(AndroidPermission:XML):void
+		{
+			//AndroidPermission vs main
+			main = mergeToXML(AndroidPermission,main)
+		}
+		private function mergeToXML(xml1:XML,xml2:XML):XML
+		{
+			return new XML();
+		}
 	}
 }

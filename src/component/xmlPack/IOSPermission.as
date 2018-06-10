@@ -15,7 +15,6 @@ package component.xmlPack
 		
 		public function importInfoAdditions(InfoAdditionsXMLString:String):void
 		{
-			trace("InfoAdditionsXMLString : "+InfoAdditionsXMLString);
 			try
 			{
 				InfoAdditions = new XMLList(InfoAdditionsXMLString);

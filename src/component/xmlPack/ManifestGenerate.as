@@ -245,5 +245,11 @@ package component.xmlPack
 			Entitlements.appendChild(new XML("<![CDATA[\n"+iOSPermission.EntitlementsToString()+"\n]]>"));
 			return '<?xml version="1.0" encoding="utf-8" standalone="no" ?>\n'+mXML.toXMLString();
 		}
+		
+		/**Dont forget to add  xmlns:android="android"   to the root node of the permission xml to make it work*/
+		public function addAndroidPermission(AndroidPermission:XML):void
+		{
+			androidPermission.add(AndroidPermission);
+		}
 	}
 }

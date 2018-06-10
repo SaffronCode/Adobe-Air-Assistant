@@ -16,8 +16,11 @@ package
 	import flash.filesystem.File;
 	import flash.system.System;
 	
+	import permissionPack.DistriqtNotif;
+	
 	public class AppGenerator extends Sprite
 	{
+		
 		private static const iconSizes:Array = [16
 												,29
 												,32
@@ -68,6 +71,8 @@ package
 		protected function convertSampleXML(event:MouseEvent):void
 		{
 			manifestGenerate.convert(TextFile.load(File.applicationDirectory.resolvePath('SampleXML/KargozarMellat-app-android.xml')));
+			
+			manifestGenerate.addAndroidPermission(DistriqtNotif.AndroidPermission);
 			
 			var newManifest:String = manifestGenerate.toString();
 			System.setClipboard(newManifest);
