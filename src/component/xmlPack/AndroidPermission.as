@@ -1,5 +1,6 @@
 package component.xmlPack
 {
+	import contents.alert.Alert;
 	
 
 	public class AndroidPermission
@@ -10,19 +11,24 @@ package component.xmlPack
 		
 		public function AndroidPermission()
 		{
-			
+			main = new XML();
 			//Alert.show("main.uses-permission : "+main.@*);
 			//Alert.show("main.uses-permission : "+main['uses-permission'][0].@*);
 				//Done
 			//Alert.show("main.meta-data : "+XML(main['meta-data'][0]).attribute(new QName('android','name')));
-			
-			
 		}
 		
 		public function importPermission(permissionXML:String):void
 		{
 			permissionXML = permissionXML.replace('<manifest','<manifest'+xmlPerfix) ;
-			main = XML(permissionXML) ;
+			try
+			{
+				main = XML(permissionXML) ;
+			}
+			catch(e:Error)
+			{
+				Alert.show(e.message);
+			}
 		}
 		
 		public function toString():String

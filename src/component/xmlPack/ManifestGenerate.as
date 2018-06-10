@@ -67,6 +67,7 @@ package component.xmlPack
 		/**16,32,...*/
 		private var iconsList:Array ;
 		private var androidPermission:AndroidPermission;
+		private var iOSPermission:IOSPermission ;
 		
 		public function ManifestGenerate(iconsList:Array,airVersion:String)
 		{
@@ -79,6 +80,7 @@ package component.xmlPack
 			updateXML();
 			
 			androidPermission = new AndroidPermission();
+			iOSPermission = new IOSPermission();
 		}
 		
 		/**It will creats a final xml based on parameters*/
@@ -171,6 +173,8 @@ package component.xmlPack
 				extensionsList.push(extList[i]);
 			}
 			androidPermission.importPermission(convertedXML.child(new QName(airNameSpace,'android')).child(new QName(airNameSpace,'manifestAdditions')));
+			iOSPermission.importInfoAdditions(convertedXML.child(new QName(airNameSpace,'iPhone')).child(new QName(airNameSpace,'InfoAdditions')));
+			iOSPermission.importEntitlements(convertedXML.child(new QName(airNameSpace,'iPhone')).child(new QName(airNameSpace,'Entitlements')));
 			updateXML();
 		}
 		
@@ -237,6 +241,8 @@ package component.xmlPack
 		public function toString():String
 		{
 			manifestAdditions.appendChild(new XML("<![CDATA[\n"+androidPermission.toString()+"\n]]>"));
+			InfoAdditions.appendChild(new XML("<![CDATA[\n"+iOSPermission.InfoAdditionsToString()+"\n]]>"));
+			Entitlements.appendChild(new XML("<![CDATA[\n"+iOSPermission.EntitlementsToString()+"\n]]>"));
 			return '<?xml version="1.0" encoding="utf-8" standalone="no" ?>\n'+mXML.toXMLString();
 		}
 	}
