@@ -60,19 +60,23 @@
 						var s2:XML = firstList[j] ;
 						switch(String(secondList[i].name()))
 						{
+							case "permission":
 							case "uses-permission":
 								if(s1.attribute(new QName(androidNameSpace,'name')) == s2.attribute(new QName(androidNameSpace,'name')))
 								{
 									trace("Duplicated atribute");
 									nodeUpdated = true ;
 									j = firstList.length() ;
-									break ;
 								}
 							break;
 							case "application":
 								nodeUpdated = true ;
 								mergAributes(s2,s1);
 							break;
+						}
+						if(s1.hasComplexContent())
+						{
+							mergeToXML(s2,s1);
 						}
 					}
 				}
