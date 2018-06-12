@@ -16,7 +16,6 @@ package
 	import flash.filesystem.File;
 	import flash.system.System;
 	
-	import permissionPack.DistriqtNotif;
 	
 	public class AppGenerator extends Sprite
 	{
@@ -72,7 +71,7 @@ package
 		{
 			manifestGenerate.convert(TextFile.load(File.applicationDirectory.resolvePath('SampleXML/KargozarMellat-app-android.xml')));
 			
-			manifestGenerate.addAndroidPermission(DistriqtNotif.AndroidPermission);
+			manifestGenerate.addAndroidPermission(new XML(TextFile.load(File.applicationDirectory.resolvePath("SampleXML/distriqtNotificationOneSignal.xml"))));
 			
 			var newManifest:String = manifestGenerate.toString();
 			System.setClipboard(newManifest);
