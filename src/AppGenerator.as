@@ -74,8 +74,8 @@ package
 			manifestGenerate.addAndroidPermission(TextFile.load(File.applicationDirectory.resolvePath("SampleXML/distriqtNotificationOneSignal.xml")));
 			
 			var newManifest:String = manifestGenerate.toString();
-			//System.setClipboard(newManifest);
-			//trace(newManifest);
+			System.setClipboard(newManifest);
+			trace(newManifest);
 		}
 	}
 }

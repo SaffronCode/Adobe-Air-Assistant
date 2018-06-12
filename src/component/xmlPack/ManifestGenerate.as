@@ -257,7 +257,6 @@ package component.xmlPack
 		public function addAndroidPermission(AndroidPermission:String):void
 		{
 			androidPermission.add(AndroidPermission);
-			System.setClipboard(androidPermission.toString());
 		}
 	}
 }
