@@ -7,6 +7,8 @@ package component.xmlPack
 		private var InfoAdditions:XMLList ;
 		private var Entitlements:XMLList ;
 		
+		private var appId:String ;
+		
 		public function IOSPermission()
 		{
 			InfoAdditions = new XMLList();
@@ -45,6 +47,11 @@ package component.xmlPack
 		public function EntitlementsToString():String
 		{
 			return Entitlements.toXMLString();
+		}
+		
+		public function setAppId(id:String):void
+		{
+			this.appId = id ;			
 		}
 	}
 }

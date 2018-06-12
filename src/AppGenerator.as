@@ -71,11 +71,11 @@ package
 		{
 			manifestGenerate.convert(TextFile.load(File.applicationDirectory.resolvePath('SampleXML/KargozarMellat-app-android.xml')));
 			
-			manifestGenerate.addAndroidPermission(new XML(TextFile.load(File.applicationDirectory.resolvePath("SampleXML/distriqtNotificationOneSignal.xml"))));
+			manifestGenerate.addAndroidPermission(TextFile.load(File.applicationDirectory.resolvePath("SampleXML/distriqtNotificationOneSignal.xml")));
 			
 			var newManifest:String = manifestGenerate.toString();
-			System.setClipboard(newManifest);
-			trace(newManifest);
+			//System.setClipboard(newManifest);
+			//trace(newManifest);
 		}
 	}
 }

@@ -9,13 +9,16 @@
 		private const androidNameSpace:String = "android";
 		private const xmlPerfix:String = ' xmlns:android="'+androidNameSpace+'"';
 		
+		private var appId:String ;
+		
 		public function AndroidPermission()
 		{
 			main = new XML();
-			//Alert.show("main.uses-permission : "+main.@*);
-			//Alert.show("main.uses-permission : "+main['uses-permission'][0].@*);
-				//Done
-			//Alert.show("main.meta-data : "+XML(main['meta-data'][0]).attribute(new QName('android','name')));
+		}
+		
+		public function setAppId(appId:String):void
+		{
+			this.appId = appId ;
 		}
 		
 		public function importPermission(permissionXML:String):void
@@ -38,11 +41,21 @@
 			return stringFormat;
 		}
 		
-		public function add(AndroidPermission:XML):void
+		/**It will replace APPLICATION_PACKAGE with the ap id*/
+		public function add(AndroidPermissionXMLString:String):void
 		{
-			//AndroidPermission vs main
-			main = mergeToXML(main,AndroidPermission);
-			trace("main : "+main);
+			AndroidPermissionXMLString.replace("APPLICATION_PACKAGE",appId);
+			var AndroidPermissionXML:XML ;
+			try
+			{
+				AndroidPermissionXML = new XML(AndroidPermissionXMLString.replace('<manifest','<manifest'+xmlPerfix));
+			}
+			catch(e:Error)
+			{
+				Alert.show(e.message);
+				return ;
+			}
+			main = mergeToXML(main,AndroidPermissionXML);
 		}
 		private function mergeToXML(firstXML:XML,secXML:XML):XML
 		{
@@ -168,7 +181,7 @@
 			}
 		}*/
 		
-			/**Returns true if both nodes have same name and same atribute names*/
+			/**Returns true if both nodes have same name and same atribute names
 			private function updateIfTheyAreSame(node1:XML,node2:XML)
 			{
 				//TODO not completed
@@ -206,7 +219,7 @@
 			private function updateNode(mainNode:XML,secondNode:XML):void
 			{
 				//TODO
-			}
+			}*/
 		
 		/*private function insertNodeToXML(newList:XML, node:XML):void
 		{

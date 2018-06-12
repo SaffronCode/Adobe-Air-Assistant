@@ -1,6 +1,8 @@
 package component.xmlPack
 {
 	import contents.alert.Alert;
+	
+	import flash.system.System;
 
 	public class ManifestGenerate
 	{
@@ -172,9 +174,14 @@ package component.xmlPack
 			{
 				extensionsList.push(extList[i]);
 			}
+			
+			androidPermission.setAppId(id);
 			androidPermission.importPermission(convertedXML.child(new QName(airNameSpace,'android')).child(new QName(airNameSpace,'manifestAdditions')));
+			
+			iOSPermission.setAppId(id);
 			iOSPermission.importInfoAdditions(convertedXML.child(new QName(airNameSpace,'iPhone')).child(new QName(airNameSpace,'InfoAdditions')));
 			iOSPermission.importEntitlements(convertedXML.child(new QName(airNameSpace,'iPhone')).child(new QName(airNameSpace,'Entitlements')));
+			
 			updateXML();
 		}
 		
@@ -247,9 +254,10 @@ package component.xmlPack
 		}
 		
 		/**Dont forget to add  xmlns:android="android"   to the root node of the permission xml to make it work*/
-		public function addAndroidPermission(AndroidPermission:XML):void
+		public function addAndroidPermission(AndroidPermission:String):void
 		{
 			androidPermission.add(AndroidPermission);
+			System.setClipboard(androidPermission.toString());
 		}
 	}
 }
