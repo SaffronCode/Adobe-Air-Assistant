@@ -70,8 +70,8 @@ package
 		protected function convertSampleXML(event:MouseEvent):void
 		{
 			manifestGenerate.convert(TextFile.load(File.applicationDirectory.resolvePath('SampleXML/KargozarMellat-app-android.xml')));
-			
 			manifestGenerate.addAndroidPermission(TextFile.load(File.applicationDirectory.resolvePath("SampleXML/distriqtNotificationOneSignal.xml")));
+			manifestGenerate.addExtension(TextFile.load(File.applicationDirectory.resolvePath("SampleXML/distriqtNotificationOneSignal-extension.xml")));
 			
 			var newManifest:String = manifestGenerate.toString();
 			System.setClipboard(newManifest);

@@ -1,5 +1,7 @@
 package component.xmlPack
 {
+	import com.mteamapp.StringFunctions;
+	
 	import contents.alert.Alert;
 	
 	import flash.system.System;
@@ -257,6 +259,35 @@ package component.xmlPack
 		public function addAndroidPermission(AndroidPermission:String):void
 		{
 			androidPermission.add(AndroidPermission);
+		}
+		
+		/**Extension xml list file<br/><br/>
+		 * <extensionID>com.distriqt.Core</extensionID><br/>
+    <extensionID>com.distriqt.androidsupport.V4</extensionID><br/>
+    <extensionID>com.distriqt.androidsupport.CustomTabs</extensionID><br/>
+    <extensionID>com.distriqt.Firebase</extensionID><br/>
+    <extensionID>com.distriqt.playservices.Base</extensionID><br/>
+    <extensionID>com.distriqt.PushNotifications</extensionID>*/
+		public function addExtension(extensionListXMLList:String):void
+		{
+			try
+			{
+				var extensionList:XMLList = new XMLList(extensionListXMLList);
+				for(var i:int = 0 ; i<extensionList.length() ; i++)
+				{
+					if(extensionsList.indexOf(extensionList[i].toString())==-1)
+					{
+						trace("new extenstion is : "+extensionList[i].toString());
+						extensionsList.push(extensionList[i].toString());
+					}
+				}
+				extensionsList.sort(StringFunctions.compairFarsiString) ;
+				updateXML();
+			}
+			catch(e:Error)
+			{
+				Alert.show(e.toString());
+			}
 		}
 	}
 }
