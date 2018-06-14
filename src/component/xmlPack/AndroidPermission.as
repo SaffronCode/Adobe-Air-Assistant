@@ -59,11 +59,19 @@
 		}
 		private function mergeToXML(firstXML:XML,secXML:XML):XML
 		{
+			trace("secXML: "+secXML+'\n\n'+'*****************************'+'\n\n\n)');
 			var firstList:XMLList = firstXML.children() ;
 			var secondList:XMLList = secXML.children() ;
 			
 			for(var i:int = 0 ; i<secondList.length() ; i++)
 			{
+				if(secondList[i].name() == 'com.onesignal.GcmBroadcastReceiver')
+				{
+					var what:String = 'hapend';
+					trace('android:name="com.onesignal.GcmBroadcastReceiver"');
+					
+				}
+				trace("secondList["+i+"].name() : "+secondList[i].name());
 				var nodeUpdated:Boolean = false ;
 				for(var j:int = 0 ; j<firstList.length() ;j++)
 				{
@@ -73,18 +81,19 @@
 						var s2:XML = firstList[j] ;
 						switch(String(secondList[i].name()))
 						{
-							case "permission":
-							case "uses-permission":
-								if(s1.attribute(new QName(androidNameSpace,'name')) == s2.attribute(new QName(androidNameSpace,'name')))
-								{
-									trace("Duplicated atribute");
-									nodeUpdated = true ;
-									j = firstList.length() ;
-								}
-							break;
 							case "application":
 								nodeUpdated = true ;
 								mergAributes(s2,s1);
+							break;
+							default:
+								if(	s1.attribute(new QName(androidNameSpace,'name')) == s2.attribute(new QName(androidNameSpace,'name'))
+									&&
+									s1.attribute(new QName(androidNameSpace,'permission')) == s2.attribute(new QName(androidNameSpace,'permission')))
+								{
+									trace("Duplicated atributes");
+									nodeUpdated = true ;
+									j = firstList.length() ;
+								}
 							break;
 						}
 						if(s1.hasComplexContent())
