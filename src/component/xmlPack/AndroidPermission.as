@@ -44,7 +44,7 @@
 		/**It will replace APPLICATION_PACKAGE with the ap id*/
 		public function add(AndroidPermissionXMLString:String):void
 		{
-			AndroidPermissionXMLString.replace("APPLICATION_PACKAGE",appId);
+			AndroidPermissionXMLString = AndroidPermissionXMLString.replace(/APPLICATION_PACKAGE/gi,appId);
 			var AndroidPermissionXML:XML ;
 			try
 			{

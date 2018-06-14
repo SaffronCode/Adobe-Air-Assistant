@@ -30,17 +30,20 @@ package component.xmlPack
 					versionNumber:String = '0.0.0',
 					description:String = '';
 		/**Dont use complex charachters for this field*/
-		private var filename:String="Saffrony";
+		public var filename:String="Saffrony";
 		/**This is the application name.*/
 		public var name:String ="Saffron y";
 		public var copyright:String ="MTeam Co.";
 		
 		//initialWindow
 		public var content:String = "Saffrony.swf" ;
-		private var systemChrome:String = "standard" ;
-		private var transparent:Boolean = false ;
-		private var visible:Boolean = true ;
+		public var systemChrome:String = "standard" ;
+		public var transparent:Boolean = false ;
+		public var visible:Boolean = true ;
 		public var fullScreen:Boolean = false ;
+		
+		/**gpu or cpu*/
+		public var renderMode:String = "gpu"
 		
 		/**set the aspectRatio parameter*/
 		public const 	aspectRatio_portrait = "portrait",
@@ -109,6 +112,7 @@ package component.xmlPack
 			initialWindow.appendChild(XMLFromId('visible'));
 			initialWindow.appendChild(XMLFromId('fullScreen'));
 			initialWindow.appendChild(XMLFromId('aspectRatio'));
+			initialWindow.appendChild(XMLFromId('renderMode'));
 			initialWindow.appendChild(XMLFromId('autoOrients'));
 			initialWindow.appendChild(XMLFromId('maximizable'));
 			initialWindow.appendChild(XMLFromId('minimizable'));
@@ -204,7 +208,18 @@ package component.xmlPack
 			var cNode:XMLList = convertedXML.child(new QName(airNameSpace,requiredNodeName)) ; 
 			if(cNode.length()==1)
 			{
-				this[requiredNodeName] = cNode[0] ;
+				if(this[requiredNodeName] is Boolean)
+				{
+					this[requiredNodeName] = (cNode[0]=='true')?true:false ;
+				}
+				else if(this[requiredNodeName] is Number)
+				{
+					this[requiredNodeName] = Number(cNode[0]) ;
+				}
+				else
+				{
+					this[requiredNodeName] = cNode[0] ;
+				}
 				trace(">> "+requiredNodeName+" sat to "+this[requiredNodeName]);
 				return true ;
 			}
