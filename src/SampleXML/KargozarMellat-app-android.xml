@@ -196,7 +196,6 @@
   
   
   <extensions>
-    <extensionID>com.milkmangames.extensions.EasyPush</extensionID>
     <extensionID>com.distriqt.androidsupport.V4</extensionID>
     <extensionID>com.distriqt.Core</extensionID>
     <extensionID>com.distriqt.Share</extensionID>

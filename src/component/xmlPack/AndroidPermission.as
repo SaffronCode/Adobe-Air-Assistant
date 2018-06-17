@@ -84,21 +84,24 @@
 							case "application":
 								nodeUpdated = true ;
 								mergAributes(s2,s1);
+								if(s1.hasComplexContent())
+								{
+									mergeToXML(s2,s1);
+								}
 							break;
 							default:
-								if(	s1.attribute(new QName(androidNameSpace,'name')) == s2.attribute(new QName(androidNameSpace,'name'))
-									&&
-									s1.attribute(new QName(androidNameSpace,'permission')) == s2.attribute(new QName(androidNameSpace,'permission')))
+								if(	haveSaveAtributes(s1,s2))
 								{
 									trace("Duplicated atributes");
 									nodeUpdated = true ;
+									
+									if(s1.hasComplexContent())
+									{
+										mergeToXML(s2,s1);
+									}
 									j = firstList.length() ;
 								}
 							break;
-						}
-						if(s1.hasComplexContent())
-						{
-							mergeToXML(s2,s1);
 						}
 					}
 				}
@@ -110,6 +113,31 @@
 			}
 			
 			return firstXML ;
+		}
+		
+		/**Check if two node had save atributes*/
+		private function haveSaveAtributes(s1:XML, s2:XML):Boolean
+		{
+			var fatrib:XMLList = s1.attributes() ;
+			var satrib:XMLList = s2.attributes() ;
+			for(var i:int = 0 ; i<fatrib.length() ; i++)
+			{
+				var a1:XML = fatrib[i];
+				for(var j:int = 0 ; j<satrib.length() ; j++)
+				{
+					var a2:XML = satrib[j];
+					trace(a1.name()+' vs '+a2.name());
+					if(a1.name() == a2.name())
+					{
+						trace(a1+' vs2 '+a2);
+						if(a1 != a2)
+						{
+							return false ;
+						}
+					}
+				}
+			}
+			return true ;
 		}
 		
 		private function mergAributes(firstNode:XML,secondNode:XML):void
