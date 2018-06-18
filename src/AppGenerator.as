@@ -11,10 +11,11 @@ package
 	
 	import dynamicFrame.FrameGenerator;
 	
-	import flash.display.Sprite;
+	import flash.display.*;
 	import flash.events.MouseEvent;
 	import flash.filesystem.File;
 	import flash.system.System;
+	import contents.alert.Alert;
 	
 	
 	public class AppGenerator extends Sprite
@@ -49,6 +50,7 @@ package
 		private var iconGenerator:AppIconGenerator ;
 
 		private var manifestGenerate:ManifestGenerate;
+		private var mainXMLFile:File;
 		
 		public function AppGenerator()
 		{
@@ -64,14 +66,37 @@ package
 			
 			manifestGenerate = new ManifestGenerate(iconSizes,'29');
 			
-			stage.addEventListener(MouseEvent.CLICK,convertSampleXML);
+			//stage.addEventListener(MouseEvent.CLICK,convertSampleXML);
+			
+			var manifestLoaderMC:MovieClip = Obj.get("load_manifest_mc",this) ;
+			manifestLoaderMC.buttonMode = true ;
+			manifestLoaderMC.addEventListener(MouseEvent.CLICK,loadExistingManifest);
+			
+			this.graphics.beginFill(0xffffff);
+			this.graphics.drawRect(0,0,stage.stageWidth,stage.stageHeight);
 		}
 		
-		protected function convertSampleXML(event:MouseEvent):void
+		private function loadExistingManifest(e:MouseEvent):void
 		{
-			manifestGenerate.convert(TextFile.load(File.applicationDirectory.resolvePath('SampleXML/KargozarMellat-app-android.xml')));
-			manifestGenerate.addAndroidPermission(TextFile.load(File.applicationDirectory.resolvePath("SampleXML/distriqtNotificationOneSignal.xml")));
-			manifestGenerate.addExtension(TextFile.load(File.applicationDirectory.resolvePath("SampleXML/distriqtNotificationOneSignal-extension.xml")));
+			FileManager.browse(loadThisManifestXML,['*.xml']);
+			
+			function loadThisManifestXML(fileTarget:File):void
+			{
+				mainXMLFile = fileTarget ;
+				trace("Loaded file is : "+fileTarget.nativePath);
+				trace("mainXML file is : "+mainXMLFile.nativePath);
+				convertSampleXML();
+			}
+		}
+		
+		protected function convertSampleXML():void
+		{
+			trace("mainXMLFile : "+mainXMLFile.nativePath);
+			manifestGenerate.convert(TextFile.load(mainXMLFile));
+			manifestGenerate.addAndroidPermission(TextFile.load(File.applicationDirectory.resolvePath("SampleXML")
+					.resolvePath("distriqtNotification")
+					.resolvePath("distriqtNotificationOneSignal.xml")));
+			manifestGenerate.addExtension(TextFile.load(File.applicationDirectory.resolvePath("SampleXML/distriqtNotification/distriqtNotificationOneSignal-extension.xml")));
 			
 			var newManifest:String = manifestGenerate.toString();
 			System.setClipboard(newManifest);

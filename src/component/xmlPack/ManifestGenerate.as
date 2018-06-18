@@ -175,7 +175,9 @@ package component.xmlPack
 			
 			//Load extensions
 			var extListContainer:XML = convertedXML.child(new QName(airNameSpace,'extensions'))[0] ;
-			var extList:XMLList = extListContainer.child(new QName(airNameSpace,'extensionID'));
+			var extList:XMLList = new XMLList();
+			if(extListContainer!=null)
+				extListContainer.child(new QName(airNameSpace,'extensionID'));
 			for(var i:int = 0 ; i<extList.length() ; i++)
 			{
 				extensionsList.push(extList[i]);
