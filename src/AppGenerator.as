@@ -1,13 +1,15 @@
-package
+﻿package
 {
 	import appManager.mains.App;
 	
 	import com.mteamapp.StringFunctions;
 	
+	import component.*;
 	import component.AppIconGenerator;
 	import component.xmlPack.ManifestGenerate;
 	
 	import contents.TextFile;
+	import contents.alert.Alert;
 	
 	import dynamicFrame.FrameGenerator;
 	
@@ -15,7 +17,6 @@ package
 	import flash.events.MouseEvent;
 	import flash.filesystem.File;
 	import flash.system.System;
-	import contents.alert.Alert;
 	
 	
 	public class AppGenerator extends Sprite
@@ -51,6 +52,10 @@ package
 
 		private var manifestGenerate:ManifestGenerate;
 		private var mainXMLFile:File;
+		private var manifestExporterMC:MovieClip ;
+		
+		//Checklist part
+		private var distriqt_push:ACheckBox ;
 		
 		public function AppGenerator()
 		{
@@ -68,12 +73,41 @@ package
 			
 			//stage.addEventListener(MouseEvent.CLICK,convertSampleXML);
 			
+			manifestExporterMC = Obj.get("export_manifest_mc",this);
+			manifestExporterMC.addEventListener(MouseEvent.CLICK,exportSavedManifest);
+			manifestExporterMC.visible = false ;
+			
 			var manifestLoaderMC:MovieClip = Obj.get("load_manifest_mc",this) ;
 			manifestLoaderMC.buttonMode = true ;
 			manifestLoaderMC.addEventListener(MouseEvent.CLICK,loadExistingManifest);
 			
 			this.graphics.beginFill(0xffffff);
 			this.graphics.drawRect(0,0,stage.stageWidth,stage.stageHeight);
+			
+			///////////////
+			distriqt_push = Obj.get("distriqt_push_mc",this);
+			distriqt_push.setUp(false,'Distriqt Push Notification');
+		}
+		
+		private function exportSavedManifest(e:MouseEvent):void
+		{		
+			FileManager.browseToSave(saveFileThere,"Select a destination for your new Manifest file",'xml');
+			function saveFileThere(fileTarget:File):void
+			{
+				trace("mainXMLFile : "+mainXMLFile.nativePath);
+				manifestGenerate.convert(TextFile.load(mainXMLFile));
+				if(distriqt_push.status)
+				{
+					manifestGenerate.addAndroidPermission(TextFile.load(File.applicationDirectory.resolvePath("SampleXML")
+						.resolvePath("distriqtNotification")
+						.resolvePath("distriqtNotificationOneSignal.xml")));
+					manifestGenerate.addExtension(TextFile.load(File.applicationDirectory.resolvePath("SampleXML/distriqtNotification/distriqtNotificationOneSignal-extension.xml")));
+				}
+				
+				var newManifest:String = manifestGenerate.toString();
+				System.setClipboard(newManifest);
+				TextFile.save(fileTarget,newManifest);
+			}
 		}
 		
 		private function loadExistingManifest(e:MouseEvent):void
@@ -85,22 +119,9 @@ package
 				mainXMLFile = fileTarget ;
 				trace("Loaded file is : "+fileTarget.nativePath);
 				trace("mainXML file is : "+mainXMLFile.nativePath);
-				convertSampleXML();
+				//convertSampleXML();
+				manifestExporterMC.visible = true ;
 			}
-		}
-		
-		protected function convertSampleXML():void
-		{
-			trace("mainXMLFile : "+mainXMLFile.nativePath);
-			manifestGenerate.convert(TextFile.load(mainXMLFile));
-			manifestGenerate.addAndroidPermission(TextFile.load(File.applicationDirectory.resolvePath("SampleXML")
-					.resolvePath("distriqtNotification")
-					.resolvePath("distriqtNotificationOneSignal.xml")));
-			manifestGenerate.addExtension(TextFile.load(File.applicationDirectory.resolvePath("SampleXML/distriqtNotification/distriqtNotificationOneSignal-extension.xml")));
-			
-			var newManifest:String = manifestGenerate.toString();
-			System.setClipboard(newManifest);
-			trace(newManifest);
 		}
 	}
 }

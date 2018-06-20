@@ -20,13 +20,14 @@ package component.xmlPack
 		private var extensions:XML ;
 		
 		///Name spaces
-		private var airNameSpace:String = "http://ns.adobe.com/air/application/26.0" ;
+		private const airNSURI:String = "http://ns.adobe.com/air/application/" ;
+		private var airNameSpace:String ;
 		
 		//Extentions
 		private var extensionsList:Vector.<String> = new Vector.<String>();
 		//Parameters
 		public var 	airVersion:String = '29.0',
-					id:String='com.mteamapps.lego',
+					id:String='com.mteamapps.saffron',
 					versionNumber:String = '0.0.0',
 					description:String = '';
 		/**Dont use complex charachters for this field*/
@@ -78,6 +79,7 @@ package component.xmlPack
 		
 		public function ManifestGenerate(iconsList:Array,airVersion:String)
 		{
+			airNameSpace = airNSURI+airVersion ;
 			if(airVersion.indexOf('.')==-1)
 			{
 				airVersion = airVersion+'.0';
@@ -95,7 +97,7 @@ package component.xmlPack
 		{
 			///Main
 			mXML = new XML(<application/>);
-			mXML.@xmlns = 'http://ns.adobe.com/air/application/'+airVersion ;
+			mXML.@xmlns = airNSURI+airVersion ;
 			mXML.appendChild(XMLFromId('id'));
 			mXML.appendChild(XMLFromId('versionNumber'));
 			mXML.appendChild(XMLFromId('filename'));
@@ -160,6 +162,17 @@ package component.xmlPack
 		/**It will catch your old xml file and fit it in the new XML*/
 		public function convert(oldAppXML:String):void
 		{
+			
+			//Find target air version
+			var airVersionURIIndex:int = -1 ;
+			if((airVersionURIIndex = oldAppXML.indexOf(airNSURI)) !=-1)
+			{
+				airVersion = oldAppXML.substring(airVersionURIIndex+airNSURI.length,oldAppXML.indexOf('"',airVersionURIIndex));
+				Alert.show("airVersion : "+airVersion);
+			}
+			
+			airNameSpace = airNSURI+airVersion ;
+			
 			var convertedXML:XML ;
 			oldAppXML = oldAppXML.replace(/[\n\r][\t\s]+[\n\r]/gi,'\n');
 			oldAppXML = oldAppXML.replace(/[\n\r]{2,}/gi,'\n');
@@ -168,7 +181,7 @@ package component.xmlPack
 			}
 			catch(e:Error)
 			{
-				Alert(e.message);
+				Alert(e);
 				return ;
 			}
 			loadParametersFromXML(convertedXML);
