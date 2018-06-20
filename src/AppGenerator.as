@@ -57,6 +57,8 @@
 		//Checklist part
 		private var distriqt_push:ACheckBox ;
 		
+		private const xmlFolder:File = File.applicationDirectory.resolvePath('SampleXML');
+		
 		public function AppGenerator()
 		{
 			super();
@@ -92,20 +94,22 @@
 		private function exportSavedManifest(e:MouseEvent):void
 		{		
 			FileManager.browseToSave(saveFileThere,"Select a destination for your new Manifest file",'xml');
+			trace("mainXMLFile : "+mainXMLFile.nativePath);
+			manifestGenerate.convert(TextFile.load(mainXMLFile));
+			if(distriqt_push.status)
+			{
+				var districtFolder:File = xmlFolder.resolvePath('distriqtNotification');
+				manifestGenerate.addAndroidPermission(TextFile.load(districtFolder.resolvePath("android_manifest.xml")));
+				manifestGenerate.addIosEntitlements(TextFile.load(districtFolder.resolvePath("ios_Entitlements.xml")));
+				manifestGenerate.addInfoAdditions(TextFile.load(districtFolder.resolvePath("ios_infoAdditions.xml")));
+				manifestGenerate.addExtension(TextFile.load(File.applicationDirectory.resolvePath("SampleXML/distriqtNotification/distriqtNotificationOneSignal-extension.xml")));
+			}
+			
+			var newManifest:String = manifestGenerate.toString();
+			System.setClipboard(newManifest);
+			
 			function saveFileThere(fileTarget:File):void
 			{
-				trace("mainXMLFile : "+mainXMLFile.nativePath);
-				manifestGenerate.convert(TextFile.load(mainXMLFile));
-				if(distriqt_push.status)
-				{
-					manifestGenerate.addAndroidPermission(TextFile.load(File.applicationDirectory.resolvePath("SampleXML")
-						.resolvePath("distriqtNotification")
-						.resolvePath("distriqtNotificationOneSignal.xml")));
-					manifestGenerate.addExtension(TextFile.load(File.applicationDirectory.resolvePath("SampleXML/distriqtNotification/distriqtNotificationOneSignal-extension.xml")));
-				}
-				
-				var newManifest:String = manifestGenerate.toString();
-				System.setClipboard(newManifest);
 				TextFile.save(fileTarget,newManifest);
 			}
 		}

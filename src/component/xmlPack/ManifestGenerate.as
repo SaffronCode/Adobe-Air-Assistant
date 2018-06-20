@@ -3,8 +3,6 @@ package component.xmlPack
 	import com.mteamapp.StringFunctions;
 	
 	import contents.alert.Alert;
-	
-	import flash.system.System;
 
 	public class ManifestGenerate
 	{
@@ -168,7 +166,6 @@ package component.xmlPack
 			if((airVersionURIIndex = oldAppXML.indexOf(airNSURI)) !=-1)
 			{
 				airVersion = oldAppXML.substring(airVersionURIIndex+airNSURI.length,oldAppXML.indexOf('"',airVersionURIIndex));
-				Alert.show("airVersion : "+airVersion);
 			}
 			
 			airNameSpace = airNSURI+airVersion ;
@@ -289,6 +286,18 @@ package component.xmlPack
 		public function addAndroidPermission(AndroidPermission:String):void
 		{
 			androidPermission.add(AndroidPermission);
+		}
+		
+		/**Add the iOS entitlement to the project*/
+		public function addIosEntitlements(ios_Entitlements:String):void
+		{
+			iOSPermission.addEntitlements(ios_Entitlements)
+		}
+		
+		/**Add the iOS InfoAdditions to the project*/
+		public function addInfoAdditions(ios_InfoAdditions:String):void
+		{
+			iOSPermission.addInfoAdditions(ios_InfoAdditions);
 		}
 		
 		/**Extension xml list file<br/><br/>

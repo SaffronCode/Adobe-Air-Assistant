@@ -53,5 +53,19 @@ package component.xmlPack
 		{
 			this.appId = id ;			
 		}
+		
+		
+	///////////////////////////////////////////////////
+		
+		/**Add and update entitlements*/
+		public function addEntitlements(entitlements:String):void
+		{
+			Alert.show('add entitlements : '+entitlements);
+		}
+		
+		public function addInfoAdditions(infoAdditions:String):void
+		{
+			Alert.show('add InfoAdditions : '+infoAdditions);
+		}
 	}
 }
