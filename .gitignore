@@ -8,7 +8,6 @@ bin-release/
 .settings/
 
 # Executables
-*.air
 *.ipa
 *.apk
 
