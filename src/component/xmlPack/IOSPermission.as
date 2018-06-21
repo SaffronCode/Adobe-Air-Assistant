@@ -1,5 +1,7 @@
 package component.xmlPack
 {
+	import com.mteamapp.XMLFunctions;
+	
 	import contents.alert.Alert;
 
 	public class IOSPermission
@@ -73,6 +75,17 @@ package component.xmlPack
 		{
 			try{
 				var newList:XMLList = new XMLList(entitlements);
+				for(var i:int = 0 ; i<newList.length() ; i++)
+				{
+					if(newList[i].name() == 'key')
+					{
+						var foundedElement:XML = XMLFunctions.getValueOfKey(newList[i],Entitlements.children());
+						if(foundedElement!=null)
+						{
+							XMLFunctions.removeKeyValue(Entitlements,newList[i]);
+						}
+					}
+				}
 				Entitlements.appendChild(newList);
 			}
 			catch(e:Error)
