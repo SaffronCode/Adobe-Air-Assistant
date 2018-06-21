@@ -117,9 +117,10 @@
 		{		
 			FileManager.browseToSave(saveFileThere,"Select a destination for your new Manifest file",'xml');
 			trace("mainXMLFile : "+mainXMLFile.nativePath);
+			var districtFolder:File;
 			if(distriqt_push.status)
 			{
-				var districtFolder:File = xmlFolder.resolvePath('distriqtNotification');
+				districtFolder = xmlFolder.resolvePath('distriqtNotification');
 				manifestGenerate.addAndroidPermission(TextFile.load(districtFolder.resolvePath("android_manifest.xml")));
 				manifestGenerate.addIosEntitlements(TextFile.load(districtFolder.resolvePath("ios_Entitlements.xml")));
 				manifestGenerate.addInfoAdditions(TextFile.load(districtFolder.resolvePath("ios_infoAdditions.xml")));
@@ -129,9 +130,19 @@
 			var newManifest:String = manifestGenerate.toString();
 			System.setClipboard(newManifest);
 			
+			if(distriqt_push.status)
+			{
+				manifestGenerate.addIosEntitlements(TextFile.load(districtFolder.resolvePath("ios_Entitlements-dist.xml")));
+			}
+			
+			var newDistManifest:String = manifestGenerate.toString() ;
+			
 			function saveFileThere(fileTarget:File):void
 			{
 				TextFile.save(fileTarget,newManifest);
+				var distName:String = fileTarget.name.split('.'+fileTarget.extension).join('');
+				fileTarget = fileTarget.parent.resolvePath(distName+'-dist.xml');
+				TextFile.save(fileTarget,newDistManifest);
 			}
 		}
 		

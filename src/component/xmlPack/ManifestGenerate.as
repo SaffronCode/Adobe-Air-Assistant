@@ -281,6 +281,10 @@
 		
 		public function toString():String
 		{
+			XMLFunctions.deleteChildren(manifestAdditions);
+			XMLFunctions.deleteChildren(InfoAdditions);
+			XMLFunctions.deleteChildren(Entitlements);
+			
 			manifestAdditions.appendChild(new XML("<![CDATA[\n"+androidPermission.toString()+"\n]]>"));
 			InfoAdditions.appendChild(new XML("<![CDATA[\n"+iOSPermission.InfoAdditionsToString()+"\n]]>"));
 			Entitlements.appendChild(new XML("<![CDATA[\n"+iOSPermission.EntitlementsToString()+"\n]]>"));
@@ -294,8 +298,12 @@
 		}
 		
 		/**Add the iOS entitlement to the project*/
-		public function addIosEntitlements(ios_Entitlements:String):void
+		public function addIosEntitlements(ios_Entitlements:String=''):void
 		{
+			if(ios_Entitlements=='')
+			{
+				return ;
+			}
 			iOSPermission.addEntitlements(ios_Entitlements)
 		}
 		
