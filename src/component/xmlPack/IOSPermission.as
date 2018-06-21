@@ -5,14 +5,15 @@ package component.xmlPack
 	public class IOSPermission
 	{
 		private var InfoAdditions:XMLList ;
-		private var Entitlements:XMLList ;
+		private var Entitlements:XML ;
 		
 		private var appId:String ;
+		private var teamId:String ;
 		
 		public function IOSPermission()
 		{
 			InfoAdditions = new XMLList();
-			Entitlements = new XMLList();
+			Entitlements = new XML();
 		}
 		
 		public function importInfoAdditions(InfoAdditionsXMLString:String):void
@@ -23,7 +24,8 @@ package component.xmlPack
 			}
 			catch(e:Error)
 			{
-				Alert.show(e.message);
+				//Alert.show(e.message);
+				throw e ;
 			}
 		}
 		
@@ -31,22 +33,31 @@ package component.xmlPack
 		{
 			try
 			{
-				Entitlements = new XMLList(EntitlementsXMLString);
+				Entitlements = new XML(<a/>);
+				var xmlList:XMLList = new XMLList(EntitlementsXMLString);
+				Entitlements.appendChild(xmlList);
 			}
 			catch(e:Error)
 			{
-				Alert.show(e.message);
+				Alert.show("Your iOS Entitlements had problem. solve the problem first : \n\n"+e.message);
 			}
 		}
 		
 		public function InfoAdditionsToString():String
 		{
-			return InfoAdditions.toXMLString();
+			return insertAppIdAndTeamIds(InfoAdditions.toXMLString());
+		}
+		
+		private function insertAppIdAndTeamIds(xmlString:String):String
+		{
+			xmlString = xmlString.replace(/BUNDLE_SEED_ID/g,teamId);
+			xmlString = xmlString.replace(/BUNDLE_IDENTIFIER/g,appId);
+			return xmlString ;
 		}
 		
 		public function EntitlementsToString():String
 		{
-			return Entitlements.toXMLString();
+			return insertAppIdAndTeamIds(Entitlements.children().toXMLString());
 		}
 		
 		public function setAppId(id:String):void
@@ -60,12 +71,28 @@ package component.xmlPack
 		/**Add and update entitlements*/
 		public function addEntitlements(entitlements:String):void
 		{
-			Alert.show('add entitlements : '+entitlements);
+			try{
+				var newList:XMLList = new XMLList(entitlements);
+				Entitlements.appendChild(newList);
+			}
+			catch(e:Error)
+			{
+				Alert.show("The entered xml list had problem. \n\n"+entitlements+'\n\n'+e.message);
+			}
+			//Alert.show('add entitlements : '+entitlements);
+			//Alert.show("1: "+Entitlements.children().toXMLString());
+			//Entitlements[0]=(entitlements);
+			//Alert.show("2: "+Entitlements.children().toXMLString());
 		}
 		
 		public function addInfoAdditions(infoAdditions:String):void
 		{
 			Alert.show('add InfoAdditions : '+infoAdditions);
+		}
+		
+		public function setTeamId(teamId:String):void
+		{
+			this.teamId = teamId ;
 		}
 	}
 }
