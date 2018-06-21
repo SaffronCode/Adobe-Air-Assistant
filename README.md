@@ -1,6 +1,6 @@
 # 1.Air-App Icon Generator
 
-<p  align="center"><a href="https://github.com/SaffronCode/Adobe-Air-Assistant/raw/master/build/AppGenerator.exe"><img src=https://github.com/SaffronCode/Adobe-Air-Assistant/blob/master/src/AppIconsForPublish/128.png?raw=true"/><br>Download Icon Generator</a></p>
+<p  align="center"><a href="https://github.com/SaffronCode/Adobe-Air-Assistant/raw/master/build/AppGenerator.air"><img src=https://github.com/SaffronCode/Adobe-Air-Assistant/blob/master/src/AppIconsForPublish/128.png?raw=true"/><br>Download Icon Generator</a></p>
 
 Creating all application icons in various sizes for Adobe Air.
 
@@ -35,6 +35,10 @@ Move your created icons to AppIconsForPublish and add below icon tag to your man
     <image1024x1024>AppIconsForPublish/1024.png</image1024x1024>
   </icon>
 ```
+
+To update your old manifest xml file with new permission and icon list, you can click on the "Load existing manifest xml" button to load your old manifest and then if you need to add new permissions to your project, you can select them from the list, to create manifest for iOS you need to add your mobileprovission file to by click on "Load iOS mobileprovission" and then press Export button to have the result.
+
+( Here you can see Distriqt products on the list. you can get the ane files from this <a href="https://airnativeextensions.com/extensions">link</a> )
 
 To create Assets.car file you have to use XCode or <a href="http://www.applicationloader.net/appuploader/icontool.php">this</a> portal.
 
