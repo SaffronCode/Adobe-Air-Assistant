@@ -53,6 +53,7 @@
 		private var manifestGenerate:ManifestGenerate;
 		private var mainXMLFile:File;
 		private var manifestExporterMC:MovieClip ;
+		private var loadMobileProvisionMC:MovieClip ;
 		
 		//Checklist part
 		private var distriqt_push:ACheckBox ;
@@ -83,12 +84,33 @@
 			manifestLoaderMC.buttonMode = true ;
 			manifestLoaderMC.addEventListener(MouseEvent.CLICK,loadExistingManifest);
 			
+			loadMobileProvisionMC = Obj.get("load_privision_mc",this);
+			loadMobileProvisionMC.gotoAndStop(2);
+			loadMobileProvisionMC.addEventListener(MouseEvent.CLICK,loadMobileProvission);
+			
 			this.graphics.beginFill(0xffffff);
 			this.graphics.drawRect(0,0,stage.stageWidth,stage.stageHeight);
 			
 			///////////////
 			distriqt_push = Obj.get("distriqt_push_mc",this);
 			distriqt_push.setUp(false,'Distriqt Push Notification');
+		}
+		
+		private function loadMobileProvission(e:MouseEvent):void
+		{
+			FileManager.browse(mobileProvissionSelected,["*.mobileprovision"],"Select your mobile provission");
+			function mobileProvissionSelected(fil:File):void
+			{
+				var status:Boolean = manifestGenerate.addMobileProvission(FileManager.loadFile(fil));
+				if(status)
+				{
+					loadMobileProvisionMC.gotoAndStop(1);
+					manifestExporterMC.visible = true ;
+				}
+				else
+					loadMobileProvisionMC.gotoAndStop(2);
+					
+			}
 		}
 		
 		private function exportSavedManifest(e:MouseEvent):void

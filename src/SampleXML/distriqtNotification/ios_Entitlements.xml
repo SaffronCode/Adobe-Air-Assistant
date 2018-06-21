@@ -13,8 +13,8 @@
 -->
 
 <key>application-identifier</key>
-<string>A434TU3BVC.com.mteamapps.testdist</string>
+<string>BUNDLE_SEED_ID.BUNDLE_IDENTIFIER</string>
 <key>keychain-access-groups</key>
 <array>
-	<string>A434TU3BVC.*</string>
+	<string>BUNDLE_SEED_ID.*</string>
 </array>

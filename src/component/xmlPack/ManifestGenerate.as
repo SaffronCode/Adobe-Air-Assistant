@@ -1,8 +1,11 @@
-package component.xmlPack
+﻿package component.xmlPack
 {
 	import com.mteamapp.StringFunctions;
+	import com.mteamapp.XMLFunctions;
 	
 	import contents.alert.Alert;
+	
+	import flash.utils.ByteArray;
 
 	public class ManifestGenerate
 	{
@@ -327,6 +330,55 @@ package component.xmlPack
 			{
 				Alert.show(e.toString());
 			}
+		}
+		
+		/**It will load the project id and team id from the provision and returns true if no problem occured.*/
+		public function addMobileProvission(mobileProvissionString:ByteArray):Boolean
+		{
+			var xmlStarted:Boolean = false ;
+			var pureManifest:String = '' ;
+			var tempTexts:String = '' ;
+			while(mobileProvissionString.bytesAvailable)
+			{
+				var char:String = mobileProvissionString.readUTFBytes(1);
+				if(char=='<')
+				{
+					xmlStarted = true ;
+					pureManifest += tempTexts;
+					tempTexts = char ;
+				}
+				else if(char=='>')
+				{
+					tempTexts += char ;
+					pureManifest += tempTexts;
+					tempTexts = '' ;
+					if(pureManifest.lastIndexOf('</plist>')==pureManifest.length-String('</plist>').length)
+					{
+						break;
+					}
+				}
+				else if(xmlStarted>0)
+				{
+					tempTexts+=char ;
+				}
+			}
+			/*mobileProvissionString.position = 0 ;
+			var pureManifest:String = mobileProvissionString.readUTFBytes(mobileProvissionString.bytesAvailable);
+			pureManifest = pureManifest.substring(pureManifest.indexOf('<plist'),pureManifest.lastIndexOf('</plist>')+String('</plist>').length) ;*/
+			//trace("Pure manifest is : "+pureManifest);
+			var mobileProvission:XML ;
+			try
+			{
+				mobileProvission = new XML(pureManifest);
+			}
+			catch(e:Error)
+			{
+				Alert.show("The selected mobile provission got problem");
+				return false ;
+			}
+			trace("mobileProvission  : "+mobileProvission.toXMLString());
+			Alert.show("Team id is : "+XMLFunctions.getValueOfKey('TeamIdentifier',mobileProvission.dict[0].children())) ;
+			return true ;
 		}
 	}
 }
