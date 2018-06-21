@@ -139,20 +139,33 @@
 		{		
 			FileManager.browseToSave(saveFileThere,"Select a destination for your new Manifest file",'xml');
 			trace("mainXMLFile : "+mainXMLFile.nativePath);
-			var districtFolder:File;
+			var districtNotifFolder:File;
+			var districtCameraFolder:File;
 			if(distriqt_push.status)
 			{
-				districtFolder = xmlFolder.resolvePath('distriqtNotification');
-				addDefaultManifestFrom(districtFolder);
+				districtNotifFolder = xmlFolder.resolvePath('distriqtNotification');
+				addDefaultManifestFrom(districtNotifFolder);
+			}
+			if(distriqt_camera.status)
+			{
+				districtCameraFolder = xmlFolder.resolvePath('distriqtCameraUI');
+				addDefaultManifestFrom(districtCameraFolder);
 			}
 			
 			var newManifest:String = manifestGenerate.toString();
 			System.setClipboard(newManifest);
 			var newDistManifest:String ;
+			var newChanges:String ; 
 			
 			if(distriqt_push.status)
 			{
-				newDistManifest = addDistManifestFrom(districtFolder)
+				newChanges = addDistManifestFrom(districtNotifFolder);
+				newDistManifest = (newChanges!=null)?newChanges:newDistManifest ;
+			}
+			if(distriqt_camera.status)
+			{
+				newChanges = addDistManifestFrom(districtCameraFolder);
+				newDistManifest = (newChanges!=null)?newChanges:newDistManifest ;
 			}
 			
 			
