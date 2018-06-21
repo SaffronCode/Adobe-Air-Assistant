@@ -20,6 +20,8 @@
 		private var Entitlements:XML ;
 		private var extensions:XML ;
 		
+		public var teamId:String = '' ;
+		
 		///Name spaces
 		private const airNSURI:String = "http://ns.adobe.com/air/application/" ;
 		private var airNameSpace:String ;
@@ -362,22 +364,22 @@
 					tempTexts+=char ;
 				}
 			}
-			/*mobileProvissionString.position = 0 ;
-			var pureManifest:String = mobileProvissionString.readUTFBytes(mobileProvissionString.bytesAvailable);
-			pureManifest = pureManifest.substring(pureManifest.indexOf('<plist'),pureManifest.lastIndexOf('</plist>')+String('</plist>').length) ;*/
-			//trace("Pure manifest is : "+pureManifest);
 			var mobileProvission:XML ;
 			try
 			{
 				mobileProvission = new XML(pureManifest);
+				teamId = XMLFunctions.getValueOfKey('TeamIdentifier',mobileProvission.dict[0].children()).string[0] ;
+				iOSPermission.setTeamId(teamId);
+				id = XMLFunctions.getValueOfKey('application-identifier',mobileProvission.dict[0].dict[0].children()) ;
+				id = id.split(teamId+'.').join('');
+				iOSPermission.setAppId(id);
+				return true ;
 			}
 			catch(e:Error)
 			{
 				Alert.show("The selected mobile provission got problem");
 				return false ;
 			}
-			trace("mobileProvission  : "+mobileProvission.toXMLString());
-			Alert.show("Team id is : "+XMLFunctions.getValueOfKey('TeamIdentifier',mobileProvission.dict[0].children())) ;
 			return true ;
 		}
 	}
