@@ -56,7 +56,8 @@
 		private var loadMobileProvisionMC:MovieClip ;
 		
 		//Checklist part
-		private var distriqt_push:ACheckBox ;
+		private var distriqt_push:ACheckBox,
+					distriqt_camera:ACheckBox;
 		
 		private const xmlFolder:File = File.applicationDirectory.resolvePath('SampleXML');
 		
@@ -94,6 +95,8 @@
 			///////////////
 			distriqt_push = Obj.get("distriqt_push_mc",this);
 			distriqt_push.setUp(false,'Distriqt Push Notification');
+			distriqt_camera = Obj.get("distriqt_camera_ui_mc",this);
+			distriqt_camera.setUp(false,'Distriqt Camera UI');
 		}
 		
 		private function loadMobileProvission(e:MouseEvent):void
@@ -113,6 +116,25 @@
 			}
 		}
 		
+		private function addDefaultManifestFrom(folder:File):void
+		{
+			manifestGenerate.addAndroidPermission(TextFile.load(folder.resolvePath("android_manifest.xml")));
+			manifestGenerate.addIosEntitlements(TextFile.load(folder.resolvePath("ios_Entitlements.xml")));
+			manifestGenerate.addInfoAdditions(TextFile.load(folder.resolvePath("ios_infoAdditions.xml")));
+			manifestGenerate.addExtension(TextFile.load(folder.resolvePath("extension.xml")));
+		}
+		
+		private function addDistManifestFrom(folder:File):String
+		{
+			var loadedDistEntitlements:String = TextFile.load(folder.resolvePath("ios_Entitlements-dist.xml")) ;
+			if(loadedDistEntitlements!='')
+			{
+				manifestGenerate.addIosEntitlements(loadedDistEntitlements);
+				return manifestGenerate.toString();
+			}
+			return null ;
+		}
+		
 		private function exportSavedManifest(e:MouseEvent):void
 		{		
 			FileManager.browseToSave(saveFileThere,"Select a destination for your new Manifest file",'xml');
@@ -121,28 +143,28 @@
 			if(distriqt_push.status)
 			{
 				districtFolder = xmlFolder.resolvePath('distriqtNotification');
-				manifestGenerate.addAndroidPermission(TextFile.load(districtFolder.resolvePath("android_manifest.xml")));
-				manifestGenerate.addIosEntitlements(TextFile.load(districtFolder.resolvePath("ios_Entitlements.xml")));
-				manifestGenerate.addInfoAdditions(TextFile.load(districtFolder.resolvePath("ios_infoAdditions.xml")));
-				manifestGenerate.addExtension(TextFile.load(File.applicationDirectory.resolvePath("SampleXML/distriqtNotification/distriqtNotificationOneSignal-extension.xml")));
+				addDefaultManifestFrom(districtFolder);
 			}
 			
 			var newManifest:String = manifestGenerate.toString();
 			System.setClipboard(newManifest);
+			var newDistManifest:String ;
 			
 			if(distriqt_push.status)
 			{
-				manifestGenerate.addIosEntitlements(TextFile.load(districtFolder.resolvePath("ios_Entitlements-dist.xml")));
+				newDistManifest = addDistManifestFrom(districtFolder)
 			}
 			
-			var newDistManifest:String = manifestGenerate.toString() ;
 			
 			function saveFileThere(fileTarget:File):void
 			{
 				TextFile.save(fileTarget,newManifest);
-				var distName:String = fileTarget.name.split('.'+fileTarget.extension).join('');
-				fileTarget = fileTarget.parent.resolvePath(distName+'-dist.xml');
-				TextFile.save(fileTarget,newDistManifest);
+				if(newDistManifest!=null)
+				{
+					var distName:String = fileTarget.name.split('.'+fileTarget.extension).join('');
+					fileTarget = fileTarget.parent.resolvePath(distName+'-dist.xml');
+					TextFile.save(fileTarget,newDistManifest);
+				}
 			}
 		}
 		
