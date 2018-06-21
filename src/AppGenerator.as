@@ -95,7 +95,6 @@
 		{		
 			FileManager.browseToSave(saveFileThere,"Select a destination for your new Manifest file",'xml');
 			trace("mainXMLFile : "+mainXMLFile.nativePath);
-			manifestGenerate.convert(TextFile.load(mainXMLFile));
 			if(distriqt_push.status)
 			{
 				var districtFolder:File = xmlFolder.resolvePath('distriqtNotification');
@@ -125,6 +124,7 @@
 				trace("mainXML file is : "+mainXMLFile.nativePath);
 				//convertSampleXML();
 				manifestExporterMC.visible = true ;
+				manifestGenerate.convert(TextFile.load(mainXMLFile));
 			}
 		}
 	}

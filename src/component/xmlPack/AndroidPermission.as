@@ -30,7 +30,8 @@
 			}
 			catch(e:Error)
 			{
-				Alert.show(e.message);
+				Alert.show("The Android manifest had problem. solve the xml problem first : \n\n"+e.message);
+				//throw e ;
 			}
 		}
 		
