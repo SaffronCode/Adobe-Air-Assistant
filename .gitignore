@@ -8,7 +8,6 @@ bin-release/
 .settings/
 
 # Executables
-*.air
 *.ipa
 *.apk
 
@@ -42,3 +41,4 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+src/RECOVER_AppGenerator.fla

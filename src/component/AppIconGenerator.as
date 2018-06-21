@@ -20,6 +20,8 @@ package component
 		private var sampleImag:LightImage ;
 		private var currentFile:File;
 		
+		private var iconSizes:Array = [];
+		
 		public function AppIconGenerator()
 		{
 			super();
@@ -57,31 +59,10 @@ package component
 				
 				function imageLoaded():void
 				{
-					saveIconTo(DeviceImage.imageBitmapData,16,targetFolder);
-					saveIconTo(DeviceImage.imageBitmapData,29,targetFolder);
-					saveIconTo(DeviceImage.imageBitmapData,32,targetFolder);
-					saveIconTo(DeviceImage.imageBitmapData,36,targetFolder);
-					saveIconTo(DeviceImage.imageBitmapData,57,targetFolder);
-					saveIconTo(DeviceImage.imageBitmapData,114,targetFolder);
-					saveIconTo(DeviceImage.imageBitmapData,512,targetFolder);
-					saveIconTo(DeviceImage.imageBitmapData,48,targetFolder);
-					saveIconTo(DeviceImage.imageBitmapData,72,targetFolder);
-					saveIconTo(DeviceImage.imageBitmapData,50,targetFolder);
-					saveIconTo(DeviceImage.imageBitmapData,58,targetFolder);
-					saveIconTo(DeviceImage.imageBitmapData,100,targetFolder);
-					saveIconTo(DeviceImage.imageBitmapData,144,targetFolder);
-					saveIconTo(DeviceImage.imageBitmapData,1024,targetFolder);
-					saveIconTo(DeviceImage.imageBitmapData,40,targetFolder);
-					saveIconTo(DeviceImage.imageBitmapData,76,targetFolder);
-					saveIconTo(DeviceImage.imageBitmapData,80,targetFolder);
-					saveIconTo(DeviceImage.imageBitmapData,120,targetFolder);
-					saveIconTo(DeviceImage.imageBitmapData,128,targetFolder);
-					saveIconTo(DeviceImage.imageBitmapData,152,targetFolder);
-					saveIconTo(DeviceImage.imageBitmapData,180,targetFolder);
-					saveIconTo(DeviceImage.imageBitmapData,60,targetFolder);
-					saveIconTo(DeviceImage.imageBitmapData,75,targetFolder);
-					saveIconTo(DeviceImage.imageBitmapData,87,targetFolder);
-					saveIconTo(DeviceImage.imageBitmapData,167,targetFolder);
+					for(var i:int = 0 ; i<iconSizes.length ; i++)
+					{
+						saveIconTo(DeviceImage.imageBitmapData,iconSizes[i],targetFolder);
+					}
 				}
 				
 				System.setClipboard("<image16x16>AppIconsForPublish/16.png</image16x16>\n" +
@@ -119,6 +100,11 @@ package component
 		{
 			var resizedBitmapData:BitmapData = BitmapEffects.changeSize(imageBitmap,imageSize,imageSize,true,false,true);
 			FileManager.seveFile(targetFolder.resolvePath(imageSize+'.png'),BitmapEffects.createPNG(resizedBitmapData));
+		}
+		
+		public function setIconList(iconSizes:Array):void
+		{
+			this.iconSizes = iconSizes ;
 		}
 	}
 }
