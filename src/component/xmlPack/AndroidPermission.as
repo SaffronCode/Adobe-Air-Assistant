@@ -46,6 +46,7 @@
 		public function add(AndroidPermissionXMLString:String):void
 		{
 			AndroidPermissionXMLString = AndroidPermissionXMLString.replace(/APPLICATION_PACKAGE/gi,appId);
+			AndroidPermissionXMLString = AndroidPermissionXMLString.replace(/APPLICATION_ID/gi,appId);
 			var AndroidPermissionXML:XML ;
 			try
 			{
