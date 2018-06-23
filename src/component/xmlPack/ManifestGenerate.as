@@ -192,7 +192,8 @@
 			var extListContainer:XML = convertedXML.child(new QName(airNameSpace,'extensions'))[0] ;
 			var extList:XMLList = new XMLList();
 			if(extListContainer!=null)
-				extListContainer.child(new QName(airNameSpace,'extensionID'));
+				extList = extListContainer.child(new QName(airNameSpace,'extensionID'));
+			extensionsList = new Vector.<String>();
 			for(var i:int = 0 ; i<extList.length() ; i++)
 			{
 				extensionsList.push(extList[i]);

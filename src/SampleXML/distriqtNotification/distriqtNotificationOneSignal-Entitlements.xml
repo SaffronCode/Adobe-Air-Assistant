@@ -1,0 +1,20 @@
+<!-- DEVELOPMENT -->
+<key>get-task-allow</key>
+<true/>
+<key>aps-environment</key>
+<string>development</string>
+
+<!-- PRODUCTION -->
+<!--
+<key>get-task-allow</key>
+<false/>
+<key>aps-environment</key>
+<string>production</string>
+-->
+
+<key>application-identifier</key>
+<string>A434TU3BVC.com.mteamapps.testdist</string>
+<key>keychain-access-groups</key>
+<array>
+	<string>A434TU3BVC.*</string>
+</array>

@@ -16,7 +16,7 @@
 	import flash.display.*;
 	import flash.events.MouseEvent;
 	import flash.filesystem.File;
-	import flash.system.System;
+	//import flash.system.System;
 	
 	
 	public class AppGenerator extends Sprite
@@ -153,7 +153,7 @@
 			}
 			
 			var newManifest:String = manifestGenerate.toString();
-			System.setClipboard(newManifest);
+			//System.setClipboard(newManifest);
 			var newDistManifest:String ;
 			var newChanges:String ; 
 			
