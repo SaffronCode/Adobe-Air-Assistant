@@ -59,6 +59,8 @@
 		private var distriqt_push:ACheckBox,
 					milkman_push:ACheckBox,
 					distriqt_camera:ACheckBox;
+					
+		private var checkList:Vector.<ACheckBox> = new Vector.<ACheckBox>();
 		
 		private const xmlFolder:File = File.applicationDirectory.resolvePath('SampleXML');
 		
@@ -95,11 +97,14 @@
 			
 			///////////////
 			distriqt_push = Obj.get("distriqt_push_mc",this);
-			distriqt_push.setUp(false,'Distriqt Push Notification');
+			distriqt_push.setUp(false,'Distriqt Push Notification','distriqtNotification');
+				checkList.push(distriqt_push);
 			distriqt_camera = Obj.get("distriqt_camera_ui_mc",this);
-			distriqt_camera.setUp(false,'Distriqt Camera UI');
+			distriqt_camera.setUp(false,'Distriqt Camera UI','distriqtCameraUI');
+				checkList.push(distriqt_camera);
 			milkman_push = Obj.get("milkman_push_mc",this);
-			milkman_push.setUp(false,'Milkman Easy Push');
+			milkman_push.setUp(false,'Milkman Easy Push','MilkmanNotification');
+				checkList.push(milkman_push);
 		}
 		
 		private function loadMobileProvission(e:MouseEvent):void
@@ -142,23 +147,14 @@
 		{		
 			FileManager.browseToSave(saveFileThere,"Select a destination for your new Manifest file",'xml');
 			trace("mainXMLFile : "+mainXMLFile.nativePath);
-			var districtNotifFolder:File;
-			var districtCameraFolder:File;
-			var milkmanPushFolder:File;
-			if(distriqt_push.status)
+			
+			for(var i:int = 0 ; i<checkList.length ; i++)
 			{
-				districtNotifFolder = xmlFolder.resolvePath('distriqtNotification');
-				addDefaultManifestFrom(districtNotifFolder);
-			}
-			if(milkman_push.status)
-			{
-				milkmanPushFolder = xmlFolder.resolvePath('MilkmanNotification');
-				addDefaultManifestFrom(milkmanPushFolder);
-			}
-			if(distriqt_camera.status)
-			{
-				districtCameraFolder = xmlFolder.resolvePath('distriqtCameraUI');
-				addDefaultManifestFrom(districtCameraFolder);
+				if(checkList[i].status)
+				{
+					var nativeFolder:File = xmlFolder.resolvePath(checkList[i].folderName) ;
+					addDefaultManifestFrom(nativeFolder);
+				}
 			}
 			
 			var newManifest:String = manifestGenerate.toString();
@@ -166,20 +162,14 @@
 			var newDistManifest:String ;
 			var newChanges:String ; 
 			
-			if(distriqt_push.status)
+			for(i = 0 ; i<checkList.length ; i++)
 			{
-				newChanges = addDistManifestFrom(districtNotifFolder);
-				newDistManifest = (newChanges!=null)?newChanges:newDistManifest ;
-			}
-			if(distriqt_camera.status)
-			{
-				newChanges = addDistManifestFrom(districtCameraFolder);
-				newDistManifest = (newChanges!=null)?newChanges:newDistManifest ;
-			}
-			if(milkman_push.status)
-			{
-				newChanges = addDistManifestFrom(milkmanPushFolder);
-				newDistManifest = (newChanges!=null)?newChanges:newDistManifest ;
+				if(checkList[i].status)
+				{
+					var nativeFolder:File = xmlFolder.resolvePath(checkList[i].folderName) ;
+					newChanges = addDistManifestFrom(nativeFolder);
+					newDistManifest = (newChanges!=null)?newChanges:newDistManifest ;
+				}
 			}
 			
 			

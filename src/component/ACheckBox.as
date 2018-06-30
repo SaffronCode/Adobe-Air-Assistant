@@ -10,6 +10,8 @@ package component
 	{
 		private var titleTF:TitleText ;
 		
+		public var folderName:String ;
+		
 		public function ACheckBox()
 		{
 			super();
@@ -28,8 +30,9 @@ package component
 			return this.currentFrame == 2 ;
 		}
 		
-		public function setUp(status:Boolean=false,label:String=''):void
+		public function setUp(status:Boolean=false,label:String='',folderName:String=''):void
 		{
+			this.folderName = folderName ;
 			titleTF.setUp(label,false,false,0,false) ;
 			if(status)
 			{
