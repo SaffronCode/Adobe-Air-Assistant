@@ -57,7 +57,14 @@
 				Alert.show(e.message);
 				return ;
 			}
-			main = mergeToXML(main,AndroidPermissionXML);
+			if(String(main)=='')
+			{
+				main = AndroidPermissionXML.copy();
+			}
+			else
+			{
+				main = mergeToXML(main,AndroidPermissionXML);
+			}
 		}
 		private function mergeToXML(firstXML:XML,secXML:XML):XML
 		{

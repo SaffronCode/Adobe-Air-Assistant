@@ -57,6 +57,7 @@
 		
 		//Checklist part
 		private var distriqt_push:ACheckBox,
+					milkman_push:ACheckBox,
 					distriqt_camera:ACheckBox;
 		
 		private const xmlFolder:File = File.applicationDirectory.resolvePath('SampleXML');
@@ -97,6 +98,8 @@
 			distriqt_push.setUp(false,'Distriqt Push Notification');
 			distriqt_camera = Obj.get("distriqt_camera_ui_mc",this);
 			distriqt_camera.setUp(false,'Distriqt Camera UI');
+			milkman_push = Obj.get("milkman_push_mc",this);
+			milkman_push.setUp(false,'Milkman Easy Push');
 		}
 		
 		private function loadMobileProvission(e:MouseEvent):void
@@ -141,10 +144,16 @@
 			trace("mainXMLFile : "+mainXMLFile.nativePath);
 			var districtNotifFolder:File;
 			var districtCameraFolder:File;
+			var milkmanPushFolder:File;
 			if(distriqt_push.status)
 			{
 				districtNotifFolder = xmlFolder.resolvePath('distriqtNotification');
 				addDefaultManifestFrom(districtNotifFolder);
+			}
+			if(milkman_push.status)
+			{
+				milkmanPushFolder = xmlFolder.resolvePath('MilkmanNotification');
+				addDefaultManifestFrom(milkmanPushFolder);
 			}
 			if(distriqt_camera.status)
 			{
@@ -165,6 +174,11 @@
 			if(distriqt_camera.status)
 			{
 				newChanges = addDistManifestFrom(districtCameraFolder);
+				newDistManifest = (newChanges!=null)?newChanges:newDistManifest ;
+			}
+			if(milkman_push.status)
+			{
+				newChanges = addDistManifestFrom(milkmanPushFolder);
 				newDistManifest = (newChanges!=null)?newChanges:newDistManifest ;
 			}
 			
