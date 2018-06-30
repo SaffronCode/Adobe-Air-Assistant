@@ -1,0 +1,8 @@
+<key>application-identifier</key>
+	<string>BUNDLE_SEED_ID.BUNDLE_IDENTIFIER</string>
+<key>aps-environment</key>
+	<string>production</string>
+<key>keychain-access-groups</key>
+	<array>
+		<string>BUNDLE_SEED_ID.BUNDLE_IDENTIFIER</string>
+	</array>
