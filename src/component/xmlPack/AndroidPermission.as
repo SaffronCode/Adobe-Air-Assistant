@@ -66,7 +66,27 @@
 				main = mergeToXML(main,AndroidPermissionXML);
 			}
 		}
-		private function mergeToXML(firstXML:XML,secXML:XML):XML
+		
+		/**It will replace APPLICATION_PACKAGE with the ap id*/
+		public function remove(AndroidPermissionXMLString:String):void
+		{
+			AndroidPermissionXMLString = AndroidPermissionXMLString.replace(/APPLICATION_PACKAGE/gi,appId);
+			AndroidPermissionXMLString = AndroidPermissionXMLString.replace(/APPLICATION_ID/gi,appId);
+			var AndroidPermissionXML:XML ;
+			try
+			{
+				AndroidPermissionXML = new XML(AndroidPermissionXMLString.replace('<manifest','<manifest'+xmlPerfix));
+			}
+			catch(e:Error)
+			{
+				Alert.show(e.message);
+				return ;
+			}
+			
+			main = mergeToXML(main,AndroidPermissionXML,true);
+		}
+		
+		private function mergeToXML(firstXML:XML,secXML:XML,removeParams:Boolean=false):XML
 		{
 			trace("secXML: "+secXML+'\n\n'+'*****************************'+'\n\n\n)');
 			var firstList:XMLList = firstXML.children() ;
@@ -74,12 +94,6 @@
 			
 			for(var i:int = 0 ; i<secondList.length() ; i++)
 			{
-				if(secondList[i].name() == 'com.onesignal.GcmBroadcastReceiver')
-				{
-					var what:String = 'hapend';
-					trace('android:name="com.onesignal.GcmBroadcastReceiver"');
-					
-				}
 				trace("secondList["+i+"].name() : "+secondList[i].name());
 				var nodeUpdated:Boolean = false ;
 				for(var j:int = 0 ; j<firstList.length() ;j++)
@@ -94,10 +108,14 @@
 							case "application":
 							case "uses-sdk":
 								nodeUpdated = true ;
-								mergAributes(s2,s1);
+								if(!removeParams)
+									mergAributes(s2,s1);
+								else
+									trace("Dont need to remove any thing");
+								
 								if(s1.hasComplexContent())
 								{
-									mergeToXML(s2,s1);
+									mergeToXML(s2,s1,removeParams);
 								}
 							break;
 							default:
@@ -106,9 +124,16 @@
 									trace("Duplicated atributes");
 									nodeUpdated = true ;
 									
-									if(s1.hasComplexContent())
+									if(removeParams)
 									{
-										mergeToXML(s2,s1);
+										delete firstList[j] ;
+									}
+									else
+									{
+										if(s1.hasComplexContent())
+										{
+											mergeToXML(s2,s1);
+										}
 									}
 									j = firstList.length() ;
 								}
@@ -119,7 +144,8 @@
 				if(!nodeUpdated)
 				{
 					trace("This node is new : "+secondList[i].toXMLString());
-					firstXML.appendChild(secondList[i]);
+					if(!removeParams)
+						firstXML.appendChild(secondList[i]);
 				}
 			}
 			

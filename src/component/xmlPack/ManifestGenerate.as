@@ -297,6 +297,11 @@
 		{
 			androidPermission.add(AndroidPermission);
 		}
+
+		public function removeAndroidPermission(AndroidPermission:String):void
+		{
+			androidPermission.remove(AndroidPermission);
+		}
 		
 		/**Add the iOS entitlement to the project*/
 		public function addIosEntitlements(ios_Entitlements:String=''):void
@@ -308,10 +313,24 @@
 			iOSPermission.addEntitlements(ios_Entitlements)
 		}
 		
+		/**Remove xml from iOS*/
+		public function removeIosEntitlements(ios_Entitlements:String=''):void
+		{
+			if(ios_Entitlements=='')
+			{
+				return ;
+			}
+			iOSPermission.removeEntitlements(ios_Entitlements)
+		}
+		
 		/**Add the iOS InfoAdditions to the project*/
 		public function addInfoAdditions(ios_InfoAdditions:String):void
 		{
 			iOSPermission.addInfoAdditions(ios_InfoAdditions);
+		}
+		public function removeInfoAdditions(ios_InfoAdditions:String):void
+		{
+			iOSPermission.removeInfoAdditions(ios_InfoAdditions);
 		}
 		
 		/**Extension xml list file<br/><br/>
@@ -341,6 +360,29 @@
 			{
 				Alert.show(e.toString());
 			}
+		}
+		
+		/**Remove extensino from the list*/
+		public function removeExtension(extensionListXMLList:String):void
+		{
+			/*try
+			{*/
+				var extensionListXML:XMLList = new XMLList(extensionListXMLList);
+				for(var i:int = 0 ; i<extensionListXML.length() ; i++)
+				{
+					var foundedIndex:int = extensionsList.indexOf(extensionListXML[i].toString()) ; 
+					if(foundedIndex!=-1)
+					{
+						extensionsList.removeAt(foundedIndex);
+					}
+				}
+				updateXML();
+			/*}
+			catch(e:Error)
+			{
+				//Alert.show(e.toString());
+				throw e ;
+			}*/
 		}
 		
 		/**It will load the project id and team id from the provision and returns true if no problem occured.*/

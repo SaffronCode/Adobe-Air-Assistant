@@ -96,6 +96,29 @@ package component.xmlPack
 			}
 		}
 		
+		
+		public function removeEntitlements(entitlements:String):void
+		{
+			try{
+				var newList:XMLList = new XMLList(entitlements);
+				for(var i:int = 0 ; i<newList.length() ; i++)
+				{
+					if(newList[i].name() == 'key')
+					{
+						var foundedElement:XML = XMLFunctions.getValueOfKey(newList[i],Entitlements.children());
+						if(foundedElement!=null)
+						{
+							XMLFunctions.removeKeyValue(Entitlements,newList[i]);
+						}
+					}
+				}
+			}
+			catch(e:Error)
+			{
+				Alert.show("The entered xml Entitlements had problem. \n\n"+entitlements+'\n\n'+e.message);
+			}
+		}
+		
 		public function addInfoAdditions(infoAdditions:String):void
 		{
 			try{
@@ -112,6 +135,29 @@ package component.xmlPack
 					}
 				}
 				InfoAdditions.appendChild(newList);
+			}
+			catch(e:Error)
+			{
+				Alert.show("The entered xml InfoAdditions had problem. \n\n"+infoAdditions+'\n\n'+e.message);
+			}
+		}
+		
+		
+		public function removeInfoAdditions(infoAdditions:String):void
+		{
+			try{
+				var newList:XMLList = new XMLList(infoAdditions);
+				for(var i:int = 0 ; i<newList.length() ; i++)
+				{
+					if(newList[i].name() == 'key')
+					{
+						var foundedElement:XML = XMLFunctions.getValueOfKey(newList[i],InfoAdditions.children());
+						if(foundedElement!=null)
+						{
+							XMLFunctions.removeKeyValue(InfoAdditions,newList[i]);
+						}
+					}
+				}
 			}
 			catch(e:Error)
 			{

@@ -132,6 +132,14 @@
 			manifestGenerate.addExtension(TextFile.load(folder.resolvePath("extension.xml")));
 		}
 		
+		private function removeDefaultManifestFrom(folder:File):void
+		{
+			manifestGenerate.removeAndroidPermission(TextFile.load(folder.resolvePath("android_manifest.xml")));
+			manifestGenerate.removeIosEntitlements(TextFile.load(folder.resolvePath("ios_Entitlements.xml")));
+			manifestGenerate.removeInfoAdditions(TextFile.load(folder.resolvePath("ios_infoAdditions.xml")));
+			manifestGenerate.removeExtension(TextFile.load(folder.resolvePath("extension.xml")));
+		}
+		
 		private function addDistManifestFrom(folder:File):String
 		{
 			var loadedDistEntitlements:String = TextFile.load(folder.resolvePath("ios_Entitlements-dist.xml")) ;
@@ -145,14 +153,24 @@
 		
 		private function exportSavedManifest(e:MouseEvent):void
 		{		
+			var nativeFolder:File ;
 			FileManager.browseToSave(saveFileThere,"Select a destination for your new Manifest file",'xml');
 			trace("mainXMLFile : "+mainXMLFile.nativePath);
 			
 			for(var i:int = 0 ; i<checkList.length ; i++)
 			{
+				nativeFolder = xmlFolder.resolvePath(checkList[i].folderName);
+				if(!checkList[i].status)
+				{
+					removeDefaultManifestFrom(nativeFolder);
+				}
+			}
+			
+			for(i = 0 ; i<checkList.length ; i++)
+			{
+				nativeFolder = xmlFolder.resolvePath(checkList[i].folderName);
 				if(checkList[i].status)
 				{
-					var nativeFolder:File = xmlFolder.resolvePath(checkList[i].folderName) ;
 					addDefaultManifestFrom(nativeFolder);
 				}
 			}
@@ -166,7 +184,7 @@
 			{
 				if(checkList[i].status)
 				{
-					var nativeFolder:File = xmlFolder.resolvePath(checkList[i].folderName) ;
+					nativeFolder = xmlFolder.resolvePath(checkList[i].folderName);
 					newChanges = addDistManifestFrom(nativeFolder);
 					newDistManifest = (newChanges!=null)?newChanges:newDistManifest ;
 				}
