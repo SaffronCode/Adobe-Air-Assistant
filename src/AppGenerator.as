@@ -105,6 +105,9 @@
 			milkman_push = Obj.get("milkman_push_mc",this);
 			milkman_push.setUp(false,'Milkman Easy Push','MilkmanNotification');
 				checkList.push(milkman_push);
+			milkman_push = Obj.get("distriqt_mediaplayer_mc",this);
+			milkman_push.setUp(false,'Distriqt MediaPlayer','distriqtMediaPlayer');
+				checkList.push(milkman_push);
 		}
 		
 		private function loadMobileProvission(e:MouseEvent):void
