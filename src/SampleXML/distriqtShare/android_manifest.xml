@@ -1,0 +1,19 @@
+<manifest android:installLocation="auto">
+	<uses-permission android:name="android.permission.INTERNET"/>
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+	
+	<application android:hardwareAccelerated="true">
+		
+		<provider
+			android:name="android.support.v4.content.FileProvider"
+			android:authorities="APPLICATION_ID.fileprovider"
+			android:grantUriPermissions="true"
+			android:exported="false">
+			<meta-data 
+				android:name="android.support.FILE_PROVIDER_PATHS" 
+				android:resource="@xml/distriqt_share_paths" />
+		</provider>
+		
+	</application>
+</manifest>

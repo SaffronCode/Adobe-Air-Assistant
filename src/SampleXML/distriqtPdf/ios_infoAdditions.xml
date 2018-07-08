@@ -1,0 +1,10 @@
+<key>UIDeviceFamily</key>
+<array>
+	<string>1</string>
+	<string>2</string>
+</array>
+<key>NSAppTransportSecurity</key>
+<dict>
+	<key>NSAllowsArbitraryLoads</key>
+	<true/>
+</dict>

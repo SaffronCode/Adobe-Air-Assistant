@@ -16,6 +16,8 @@
 	import flash.display.*;
 	import flash.events.MouseEvent;
 	import flash.filesystem.File;
+	import flash.events.Event;
+
 	//import flash.system.System;
 	
 	
@@ -55,10 +57,6 @@
 		private var manifestExporterMC:MovieClip ;
 		private var loadMobileProvisionMC:MovieClip ;
 		
-		//Checklist part
-		private var distriqt_push:ACheckBox,
-					milkman_push:ACheckBox,
-					distriqt_camera:ACheckBox;
 					
 		private var checkList:Vector.<ACheckBox> = new Vector.<ACheckBox>();
 		
@@ -96,18 +94,36 @@
 			this.graphics.drawRect(0,0,stage.stageWidth,stage.stageHeight);
 			
 			///////////////
-			distriqt_push = Obj.get("distriqt_push_mc",this);
-			distriqt_push.setUp(false,'Distriqt Push Notification','distriqtNotification');
-				checkList.push(distriqt_push);
-			distriqt_camera = Obj.get("distriqt_camera_ui_mc",this);
-			distriqt_camera.setUp(false,'Distriqt Camera UI','distriqtCameraUI');
+			var distriqt_camera:ACheckBox = Obj.get("distriqt_camera_ui_mc",this);
+				distriqt_camera.setUp(false,'Distriqt Camera UI','distriqtCameraUI');
 				checkList.push(distriqt_camera);
-			milkman_push = Obj.get("milkman_push_mc",this);
-			milkman_push.setUp(false,'Milkman Easy Push','MilkmanNotification');
+				
+			var milkman_push:ACheckBox = Obj.get("milkman_push_mc",this);
+				milkman_push.setUp(false,'Milkman Easy Push','MilkmanNotification');
 				checkList.push(milkman_push);
-			milkman_push = Obj.get("distriqt_mediaplayer_mc",this);
-			milkman_push.setUp(false,'Distriqt MediaPlayer','distriqtMediaPlayer');
-				checkList.push(milkman_push);
+			var distriqt_push:ACheckBox = Obj.get("distriqt_push_mc",this);
+				distriqt_push.setUp(false,'Distriqt Push Notification','distriqtNotification');
+				checkList.push(distriqt_push);
+				
+				milkman_push.addEventListener(Event.CHANGE,function(e){
+					if(milkman_push.status)
+						distriqt_push.status = false ; 
+				});
+				
+				distriqt_push.addEventListener(Event.CHANGE,function(e){
+					if(distriqt_push.status)
+						milkman_push.status = false ; 
+				});
+				
+			var distriqt_share:ACheckBox = Obj.get("distriqt_share_mc",this);
+				distriqt_share.setUp(false,'Distriqt Share','distriqtShare');
+				checkList.push(distriqt_share);
+			var distriqt_PDF:ACheckBox = Obj.get("distriqt_pdf_mc",this);
+				distriqt_PDF.setUp(false,'Distriqt PDF Reader','distriqtPdf');
+				checkList.push(distriqt_PDF);
+			var distriqt_mediaplayer:ACheckBox = Obj.get("distriqt_mediaplayer_mc",this);
+				distriqt_mediaplayer.setUp(false,'Distriqt Media Player','distriqtMediaPlayer');
+				checkList.push(distriqt_mediaplayer);
 		}
 		
 		private function loadMobileProvission(e:MouseEvent):void

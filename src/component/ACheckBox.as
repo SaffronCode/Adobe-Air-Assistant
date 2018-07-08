@@ -4,6 +4,7 @@ package component
 	import appManager.displayContentElemets.TitleText;
 	
 	import flash.display.MovieClip;
+	import flash.events.Event;
 	import flash.events.MouseEvent;
 
 	public class ACheckBox extends MovieClip
@@ -23,6 +24,19 @@ package component
 		protected function changeStatus(event:MouseEvent):void
 		{
 			this.gotoAndStop(((this.currentFrame-1)+1)%this.totalFrames+1);
+			this.dispatchEvent(new Event(Event.CHANGE));
+		}
+		
+		public function set status(val:Boolean):void
+		{
+			if(val)
+			{
+				this.gotoAndStop(2);
+			}
+			else
+			{
+				this.gotoAndStop(1);
+			}
 		}
 		
 		public function get status():Boolean
