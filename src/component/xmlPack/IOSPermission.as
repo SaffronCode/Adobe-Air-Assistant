@@ -1,4 +1,4 @@
-package component.xmlPack
+﻿package component.xmlPack
 {
 	import com.mteamapp.XMLFunctions;
 	
@@ -14,15 +14,30 @@ package component.xmlPack
 		
 		public function IOSPermission()
 		{
-			InfoAdditions = new XML();
+			resetInfoAdditionsXML();
 			Entitlements = new XML();
+		}
+		
+		private function resetInfoAdditionsXML():void
+		{
+			InfoAdditions = new XML(<a/>);
+			addDefaultInfoAditions();
+		}
+		
+		private function addDefaultInfoAditions():void
+		{
+			addInfoAdditions('<key>UIDeviceFamily</key>'+
+								'<array>'+
+									'<string>1</string>'+
+									'<string>2</string>'+
+								'</array>');
 		}
 		
 		public function importInfoAdditions(InfoAdditionsXMLString:String):void
 		{
 			try
 			{
-				InfoAdditions = new XML(<a/>);
+				resetInfoAdditionsXML();
 				var xmlList:XMLList = new XMLList(InfoAdditionsXMLString);
 				InfoAdditions.appendChild(xmlList);
 			}
@@ -163,6 +178,7 @@ package component.xmlPack
 			{
 				Alert.show("The entered xml InfoAdditions had problem. \n\n"+infoAdditions+'\n\n'+e.message);
 			}
+			addDefaultInfoAditions();
 		}
 		
 		public function setTeamId(teamId:String):void
