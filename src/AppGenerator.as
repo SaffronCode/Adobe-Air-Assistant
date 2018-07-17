@@ -66,6 +66,8 @@
 		
 		//Display fields
 		private var field_nameMC:PopField,
+					field_appIdMC:PopField,
+					field_teamIdMC:PopField,
 					field_versionMC:PopField;
 		
 		public function AppGenerator()
@@ -105,6 +107,12 @@
 			
 			field_versionMC = Obj.get("app_version_text",this);
 			field_versionMC.setUp('Version:','',null,false,true,false,1,1,2,0,null,false,false,null,null,true);
+			
+			field_appIdMC = Obj.get("app_id_text",this);
+			field_appIdMC.setUp('App Id:','',null,false,true,false,1,1,2,0,null,false,false,null,null,true);
+			
+			field_teamIdMC = Obj.get("team_id_text",this);
+			field_teamIdMC.setUp('iOS Team Id:','',null,false,true,false,1,1,2,0,null,false,false,null,null,true);
 			
 			///////////////
 			var distriqt_camera:ACheckBox = Obj.get("distriqt_camera_ui_mc",this);
@@ -171,7 +179,8 @@
 		{
 			field_nameMC.text = manifestGenerate.name ;
 			field_versionMC.text = manifestGenerate.versionNumber ;
-			
+			field_appIdMC.text = manifestGenerate.id ;
+			field_teamIdMC.text = manifestGenerate.teamId ;
 			
 			for(var i:int = 0 ; i<checkList.length ; i++)
 			{
@@ -192,7 +201,8 @@
 				}
 				else
 					loadMobileProvisionMC.gotoAndStop(2);
-					
+				
+				updateInformations();
 			}
 		}
 		
@@ -206,7 +216,10 @@
 		
 		private function checkIfExistsBefor(folder:File):Boolean
 		{
-			return manifestGenerate.doAndroidPermissionHave(TextFile.load(folder.resolvePath("android_manifest.xml")));
+			var con1:Boolean = manifestGenerate.doAndroidPermissionHave(TextFile.load(folder.resolvePath("android_manifest.xml")));
+			var con2:Boolean = manifestGenerate.doIosEntitlementsHave(TextFile.load(folder.resolvePath("ios_Entitlements.xml")));
+			var con3:Boolean = manifestGenerate.doInfoAdditionsHave(TextFile.load(folder.resolvePath("ios_infoAdditions.xml"))); 
+			return con1 && con2 && con3 ;
 		}
 		
 		private function removeDefaultManifestFrom(folder:File):void

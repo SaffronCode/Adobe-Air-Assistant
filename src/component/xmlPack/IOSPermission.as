@@ -111,6 +111,31 @@
 			}
 		}
 		
+		/**Add and update entitlements*/
+		public function doEntitlementsHave(entitlements:String):Boolean
+		{
+			try{
+				var newList:XMLList = new XMLList(entitlements);
+				for(var i:int = 0 ; i<newList.length() ; i++)
+				{
+					if(newList[i].name() == 'key')
+					{
+						var foundedElement:XML = XMLFunctions.getValueOfKey(newList[i],Entitlements.children());
+						if(foundedElement==null)
+						{
+							return false ;
+						}
+					}
+				}
+				Entitlements.appendChild(newList);
+			}
+			catch(e:Error)
+			{
+				Alert.show("The entered xml Entitlements had problem. \n\n"+entitlements+'\n\n'+e.message);
+			}
+			return true ;
+		}
+		
 		
 		public function removeEntitlements(entitlements:String):void
 		{
@@ -155,6 +180,31 @@
 			{
 				Alert.show("The entered xml InfoAdditions had problem. \n\n"+infoAdditions+'\n\n'+e.message);
 			}
+		}
+		
+		/**Returns true if the permissions are already existed on the project*/
+		public function doInfoAdditionsHave(infoAdditions:String):Boolean
+		{
+			try{
+				var newList:XMLList = new XMLList(infoAdditions);
+				for(var i:int = 0 ; i<newList.length() ; i++)
+				{
+					if(newList[i].name() == 'key')
+					{
+						var foundedElement:XML = XMLFunctions.getValueOfKey(newList[i],InfoAdditions.children());
+						if(foundedElement==null)
+						{
+							return false ;
+						}
+					}
+				}
+				InfoAdditions.appendChild(newList);
+			}
+			catch(e:Error)
+			{
+				Alert.show("The entered xml InfoAdditions had problem. \n\n"+infoAdditions+'\n\n'+e.message);
+			}
+			return true ;
 		}
 		
 		

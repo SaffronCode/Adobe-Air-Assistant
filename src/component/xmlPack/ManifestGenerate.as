@@ -319,6 +319,12 @@
 			iOSPermission.addEntitlements(ios_Entitlements)
 		}
 		
+		/**Add the iOS entitlement to the project*/
+		public function doIosEntitlementsHave(ios_Entitlements:String=''):Boolean
+		{
+			return iOSPermission.doEntitlementsHave(ios_Entitlements)
+		}
+		
 		/**Remove xml from iOS*/
 		public function removeIosEntitlements(ios_Entitlements:String=''):void
 		{
@@ -327,6 +333,12 @@
 				return ;
 			}
 			iOSPermission.removeEntitlements(ios_Entitlements)
+		}
+		
+		/**Returns true if all new InfoAdditinons was existed on current application*/
+		public function doInfoAdditionsHave(ios_InfoAdditions:String):Boolean
+		{
+			return iOSPermission.doInfoAdditionsHave(ios_InfoAdditions);
 		}
 		
 		/**Add the iOS InfoAdditions to the project*/
