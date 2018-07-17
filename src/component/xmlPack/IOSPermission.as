@@ -198,7 +198,6 @@
 						}
 					}
 				}
-				InfoAdditions.appendChild(newList);
 			}
 			catch(e:Error)
 			{

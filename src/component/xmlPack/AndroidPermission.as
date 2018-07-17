@@ -252,7 +252,7 @@
 						}
 						else
 						{
-							Alert.show("We have confict on node "+firstNode.name()+" and attribute "+a1.name()+" : "+a1+" vs "+a2);
+							trace("*** We have confict on node "+firstNode.name()+" and attribute "+a1.name()+" : "+a1+" vs "+a2);
 							atribFounded = true ;
 							if(!returnTrueIfNeedChangeOnly)
 								firstNode.@[a2.name()] = a2 ;
