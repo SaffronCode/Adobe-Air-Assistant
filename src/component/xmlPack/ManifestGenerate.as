@@ -34,9 +34,9 @@
 					versionNumber:String = '0.0.0',
 					description:String = '';
 		/**Dont use complex charachters for this field*/
-		public var filename:String="Saffrony";
+		public var filename:String="Saffron";
 		/**This is the application name.*/
-		public var name:String ="Saffron y";
+		public var name:String ="Saffron";
 		public var copyright:String ="MTeam Co.";
 		
 		//initialWindow
@@ -296,6 +296,12 @@
 		public function addAndroidPermission(AndroidPermission:String):void
 		{
 			androidPermission.add(AndroidPermission);
+		}
+
+		/**Returns true if the permission was existed*/
+		public function doAndroidPermissionHave(AndroidPermission:String):Boolean
+		{
+			return androidPermission.dohave(AndroidPermission);
 		}
 
 		public function removeAndroidPermission(AndroidPermission:String):void
