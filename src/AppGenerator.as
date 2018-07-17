@@ -80,7 +80,7 @@
 			
 			manifestExporterMC = Obj.get("export_manifest_mc",this);
 			manifestExporterMC.addEventListener(MouseEvent.CLICK,exportSavedManifest);
-			manifestExporterMC.visible = false ;
+			//manifestExporterMC.visible = false ;
 			
 			var manifestLoaderMC:MovieClip = Obj.get("load_manifest_mc",this) ;
 			manifestLoaderMC.buttonMode = true ;
@@ -124,6 +124,14 @@
 			var distriqt_mediaplayer:ACheckBox = Obj.get("distriqt_mediaplayer_mc",this);
 				distriqt_mediaplayer.setUp(false,'Distriqt Media Player','distriqtMediaPlayer');
 				checkList.push(distriqt_mediaplayer);
+				
+			var permCameraMC:ACheckBox = Obj.get("permission_camera_mc",this);
+			permCameraMC.setUp(false,'Camera','camera');
+			checkList.push(permCameraMC);
+				
+			var permInternetMC:ACheckBox = Obj.get("permission_internet_mc",this);
+			permInternetMC.setUp(true,'Internet Access','internet');
+			checkList.push(permInternetMC);
 		}
 		
 		private function loadMobileProvission(e:MouseEvent):void
@@ -174,7 +182,7 @@
 		{		
 			var nativeFolder:File ;
 			FileManager.browseToSave(saveFileThere,"Select a destination for your new Manifest file",'xml');
-			trace("mainXMLFile : "+mainXMLFile.nativePath);
+			//trace("mainXMLFile : "+mainXMLFile.nativePath);
 			
 			for(var i:int = 0 ; i<checkList.length ; i++)
 			{

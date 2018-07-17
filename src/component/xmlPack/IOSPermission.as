@@ -30,13 +30,7 @@
 								'<array>'+
 									'<string>1</string>'+
 									'<string>2</string>'+
-								'</array>' +
-								'' +
-							'<key>NSAppTransportSecurity</key>'+
-								'<dict>'+
-									'<key>NSAllowsArbitraryLoads</key>'+
-									'<true/>'+
-								'</dict>');
+								'</array>');
 		}
 		
 		public function importInfoAdditions(InfoAdditionsXMLString:String):void
