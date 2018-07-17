@@ -17,6 +17,8 @@
 	import flash.events.MouseEvent;
 	import flash.filesystem.File;
 	import flash.events.Event;
+	
+	import popForm.* ;
 
 	//import flash.system.System;
 	
@@ -62,6 +64,12 @@
 		
 		private const xmlFolder:File = File.applicationDirectory.resolvePath('SampleXML');
 		
+		//Display fields
+		private var field_nameMC:PopField,
+					field_appIdMC:PopField,
+					field_teamIdMC:PopField,
+					field_versionMC:PopField;
+		
 		public function AppGenerator()
 		{
 			super();
@@ -92,6 +100,19 @@
 			
 			this.graphics.beginFill(0xffffff);
 			this.graphics.drawRect(0,0,stage.stageWidth,stage.stageHeight);
+			
+			//Display fields
+			field_nameMC = Obj.get("app_name_text",this);
+			field_nameMC.setUp('App Name:','',null,false,true,false,1,1,2,0,null,false,false,null,null,true);
+			
+			field_versionMC = Obj.get("app_version_text",this);
+			field_versionMC.setUp('Version:','',null,false,true,false,1,1,2,0,null,false,false,null,null,true);
+			
+			field_appIdMC = Obj.get("app_id_text",this);
+			field_appIdMC.setUp('App Id:','',null,false,true,false,1,1,2,0,null,false,false,null,null,true);
+			
+			field_teamIdMC = Obj.get("team_id_text",this);
+			field_teamIdMC.setUp('iOS Team Id:','',null,false,true,false,1,1,2,0,null,false,false,null,null,true);
 			
 			///////////////
 			var distriqt_camera:ACheckBox = Obj.get("distriqt_camera_ui_mc",this);
@@ -132,6 +153,39 @@
 			var permInternetMC:ACheckBox = Obj.get("permission_internet_mc",this);
 			permInternetMC.setUp(true,'Internet Access','internet');
 			checkList.push(permInternetMC);
+				
+			var permLocationMC:ACheckBox = Obj.get("permission_location_mc",this);
+			permLocationMC.setUp(false,'Location','location');
+			checkList.push(permLocationMC);
+				
+			var permMicrophoneMC:ACheckBox = Obj.get("permission_microphone_mc",this);
+			permMicrophoneMC.setUp(false,'Microphone','microphone');
+			checkList.push(permMicrophoneMC);
+				
+			var permWakeMC:ACheckBox = Obj.get("permission_wakelock_mc",this);
+			permWakeMC.setUp(false,'Prevent Sleep','wakelock');
+			checkList.push(permWakeMC);
+			
+			
+			
+			
+			
+			
+			updateInformations();
+		}
+		
+		
+		private function updateInformations():void
+		{
+			field_nameMC.text = manifestGenerate.name ;
+			field_versionMC.text = manifestGenerate.versionNumber ;
+			field_appIdMC.text = manifestGenerate.id ;
+			field_teamIdMC.text = manifestGenerate.teamId ;
+			
+			for(var i:int = 0 ; i<checkList.length ; i++)
+			{
+				checkList[i].status = checkIfExistsBefor(xmlFolder.resolvePath(checkList[i].folderName)) ; 
+			}
 		}
 		
 		private function loadMobileProvission(e:MouseEvent):void
@@ -147,7 +201,8 @@
 				}
 				else
 					loadMobileProvisionMC.gotoAndStop(2);
-					
+				
+				updateInformations();
 			}
 		}
 		
@@ -157,6 +212,14 @@
 			manifestGenerate.addIosEntitlements(TextFile.load(folder.resolvePath("ios_Entitlements.xml")));
 			manifestGenerate.addInfoAdditions(TextFile.load(folder.resolvePath("ios_infoAdditions.xml")));
 			manifestGenerate.addExtension(TextFile.load(folder.resolvePath("extension.xml")));
+		}
+		
+		private function checkIfExistsBefor(folder:File):Boolean
+		{
+			var con1:Boolean = manifestGenerate.doAndroidPermissionHave(TextFile.load(folder.resolvePath("android_manifest.xml")));
+			var con2:Boolean = manifestGenerate.doIosEntitlementsHave(TextFile.load(folder.resolvePath("ios_Entitlements.xml")));
+			var con3:Boolean = manifestGenerate.doInfoAdditionsHave(TextFile.load(folder.resolvePath("ios_infoAdditions.xml"))); 
+			return con1 && con2 && con3 ;
 		}
 		
 		private function removeDefaultManifestFrom(folder:File):void
@@ -216,6 +279,7 @@
 					newDistManifest = (newChanges!=null)?newChanges:newDistManifest ;
 				}
 			}
+			updateInformations();
 			
 			
 			function saveFileThere(fileTarget:File):void
@@ -242,6 +306,9 @@
 				//convertSampleXML();
 				manifestExporterMC.visible = true ;
 				manifestGenerate.convert(TextFile.load(mainXMLFile));
+				
+				
+				updateInformations();
 			}
 		}
 	}

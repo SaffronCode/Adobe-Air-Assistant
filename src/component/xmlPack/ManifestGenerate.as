@@ -34,9 +34,9 @@
 					versionNumber:String = '0.0.0',
 					description:String = '';
 		/**Dont use complex charachters for this field*/
-		public var filename:String="Saffrony";
+		public var filename:String="Saffron";
 		/**This is the application name.*/
-		public var name:String ="Saffron y";
+		public var name:String ="Saffron";
 		public var copyright:String ="MTeam Co.";
 		
 		//initialWindow
@@ -298,6 +298,12 @@
 			androidPermission.add(AndroidPermission);
 		}
 
+		/**Returns true if the permission was existed*/
+		public function doAndroidPermissionHave(AndroidPermission:String):Boolean
+		{
+			return androidPermission.dohave(AndroidPermission);
+		}
+
 		public function removeAndroidPermission(AndroidPermission:String):void
 		{
 			androidPermission.remove(AndroidPermission);
@@ -313,6 +319,12 @@
 			iOSPermission.addEntitlements(ios_Entitlements)
 		}
 		
+		/**Add the iOS entitlement to the project*/
+		public function doIosEntitlementsHave(ios_Entitlements:String=''):Boolean
+		{
+			return iOSPermission.doEntitlementsHave(ios_Entitlements)
+		}
+		
 		/**Remove xml from iOS*/
 		public function removeIosEntitlements(ios_Entitlements:String=''):void
 		{
@@ -321,6 +333,12 @@
 				return ;
 			}
 			iOSPermission.removeEntitlements(ios_Entitlements)
+		}
+		
+		/**Returns true if all new InfoAdditinons was existed on current application*/
+		public function doInfoAdditionsHave(ios_InfoAdditions:String):Boolean
+		{
+			return iOSPermission.doInfoAdditionsHave(ios_InfoAdditions);
 		}
 		
 		/**Add the iOS InfoAdditions to the project*/

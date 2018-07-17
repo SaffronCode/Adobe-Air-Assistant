@@ -67,6 +67,28 @@
 			}
 		}
 		
+		/**Returns true if the permission was already in your XML file founded*/
+		public function dohave(AndroidPermissionXMLString:String):Boolean
+		{
+			if(AndroidPermissionXMLString==null || AndroidPermissionXMLString=='')
+			{
+				return true ;
+			}
+			AndroidPermissionXMLString = AndroidPermissionXMLString.replace(/APPLICATION_PACKAGE/gi,appId);
+			AndroidPermissionXMLString = AndroidPermissionXMLString.replace(/APPLICATION_ID/gi,appId);
+			var AndroidPermissionXML:XML ;
+			try
+			{
+				AndroidPermissionXML = new XML(AndroidPermissionXMLString.replace('<manifest','<manifest'+xmlPerfix));
+			}
+			catch(e:Error)
+			{
+				Alert.show(e.message);
+				return true;
+			}
+			
+			return mergeToXML(main,AndroidPermissionXML,false,true)!=null;
+		}
 		/**It will replace APPLICATION_PACKAGE with the ap id*/
 		public function remove(AndroidPermissionXMLString:String):void
 		{
@@ -86,7 +108,7 @@
 			main = mergeToXML(main,AndroidPermissionXML,true);
 		}
 		
-		private function mergeToXML(firstXML:XML,secXML:XML,removeParams:Boolean=false):XML
+		private function mergeToXML(firstXML:XML,secXML:XML,removeParams:Boolean=false,returnNullIfDefrend:Boolean=false):XML
 		{
 			trace("secXML: "+secXML+'\n\n'+'*****************************'+'\n\n\n)');
 			var firstList:XMLList = firstXML.children() ;
@@ -109,13 +131,29 @@
 							case "uses-sdk":
 								nodeUpdated = true ;
 								if(!removeParams)
-									mergAributes(s2,s1);
+								{
+									if(returnNullIfDefrend)
+									{
+										if(mergAributes(s2,s1,true))
+										{
+											return null ;
+										}
+									}
+									else
+									{
+										mergAributes(s2,s1);
+									}
+								}
 								else
 									trace("Dont need to remove any thing");
 								
 								if(s1.hasComplexContent())
 								{
-									mergeToXML(s2,s1,removeParams);
+									var mergResult:XML = mergeToXML(s2,s1,removeParams,returnNullIfDefrend);
+									if(returnNullIfDefrend && mergResult==null)
+									{
+										return null ;
+									}
 								}
 							break;
 							default:
@@ -132,7 +170,11 @@
 									{
 										if(s1.hasComplexContent())
 										{
-											mergeToXML(s2,s1);
+											var mergResult2:XML = mergeToXML(s2,s1,false,returnNullIfDefrend);
+											if(returnNullIfDefrend && mergResult2==null)
+											{
+												return null ;
+											}
 										}
 									}
 									j = firstList.length() ;
@@ -144,6 +186,10 @@
 				if(!nodeUpdated)
 				{
 					trace("This node is new : "+secondList[i].toXMLString());
+					if(returnNullIfDefrend)
+					{
+						return null ;
+					}
 					if(!removeParams)
 						firstXML.appendChild(secondList[i]);
 				}
@@ -177,7 +223,7 @@
 			return true ;
 		}
 		
-		private function mergAributes(firstNode:XML,secondNode:XML):void
+		private function mergAributes(firstNode:XML,secondNode:XML,returnTrueIfNeedChangeOnly:Boolean=false):Boolean
 		{
 			var fatrib:XMLList = firstNode.attributes() ;
 			var satrib:XMLList = secondNode.attributes() ;
@@ -195,7 +241,8 @@
 						if(!isNaN(Number(a1)) && !isNaN(Number(a2)))
 						{
 							atribFounded = true ;
-							firstNode.@[a2.name()] = Math.max(Number(a2),Number(a1)) ;
+							if(!returnTrueIfNeedChangeOnly)
+								firstNode.@[a2.name()] = Math.max(Number(a2),Number(a1)) ;
 							break ;
 						}
 						else if(a1==a2)
@@ -205,18 +252,25 @@
 						}
 						else
 						{
-							Alert.show("We have confict on node "+firstNode.name()+" and attribute "+a1.name());
+							Alert.show("We have confict on node "+firstNode.name()+" and attribute "+a1.name()+" : "+a1+" vs "+a2);
 							atribFounded = true ;
-							firstNode.@[a2.name()] = a2 ;
+							if(!returnTrueIfNeedChangeOnly)
+								firstNode.@[a2.name()] = a2 ;
 						}
 					}
 				}
 				if(!atribFounded)
 				{
 					trace("Add this attribute : "+a2.name()+' = '+a2);
+					if(returnTrueIfNeedChangeOnly)
+					{
+						return true ;
+					}
+					
 					firstNode.@[a2.name()] = a2 ;
 				}
 			}
+			return false ;
 		}
 		
 		
