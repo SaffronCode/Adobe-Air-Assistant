@@ -165,6 +165,10 @@
 			var permWakeMC:ACheckBox = Obj.get("permission_wakelock_mc",this);
 			permWakeMC.setUp(false,'Prevent Sleep','wakelock');
 			checkList.push(permWakeMC);
+				
+			var flashvisionsVideoGalleryMC:ACheckBox = Obj.get("video_gallery_mc",this);
+			flashvisionsVideoGalleryMC.setUp(false,'Video Gallery','flashvisionsVideoGallery');
+			checkList.push(flashvisionsVideoGalleryMC);
 			
 			
 			

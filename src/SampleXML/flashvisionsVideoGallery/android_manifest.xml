@@ -1,0 +1,5 @@
+<manifest android:installLocation="auto">
+	<application>
+		<activity android:name="com.flashvisions.mobile.android.extensions.videomanager.VideoBrowserActivity"></activity>
+	</application>
+</manifest>
