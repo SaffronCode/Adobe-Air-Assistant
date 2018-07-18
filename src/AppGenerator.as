@@ -104,15 +104,27 @@
 			//Display fields
 			field_nameMC = Obj.get("app_name_text",this);
 			field_nameMC.setUp('App Name:','',null,false,true,false,1,1,2,0,null,false,false,null,null,true);
+			field_nameMC.addEventListener(Event.CHANGE,function(e){
+				manifestGenerate.name = field_nameMC.text ;
+			});
 			
 			field_versionMC = Obj.get("app_version_text",this);
 			field_versionMC.setUp('Version:','',null,false,true,false,1,1,2,0,null,false,false,null,null,true);
+			field_versionMC.addEventListener(Event.CHANGE,function(e){
+				manifestGenerate.versionNumber = field_versionMC.text ;
+			});
 			
 			field_appIdMC = Obj.get("app_id_text",this);
 			field_appIdMC.setUp('App Id:','',null,false,true,false,1,1,2,0,null,false,false,null,null,true);
+			field_appIdMC.addEventListener(Event.CHANGE,function(e){
+				manifestGenerate.id = field_appIdMC.text ;
+			});
 			
 			field_teamIdMC = Obj.get("team_id_text",this);
 			field_teamIdMC.setUp('iOS Team Id:','',null,false,true,false,1,1,2,0,null,false,false,null,null,true);
+			field_teamIdMC.addEventListener(Event.CHANGE,function(e){
+				manifestGenerate.teamId = field_teamIdMC.text ;
+			});
 			
 			///////////////
 			var distriqt_camera:ACheckBox = Obj.get("distriqt_camera_ui_mc",this);
