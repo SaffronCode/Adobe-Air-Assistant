@@ -295,7 +295,7 @@
 					newDistManifest = (newChanges!=null)?newChanges:newDistManifest ;
 				}
 			}
-			updateInformations();
+			//updateInformations();
 			
 			
 			function saveFileThere(fileTarget:File):void

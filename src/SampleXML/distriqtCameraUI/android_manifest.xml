@@ -10,7 +10,7 @@
 		
 		<provider
 			android:name="android.support.v4.content.FileProvider"
-			android:authorities="APPLICATION_ID.fileprovider"
+			android:authorities="air.APPLICATION_ID.fileprovider"
 			android:grantUriPermissions="true"
 			android:exported="false">
 			<meta-data 
