@@ -68,6 +68,7 @@
 		private var field_nameMC:PopField,
 					field_appIdMC:PopField,
 					field_teamIdMC:PopField,
+					field_airVersionMC:PopField,
 					field_versionMC:PopField;
 		
 		public function AppGenerator()
@@ -124,6 +125,12 @@
 			field_teamIdMC.setUp('iOS Team Id:','',null,false,true,false,1,1,2,0,null,false,false,null,null,true);
 			field_teamIdMC.addEventListener(Event.CHANGE,function(e){
 				manifestGenerate.teamId = field_teamIdMC.text ;
+			});
+			
+			field_airVersionMC = Obj.get("air_version_text",this);
+			field_airVersionMC.setUp('Air Version:','',null,false,true,false,1,1,2,0,null,false,false,null,null,true);
+			field_airVersionMC.addEventListener(Event.CHANGE,function(e){
+				manifestGenerate.airVersion = field_airVersionMC.text ;
 			});
 			
 			///////////////
@@ -197,6 +204,7 @@
 			field_versionMC.text = manifestGenerate.versionNumber ;
 			field_appIdMC.text = manifestGenerate.id ;
 			field_teamIdMC.text = manifestGenerate.teamId ;
+			field_airVersionMC.text = manifestGenerate.airVersion ;
 			
 			for(var i:int = 0 ; i<checkList.length ; i++)
 			{
