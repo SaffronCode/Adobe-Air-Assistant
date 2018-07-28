@@ -126,7 +126,6 @@
 						var s2:XML = firstList[j] ;
 						switch(String(secondList[i].name()))
 						{
-							case "provider":
 							case "application":
 							case "uses-sdk":
 								nodeUpdated = true ;
