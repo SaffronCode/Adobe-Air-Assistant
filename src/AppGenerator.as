@@ -188,6 +188,10 @@
 			var flashvisionsVideoGalleryMC:ACheckBox = Obj.get("video_gallery_mc",this);
 			flashvisionsVideoGalleryMC.setUp(false,'Video Gallery','flashvisionsVideoGallery');
 			checkList.push(flashvisionsVideoGalleryMC);
+				
+			var distriqtScannerMC:ACheckBox = Obj.get("distriqt_scanner_mc",this);
+			distriqtScannerMC.setUp(false,'Distriqt Scanner','distriqtScanner');
+			checkList.push(distriqtScannerMC);
 			
 			
 			
