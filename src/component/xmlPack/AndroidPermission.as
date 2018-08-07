@@ -206,6 +206,10 @@
 		{
 			var fatrib:XMLList = s1.attributes() ;
 			var satrib:XMLList = s2.attributes() ;
+			if(fatrib.length()!=satrib.length() && (fatrib.length()==0 || satrib.length()==0))
+			{
+				return false ;
+			}
 			for(var i:int = 0 ; i<fatrib.length() ; i++)
 			{
 				var a1:XML = fatrib[i];
