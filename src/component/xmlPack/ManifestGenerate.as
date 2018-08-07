@@ -33,6 +33,9 @@
 					id:String='com.mteamapps.saffron',
 					versionNumber:String = '0.0.0',
 					description:String = '';
+		
+		private var _uriLauncher:String = "" ;
+		
 		/**Dont use complex charachters for this field*/
 		public var filename:String="Saffron";
 		/**This is the application name.*/
@@ -95,6 +98,18 @@
 			iOSPermission = new IOSPermission();
 		}
 		
+		public function get uriLauncher():String
+		{
+			return _uriLauncher;
+		}
+
+		public function set uriLauncher(value:String):void
+		{
+			_uriLauncher = value.toLowerCase();
+			androidPermission.setAppScheme(_uriLauncher);
+			iOSPermission.setAppScheme(_uriLauncher);
+		}
+
 		/**It will creats a final xml based on parameters*/
 		private function updateXML():void
 		{

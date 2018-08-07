@@ -1,24 +1,20 @@
 ﻿package
 {
-	import appManager.mains.App;
-	
-	import com.mteamapp.StringFunctions;
-	
 	import component.*;
-	import component.AppIconGenerator;
 	import component.xmlPack.ManifestGenerate;
 	
 	import contents.TextFile;
-	import contents.alert.Alert;
 	
 	import dynamicFrame.FrameGenerator;
 	
 	import flash.display.*;
+	import flash.events.Event;
 	import flash.events.MouseEvent;
 	import flash.filesystem.File;
-	import flash.events.Event;
 	
-	import popForm.* ;
+	import popForm.*;
+
+;
 
 	//import flash.system.System;
 	
@@ -68,8 +64,11 @@
 		private var field_nameMC:PopField,
 					field_appIdMC:PopField,
 					field_teamIdMC:PopField,
+					field_uriLauncherMC:PopField,
 					field_airVersionMC:PopField,
 					field_versionMC:PopField;
+
+					private var uriLauncher:ACheckBox;
 		
 		public function AppGenerator()
 		{
@@ -115,11 +114,22 @@
 				manifestGenerate.versionNumber = field_versionMC.text ;
 			});
 			
+			field_uriLauncherMC = Obj.get("uri_launcher_text",this);
+			field_uriLauncherMC.setUp('URI Scheme:','',null,false,true,false,1,1,2,0,null,false,false,null,null,true);
+			field_uriLauncherMC.addEventListener(Event.CHANGE,function(e){
+				manifestGenerate.uriLauncher = field_uriLauncherMC.text.toLowerCase() ;
+			});
+			
 			field_appIdMC = Obj.get("app_id_text",this);
 			field_appIdMC.setUp('App Id:','',null,false,true,false,1,1,2,0,null,false,false,null,null,true);
 			field_appIdMC.addEventListener(Event.CHANGE,function(e){
-				manifestGenerate.id = field_appIdMC.text ;
-			});
+					manifestGenerate.id = field_appIdMC.text ;
+					if(uriLauncher.status)
+					{
+						createURISchemeFromId();
+					}
+				}
+			);
 			
 			field_teamIdMC = Obj.get("team_id_text",this);
 			field_teamIdMC.setUp('iOS Team Id:','',null,false,true,false,1,1,2,0,null,false,false,null,null,true);
@@ -193,14 +203,37 @@
 			distriqtScannerMC.setUp(false,'Distriqt Scanner','distriqtScanner');
 			checkList.push(distriqtScannerMC);
 			
-			
-			
+			uriLauncher = Obj.get("uri_caller_mc",this);
+			uriLauncher.setUp(false,'URL Scheme Launcher','URILauncher');
+			checkList.push(uriLauncher);
+			uriLauncher.addEventListener(Event.CHANGE,function(e){
+				if(uriLauncher.status)
+				{
+					if(field_uriLauncherMC.text=='')
+						field_uriLauncherMC.text = manifestGenerate.uriLauncher = schemFromId() ;
+				}
+				else
+				{
+					field_uriLauncherMC.text = '' ;
+				}
+			});
 			
 			
 			
 			updateInformations();
 		}
+				
+		private function createURISchemeFromId()
+		{
+			manifestGenerate.uriLauncher = schemFromId();
+			updateInformations();
+		}
 		
+		/**Creats scheme from id*/
+		private function schemFromId():String
+		{
+			return manifestGenerate.id.slice(manifestGenerate.id.lastIndexOf('.')+1);
+		}		
 		
 		private function updateInformations():void
 		{
@@ -209,6 +242,10 @@
 			field_appIdMC.text = manifestGenerate.id ;
 			field_teamIdMC.text = manifestGenerate.teamId ;
 			field_airVersionMC.text = manifestGenerate.airVersion ;
+			field_uriLauncherMC.text = manifestGenerate.uriLauncher ;
+			
+			field_uriLauncherMC.enabled = uriLauncher.status ;
+			field_uriLauncherMC.alpha = (uriLauncher.status)?1:0.5;
 			
 			for(var i:int = 0 ; i<checkList.length ; i++)
 			{

@@ -10,6 +10,7 @@
 		private const xmlPerfix:String = ' xmlns:android="'+androidNameSpace+'"';
 		
 		private var appId:String ;
+		private var URIScheme:String ;
 		
 		public function AndroidPermission()
 		{
@@ -47,6 +48,7 @@
 		{
 			AndroidPermissionXMLString = AndroidPermissionXMLString.replace(/APPLICATION_PACKAGE/gi,appId);
 			AndroidPermissionXMLString = AndroidPermissionXMLString.replace(/APPLICATION_ID/gi,appId);
+			AndroidPermissionXMLString = AndroidPermissionXMLString.replace(/APPLICATION_LAUNCHER_ID/g,URIScheme);
 			var AndroidPermissionXML:XML ;
 			try
 			{
@@ -76,6 +78,7 @@
 			}
 			AndroidPermissionXMLString = AndroidPermissionXMLString.replace(/APPLICATION_PACKAGE/gi,appId);
 			AndroidPermissionXMLString = AndroidPermissionXMLString.replace(/APPLICATION_ID/gi,appId);
+			AndroidPermissionXMLString = AndroidPermissionXMLString.replace(/APPLICATION_LAUNCHER_ID/g,URIScheme);
 			var AndroidPermissionXML:XML ;
 			try
 			{
@@ -94,6 +97,7 @@
 		{
 			AndroidPermissionXMLString = AndroidPermissionXMLString.replace(/APPLICATION_PACKAGE/gi,appId);
 			AndroidPermissionXMLString = AndroidPermissionXMLString.replace(/APPLICATION_ID/gi,appId);
+			AndroidPermissionXMLString = AndroidPermissionXMLString.replace(/APPLICATION_LAUNCHER_ID/g,URIScheme);
 			var AndroidPermissionXML:XML ;
 			try
 			{
@@ -368,5 +372,10 @@
 			//trace("newList : "+newList.toXMLString());
 			//trace("node : "+node.toXMLString());
 		}*/
+		
+		public function setAppScheme(URIScheme:String):void
+		{
+			this.URIScheme = URIScheme ;
+		}
 	}
 }

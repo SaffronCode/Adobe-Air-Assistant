@@ -1,0 +1,14 @@
+<manifest android:installLocation="auto">
+	<activity>
+		<intent-filter>
+			<action android:name="android.intent.action.MAIN"/>
+			<category android:name="android.intent.category.LAUNCHER"/>
+		</intent-filter>
+		<intent-filter>
+			<action android:name="android.intent.action.VIEW"/>
+			<category android:name="android.intent.category.BROWSABLE"/>
+			<category android:name="android.intent.category.DEFAULT"/>
+			<data android:scheme="APPLICATION_LAUNCHER_ID"/>
+		</intent-filter>
+	</activity>
+</manifest>

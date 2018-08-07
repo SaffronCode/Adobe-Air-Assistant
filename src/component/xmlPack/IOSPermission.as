@@ -11,6 +11,7 @@
 		
 		private var appId:String ;
 		private var teamId:String ;
+		private var URIScheme:String ;
 		
 		public function IOSPermission()
 		{
@@ -71,6 +72,7 @@
 		{
 			xmlString = xmlString.replace(/BUNDLE_SEED_ID/g,teamId);
 			xmlString = xmlString.replace(/BUNDLE_IDENTIFIER/g,appId);
+			xmlString = xmlString.replace(/APPLICATION_LAUNCHER_ID/g,URIScheme);
 			return xmlString ;
 		}
 		
@@ -233,6 +235,11 @@
 		public function setTeamId(teamId:String):void
 		{
 			this.teamId = teamId ;
+		}
+		
+		public function setAppScheme(URIScheme:String):void
+		{
+			this.URIScheme = URIScheme ;
 		}
 	}
 }
