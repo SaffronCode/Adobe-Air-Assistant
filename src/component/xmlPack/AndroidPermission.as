@@ -230,6 +230,10 @@
 		{
 			var fatrib:XMLList = firstNode.attributes() ;
 			var satrib:XMLList = secondNode.attributes() ;
+			if((fatrib.length()!=satrib.length()) && (fatrib.length()==0 || satrib.length()==0))
+			{
+				return false ;
+			}
 			for(var i:int = 0 ; i<satrib.length() ; i++)
 			{
 				var atribFounded:Boolean = false ;
