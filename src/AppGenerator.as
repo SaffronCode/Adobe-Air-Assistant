@@ -196,12 +196,16 @@
 			checkList.push(permWakeMC);
 				
 			var flashvisionsVideoGalleryMC:ACheckBox = Obj.get("video_gallery_mc",this);
-			flashvisionsVideoGalleryMC.setUp(false,'Video Gallery','flashvisionsVideoGallery');
+			flashvisionsVideoGalleryMC.setUp(false,'Flashvisions Video Gallery','flashvisionsVideoGallery');
 			checkList.push(flashvisionsVideoGalleryMC);
 				
 			var distriqtScannerMC:ACheckBox = Obj.get("distriqt_scanner_mc",this);
 			distriqtScannerMC.setUp(false,'Distriqt Scanner','distriqtScanner');
 			checkList.push(distriqtScannerMC);
+				
+			var distriqtLocationMC:ACheckBox = Obj.get("distriqt_location_mc",this);
+			distriqtLocationMC.setUp(false,'Distriqt Location','distriqtLocation');
+			checkList.push(distriqtLocationMC);
 			
 			uriLauncher = Obj.get("uri_caller_mc",this);
 			uriLauncher.setUp(false,'URL Scheme Launcher','URILauncher');
