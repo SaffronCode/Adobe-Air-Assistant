@@ -8,11 +8,13 @@
 	import dynamicFrame.FrameGenerator;
 	
 	import flash.display.*;
-	import flash.events.Event;
+	import flash.events.*;
 	import flash.events.MouseEvent;
 	import flash.filesystem.File;
+	import flash.net.*;
 	
 	import popForm.*;
+	import contents.alert.Alert;
 
 ;
 
@@ -75,10 +77,35 @@
 					field_versionMC:PopField;
 
 					private var uriLauncher:ACheckBox;
+					
+		private var newVersionMC:MovieClip ;
 		
 		public function AppGenerator()
 		{
 			super();
+			
+			newVersionMC = Obj.get("new_version_mc",this);
+			newVersionMC.addEventListener(MouseEvent.CLICK,function(e){
+				navigateToURL(new URLRequest("https://github.com/SaffronCode/Adobe-Air-Assistant/raw/master/build/AppGenerator.air"));
+			});
+			newVersionMC.visible = false ;
+			var urlLoader:URLLoader = new URLLoader(new URLRequest("https://github.com/SaffronCode/Adobe-Air-Assistant/raw/master/src/AppGenerator-app.xml"));
+			urlLoader.dataFormat = URLLoaderDataFormat.TEXT ;
+			urlLoader.addEventListener(Event.COMPLETE,function(e){
+				var versionPart:Array = String(urlLoader.data).match(/<versionNumber>.*<\/versionNumber>/gi);
+				if(versionPart.length>0)
+				{
+					versionPart[0] = String(versionPart[0]).split('<versionNumber>').join('').split('</versionNumber>').join('');
+					//Alert.show("version loaded : "+versionPart[0]+' > '+(DevicePrefrence.appVersion==versionPart[0]));
+					if(!(DevicePrefrence.appVersion==versionPart[0]))
+					{
+						newVersionMC.visible = true ;
+						newVersionMC.alpha = 0 ;
+						AnimData.fadeIn(newVersionMC);
+					}
+				}
+			});
+			urlLoader.addEventListener(IOErrorEvent.IO_ERROR,function(e){});
 			
 			FrameGenerator.createFrame(stage);
 			
