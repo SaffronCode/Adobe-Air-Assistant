@@ -66,7 +66,9 @@
 					field_teamIdMC:PopField,
 					field_uriLauncherMC:PopField,
 					field_airVersionMC:PopField,
+					fullscreen_textMC:PopFieldBoolean,
 					render_mode_textMC:PopField,
+					auto_orients_txtMC:PopFieldBoolean,
 					swf_name_textMC:PopField,
 					file_name_textMC:PopField,
 					copyright_textMC:PopField,
@@ -110,6 +112,18 @@
 			render_mode_textMC.setUp('Render Mode:','',null,false,true,false,1,1,2,0,['gpu','cpu','auto'],false,true,null,null,true);
 			render_mode_textMC.addEventListener(Event.CHANGE,function(e){
 				manifestGenerate.renderMode = render_mode_textMC.text ;
+			});
+
+			fullscreen_textMC = Obj.get("fullscreen_text",this);
+			fullscreen_textMC.setUp('Full Screen:',false,false);
+			fullscreen_textMC.addEventListener(Event.CHANGE,function(e){
+				manifestGenerate.fullScreen = fullscreen_textMC.data ;
+			});
+
+			auto_orients_txtMC = Obj.get("auto_orients_txt",this);
+			auto_orients_txtMC.setUp('Auto Orients:',false,false);
+			auto_orients_txtMC.addEventListener(Event.CHANGE,function(e){
+				manifestGenerate.autoOrients = auto_orients_txtMC.data ;
 			});
  
 			field_nameMC = Obj.get("app_name_text",this);
@@ -276,6 +290,8 @@
 			field_airVersionMC.text = manifestGenerate.airVersion ;
 			field_uriLauncherMC.text = manifestGenerate.uriLauncher ;
 			render_mode_textMC.text = manifestGenerate.renderMode ;
+			fullscreen_textMC.data = manifestGenerate.fullScreen ;
+			auto_orients_txtMC.data = manifestGenerate.autoOrients ;
 			swf_name_textMC.text = manifestGenerate.content ;
 			file_name_textMC.text = manifestGenerate.filename ;
 			copyright_textMC.text = manifestGenerate.copyright ;
