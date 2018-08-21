@@ -13,6 +13,8 @@ package component
 		
 		public var folderName:String ;
 		
+		private var _status:Boolean ;
+		
 		public function ACheckBox()
 		{
 			super();
@@ -41,13 +43,22 @@ package component
 		
 		public function get status():Boolean
 		{
-			return this.currentFrame == 2 ;
+			if(this.currentFrame==0)
+			{
+				return _status ;
+			}
+			else
+			{
+				return this.currentFrame == 2 ;
+			}
 		}
 		
 		public function setUp(status:Boolean=false,label:String='',folderName:String=''):void
 		{
 			this.folderName = folderName ;
-			titleTF.setUp(label,false,false,0,false) ;
+			if(titleTF)
+				titleTF.setUp(label,false,false,0,false) ;
+			_status = status ;
 			if(status)
 			{
 				gotoAndStop(2);
