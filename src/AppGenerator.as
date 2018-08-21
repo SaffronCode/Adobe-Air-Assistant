@@ -96,7 +96,7 @@
 				if(versionPart.length>0)
 				{
 					versionPart[0] = String(versionPart[0]).split('<versionNumber>').join('').split('</versionNumber>').join('');
-					//Alert.show("version loaded : "+versionPart[0]+' > '+(DevicePrefrence.appVersion==versionPart[0]));
+					trace("version loaded : "+versionPart[0]+' > '+(DevicePrefrence.appVersion==versionPart[0]));
 					if(!(DevicePrefrence.appVersion==versionPart[0]))
 					{
 						newVersionMC.visible = true ;
