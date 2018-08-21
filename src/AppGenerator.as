@@ -89,7 +89,7 @@
 				navigateToURL(new URLRequest("https://github.com/SaffronCode/Adobe-Air-Assistant/raw/master/build/AppGenerator.air"));
 			});
 			newVersionMC.visible = false ;
-			var urlLoader:URLLoader = new URLLoader(new URLRequest("https://github.com/SaffronCode/Adobe-Air-Assistant/raw/master/src/AppGenerator-app.xml"));
+			var urlLoader:URLLoader = new URLLoader(new URLRequest("https://github.com/SaffronCode/Adobe-Air-Assistant/raw/master/src/AppGenerator-app.xml?"+new Date().time));
 			urlLoader.dataFormat = URLLoaderDataFormat.TEXT ;
 			urlLoader.addEventListener(Event.COMPLETE,function(e){
 				var versionPart:Array = String(urlLoader.data).match(/<versionNumber>.*<\/versionNumber>/gi);
