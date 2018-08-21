@@ -16,7 +16,7 @@
 		public function IOSPermission()
 		{
 			resetInfoAdditionsXML();
-			Entitlements = new XML();
+			Entitlements = new XML(<a/>);
 		}
 		
 		private function resetInfoAdditionsXML():void
