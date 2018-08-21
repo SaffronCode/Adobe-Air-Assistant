@@ -271,6 +271,10 @@
 			var distriqtScannerMC:ACheckBox = Obj.get("distriqt_scanner_mc",this);
 			distriqtScannerMC.setUp(false,'Distriqt Scanner','distriqtScanner');
 			checkList.push(distriqtScannerMC);
+			
+			var defaultManifestsMC:ACheckBox = new ACheckBox();
+			defaultManifestsMC.setUp(true,'Default Manifests','baseXMLs');
+			checkList.push(defaultManifestsMC);
 				
 			var distriqtLocationMC:ACheckBox = Obj.get("distriqt_location_mc",this);
 			distriqtLocationMC.setUp(false,'Distriqt Location','distriqtLocation');
