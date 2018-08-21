@@ -66,6 +66,10 @@
 					field_teamIdMC:PopField,
 					field_uriLauncherMC:PopField,
 					field_airVersionMC:PopField,
+					render_mode_textMC:PopField,
+					swf_name_textMC:PopField,
+					file_name_textMC:PopField,
+					copyright_textMC:PopField,
 					field_versionMC:PopField;
 
 					private var uriLauncher:ACheckBox;
@@ -102,10 +106,28 @@
 			this.graphics.drawRect(0,0,stage.stageWidth,stage.stageHeight);
 			
 			//Display fields
+			render_mode_textMC = Obj.get("render_mode_text",this);
+			render_mode_textMC.setUp('Render Mode:','',null,false,true,false,1,1,2,0,['gpu','cpu','auto'],false,true,null,null,true);
+			render_mode_textMC.addEventListener(Event.CHANGE,function(e){
+				manifestGenerate.renderMode = render_mode_textMC.text ;
+			});
+ 
 			field_nameMC = Obj.get("app_name_text",this);
 			field_nameMC.setUp('App Name:','',null,false,true,false,1,1,2,0,null,false,false,null,null,true);
 			field_nameMC.addEventListener(Event.CHANGE,function(e){
 				manifestGenerate.name = field_nameMC.text ;
+			});
+ 
+			copyright_textMC = Obj.get("copyright_text",this);
+			copyright_textMC.setUp('Copyright:','',null,false,true,false,1,1,2,0,null,false,false,null,null,true);
+			copyright_textMC.addEventListener(Event.CHANGE,function(e){
+				manifestGenerate.copyright = copyright_textMC.text ;
+			});
+
+			file_name_textMC = Obj.get("file_name_text",this);
+			file_name_textMC.setUp('File Name:','',null,false,true,false,1,1,2,0,null,false,false,null,null,true);
+			file_name_textMC.addEventListener(Event.CHANGE,function(e){
+				manifestGenerate.filename = file_name_textMC.text ;
 			});
 			
 			field_versionMC = Obj.get("app_version_text",this);
@@ -120,10 +142,16 @@
 				manifestGenerate.uriLauncher = field_uriLauncherMC.text.toLowerCase() ;
 			});
 			
+			swf_name_textMC = Obj.get("swf_name_text",this);
+			swf_name_textMC.setUp('SWF Name:','',null,false,true,false,1,1,2,0,null,false,false,null,null,true);
+			swf_name_textMC.addEventListener(Event.CHANGE,function(e){
+				manifestGenerate.content = swf_name_textMC.text ;
+			});
+			
 			field_appIdMC = Obj.get("app_id_text",this);
 			field_appIdMC.setUp('App Id:','',null,false,true,false,1,1,2,0,null,false,false,null,null,true);
 			field_appIdMC.addEventListener(Event.CHANGE,function(e){
-					manifestGenerate.id = field_appIdMC.text ;
+					manifestGenerate.setAppId(field_appIdMC.text);
 					if(uriLauncher.status)
 					{
 						createURISchemeFromId();
@@ -247,6 +275,10 @@
 			field_teamIdMC.text = manifestGenerate.teamId ;
 			field_airVersionMC.text = manifestGenerate.airVersion ;
 			field_uriLauncherMC.text = manifestGenerate.uriLauncher ;
+			render_mode_textMC.text = manifestGenerate.renderMode ;
+			swf_name_textMC.text = manifestGenerate.content ;
+			file_name_textMC.text = manifestGenerate.filename ;
+			copyright_textMC.text = manifestGenerate.copyright ;
 			
 			field_uriLauncherMC.enabled = uriLauncher.status ;
 			field_uriLauncherMC.alpha = (uriLauncher.status)?1:0.5;

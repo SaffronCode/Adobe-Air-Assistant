@@ -224,6 +224,13 @@
 			updateXML();
 		}
 		
+		public function setAppId(id:String):void
+		{
+			this.id = id ;
+			iOSPermission.setAppId(id);
+			androidPermission.setAppId(id);
+		}
+		
 		/**Search for nodes on xmls*/
 		private function loadParametersFromXML(convertedXML:XML):void
 		{
