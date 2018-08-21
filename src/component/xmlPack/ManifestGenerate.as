@@ -5,6 +5,8 @@
 	
 	import contents.alert.Alert;
 	
+	import dataManager.GlobalStorage;
+	
 	import flash.utils.ByteArray;
 
 	public class ManifestGenerate
@@ -19,6 +21,8 @@
 		private var InfoAdditions:XML ;
 		private var Entitlements:XML ;
 		private var extensions:XML ;
+		
+		private const id_storage:String = "id_storage" ;
 		
 		public var teamId:String = '' ;
 		
@@ -85,6 +89,19 @@
 		
 		public function ManifestGenerate(iconsList:Array,airVersion:String)
 		{
+			var lastSavedStatus:Object = GlobalStorage.load(id_storage);
+			for(var i in lastSavedStatus)
+			{
+				if(this.hasOwnProperty(i))
+				{
+					try
+					{
+						this[i] = lastSavedStatus[i] ;
+					}
+					catch(e){}
+				}
+			}
+			
 			airNameSpace = airNSURI+airVersion ;
 			if(airVersion.indexOf('.')==-1)
 			{
@@ -96,6 +113,13 @@
 			
 			androidPermission = new AndroidPermission();
 			iOSPermission = new IOSPermission();
+		}
+		
+		
+		private function saveCurrentStatusToCash(e:*=null):void
+		{
+			var obj:Object = JSON.parse(JSON.stringify(this));
+			GlobalStorage.save(id_storage,obj);
 		}
 		
 		public function get uriLauncher():String
@@ -311,7 +335,11 @@
 			manifestAdditions.appendChild(new XML("<![CDATA[\n"+androidPermission.toString()+"\n]]>"));
 			InfoAdditions.appendChild(new XML("<![CDATA[\n"+iOSPermission.InfoAdditionsToString()+"\n]]>"));
 			Entitlements.appendChild(new XML("<![CDATA[\n"+iOSPermission.EntitlementsToString()+"\n]]>"));
+
+			saveCurrentStatusToCash();
+			
 			return '<?xml version="1.0" encoding="utf-8" standalone="no" ?>\n'+mXML.toXMLString();
+			
 		}
 		
 		/**Dont forget to add  xmlns:android="android"   to the root node of the permission xml to make it work*/
