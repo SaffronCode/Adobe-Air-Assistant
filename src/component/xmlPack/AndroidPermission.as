@@ -234,10 +234,10 @@
 		{
 			var fatrib:XMLList = firstNode.attributes() ;
 			var satrib:XMLList = secondNode.attributes() ;
-			if((fatrib.length()!=satrib.length()) && (fatrib.length()==0 || satrib.length()==0))
+			/*if((fatrib.length()!=satrib.length()) && (fatrib.length()==0 || satrib.length()==0))
 			{
 				return false ;
-			}
+			}*/
 			for(var i:int = 0 ; i<satrib.length() ; i++)
 			{
 				var atribFounded:Boolean = false ;
@@ -265,8 +265,9 @@
 						{
 							trace("*** We have confict on node "+firstNode.name()+" and attribute "+a1.name()+" : "+a1+" vs "+a2);
 							atribFounded = true ;
-							if(!returnTrueIfNeedChangeOnly)
-								firstNode.@[a2.name()] = a2 ;
+							return false ;
+							/*if(!returnTrueIfNeedChangeOnly)
+								firstNode.@[a2.name()] = a2 ;*/
 						}
 					}
 				}
