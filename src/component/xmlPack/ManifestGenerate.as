@@ -113,6 +113,8 @@
 			
 			androidPermission = new AndroidPermission();
 			iOSPermission = new IOSPermission();
+			
+			setAppId(id);
 		}
 		
 		
