@@ -1,3 +1,3 @@
 <manifest android:installLocation="auto">
-	<application android:enabled="true" android:hardwareAccelerated="true"/>>
+	<application android:enabled="true" android:hardwareAccelerated="true"/>
 </manifest>
