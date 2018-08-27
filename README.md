@@ -1,6 +1,6 @@
 # 1.Air-App Icon Generator
 
-<p  align="center"><a href="https://github.com/SaffronCode/Adobe-Air-Assistant/raw/master/build/AppGenerator.air"><img src=https://github.com/SaffronCode/Adobe-Air-Assistant/blob/master/src/AppIconsForPublish/128.png?raw=true"/><br>Download Icon Generator</a></p>
+<p  align="center"><a href="https://github.com/SaffronCode/Adobe-Air-Assistant/raw/master/build/AppGenerator.air"><img src=https://github.com/SaffronCode/Adobe-Air-Assistant/blob/master/src/AppIconsForPublish/128.png?raw=true"/><br>Download Adobe Air Assist now!</a></p>
 
 Creating all application icons in various sizes for Adobe Air.
 
