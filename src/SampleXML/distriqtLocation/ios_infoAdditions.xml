@@ -9,11 +9,11 @@
 	<string>location-services</string>
 </array>
 
-<!-- Required if you wish to receive background location updates -->
+<!-- Required if you wish to receive background location updates
 <key>UIBackgroundModes</key>
 <array>
 	<string>location</string>
-</array>
+</array> -->
 
 <!-- iOS 6,7 -->
 <key>NSLocationUsageDescription</key>
@@ -22,9 +22,10 @@
 <!-- iOS 8 + -->
 <key>NSLocationWhenInUseUsageDescription</key>
 <string>This application would like to use your location when in use.</string>
-<key>NSLocationAlwaysUsageDescription</key>
-<string>This application would like to use your location in the background.</string>
 
-<!-- iOS 11 + -->
+<!-- <key>NSLocationAlwaysUsageDescription</key>
+<string>This application would like to use your location in the background.</string>-->
+
+<!-- iOS 11 + 
 <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-<string>This application would like to use your location in the background and the foreground.</string>
+<string>This application would like to use your location in the background and the foreground.</string>-->
