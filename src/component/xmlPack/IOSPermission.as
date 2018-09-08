@@ -21,8 +21,13 @@
 		
 		private function resetInfoAdditionsXML():void
 		{
+			reset();
+		}
+		
+		public function reset():void
+		{
 			InfoAdditions = new XML(<a/>);
-			addDefaultInfoAditions();
+			addDefaultInfoAditions();			
 		}
 		
 		private function addDefaultInfoAditions():void

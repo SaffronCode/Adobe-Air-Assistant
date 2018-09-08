@@ -503,5 +503,13 @@
 			}
 			return true ;
 		}
+		
+////////////////////////
+		
+		public function resetPermissions():void
+		{
+			androidPermission.reset();
+			iOSPermission.reset();
+		}
 	}
 }

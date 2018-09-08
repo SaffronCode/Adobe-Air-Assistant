@@ -80,9 +80,13 @@
 					
 		private var newVersionMC:MovieClip ;
 		
+		private var clearMC:MovieClip ;
+		
 		public function AppGenerator()
 		{
 			super();
+			
+			clearMC = Obj.get("clear_mc",this);
 			
 			newVersionMC = Obj.get("new_version_mc",this);
 			newVersionMC.addEventListener(MouseEvent.CLICK,function(e){
@@ -295,8 +299,14 @@
 				}
 			});
 			
+			clearMC.addEventListener(MouseEvent.CLICK,resetEarlierPermissions);
 			
-			
+			updateInformations();
+		}
+		
+		private function resetEarlierPermissions(e:MouseEvent):void
+		{
+			manifestGenerate.resetPermissions();
 			updateInformations();
 		}
 				

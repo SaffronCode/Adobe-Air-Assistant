@@ -14,6 +14,11 @@
 		
 		public function AndroidPermission()
 		{
+			reset();
+		}
+		
+		public function reset():void
+		{
 			main = new XML();
 		}
 		
