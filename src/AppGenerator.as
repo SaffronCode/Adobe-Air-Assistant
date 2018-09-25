@@ -334,8 +334,7 @@
 			uriLauncher.addEventListener(Event.CHANGE,function(e){
 				if(uriLauncher.status)
 				{
-					if(field_uriLauncherMC.text=='')
-						field_uriLauncherMC.text = manifestGenerate.uriLauncher = schemFromId() ;
+					field_uriLauncherMC.text = manifestGenerate.uriLauncher = schemFromId() ;
 				}
 				else
 				{
