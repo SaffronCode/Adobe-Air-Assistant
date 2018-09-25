@@ -5,19 +5,22 @@
 	
 	import contents.TextFile;
 	import contents.alert.Alert;
-	import flash.desktop.NativeApplication;
 	
 	import dynamicFrame.FrameGenerator;
 	
+	import flash.desktop.ClipboardFormats;
+	import flash.desktop.NativeApplication;
 	import flash.display.*;
 	import flash.events.*;
 	import flash.events.MouseEvent;
 	import flash.filesystem.File;
+	import flash.geom.*;
 	import flash.net.*;
 	import flash.text.*;
+	import flash.utils.setTimeout;
 	
 	import popForm.*;
-	import flash.utils.setTimeout;
+	import flash.desktop.NativeDragManager;
 
 ;
 
@@ -85,11 +88,22 @@
 		
 		private var clearMC:MovieClip ;
 		
+		private var currentFile:File;
+
+		private var manifestLoaderMC:MovieClip;
+		
 		public function AppGenerator()
 		{
 			super();
 			
 			clearMC = Obj.get("clear_mc",this);
+			
+			var nativeCheckContainerMC:MovieClip = Obj.get("natives_mc",this);
+			var nativeContainerBackMC:MovieClip = Obj.get("back_mc",nativeCheckContainerMC);
+			nativeCheckContainerMC.graphics.beginFill(0,0);
+			nativeCheckContainerMC.graphics.drawRect(0,0,nativeContainerBackMC.width,nativeContainerBackMC.height);
+			new ScrollMT(nativeCheckContainerMC,new Rectangle(nativeCheckContainerMC.x,nativeCheckContainerMC.y,nativeContainerBackMC.width,nativeContainerBackMC.height),null,true);
+			nativeContainerBackMC.visible = false ;
 			
 			newVersionMC = Obj.get("new_version_mc",this);
 			var hintTF:TextField = Obj.get("hint_mc",newVersionMC);
@@ -132,8 +146,8 @@
 						navigateToURL(new URLRequest(fileURL));
 					});
 				}
+				
 			}
-			
 			
 			newVersionMC.visible = false ;
 			var urlLoader:URLLoader = new URLLoader(new URLRequest("https://github.com/SaffronCode/Adobe-Air-Assistant/raw/master/src/AppGenerator-app.xml?"+new Date().time));
@@ -171,7 +185,7 @@
 			manifestExporterMC.addEventListener(MouseEvent.CLICK,exportSavedManifest);
 			//manifestExporterMC.visible = false ;
 			
-			var manifestLoaderMC:MovieClip = Obj.get("load_manifest_mc",this) ;
+			manifestLoaderMC = Obj.get("load_manifest_mc",this) ;
 			manifestLoaderMC.buttonMode = true ;
 			manifestLoaderMC.addEventListener(MouseEvent.CLICK,loadExistingManifest);
 			
@@ -261,14 +275,14 @@
 			});
 			
 			///////////////
-			var distriqt_camera:ACheckBox = Obj.get("distriqt_camera_ui_mc",this);
+			var distriqt_camera:ACheckBox = Obj.get("distriqt_camera_ui_mc",nativeCheckContainerMC);
 				distriqt_camera.setUp(false,'Distriqt Camera UI','distriqtCameraUI');
 				checkList.push(distriqt_camera);
 				
-			var milkman_push:ACheckBox = Obj.get("milkman_push_mc",this);
+			var milkman_push:ACheckBox = Obj.get("milkman_push_mc",nativeCheckContainerMC);
 				milkman_push.setUp(false,'Milkman Easy Push','MilkmanNotification');
 				checkList.push(milkman_push);
-			var distriqt_push:ACheckBox = Obj.get("distriqt_push_mc",this);
+			var distriqt_push:ACheckBox = Obj.get("distriqt_push_mc",nativeCheckContainerMC);
 				distriqt_push.setUp(false,'Distriqt Push Notification','distriqtNotification');
 				checkList.push(distriqt_push);
 				
@@ -282,41 +296,21 @@
 						milkman_push.status = false ; 
 				});
 				
-			var distriqt_share:ACheckBox = Obj.get("distriqt_share_mc",this);
+			var distriqt_share:ACheckBox = Obj.get("distriqt_share_mc",nativeCheckContainerMC);
 				distriqt_share.setUp(false,'Distriqt Share','distriqtShare');
 				checkList.push(distriqt_share);
-			var distriqt_PDF:ACheckBox = Obj.get("distriqt_pdf_mc",this);
+			var distriqt_PDF:ACheckBox = Obj.get("distriqt_pdf_mc",nativeCheckContainerMC);
 				distriqt_PDF.setUp(false,'Distriqt PDF Reader','distriqtPdf');
 				checkList.push(distriqt_PDF);
-			var distriqt_mediaplayer:ACheckBox = Obj.get("distriqt_mediaplayer_mc",this);
+			var distriqt_mediaplayer:ACheckBox = Obj.get("distriqt_mediaplayer_mc",nativeCheckContainerMC);
 				distriqt_mediaplayer.setUp(false,'Distriqt Media Player','distriqtMediaPlayer');
 				checkList.push(distriqt_mediaplayer);
 				
-			var permCameraMC:ACheckBox = Obj.get("permission_camera_mc",this);
-			permCameraMC.setUp(false,'Camera','camera');
-			checkList.push(permCameraMC);
-				
-			var permInternetMC:ACheckBox = Obj.get("permission_internet_mc",this);
-			permInternetMC.setUp(true,'Internet Access','internet');
-			checkList.push(permInternetMC);
-				
-			var permLocationMC:ACheckBox = Obj.get("permission_location_mc",this);
-			permLocationMC.setUp(false,'Location','location');
-			checkList.push(permLocationMC);
-				
-			var permMicrophoneMC:ACheckBox = Obj.get("permission_microphone_mc",this);
-			permMicrophoneMC.setUp(false,'Microphone','microphone');
-			checkList.push(permMicrophoneMC);
-				
-			var permWakeMC:ACheckBox = Obj.get("permission_wakelock_mc",this);
-			permWakeMC.setUp(false,'Prevent Sleep','wakelock');
-			checkList.push(permWakeMC);
-				
-			var flashvisionsVideoGalleryMC:ACheckBox = Obj.get("video_gallery_mc",this);
+			var flashvisionsVideoGalleryMC:ACheckBox = Obj.get("video_gallery_mc",nativeCheckContainerMC);
 			flashvisionsVideoGalleryMC.setUp(false,'Flashvisions Video Gallery','flashvisionsVideoGallery');
 			checkList.push(flashvisionsVideoGalleryMC);
 				
-			var distriqtScannerMC:ACheckBox = Obj.get("distriqt_scanner_mc",this);
+			var distriqtScannerMC:ACheckBox = Obj.get("distriqt_scanner_mc",nativeCheckContainerMC);
 			distriqtScannerMC.setUp(false,'Distriqt Scanner','distriqtScanner');
 			checkList.push(distriqtScannerMC);
 			
@@ -324,11 +318,13 @@
 			defaultManifestsMC.setUp(true,'Default Manifests','baseXMLs');
 			checkList.push(defaultManifestsMC);
 				
-			var distriqtLocationMC:ACheckBox = Obj.get("distriqt_location_mc",this);
+			var distriqtLocationMC:ACheckBox = Obj.get("distriqt_location_mc",nativeCheckContainerMC);
 			distriqtLocationMC.setUp(false,'Distriqt Location','distriqtLocation');
 			checkList.push(distriqtLocationMC);
 			
-			uriLauncher = Obj.get("uri_caller_mc",this);
+			
+			///uri launcher
+			uriLauncher = Obj.get("uri_caller_mc",nativeCheckContainerMC);
 			uriLauncher.setUp(false,'URL Scheme Launcher','URILauncher');
 			checkList.push(uriLauncher);
 			uriLauncher.addEventListener(Event.CHANGE,function(e){
@@ -342,10 +338,56 @@
 				}
 			});
 			
+			////Permissions
+			
+			
+			var permCameraMC:ACheckBox = Obj.get("permission_camera_mc",this);
+			permCameraMC.setUp(false,'Camera','camera');
+			checkList.push(permCameraMC);
+			
+			var permInternetMC:ACheckBox = Obj.get("permission_internet_mc",this);
+			permInternetMC.setUp(true,'Internet Access','internet');
+			checkList.push(permInternetMC);
+			
+			var permLocationMC:ACheckBox = Obj.get("permission_location_mc",this);
+			permLocationMC.setUp(false,'Location','location');
+			checkList.push(permLocationMC);
+			
+			var permMicrophoneMC:ACheckBox = Obj.get("permission_microphone_mc",this);
+			permMicrophoneMC.setUp(false,'Microphone','microphone');
+			checkList.push(permMicrophoneMC);
+			
+			var permWakeMC:ACheckBox = Obj.get("permission_wakelock_mc",this);
+			permWakeMC.setUp(false,'Prevent Sleep','wakelock');
+			checkList.push(permWakeMC);
+			
 			clearMC.addEventListener(MouseEvent.CLICK,resetEarlierPermissions);
 			
 			updateInformations();
+			
+			
+			NativeDragManager.acceptDragDrop(this);
+			this.addEventListener(NativeDragEvent.NATIVE_DRAG_ENTER, onDragged);
 		}
+		
+		protected function onDragged(event:NativeDragEvent):void
+		{
+			var files:Array = event.clipboard.getData(ClipboardFormats.FILE_LIST_FORMAT) as Array;
+			currentFile = files[0];
+			var arrPath:Array = currentFile.name.split('.');
+			var type:String = arrPath[arrPath.length-1];
+			if (!currentFile.isDirectory && (type == 'xml')) {
+				NativeDragManager.acceptDragDrop(this);
+				this.addEventListener(NativeDragEvent.NATIVE_DRAG_DROP, onDropped);
+			}
+		}
+		
+		private function onDropped(event:NativeDragEvent):void
+		{
+			this.removeEventListener(NativeDragEvent.NATIVE_DRAG_DROP, onDropped);
+			loadThisManifestXML(currentFile);
+		}
+		
 		
 		private function resetEarlierPermissions(e:MouseEvent):void
 		{
@@ -499,18 +541,20 @@
 		{
 			FileManager.browse(loadThisManifestXML,['*.xml']);
 			
-			function loadThisManifestXML(fileTarget:File):void
-			{
-				mainXMLFile = fileTarget ;
-				trace("Loaded file is : "+fileTarget.nativePath);
-				trace("mainXML file is : "+mainXMLFile.nativePath);
-				//convertSampleXML();
-				manifestExporterMC.visible = true ;
-				manifestGenerate.convert(TextFile.load(mainXMLFile));
-				
-				
-				updateInformations();
-			}
+		}
+		
+		
+		private function loadThisManifestXML(fileTarget:File):void
+		{
+			mainXMLFile = fileTarget ;
+			trace("Loaded file is : "+fileTarget.nativePath);
+			trace("mainXML file is : "+mainXMLFile.nativePath);
+			//convertSampleXML();
+			manifestExporterMC.visible = true ;
+			manifestGenerate.convert(TextFile.load(mainXMLFile));
+			
+			
+			updateInformations();
 		}
 	}
 }
