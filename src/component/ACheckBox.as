@@ -23,7 +23,7 @@ package component
 			this.stop();
 		}
 		
-		protected function changeStatus(event:MouseEvent):void
+		public function changeStatus(event:MouseEvent=null):void
 		{
 			this.gotoAndStop(((this.currentFrame-1)+1)%this.totalFrames+1);
 			this.dispatchEvent(new Event(Event.CHANGE));
