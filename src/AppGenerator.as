@@ -244,6 +244,12 @@
 			field_uriLauncherMC.addEventListener(Event.CHANGE,function(e){
 				manifestGenerate.uriLauncher = field_uriLauncherMC.text.toLowerCase() ;
 			});
+			field_uriLauncherMC.addEventListener(MouseEvent.CLICK,function(e){
+				if(uriLauncher.status==false)
+				{
+					uriLauncher.changeStatus();
+				}
+			});
 			
 			swf_name_textMC = Obj.get("swf_name_text",this);
 			swf_name_textMC.setUp('SWF Name:','',null,false,true,false,1,1,2,0,null,false,false,null,null,true);
@@ -274,68 +280,67 @@
 				manifestGenerate.airVersion = field_airVersionMC.text ;
 			});
 			
-			///////////////
-			var distriqt_camera:ACheckBox = Obj.get("distriqt_camera_ui_mc",nativeCheckContainerMC);
-				distriqt_camera.setUp(false,'Distriqt Camera UI','distriqtCameraUI');
-				checkList.push(distriqt_camera);
+			/////////////// ANE list
+			var checkBoxSample:ACheckBox = Obj.findThisClass(ACheckBox,nativeCheckContainerMC);
+			var checkBoxY:Number = checkBoxSample.y ;
+			var checkBoxClass:Class = Obj.getObjectClass(checkBoxSample);
+			Obj.remove(checkBoxSample);
 				
-			var milkman_push:ACheckBox = Obj.get("milkman_push_mc",nativeCheckContainerMC);
-				milkman_push.setUp(false,'Milkman Easy Push','MilkmanNotification');
-				checkList.push(milkman_push);
-			var distriqt_push:ACheckBox = Obj.get("distriqt_push_mc",nativeCheckContainerMC);
-				distriqt_push.setUp(false,'Distriqt Push Notification','distriqtNotification');
-				checkList.push(distriqt_push);
+			function addCheckBox(checkBoxName:String,manifestDirectoryName:String,onTrigered:Function=null,addItToList:Boolean=true,defaultStatus:Boolean=false):ACheckBox
+			{
+				var checkBox:ACheckBox = new checkBoxClass();
+				checkBox.x = (nativeCheckContainerMC.width-checkBox.width)/2;
+				checkBox.y = checkBoxY ;
+				if(addItToList)
+				{
+					checkBoxY += checkBox.height ;
+					nativeCheckContainerMC.addChild(checkBox);
+				}
+				checkBox.setUp(defaultStatus,checkBoxName,manifestDirectoryName);
+				checkList.push(checkBox);
 				
-				milkman_push.addEventListener(Event.CHANGE,function(e){
-					if(milkman_push.status)
-						distriqt_push.status = false ; 
-				});
+				if(onTrigered!=null)
+				{
+					checkBox.addEventListener(Event.CHANGE,function(e){
+						onTrigered(checkBox);
+					});
+				}
 				
-				distriqt_push.addEventListener(Event.CHANGE,function(e){
-					if(distriqt_push.status)
-						milkman_push.status = false ; 
-				});
-				
-			var distriqt_share:ACheckBox = Obj.get("distriqt_share_mc",nativeCheckContainerMC);
-				distriqt_share.setUp(false,'Distriqt Share','distriqtShare');
-				checkList.push(distriqt_share);
-			var distriqt_PDF:ACheckBox = Obj.get("distriqt_pdf_mc",nativeCheckContainerMC);
-				distriqt_PDF.setUp(false,'Distriqt PDF Reader','distriqtPdf');
-				checkList.push(distriqt_PDF);
-			var distriqt_mediaplayer:ACheckBox = Obj.get("distriqt_mediaplayer_mc",nativeCheckContainerMC);
-				distriqt_mediaplayer.setUp(false,'Distriqt Media Player','distriqtMediaPlayer');
-				checkList.push(distriqt_mediaplayer);
-				
-			var flashvisionsVideoGalleryMC:ACheckBox = Obj.get("video_gallery_mc",nativeCheckContainerMC);
-			flashvisionsVideoGalleryMC.setUp(false,'Flashvisions Video Gallery','flashvisionsVideoGallery');
-			checkList.push(flashvisionsVideoGalleryMC);
-				
-			var distriqtScannerMC:ACheckBox = Obj.get("distriqt_scanner_mc",nativeCheckContainerMC);
-			distriqtScannerMC.setUp(false,'Distriqt Scanner','distriqtScanner');
-			checkList.push(distriqtScannerMC);
+				return checkBox ;
+			}
 			
-			var defaultManifestsMC:ACheckBox = new ACheckBox();
-			defaultManifestsMC.setUp(true,'Default Manifests','baseXMLs');
-			checkList.push(defaultManifestsMC);
-				
-			var distriqtLocationMC:ACheckBox = Obj.get("distriqt_location_mc",nativeCheckContainerMC);
-			distriqtLocationMC.setUp(false,'Distriqt Location','distriqtLocation');
-			checkList.push(distriqtLocationMC);
 			
+			
+			addCheckBox('Distriqt Camera UI','distriqtCameraUI');
+			var milkman_push:ACheckBox = 
+				addCheckBox('Milkman Easy Push','MilkmanNotification',function(check:ACheckBox){
+				if(check.status)
+					distriqt_push.status = false ; 
+			});
+			var distriqt_push:ACheckBox = 
+				addCheckBox('Distriqt Push Notification','distriqtNotification',function(check:ACheckBox){
+				if(check.status)
+					milkman_push.status = false ; 
+			});
+			addCheckBox('Distriqt Share','distriqtShare');
+			addCheckBox('Distriqt PDF Reader','distriqtPdf');
+			addCheckBox('Distriqt Media Player','distriqtMediaPlayer');
+			addCheckBox('Flashvisions Video Gallery','flashvisionsVideoGallery');
+			addCheckBox('Distriqt Scanner','distriqtScanner');
+			addCheckBox('Default Manifests','baseXMLs',null,false,true);
+			addCheckBox('Distriqt Location','distriqtLocation');
+				
+				
+				
 			
 			///uri launcher
-			uriLauncher = Obj.get("uri_caller_mc",nativeCheckContainerMC);
-			uriLauncher.setUp(false,'URL Scheme Launcher','URILauncher');
-			checkList.push(uriLauncher);
-			uriLauncher.addEventListener(Event.CHANGE,function(e){
-				if(uriLauncher.status)
-				{
+			uriLauncher = addCheckBox('URL Scheme Launcher','URILauncher',function(check:ACheckBox){
+				if(check.status)
 					field_uriLauncherMC.text = manifestGenerate.uriLauncher = schemFromId() ;
-				}
 				else
-				{
-					field_uriLauncherMC.text = '' ;
-				}
+					field_uriLauncherMC.text = manifestGenerate.uriLauncher = "" ;
+				field_uriLauncherMC.enabled = check.status ;
+				field_uriLauncherMC.alpha = (check.status)?1:0.5;
 			});
 			
 			////Permissions
@@ -366,7 +371,7 @@
 			updateInformations();
 			
 			
-			NativeDragManager.acceptDragDrop(this);
+			NativeDragManager.acceptDragDrop(manifestLoaderMC);
 			this.addEventListener(NativeDragEvent.NATIVE_DRAG_ENTER, onDragged);
 		}
 		
@@ -377,7 +382,7 @@
 			var arrPath:Array = currentFile.name.split('.');
 			var type:String = arrPath[arrPath.length-1];
 			if (!currentFile.isDirectory && (type == 'xml')) {
-				NativeDragManager.acceptDragDrop(this);
+				NativeDragManager.acceptDragDrop(manifestLoaderMC);
 				this.addEventListener(NativeDragEvent.NATIVE_DRAG_DROP, onDropped);
 			}
 		}
