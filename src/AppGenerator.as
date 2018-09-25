@@ -307,7 +307,21 @@
 				}
 				
 				return checkBox ;
-			}
+			}	
+			
+			
+			///uri launcher
+			uriLauncher = addCheckBox('URL Scheme Launcher','URILauncher',function(check:ACheckBox){
+				if(check.status)
+					field_uriLauncherMC.text = manifestGenerate.uriLauncher = schemFromId() ;
+				else
+					field_uriLauncherMC.text = manifestGenerate.uriLauncher = "" ;
+				field_uriLauncherMC.enabled = check.status ;
+				field_uriLauncherMC.alpha = (check.status)?1:0.5;
+			});
+			
+			
+			//ANEs
 			
 			
 			
@@ -329,19 +343,8 @@
 			addCheckBox('Distriqt Scanner','distriqtScanner');
 			addCheckBox('Default Manifests','baseXMLs',null,false,true);
 			addCheckBox('Distriqt Location','distriqtLocation');
+			addCheckBox('Distriqt Audio Recorder','distriqtAudioRecorder');
 				
-				
-				
-			
-			///uri launcher
-			uriLauncher = addCheckBox('URL Scheme Launcher','URILauncher',function(check:ACheckBox){
-				if(check.status)
-					field_uriLauncherMC.text = manifestGenerate.uriLauncher = schemFromId() ;
-				else
-					field_uriLauncherMC.text = manifestGenerate.uriLauncher = "" ;
-				field_uriLauncherMC.enabled = check.status ;
-				field_uriLauncherMC.alpha = (check.status)?1:0.5;
-			});
 			
 			////Permissions
 			
