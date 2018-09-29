@@ -24,7 +24,18 @@
 		
 		private const id_storage:String = "id_storage" ;
 		
-		public var teamId:String = '' ;
+		private var teamId:String = '' ;
+		
+		public function getTeamId():String
+		{
+			return teamId ;
+		}
+		
+		public function setTeamId(value:String):void
+		{
+			teamId = value ;
+			iOSPermission.setTeamId(value);
+		}
 		
 		///Name spaces
 		private const airNSURI:String = "http://ns.adobe.com/air/application/" ;
@@ -246,6 +257,7 @@
 			iOSPermission.setAppId(id);
 			iOSPermission.importInfoAdditions(convertedXML.child(new QName(airNameSpace,'iPhone')).child(new QName(airNameSpace,'InfoAdditions')));
 			iOSPermission.importEntitlements(convertedXML.child(new QName(airNameSpace,'iPhone')).child(new QName(airNameSpace,'Entitlements')));
+			setTeamId(iOSPermission.getTeamId());
 			
 			updateXML();
 		}

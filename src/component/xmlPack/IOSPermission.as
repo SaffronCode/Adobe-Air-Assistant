@@ -61,6 +61,19 @@
 				Entitlements = new XML(<a/>);
 				var xmlList:XMLList = new XMLList(EntitlementsXMLString);
 				Entitlements.appendChild(xmlList);
+				for(var i:int = 0 ; i<xmlList.length() ; i++)
+				{
+					if((xmlList[i] as XML).name() == "key" && String(xmlList[i]) == "application-identifier" && i<xmlList.length()-1)
+					{
+						var teamPart:String = String(xmlList[i+1]) ;
+						var teamPartSplited:Array = teamPart.split('.');
+						if(teamPart.length>0 && teamPartSplited.length>1)
+						{
+							teamId = teamPartSplited[0] ;
+						}
+						break;
+					}
+				}
 			}
 			catch(e:Error)
 			{
@@ -76,6 +89,7 @@
 		private function insertAppIdAndTeamIds(xmlString:String):String
 		{
 			xmlString = xmlString.replace(/BUNDLE_SEED_ID/g,teamId);
+			xmlString = xmlString.replace(/null/g,teamId);
 			xmlString = xmlString.replace(/BUNDLE_IDENTIFIER/g,appId);
 			xmlString = xmlString.replace(/APPLICATION_LAUNCHER_ID/g,URIScheme);
 			return xmlString ;
@@ -240,6 +254,11 @@
 		public function setTeamId(teamId:String):void
 		{
 			this.teamId = teamId ;
+		}
+		
+		public function getTeamId():String
+		{
+			return teamId ;
 		}
 		
 		public function setAppScheme(URIScheme:String):void

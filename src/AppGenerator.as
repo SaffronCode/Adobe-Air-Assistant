@@ -271,7 +271,7 @@
 			field_teamIdMC = Obj.get("team_id_text",this);
 			field_teamIdMC.setUp('iOS Team Id:','',null,false,true,false,1,1,2,0,null,false,false,null,null,true);
 			field_teamIdMC.addEventListener(Event.CHANGE,function(e){
-				manifestGenerate.teamId = field_teamIdMC.text ;
+				manifestGenerate.setTeamId(field_teamIdMC.text) ;
 			});
 			
 			field_airVersionMC = Obj.get("air_version_text",this);
@@ -420,7 +420,7 @@
 			field_nameMC.text = manifestGenerate.name ;
 			field_versionMC.text = manifestGenerate.versionNumber ;
 			field_appIdMC.text = manifestGenerate.id ;
-			field_teamIdMC.text = manifestGenerate.teamId ;
+			field_teamIdMC.text = manifestGenerate.getTeamId() ;
 			field_airVersionMC.text = manifestGenerate.airVersion ;
 			field_uriLauncherMC.text = manifestGenerate.uriLauncher ;
 			render_mode_textMC.text = manifestGenerate.renderMode ;
