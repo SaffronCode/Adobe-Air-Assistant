@@ -127,10 +127,13 @@
 			{
 				trace("secondList["+i+"].name() : "+secondList[i].name());
 				var nodeUpdated:Boolean = false ;
+				var onNodeFounded:Boolean = false ;
 				for(var j:int = 0 ; j<firstList.length() ;j++)
 				{
+					var areNodeSame:Boolean = false ;
 					if(secondList[i].name()==firstList[j].name())
 					{
+						areNodeSame = true ;
 						var s1:XML = secondList[i] ;
 						var s2:XML = firstList[j] ;
 						switch(String(secondList[i].name()))
@@ -144,7 +147,9 @@
 									{
 										if(mergAributes(s2,s1,true))
 										{
-											return null ;
+											areNodeSame = false ;
+											break;
+											//return null ;
 										}
 									}
 									else
@@ -160,7 +165,9 @@
 									var mergResult:XML = mergeToXML(s2,s1,removeParams,returnNullIfDefrend);
 									if(returnNullIfDefrend && mergResult==null)
 									{
-										return null ;
+										areNodeSame = false ;
+										break;
+										//return null ;
 									}
 								}
 							break;
@@ -181,7 +188,9 @@
 											var mergResult2:XML = mergeToXML(s2,s1,false,returnNullIfDefrend);
 											if(returnNullIfDefrend && mergResult2==null)
 											{
-												return null ;
+												areNodeSame = false ;
+												break;
+												//return null ;
 											}
 										}
 									}
@@ -190,6 +199,11 @@
 							break;
 						}
 					}
+					onNodeFounded = onNodeFounded || areNodeSame ;
+				}
+				if(returnNullIfDefrend && !onNodeFounded)
+				{
+					return null ;
 				}
 				if(!nodeUpdated)
 				{
