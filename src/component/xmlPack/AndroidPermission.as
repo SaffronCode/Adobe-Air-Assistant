@@ -201,7 +201,7 @@
 					}
 					onNodeFounded = onNodeFounded || areNodeSame ;
 				}
-				if(!onNodeFounded)
+				if(returnNullIfDefrend && !onNodeFounded)
 				{
 					return null ;
 				}
