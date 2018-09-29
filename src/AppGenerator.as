@@ -560,6 +560,7 @@
 			//convertSampleXML();
 			manifestExporterMC.visible = true ;
 			manifestGenerate.convert(TextFile.load(mainXMLFile));
+			manifestGenerate.uriLauncher = schemFromId() ;
 			
 			
 			updateInformations();
