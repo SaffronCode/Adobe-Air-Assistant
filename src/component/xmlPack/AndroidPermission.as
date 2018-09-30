@@ -70,6 +70,7 @@
 			}
 			else
 			{
+				main = mergeToXML(main,AndroidPermissionXML,true);
 				main = mergeToXML(main,AndroidPermissionXML);
 			}
 		}
