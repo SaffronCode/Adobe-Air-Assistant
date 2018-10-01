@@ -101,7 +101,7 @@
 			var nativeCheckContainerMC:MovieClip = Obj.get("natives_mc",this);
 			var nativeContainerBackMC:MovieClip = Obj.get("back_mc",nativeCheckContainerMC);
 			nativeCheckContainerMC.graphics.beginFill(0,0);
-			nativeCheckContainerMC.graphics.drawRect(0,0,nativeContainerBackMC.width,nativeContainerBackMC.height);
+			nativeCheckContainerMC.graphics.drawRect(0,0,nativeContainerBackMC.width,nativeContainerBackMC.height+100);
 			new ScrollMT(nativeCheckContainerMC,new Rectangle(nativeCheckContainerMC.x,nativeCheckContainerMC.y,nativeContainerBackMC.width,nativeContainerBackMC.height),null,true);
 			nativeContainerBackMC.visible = false ;
 			
@@ -344,6 +344,7 @@
 			addCheckBox('Default Manifests','baseXMLs',null,false,true);
 			addCheckBox('Distriqt Location','distriqtLocation');
 			addCheckBox('Distriqt Audio Recorder','distriqtAudioRecorder');
+			addCheckBox('Distriqt NativeWebView','distriqtNativeWebView');
 				
 			
 			////Permissions
