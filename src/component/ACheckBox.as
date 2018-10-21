@@ -33,6 +33,7 @@ package component
 		
 		public function set status(val:Boolean):void
 		{
+			var lastStatus:Boolean = getStatus();
 			if(val)
 			{
 				this.gotoAndStop(2);
@@ -41,9 +42,18 @@ package component
 			{
 				this.gotoAndStop(1);
 			}
+			if(lastStatus!=getStatus())
+			{
+				this.dispatchEvent(new Event(Event.CHANGE));
+			}
 		}
 		
 		public function get status():Boolean
+		{
+			return getStatus();
+		}
+		
+		private function getStatus():Boolean
 		{
 			if(this.currentFrame==0)
 			{
