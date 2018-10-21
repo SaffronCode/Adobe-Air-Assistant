@@ -10,6 +10,7 @@
 	
 	import flash.desktop.ClipboardFormats;
 	import flash.desktop.NativeApplication;
+	import flash.desktop.NativeDragManager;
 	import flash.display.*;
 	import flash.events.*;
 	import flash.events.MouseEvent;
@@ -20,7 +21,6 @@
 	import flash.utils.setTimeout;
 	
 	import popForm.*;
-	import flash.desktop.NativeDragManager;
 
 ;
 
@@ -336,8 +336,11 @@
 				if(check.status)
 					milkman_push.status = false ; 
 			});
-			addCheckBox('Distriqt Share','distriqtShare');
-			addCheckBox('Distriqt PDF Reader','distriqtPdf');
+			addCheckBox('Distriqt Share','distriqtShare',function(check:ACheckBox){
+				addPDFReader.useSecondAndroid = check.status ;
+				Alert.show("addPDFReader.useSecondAndroid : "+addPDFReader.useSecondAndroid);
+			});
+			var addPDFReader:ACheckBox = addCheckBox('Distriqt PDF Reader','distriqtPdf');
 			addCheckBox('Distriqt Media Player','distriqtMediaPlayer');
 			addCheckBox('Flashvisions Video Gallery','flashvisionsVideoGallery');
 			addCheckBox('Distriqt Scanner','distriqtScanner');
@@ -459,9 +462,16 @@
 			}
 		}
 		
-		private function addDefaultManifestFrom(folder:File):void
+		private function addDefaultManifestFrom(folder:File,useSecondModelForAndroid:Boolean = false):void
 		{
-			manifestGenerate.addAndroidPermission(TextFile.load(folder.resolvePath("android_manifest.xml")));
+			if(useSecondModelForAndroid)
+			{
+				Alert.show("The second manifest for android");
+				manifestGenerate.addAndroidPermission(TextFile.load(folder.resolvePath("android_manifest2.xml")));
+			}
+			else
+				manifestGenerate.addAndroidPermission(TextFile.load(folder.resolvePath("android_manifest.xml")));
+			
 			manifestGenerate.addIosEntitlements(TextFile.load(folder.resolvePath("ios_Entitlements.xml")));
 			manifestGenerate.addInfoAdditions(TextFile.load(folder.resolvePath("ios_infoAdditions.xml")));
 			manifestGenerate.addExtension(TextFile.load(folder.resolvePath("extension.xml")));
@@ -470,6 +480,10 @@
 		private function checkIfExistsBefor(folder:File):Boolean
 		{
 			var con1:Boolean = manifestGenerate.doAndroidPermissionHave(TextFile.load(folder.resolvePath("android_manifest.xml")));
+			if(con1 == false && folder.resolvePath("android_manifest2.xml").exists)
+			{
+				con1 = manifestGenerate.doAndroidPermissionHave(TextFile.load(folder.resolvePath("android_manifest2.xml")));
+			}
 			var con2:Boolean = manifestGenerate.doIosEntitlementsHave(TextFile.load(folder.resolvePath("ios_Entitlements.xml")));
 			var con3:Boolean = manifestGenerate.doInfoAdditionsHave(TextFile.load(folder.resolvePath("ios_infoAdditions.xml"))); 
 			return con1 && con2 && con3 ;
@@ -478,6 +492,7 @@
 		private function removeDefaultManifestFrom(folder:File):void
 		{
 			manifestGenerate.removeAndroidPermission(TextFile.load(folder.resolvePath("android_manifest.xml")));
+			manifestGenerate.removeAndroidPermission(TextFile.load(folder.resolvePath("android_manifest2.xml")));
 			manifestGenerate.removeIosEntitlements(TextFile.load(folder.resolvePath("ios_Entitlements.xml")));
 			manifestGenerate.removeInfoAdditions(TextFile.load(folder.resolvePath("ios_infoAdditions.xml")));
 			manifestGenerate.removeExtension(TextFile.load(folder.resolvePath("extension.xml")));
@@ -514,7 +529,7 @@
 				nativeFolder = xmlFolder.resolvePath(checkList[i].folderName);
 				if(checkList[i].status)
 				{
-					addDefaultManifestFrom(nativeFolder);
+					addDefaultManifestFrom(nativeFolder,checkList[i].useSecondAndroid);
 				}
 			}
 			

@@ -101,6 +101,8 @@
 		/**It will replace APPLICATION_PACKAGE with the ap id*/
 		public function remove(AndroidPermissionXMLString:String):void
 		{
+			if(AndroidPermissionXMLString=='')
+				return ;
 			AndroidPermissionXMLString = AndroidPermissionXMLString.replace(/APPLICATION_PACKAGE/gi,appId);
 			AndroidPermissionXMLString = AndroidPermissionXMLString.replace(/APPLICATION_ID/gi,appId);
 			AndroidPermissionXMLString = AndroidPermissionXMLString.replace(/APPLICATION_LAUNCHER_ID/g,URIScheme);

@@ -15,6 +15,8 @@ package component
 		
 		private var _status:Boolean ;
 		
+		public var useSecondAndroid:Boolean = false ;
+		
 		public function ACheckBox()
 		{
 			super();

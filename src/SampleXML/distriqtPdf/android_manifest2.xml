@@ -1,0 +1,8 @@
+<manifest android:installLocation="auto">
+	<uses-permission android:name="android.permission.INTERNET"/>
+    
+	<application>
+		<activity android:name="com.distriqt.extension.pdfreader.pdfview.activities.OpenPDFActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+			
+	</application>
+</manifest>
