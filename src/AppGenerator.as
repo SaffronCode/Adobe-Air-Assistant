@@ -338,7 +338,7 @@
 			});
 			addCheckBox('Distriqt Share','distriqtShare',function(check:ACheckBox){
 				addPDFReader.useSecondAndroid = check.status ;
-				Alert.show("addPDFReader.useSecondAndroid : "+addPDFReader.useSecondAndroid);
+				//Alert.show("addPDFReader.useSecondAndroid : "+addPDFReader.useSecondAndroid);
 			});
 			var addPDFReader:ACheckBox = addCheckBox('Distriqt PDF Reader','distriqtPdf');
 			addCheckBox('Distriqt Media Player','distriqtMediaPlayer');
@@ -466,7 +466,7 @@
 		{
 			if(useSecondModelForAndroid)
 			{
-				Alert.show("The second manifest for android");
+				//Alert.show("The second manifest for android");
 				manifestGenerate.addAndroidPermission(TextFile.load(folder.resolvePath("android_manifest2.xml")));
 			}
 			else
