@@ -345,6 +345,7 @@
 			addCheckBox('Distriqt Location','distriqtLocation');
 			addCheckBox('Distriqt Audio Recorder','distriqtAudioRecorder');
 			addCheckBox('Distriqt NativeWebView','distriqtNativeWebView');
+			addCheckBox('Distriqt Native Map','distriqtNativeMap');
 				
 			
 			////Permissions
