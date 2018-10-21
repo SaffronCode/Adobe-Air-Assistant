@@ -467,6 +467,20 @@
 			}*/
 		}
 		
+		public function haveExtension(extensionListXMLList:String):Boolean
+		{
+			var extensionListXML:XMLList = new XMLList(extensionListXMLList);
+			for(var i:int = 0 ; i<extensionListXML.length() ; i++)
+			{
+				var foundedIndex:int = extensionsList.indexOf(extensionListXML[i].toString()) ; 
+				if(foundedIndex==-1)
+				{
+					return false ;
+				}
+			}
+			return true ;
+		}
+		
 		/**It will load the project id and team id from the provision and returns true if no problem occured.*/
 		public function addMobileProvission(mobileProvissionString:ByteArray):Boolean
 		{

@@ -485,8 +485,12 @@
 				con1 = manifestGenerate.doAndroidPermissionHave(TextFile.load(folder.resolvePath("android_manifest2.xml")));
 			}
 			var con2:Boolean = manifestGenerate.doIosEntitlementsHave(TextFile.load(folder.resolvePath("ios_Entitlements.xml")));
-			var con3:Boolean = manifestGenerate.doInfoAdditionsHave(TextFile.load(folder.resolvePath("ios_infoAdditions.xml"))); 
-			return con1 && con2 && con3 ;
+			var con3:Boolean = manifestGenerate.doInfoAdditionsHave(TextFile.load(folder.resolvePath("ios_infoAdditions.xml")));
+			if(con1 && con2 && con3)
+			{
+				return manifestGenerate.haveExtension(TextFile.load(folder.resolvePath("extension.xml")));
+			}
+			return false ;
 		}
 		
 		private function removeDefaultManifestFrom(folder:File):void
