@@ -1,4 +1,4 @@
-
-	
-    <extensionID>com.distriqt.Core</extensionID>
-    <extensionID>com.distriqt.MediaPlayer</extensionID>
+<extensionID>com.distriqt.MediaPlayer</extensionID>
+<extensionID>com.distriqt.Core</extensionID>
+<extensionID>com.distriqt.androidsupport.V4</extensionID>
+<extensionID>com.distriqt.androidsupport.AppCompatV7</extensionID>

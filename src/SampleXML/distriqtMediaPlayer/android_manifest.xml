@@ -2,7 +2,9 @@
 	<uses-permission android:name="android.permission.INTERNET"/>
 	
 	<application android:hardwareAccelerated="true">
-				
+
+		<service android:name="com.distriqt.extension.mediaplayer.audio.AudioPlayerService" android:enabled="true" android:exported="true"></service>
+
 	</application>
 
 </manifest>
