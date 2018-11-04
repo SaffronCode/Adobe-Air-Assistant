@@ -374,6 +374,10 @@
 			permWakeMC.setUp(false,'Prevent Sleep','wakelock');
 			checkList.push(permWakeMC);
 			
+			var permSaveMC:ACheckBox = Obj.get("write_file_mc",this);
+			permSaveMC.setUp(false,'Save File Access','saveFile');
+			checkList.push(permSaveMC);
+			
 			clearMC.addEventListener(MouseEvent.CLICK,resetEarlierPermissions);
 			
 			updateInformations();
