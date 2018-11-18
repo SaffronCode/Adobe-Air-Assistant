@@ -1,4 +1,4 @@
-# 1.Air-App Icon Generator
+# 1.Adobe Air Assist
 
 <p  align="center"><a href="https://github.com/SaffronCode/Adobe-Air-Assistant/raw/master/build/AppGenerator.air"><img src=https://github.com/SaffronCode/Adobe-Air-Assistant/blob/master/src/AppIconsForPublish/128.png?raw=true"/><br>Download Adobe Air Assist now!</a></p>
 
