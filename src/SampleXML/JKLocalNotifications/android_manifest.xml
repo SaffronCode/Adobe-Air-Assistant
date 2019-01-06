@@ -1,0 +1,20 @@
+<manifest android:installLocation="auto">
+	<uses-sdk android:minSdkVersion="16" />
+	<uses-permission android:name="android.permission.VIBRATE"/>
+	<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+	<application android:name="com.juankpro.ane.localnotif.Application">
+	  <service android:name="com.juankpro.ane.localnotif.LocalNotificationIntentService"/>
+	  <receiver android:name="com.juankpro.ane.localnotif.AlarmIntentService" />
+	  <receiver android:name="com.juankpro.ane.localnotif.AlarmRestoreOnBoot" >
+		<intent-filter>
+		  <action android:name="android.intent.action.BOOT_COMPLETED" />
+		</intent-filter>
+	  </receiver>
+	  <receiver android:name="com.juankpro.ane.localnotif.TextInputActionIntentService" />
+	  <provider
+		android:name="com.juankpro.ane.localnotif.NotificationSoundProvider"
+		android:authorities="<package_name>.notification_sound_provider"
+		android:enabled="true"
+		android:exported="true"/>
+	</application>
+</manifest>
