@@ -1,6 +1,6 @@
 # 1.Adobe Air Assist
 
-<p  align="center"><a href="https://github.com/SaffronCode/Adobe-Air-Assistant/raw/master/build/AppGenerator.air"><img src=https://github.com/SaffronCode/Adobe-Air-Assistant/blob/master/src/AppIconsForPublish/128.png?raw=true"/><br>Download Adobe Air Assist now!</a></p>
+<p  align="center"><a href="https://github.com/SaffronCode/Adobe-Air-Assistant/raw/master/build/AppGenerator.air"><img src=https://github.com/SaffronCode/Adobe-Air-Assistant/blob/master/src/AppIconsForPublish/128.png?raw=true"/><br>Download Adobe Air Assist now!</a><br/><a href="https://get.adobe.com/air/">(You need Adobe Air to run)</a></p>
 
 Do you need a help to update your app.xml file for your Adobe Air projects? Is it to complicated to insert your new manifest xml to your current application? Is it hard to insert ane's manifests to your app.xml without destruction?
 
