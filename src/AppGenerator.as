@@ -350,6 +350,7 @@
 			addCheckBox('Distriqt NativeWebView','distriqtNativeWebView');
 			addCheckBox('Distriqt Native Map','distriqtNativeMap');
 			addCheckBox('JK Local Notifications','JKLocalNotifications');
+			addCheckBox('SystemProperties (mateusz)','SystemProperties');
 				
 			
 			////Permissions
