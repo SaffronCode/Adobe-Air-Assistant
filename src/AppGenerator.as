@@ -386,6 +386,7 @@
 			
 			
 			NativeDragManager.acceptDragDrop(manifestLoaderMC);
+			NativeDragManager.acceptDragDrop(loadMobileProvisionMC);
 			this.addEventListener(NativeDragEvent.NATIVE_DRAG_ENTER, onDragged);
 		}
 		
@@ -396,8 +397,12 @@
 			var arrPath:Array = currentFile.name.split('.');
 			var type:String = arrPath[arrPath.length-1];
 			if (!currentFile.isDirectory && (type == 'xml')) {
-				NativeDragManager.acceptDragDrop(manifestLoaderMC);
+				NativeDragManager.acceptDragDrop(this);
 				this.addEventListener(NativeDragEvent.NATIVE_DRAG_DROP, onDropped);
+			}
+			else if (!currentFile.isDirectory && (type == 'mobileprovision')) {
+				NativeDragManager.acceptDragDrop(this);
+				this.addEventListener(NativeDragEvent.NATIVE_DRAG_DROP, onDroppedMobileProvision);
 			}
 		}
 		
@@ -405,6 +410,12 @@
 		{
 			this.removeEventListener(NativeDragEvent.NATIVE_DRAG_DROP, onDropped);
 			loadThisManifestXML(currentFile);
+		}
+		
+		private function onDroppedMobileProvision(event:NativeDragEvent):void
+		{
+			this.removeEventListener(NativeDragEvent.NATIVE_DRAG_DROP, onDroppedMobileProvision);
+			mobileProvissionSelected(currentFile);
 		}
 		
 		
@@ -453,7 +464,9 @@
 		private function loadMobileProvission(e:MouseEvent):void
 		{
 			FileManager.browse(mobileProvissionSelected,["*.mobileprovision"],"Select your mobile provission");
-			function mobileProvissionSelected(fil:File):void
+		}
+		
+			private function mobileProvissionSelected(fil:File):void
 			{
 				var status:Boolean = manifestGenerate.addMobileProvission(FileManager.loadFile(fil));
 				if(status)
@@ -466,7 +479,6 @@
 				
 				updateInformations();
 			}
-		}
 		
 		private function addDefaultManifestFrom(folder:File,useSecondModelForAndroid:Boolean = false):void
 		{
