@@ -329,12 +329,26 @@
 			var milkman_push:ACheckBox = 
 				addCheckBox('Milkman Easy Push','MilkmanNotification',function(check:ACheckBox){
 				if(check.status)
-					distriqt_push.status = false ; 
+				{
+					distriqt_onesignal.status = false ;
+					distriqt_firebase.status = false ;
+				}
 			});
-			var distriqt_push:ACheckBox = 
-				addCheckBox('Distriqt Push Notification','distriqtNotification',function(check:ACheckBox){
+			var distriqt_onesignal:ACheckBox = 
+				addCheckBox('Distriqt OneSignal','distriqtNotification',function(check:ACheckBox){
 				if(check.status)
+				{
 					milkman_push.status = false ; 
+					distriqt_firebase.status = false ;
+				}
+			});
+			var distriqt_firebase:ACheckBox = 
+				addCheckBox('Distriqt Firebase Notif','distriqtNotificationFirebase',function(check:ACheckBox){
+				if(check.status)
+				{
+					milkman_push.status = false ;
+					distriqt_onesignal.status = false ;
+				}
 			});
 			addCheckBox('Distriqt Share','distriqtShare',function(check:ACheckBox){
 				addPDFReader.useSecondAndroid = check.status ;
