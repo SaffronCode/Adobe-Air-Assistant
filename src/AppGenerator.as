@@ -326,7 +326,7 @@
 			
 			
 			
-			addCheckBox('Distriqt Camera UI','distriqtCameraUI')
+			addCheckBox('Distriqt CameraUI','distriqtCameraUI')
 				.setInfo("https://airnativeextensions.com/extension/com.distriqt.CameraUI")
 				.setWiki("https://distriqt.github.io/ANE-CameraUI/");
 			var milkman_push:ACheckBox = 
@@ -338,7 +338,7 @@
 				}
 			});
 			var distriqt_onesignal:ACheckBox = 
-				addCheckBox('Distriqt OneSignal','distriqtNotification',function(check:ACheckBox){
+				addCheckBox('Distriqt Push Notifications OneSignal','distriqtNotification',function(check:ACheckBox){
 				if(check.status)
 				{
 					milkman_push.status = false ; 
@@ -349,7 +349,7 @@
 				.setWiki("https://distriqt.github.io/ANE-PushNotifications/s.OneSignal");
 			
 			var distriqt_firebase:ACheckBox = 
-				addCheckBox('Distriqt Firebase Notif','distriqtNotificationFirebase',function(check:ACheckBox){
+				addCheckBox('Distriqt Push Notifications Firebase','distriqtNotificationFirebase',function(check:ACheckBox){
 				if(check.status)
 				{
 					milkman_push.status = false ;
@@ -364,7 +364,9 @@
 			})
 				.setInfo("https://airnativeextensions.com/extension/com.distriqt.Share")
 					.setWiki("https://distriqt.github.io/ANE-Share/");
-			var addPDFReader:ACheckBox = addCheckBox('Distriqt PDF Reader','distriqtPdf');
+			var addPDFReader:ACheckBox = addCheckBox('Distriqt PDF Reader','distriqtPdf')
+				.setInfo("https://airnativeextensions.com/extension/com.distriqt.PDFReader")
+				.setWiki("https://distriqt.github.io/ANE-PDFReader/");
 			addCheckBox('Distriqt Media Player','distriqtMediaPlayer')
 				.setInfo("https://airnativeextensions.com/extension/com.distriqt.MediaPlayer")
 				.setWiki("https://distriqt.github.io/ANE-MediaPlayer/");
@@ -379,10 +381,10 @@
 			addCheckBox('Distriqt Audio Recorder','distriqtAudioRecorder')
 				.setInfo("https://airnativeextensions.com/extension/com.distriqt.AudioRecorder")
 				.setWiki("https://distriqt.github.io/ANE-AudioRecorder/");
-			addCheckBox('Distriqt NativeWebView','distriqtNativeWebView')
+			addCheckBox('Distriqt Native WebView','distriqtNativeWebView')
 				.setInfo("https://airnativeextensions.com/extension/com.distriqt.NativeWebView")
 				.setWiki("https://distriqt.github.io/ANE-NativeWebView/");
-			addCheckBox('Distriqt Native Map','distriqtNativeMap')
+			addCheckBox('Distriqt Native Maps','distriqtNativeMap')
 				.setInfo("https://airnativeextensions.com/extension/com.distriqt.NativeMaps")
 				.setWiki("https://distriqt.github.io/ANE-NativeMaps/");
 			addCheckBox('JK Local Notifications','JKLocalNotifications');
