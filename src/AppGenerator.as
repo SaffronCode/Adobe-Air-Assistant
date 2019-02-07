@@ -92,13 +92,19 @@
 
 		private var manifestLoaderMC:MovieClip;
 		
+		private var searchMC:PopField ;
+
+		private var nativeCheckContainerMC:MovieClip;
+		
 		public function AppGenerator()
 		{
 			super();
 			
 			clearMC = Obj.get("clear_mc",this);
 			
-			var nativeCheckContainerMC:MovieClip = Obj.get("natives_mc",this);
+			searchMC = Obj.get("search_text",this);
+			
+			nativeCheckContainerMC = Obj.get("natives_mc",this);
 			var nativeContainerBackMC:MovieClip = Obj.get("back_mc",nativeCheckContainerMC);
 			nativeCheckContainerMC.graphics.beginFill(0,0);
 			nativeCheckContainerMC.graphics.drawRect(0,0,nativeContainerBackMC.width,nativeContainerBackMC.height+300);
@@ -289,15 +295,10 @@
 			function addCheckBox(checkBoxName:String,manifestDirectoryName:String,onTrigered:Function=null,addItToList:Boolean=true,defaultStatus:Boolean=false):ACheckBox
 			{
 				var checkBox:ACheckBox = new checkBoxClass();
-				checkBox.x = (nativeCheckContainerMC.width-checkBox.width)/2;
-				checkBox.y = checkBoxY ;
-				if(addItToList)
-				{
-					checkBoxY += checkBox.height ;
-					nativeCheckContainerMC.addChild(checkBox);
-				}
+				
 				checkBox.setUp(defaultStatus,checkBoxName,manifestDirectoryName);
 				checkList.push(checkBox);
+				checkBox.addItToList = addItToList ;
 				
 				if(onTrigered!=null)
 				{
@@ -360,7 +361,9 @@
 			addCheckBox('Distriqt Share','distriqtShare',function(check:ACheckBox){
 				addPDFReader.useSecondAndroid = check.status ;
 				//Alert.show("addPDFReader.useSecondAndroid : "+addPDFReader.useSecondAndroid);
-			});
+			})
+				.setInfo("https://airnativeextensions.com/extension/com.distriqt.Share")
+					.setWiki("https://distriqt.github.io/ANE-Share/");
 			var addPDFReader:ACheckBox = addCheckBox('Distriqt PDF Reader','distriqtPdf');
 			addCheckBox('Distriqt Media Player','distriqtMediaPlayer')
 				.setInfo("https://airnativeextensions.com/extension/com.distriqt.MediaPlayer")
@@ -421,6 +424,52 @@
 			NativeDragManager.acceptDragDrop(manifestLoaderMC);
 			NativeDragManager.acceptDragDrop(loadMobileProvisionMC);
 			this.addEventListener(NativeDragEvent.NATIVE_DRAG_ENTER, onDragged);
+			
+			searchMC.setUp('Search ANEs:','',null,false,true,false,1,1,1,0,null,false,false,null,null,true,false,false);
+			searchMC.addEventListener(Event.RENDER,updateANEList);
+			
+			//Order items by their priorities
+			checkList.sort(function(a:ACheckBox,b:ACheckBox){
+				if(a.getPriority()<b.getPriority())
+				{
+					return 1
+				}
+				else if(a.getPriority()>b.getPriority())
+				{
+					return -1 ;
+				}
+				return 0 ;
+			})
+			
+			updateANEList();
+		}
+		
+		protected function updateANEList(event:Event=null):void
+		{
+			trace(searchMC.text);
+			var checkBoxY:Number = 20 ;
+			
+			
+			for(var i:int = 0 ; i<checkList.length ; i++)
+			{
+				var checkBox:ACheckBox = checkList[i] ;
+				if(checkBox.addItToList)
+				{
+					if( searchMC.text=='' || checkBox.match(searchMC.text))
+					{
+						checkBox.x = (nativeCheckContainerMC.width-checkBox.width)/2;
+						checkBox.y = checkBoxY ;
+						checkBoxY += checkBox.height ;
+						nativeCheckContainerMC.addChild(checkBox);
+						checkBox.visible = true ;
+					}
+					else
+					{
+						checkBox.visible = false ;
+					}
+				}
+			}
+				
 		}
 		
 		protected function onDragged(event:NativeDragEvent):void

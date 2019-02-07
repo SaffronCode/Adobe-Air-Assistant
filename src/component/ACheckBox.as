@@ -1,13 +1,19 @@
-package component
+﻿package component
 	//component.ACheckBox
 {
+	import animation.Anim_Frame_Controller;
+	
 	import appManager.displayContentElemets.TitleText;
+	
+	import dataManager.GlobalStorage;
 	
 	import flash.display.MovieClip;
 	import flash.events.Event;
 	import flash.events.MouseEvent;
 	import flash.net.URLRequest;
 	import flash.net.navigateToURL;
+	
+	import spark.components.Label;
 
 	public class ACheckBox extends MovieClip
 	{
@@ -27,7 +33,12 @@ package component
 		
 		private var titleTFX0:Number ;
 		
-		private var wikiMC:MovieClip,infoMC:MovieClip ;
+		private var wikiMC:MovieClip,infoMC:MovieClip,infoContainerMC:MovieClip,
+					infoContainerAnim:Anim_Frame_Controller;
+					
+		/**Make it be able to add to the list of ANEs*/
+		public var addItToList:Boolean;
+		private var myLabel:String;
 		
 		public function ACheckBox()
 		{
@@ -36,20 +47,26 @@ package component
 			distriqtMC = Obj.get("distriqt_mc",this);
 			if(distriqtMC)
 				distriqtMC.visible = false ;
-			
-			wikiMC = Obj.get("help_mc",this);
-			if(wikiMC)
+			infoContainerMC = Obj.get("info_mc",this);
+			if(infoContainerMC)
 			{
-				wikiMC.buttonMode = true ;
-				wikiMC.visible = false ;
-				wikiMC.addEventListener(MouseEvent.CLICK,openHelp);
-			}
-			infoMC = Obj.get("info_mc",this);
-			if(infoMC)
-			{
+				infoContainerAnim = new Anim_Frame_Controller(infoContainerMC,0,false);
+				infoMC = Obj.get("info_mc",infoContainerMC);
 				infoMC.buttonMode = true ;
 				infoMC.visible = false ;
 				infoMC.addEventListener(MouseEvent.CLICK,openInfo);
+				
+				infoContainerMC.stop();
+				infoContainerMC.addEventListener(MouseEvent.MOUSE_OVER,openInfoEffect);
+				infoContainerMC.addEventListener(MouseEvent.MOUSE_OUT,closeInfoEffect);
+				
+				wikiMC = Obj.get("help_mc",infoContainerMC);
+				if(wikiMC)
+				{
+					wikiMC.buttonMode = true ;
+					wikiMC.visible = false ;
+					wikiMC.addEventListener(MouseEvent.CLICK,openHelp);
+				}
 			}
 			
 			
@@ -60,12 +77,41 @@ package component
 			this.stop();
 		}
 		
+			protected function closeInfoEffect(event:MouseEvent):void
+			{
+				infoContainerAnim.gotoFrame(1);
+			}
+			
+			protected function openInfoEffect(event:MouseEvent):void
+			{
+				infoContainerAnim.gotoFrame(infoContainerAnim.totalFrames);
+			}
+		
 		/**Open the info page*/
 		protected function openInfo(event:MouseEvent):void
 		{
 			navigateToURL(new URLRequest(info));
 			event.stopImmediatePropagation();
 		}
+		
+		/**Returns item priority based on user click*/
+		public function getPriority():uint
+		{
+			return uint(GlobalStorage.load(myLabel));
+		}
+		
+		/**Increase priority*/
+		private function increasePriority():void
+		{
+			GlobalStorage.save(myLabel,getPriority()+1)
+		}
+		
+		
+		public function getLabel():String
+		{
+			return myLabel ;
+		}
+			
 		
 		/**Open the help page*/
 		protected function openHelp(event:MouseEvent):void
@@ -96,6 +142,10 @@ package component
 		{
 			this.gotoAndStop(((this.currentFrame-1)+1)%this.totalFrames+1);
 			this.dispatchEvent(new Event(Event.CHANGE));
+			if(getStatus())
+			{
+				increasePriority();
+			}
 		}
 		
 		public function set status(val:Boolean):void
@@ -103,6 +153,7 @@ package component
 			var lastStatus:Boolean = getStatus();
 			if(val)
 			{
+				increasePriority();
 				this.gotoAndStop(2);
 			}
 			else
@@ -136,6 +187,7 @@ package component
 		{
 			this.folderName = folderName ;
 			const distriqtName:String = "distriqt" ;
+			this.myLabel = label ;
 			if(distriqtMC!=null && label.toLowerCase().indexOf(distriqtName)!=-1)
 			{
 				label = label.substring(distriqtName.length);
@@ -158,6 +210,27 @@ package component
 			{
 				gotoAndStop(2);
 			}
+		}
+		
+		/**Returns true if the text can be found in its description*/
+		public function match(text:String):Boolean
+		{
+			text = text.replace(/\s{2,}/g,' ').toLowerCase();
+			var label:String = getLabel().toLowerCase() ;
+			var list:Array = text.split(' ');
+			var isFounded:* = null ;
+			for(var i:int = 0 ; i<list.length ; i++)
+			{
+				if(label.indexOf(list[i])!=-1)
+				{
+					isFounded = isFounded==null?true:isFounded&&true ;
+				}
+				else
+				{
+					isFounded = false ;
+				}
+			}
+			return isFounded;
 		}
 	}
 }
