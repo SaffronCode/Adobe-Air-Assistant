@@ -357,7 +357,7 @@
 			var addPDFReader:ACheckBox = addCheckBox('Distriqt PDF Reader','distriqtPdf');
 			addCheckBox('Distriqt Media Player','distriqtMediaPlayer');
 			addCheckBox('Flashvisions Video Gallery','flashvisionsVideoGallery');
-			addCheckBox('Distriqt Scanner','distriqtScanner');
+			addCheckBox('Distriqt Scanner','distriqtScanner').setInfo("https://airnativeextensions.com/extension/com.distriqt.Scanner").setWiki("https://distriqt.github.io/ANE-Scanner/");
 			addCheckBox('Default Manifests','baseXMLs',null,false,true);
 			addCheckBox('Distriqt Location','distriqtLocation');
 			addCheckBox('Distriqt Audio Recorder','distriqtAudioRecorder');
