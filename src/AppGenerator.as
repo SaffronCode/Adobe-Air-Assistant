@@ -427,7 +427,7 @@
 			NativeDragManager.acceptDragDrop(loadMobileProvisionMC);
 			this.addEventListener(NativeDragEvent.NATIVE_DRAG_ENTER, onDragged);
 			
-			searchMC.setUp('Search ANEs:','',null,false,true,false,1,1,1,0,null,false,false,null,null,true,false,false);
+			searchMC.setUp('Search:','',null,false,true,false,1,1,1,0,null,false,false,null,null,true,true,false);
 			searchMC.addEventListener(Event.RENDER,updateANEList);
 			
 			//Order items by their priorities
