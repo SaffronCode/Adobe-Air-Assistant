@@ -16,13 +16,13 @@
 	<text xml:lang="ja">Japanese App name goes here</text>
 	</name>
 -->
-<application xmlns="http://ns.adobe.com/air/application/29.0">
+<application xmlns="http://ns.adobe.com/air/application/30.0">
   <id>AppGenerator</id>
-  <versionNumber>1.25.0</versionNumber>
+  <versionNumber>1.26.0</versionNumber>
   <filename>AppGenerator</filename>
-  <description/>
+  <description>Adobe Air descriptor xml creator.</description>
   <name>AppGenerator</name>
-  <copyright/>
+  <copyright>SaffronCode</copyright>
   <initialWindow>
     <content>AppGenerator.swf</content>
     <systemChrome>none</systemChrome>
@@ -31,6 +31,9 @@
     <fullScreen>false</fullScreen>
     <aspectRatio>portrait</aspectRatio>
     <renderMode>auto</renderMode>
+    <maximizable>true</maximizable>
+    <minimizable>true</minimizable>
+    <resizable>true</resizable>
   </initialWindow>
   <icon>
     <image16x16>AppIconsForPublish/16.png</image16x16>
