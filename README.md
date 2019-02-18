@@ -24,4 +24,4 @@ To create Assets.car file you have to use XCode or <a href="http://www.applicati
 <p  align="center"><a href="https://github.com/SaffronCode/Adobe-Air-Assistant/raw/master/build/PostMan-JSON-Creator.exe"><img src="https://github.com/SaffronCode/Adobe-Air-Assistant/blob/master/jsnon-postman/AppIconsForPublish/128.png?raw=true" align="center"/><br>Download JSON-PostMan convertor</a></p>
 
 
-<p  align="center"><a href="http://saffroncodesdk.com/">SaffronCodeSDK.com</a>)</p>
+<p  align="center"><a href="http://saffroncodesdk.com/">SaffronCodeSDK.com</a></p>
