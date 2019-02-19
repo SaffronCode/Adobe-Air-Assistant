@@ -22,9 +22,9 @@ To create Assets.car file you have to use XCode or <a href="http://www.applicati
 
 <p  align="center">(If you need more ANEs to support, you can add your request by adding <a href="https://github.com/SaffronCode/Adobe-Air-Assistant/issues">new issue</a>)</p>
 
-<p  align="center"><a href="http://www.youtube.com/watch?feature=player_embedded&v=DCCWGeXQpPU
+<p  align="center"><a href="http://www.youtube.com/watch?feature=player_embedded&v=1j71PFebshs
 " target="_blank"><img src="https://images.techhive.com/images/article/2016/10/youtube-icon-100688846-large.jpg" 
-alt="Tutorial Video" width="150" border="10" /></a></p>
+alt="Tutorial Video" width="70" border="10" /></a></p>
 
 # 2.JSON to ActionScript - Postman to Saffron service convertor
 <p  align="center"><a href="https://github.com/SaffronCode/Adobe-Air-Assistant/raw/master/build/PostMan-JSON-Creator.exe"><img src="https://github.com/SaffronCode/Adobe-Air-Assistant/blob/master/jsnon-postman/AppIconsForPublish/128.png?raw=true" align="center"/><br>Download JSON-PostMan convertor</a></p>
