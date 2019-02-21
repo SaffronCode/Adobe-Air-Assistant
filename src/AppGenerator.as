@@ -405,6 +405,10 @@
 			addCheckBox('Distriqt Battery','distriqtBattery')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.Battery")
 				.setWiki("https://distriqt.github.io/ANE-Battery/");
+
+			addCheckBox('Distriqt Beacon','distriqtBeacon')
+			.setInfo("https://airnativeextensions.com/extension/com.distriqt.Beacon")
+				.setWiki("https://distriqt.github.io/ANE-Beacon/");
 				
 			
 			
