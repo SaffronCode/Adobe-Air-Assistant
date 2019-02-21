@@ -410,10 +410,13 @@
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.Beacon")
 				.setWiki("https://distriqt.github.io/ANE-Beacon/");
 				
-
 			addCheckBox('Distriqt Bluetooth','distriqtBluetooth')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.Bluetooth")
 				.setWiki("https://distriqt.github.io/ANE-Bluetooth/");
+				
+			addCheckBox('Distriqt Bluetooth LE','distriqtBluetoothLE')
+			.setInfo("https://airnativeextensions.com/extension/com.distriqt.BluetoothLE")
+				.setWiki("https://distriqt.github.io/ANE-BluetoothLE/");
 				
 			
 			

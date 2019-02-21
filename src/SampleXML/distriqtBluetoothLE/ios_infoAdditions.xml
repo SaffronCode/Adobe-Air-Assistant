@@ -1,0 +1,10 @@
+<!-- OTHER SETTINGS --> 
+
+<key>NSBluetoothPeripheralUsageDescription</key>
+<string>Some description of the bluetooth usage</string>
+
+<key>UIBackgroundModes</key>
+<array>
+	<string>bluetooth-central</string>
+	<string>bluetooth-peripheral</string>
+</array>
