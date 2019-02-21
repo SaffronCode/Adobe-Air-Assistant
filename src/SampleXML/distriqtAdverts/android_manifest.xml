@@ -1,0 +1,25 @@
+<manifest android:installLocation="auto">
+	
+	<!--Required. Used to access the Internet to make ad requests-->
+	<uses-permission android:name="android.permission.INTERNET"/>
+
+	<!--Optional. Used to check if an internet connection is available prior to making an ad request.-->
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+
+	<application>
+
+		<meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version"/>
+		
+		<activity
+			android:name="com.google.android.gms.common.api.GoogleApiActivity"
+			android:exported="false"
+			android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+		<activity 
+			android:name="com.google.android.gms.ads.AdActivity"
+			android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" 
+			android:theme="@android:style/Theme.Translucent" />
+			
+	</application>
+
+</manifest>

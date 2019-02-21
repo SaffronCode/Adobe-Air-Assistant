@@ -389,6 +389,10 @@
 				.setWiki("https://distriqt.github.io/ANE-NativeMaps/");
 			addCheckBox('JK Local Notifications','JKLocalNotifications');
 			addCheckBox('SystemProperties (mateusz)','SystemProperties');
+			
+			addCheckBox('Distriqt Adverts','distriqtAdverts')
+			.setInfo("https://airnativeextensions.com/extension/com.distriqt.Adverts")
+				.setWiki("https://distriqt.github.io/ANE-Adverts/");
 				
 			
 			////Permissions
