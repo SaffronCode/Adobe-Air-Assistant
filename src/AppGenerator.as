@@ -397,6 +397,10 @@
 			addCheckBox('Distriqt Application','distriqtApplication')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.Application")
 				.setWiki("https://distriqt.github.io/ANE-Application/");
+
+			addCheckBox('Distriqt Application Rater','distriqtApplicationRater')
+			.setInfo("https://airnativeextensions.com/extension/com.distriqt.ApplicationRater")
+				.setWiki("https://distriqt.github.io/ANE-ApplicationRater/");
 				
 			
 			
