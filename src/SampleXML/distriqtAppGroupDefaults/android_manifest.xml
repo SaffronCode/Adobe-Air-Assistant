@@ -1,0 +1,22 @@
+<manifest android:installLocation="auto">
+	
+	<meta-data android:name="app_group" android:value="[APPGROUP]" />
+	<meta-data android:name="app_authority" android:value="group.air.APPLICATION_ID.provider" />
+	<meta-data android:name="app_authority_matcher" android:value="group\\.(?:[a-z,1-9]{1,}\\.)*provider" />
+
+	<provider
+		android:name="com.distriqt.extension.appgroupdefaults.provider.SharedProvider"
+		android:authorities="group.air.APPLICATION_ID.provider"
+		android:exported="true" >
+	</provider>
+		
+	<receiver
+		android:name="com.distriqt.extension.appgroupdefaults.provider.SharedContentChangedReceiver"
+		android:enabled="true"
+		android:exported="true" >
+		<intent-filter>
+			<action android:name="[APPGROUP]"/>
+		</intent-filter>
+	</receiver>
+	
+</manifest>
