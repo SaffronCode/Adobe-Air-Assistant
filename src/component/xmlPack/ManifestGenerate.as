@@ -55,7 +55,7 @@
 		public var filename:String="Saffron";
 		/**This is the application name.*/
 		public var name:String ="Saffron";
-		public var copyright:String ="MTeam Co.";
+		public var copyright:String ="SaffronCode Co.";
 		
 		//initialWindow
 		public var content:String = "Saffrony.swf" ;
