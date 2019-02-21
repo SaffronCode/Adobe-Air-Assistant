@@ -51,6 +51,7 @@
 		/**It will replace APPLICATION_PACKAGE with the ap id*/
 		public function add(AndroidPermissionXMLString:String):void
 		{
+			AndroidPermissionXMLString = AndroidPermissionXMLString.replace(/YOUR_APPLICATION_PACKAGE/gi,appId);
 			AndroidPermissionXMLString = AndroidPermissionXMLString.replace(/APPLICATION_PACKAGE/gi,appId);
 			AndroidPermissionXMLString = AndroidPermissionXMLString.replace(/APPLICATION_ID/gi,appId);
 			AndroidPermissionXMLString = AndroidPermissionXMLString.replace(/APPLICATION_LAUNCHER_ID/g,URIScheme);
@@ -82,6 +83,7 @@
 			{
 				return true ;
 			}
+			AndroidPermissionXMLString = AndroidPermissionXMLString.replace(/YOUR_APPLICATION_PACKAGE/gi,appId);
 			AndroidPermissionXMLString = AndroidPermissionXMLString.replace(/APPLICATION_PACKAGE/gi,appId);
 			AndroidPermissionXMLString = AndroidPermissionXMLString.replace(/APPLICATION_ID/gi,appId);
 			AndroidPermissionXMLString = AndroidPermissionXMLString.replace(/APPLICATION_LAUNCHER_ID/g,URIScheme);
@@ -103,6 +105,7 @@
 		{
 			if(AndroidPermissionXMLString=='')
 				return ;
+			AndroidPermissionXMLString = AndroidPermissionXMLString.replace(/YOUR_APPLICATION_PACKAGE/gi,appId);
 			AndroidPermissionXMLString = AndroidPermissionXMLString.replace(/APPLICATION_PACKAGE/gi,appId);
 			AndroidPermissionXMLString = AndroidPermissionXMLString.replace(/APPLICATION_ID/gi,appId);
 			AndroidPermissionXMLString = AndroidPermissionXMLString.replace(/APPLICATION_LAUNCHER_ID/g,URIScheme);

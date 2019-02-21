@@ -393,7 +393,14 @@
 			addCheckBox('Distriqt Adverts','distriqtAdverts')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.Adverts")
 				.setWiki("https://distriqt.github.io/ANE-Adverts/");
+
+			addCheckBox('Distriqt Application','distriqtApplication')
+			.setInfo("https://airnativeextensions.com/extension/com.distriqt.Application")
+				.setWiki("https://distriqt.github.io/ANE-Application/");
 				
+			
+			
+			
 			//More setting needed to receive [APPGROUP] from user
 			/*addCheckBox('Distriqt AppGroup Defaults','distriqtAppGroupDefaults')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.AppGroupDefaults")
