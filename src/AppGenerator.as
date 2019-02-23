@@ -1,6 +1,27 @@
 ﻿package
 {
-	import component.*;
+	import flash.desktop.ClipboardFormats;
+	import flash.desktop.NativeApplication;
+	import flash.desktop.NativeDragManager;
+	import flash.display.MovieClip;
+	import flash.display.Sprite;
+	import flash.events.Event;
+	import flash.events.IOErrorEvent;
+	import flash.events.MouseEvent;
+	import flash.events.NativeDragEvent;
+	import flash.events.ProgressEvent;
+	import flash.filesystem.File;
+	import flash.geom.Rectangle;
+	import flash.net.URLLoader;
+	import flash.net.URLLoaderDataFormat;
+	import flash.net.URLRequest;
+	import flash.net.navigateToURL;
+	import flash.text.TextField;
+	import flash.utils.setTimeout;
+	
+	import component.ACheckBox;
+	import component.AppIconGenerator;
+	import component.WarningShow;
 	import component.xmlPack.ManifestGenerate;
 	
 	import contents.TextFile;
@@ -8,19 +29,8 @@
 	
 	import dynamicFrame.FrameGenerator;
 	
-	import flash.desktop.ClipboardFormats;
-	import flash.desktop.NativeApplication;
-	import flash.desktop.NativeDragManager;
-	import flash.display.*;
-	import flash.events.*;
-	import flash.events.MouseEvent;
-	import flash.filesystem.File;
-	import flash.geom.*;
-	import flash.net.*;
-	import flash.text.*;
-	import flash.utils.setTimeout;
-	
-	import popForm.*;
+	import popForm.PopField;
+	import popForm.PopFieldBoolean;
 
 ;
 
@@ -96,9 +106,22 @@
 
 		private var nativeCheckContainerMC:MovieClip;
 		
+		private var warningMC:WarningShow ;
+		
+		private var warnButtonMC:MovieClip,
+		
+					lastWarningText:String ,
+					lastWarningFunction:Function ;
+		
 		public function AppGenerator()
 		{
 			super();
+			
+			warningMC = Obj.findThisClass(WarningShow,this);
+			warnButtonMC = Obj.get("warn_mc",this);
+			warnButtonMC.visible = false ;
+			warnButtonMC.buttonMode = true ;
+			warnButtonMC.addEventListener(MouseEvent.CLICK,openLastWarning);
 			
 			clearMC = Obj.get("clear_mc",this);
 			
@@ -418,6 +441,15 @@
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.BluetoothLE")
 				.setWiki("https://distriqt.github.io/ANE-BluetoothLE/");
 				
+			addCheckBox('Distriqt Branch','distriqtBranch',function(check:ACheckBox):void
+				{
+					if(check.enabled)
+					{
+						uriLauncher.status = true ;
+					}
+				}
+			).setInfo("https://airnativeextensions.com/extension/io.branch.nativeExtensions.Branch")
+				.setWiki("https://github.com/distriqt/ANE-BranchIO/wiki")
 			
 			
 			
@@ -654,7 +686,6 @@
 		private function exportSavedManifest(e:MouseEvent):void
 		{		
 			var nativeFolder:File ;
-			FileManager.browseToSave(saveFileThere,"Select a destination for your new Manifest file",'xml');
 			//trace("mainXMLFile : "+mainXMLFile.nativePath);
 			
 			for(var i:int = 0 ; i<checkList.length ; i++)
@@ -666,14 +697,22 @@
 				}
 			}
 			
+			var warningList:String = '' ;
+			
 			for(i = 0 ; i<checkList.length ; i++)
 			{
 				nativeFolder = xmlFolder.resolvePath(checkList[i].folderName);
 				if(checkList[i].status)
 				{
 					addDefaultManifestFrom(nativeFolder,checkList[i].useSecondAndroid);
+					var warningFile:File = nativeFolder.resolvePath('warning.txt');
+					if(warningFile.exists)
+					{
+						warningList += TextFile.load(warningFile)+'\n\n' ;
+					}
 				}
 			}
+			FileManager.browseToSave(saveFileThere,"Select a destination for your new Manifest file",'xml');
 			
 			var newManifest:String = manifestGenerate.toString();
 			//System.setClipboard(newManifest);
@@ -695,14 +734,47 @@
 			function saveFileThere(fileTarget:File):void
 			{
 				TextFile.save(fileTarget,newManifest);
+				
+				
+				var fileTarget2:File ;
+				
 				if(newDistManifest!=null)
 				{
 					var distName:String = fileTarget.name.split('.'+fileTarget.extension).join('');
-					fileTarget = fileTarget.parent.resolvePath(distName+'-dist.xml');
-					TextFile.save(fileTarget,newDistManifest);
+					fileTarget2 = fileTarget.parent.resolvePath(distName+'-dist.xml');
+					TextFile.save(fileTarget2,newDistManifest);
+				}
+				if(warningList!='')
+				{
+					warnButtonMC.visible = true ;
+					ShowWarning(warningList,
+						function(e=null){
+							fileTarget.openWithDefaultApplication();
+							if(fileTarget2)
+								fileTarget2.openWithDefaultApplication();
+						}
+					);
+				}
+				else
+				{
+					warnButtonMC.visible = false ;
 				}
 			}
 		}
+		
+		/**Show the warning message on the screen*/
+		private function ShowWarning(warningText:String,onClosed:Function=null):void
+		{
+			lastWarningText = warningText ;
+			lastWarningFunction = onClosed ;
+			openLastWarning(null);
+		}
+		
+			/**Open the warning window from the last warning text*/
+			private function openLastWarning(e:MouseEvent):void
+			{
+				warningMC.show(lastWarningText,lastWarningFunction);
+			}
 		
 		private function loadExistingManifest(e:MouseEvent):void
 		{

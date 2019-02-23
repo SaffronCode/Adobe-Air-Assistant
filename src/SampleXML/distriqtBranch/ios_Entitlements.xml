@@ -1,0 +1,5 @@
+<key>com.apple.developer.associated-domains</key>
+<array>
+    <string>applinks:ap8q.test-app.link</string>
+    <string>applinks:ap8q-alternate.test-app.link</string>
+</array>
