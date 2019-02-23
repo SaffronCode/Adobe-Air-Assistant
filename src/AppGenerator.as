@@ -483,6 +483,10 @@
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.Dialog")
 				.setWiki("https://distriqt.github.io/ANE-Dialog/");
 			
+			addCheckBox('Distriqt Exceptions','distriqtExceptions')
+			.setInfo("https://airnativeextensions.com/extension/com.distriqt.Exceptions")
+				.setWiki("https://distriqt.github.io/ANE-Dialog/");
+			
 			
 			
 			//More setting needed to receive [APPGROUP] from user
