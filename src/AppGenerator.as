@@ -458,6 +458,10 @@
 			addCheckBox('Distriqt Camera','distriqtCamera')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.Camera")
 				.setWiki("https://distriqt.github.io/ANE-Camera/");
+				
+			addCheckBox('Distriqt Camera Roll Extended','distriqtCameraRollExtended')
+			.setInfo("https://airnativeextensions.com/extension/com.distriqt.CameraRollExtended")
+				.setWiki("https://distriqt.github.io/ANE-CameraRollExtended/");
 			
 			
 			
