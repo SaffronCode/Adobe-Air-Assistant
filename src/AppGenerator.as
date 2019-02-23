@@ -490,6 +490,10 @@
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.ExpansionFiles")
 				.setWiki("https://distriqt.github.io/ANE-ExpansionFiles/");
 			
+			addCheckBox('Distriqt Facebook API','distriqtFacebookAPI')
+			.setInfo("https://airnativeextensions.com/extension/com.distriqt.FacebookAPI")
+				.setWiki("https://distriqt.github.io/ANE-FacebookAPI/");
+			
 			
 			
 			//More setting needed to receive [APPGROUP] from user

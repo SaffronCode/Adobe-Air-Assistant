@@ -1,0 +1,1 @@
+You’ll need to replace the instances of [YOUR_FACEBOOK_APP_ID] and [YOUR_FACEBOOK_APP_NAME] with the relevant settings from your Facebook app. (Don’t include the braces).

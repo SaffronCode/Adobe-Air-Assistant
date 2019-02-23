@@ -1,0 +1,58 @@
+<key>CFBundleURLTypes</key>
+<array>
+	<dict>
+		<key>CFBundleURLSchemes</key>
+		<array>
+			<!-- Don't remove the 'fb' prefix -->
+			<string>fb[YOUR_FACEBOOK_APP_ID]</string>
+		</array>
+	</dict>
+</array>
+<key>FacebookAppID</key>
+<string>[YOUR_FACEBOOK_APP_ID]</string>
+<key>FacebookDisplayName</key>
+<string>[YOUR_FACEBOOK_APP_NAME]</string>
+
+<key>NSAppTransportSecurity</key>
+<dict>
+	<key>NSExceptionDomains</key>
+	<dict>
+		<key>facebook.com</key>
+		<dict>
+			<key>NSIncludesSubdomains</key>
+			<true/>                
+			<key>NSThirdPartyExceptionRequiresForwardSecrecy</key>
+			<false/>
+		</dict>
+		<key>fbcdn.net</key>
+		<dict>
+			<key>NSIncludesSubdomains</key>
+			<true/>
+			<key>NSThirdPartyExceptionRequiresForwardSecrecy</key>
+			<false/>
+		</dict>
+		<key>akamaihd.net</key>
+		<dict>
+			<key>NSIncludesSubdomains</key>
+			<true/>
+			<key>NSThirdPartyExceptionRequiresForwardSecrecy</key>
+			<false/>
+		</dict>
+	</dict>
+</dict>
+
+<!-- Required to check availability and communicate with other Facebook applications -->
+<key>LSApplicationQueriesSchemes</key>
+<array>
+	<string>fb</string>
+	<string>fbapi</string>
+	<string>fb-messenger-share-api</string>
+	<string>fb-messenger-api</string>
+	<string>fbauth2</string>
+	<string>fbshareextension</string>
+</array>
+
+<key>NSPhotoLibraryUsageDescription</key>
+<string>Access to photo library is required to save images and videos.</string>
+<key>NSPhotoLibraryAddUsageDescription</key>
+<string>Access to photo library is required to save images and videos.</string>
