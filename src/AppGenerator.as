@@ -467,6 +467,10 @@
 			addCheckBox('Distriqt CloudStorage','distriqtCloudStorage')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.CloudStorage")
 				.setWiki("https://distriqt.github.io/ANE-CloudStorage/");
+				
+			addCheckBox('Distriqt Compass','distriqtCompass')
+			.setInfo("https://airnativeextensions.com/extension/com.distriqt.Compass")
+				.setWiki("https://distriqt.github.io/ANE-Compass/");
 			
 			
 			
