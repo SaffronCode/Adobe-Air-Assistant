@@ -450,6 +450,10 @@
 				}
 			).setInfo("https://airnativeextensions.com/extension/io.branch.nativeExtensions.Branch")
 				.setWiki("https://github.com/distriqt/ANE-BranchIO/wiki")
+				
+			addCheckBox('Distriqt Calendar','distriqtCalendar')
+			.setInfo("https://airnativeextensions.com/extension/com.distriqt.Calendar")
+				.setWiki("https://distriqt.github.io/ANE-Calendar/");
 			
 			
 			
