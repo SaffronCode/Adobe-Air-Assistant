@@ -479,6 +479,10 @@
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.DeviceMotion")
 				.setWiki("https://distriqt.github.io/ANE-DeviceMotion/");
 			
+			addCheckBox('Distriqt Dialog','distriqtDialog')
+			.setInfo("https://airnativeextensions.com/extension/com.distriqt.Dialog")
+				.setWiki("https://distriqt.github.io/ANE-Dialog/");
+			
 			
 			
 			//More setting needed to receive [APPGROUP] from user
