@@ -494,6 +494,10 @@
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.FacebookAPI")
 				.setWiki("https://distriqt.github.io/ANE-FacebookAPI/");
 			
+			addCheckBox('Distriqt Firebase','distriqtFirebase')
+			.setInfo("https://airnativeextensions.com/extension/com.distriqt.Firebase")
+				.setWiki("https://distriqt.github.io/ANE-Firebase/");
+			
 			
 			
 			//More setting needed to receive [APPGROUP] from user
