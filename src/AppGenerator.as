@@ -462,7 +462,6 @@
 			addCheckBox('Distriqt Camera Roll Extended','distriqtCameraRollExtended')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.CameraRollExtended")
 				.setWiki("https://distriqt.github.io/ANE-CameraRollExtended/");
-			
 				
 			addCheckBox('Distriqt CloudStorage','distriqtCloudStorage')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.CloudStorage")
@@ -471,6 +470,10 @@
 			addCheckBox('Distriqt Compass','distriqtCompass')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.Compass")
 				.setWiki("https://distriqt.github.io/ANE-Compass/");
+				
+			addCheckBox('Distriqt Contacts','distriqtContacts')
+			.setInfo("https://airnativeextensions.com/extension/com.distriqt.Contacts")
+				.setWiki("https://distriqt.github.io/ANE-Contacts/");
 			
 			
 			

@@ -1,0 +1,16 @@
+<manifest android:installLocation="auto">
+	<uses-permission android:name="android.permission.INTERNET"/>
+		
+	<uses-permission android:name="android.permission.GET_ACCOUNTS" />
+	<uses-permission android:name="android.permission.READ_CONTACTS" />
+	<uses-permission android:name="android.permission.WRITE_CONTACTS" />
+	
+	<!-- Optional: Needed if you are planning to save contact images -->
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+	
+	<application>
+		<activity android:name="com.distriqt.extension.contacts.activities.ContactPickerActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+		<activity android:name="com.distriqt.extension.contacts.permissions.AuthorisationActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+	</application>
+	
+</manifest>
