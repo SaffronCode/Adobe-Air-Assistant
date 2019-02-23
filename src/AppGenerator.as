@@ -454,6 +454,10 @@
 			addCheckBox('Distriqt Calendar','distriqtCalendar')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.Calendar")
 				.setWiki("https://distriqt.github.io/ANE-Calendar/");
+				
+			addCheckBox('Distriqt Camera','distriqtCamera')
+			.setInfo("https://airnativeextensions.com/extension/com.distriqt.Camera")
+				.setWiki("https://distriqt.github.io/ANE-Camera/");
 			
 			
 			

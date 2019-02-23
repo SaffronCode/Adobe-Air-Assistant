@@ -1,0 +1,6 @@
+<key>NSCameraUsageDescription</key>
+	<string>Require Camera</string>
+<key>NSPhotoLibraryUsageDescription</key>
+<string>Access to photo library is required to save images.</string>
+<key>NSPhotoLibraryAddUsageDescription</key>
+<string>Access to photo library is required to save images.</string>
