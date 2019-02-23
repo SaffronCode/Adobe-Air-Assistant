@@ -463,6 +463,11 @@
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.CameraRollExtended")
 				.setWiki("https://distriqt.github.io/ANE-CameraRollExtended/");
 			
+				
+			addCheckBox('Distriqt CloudStorage','distriqtCloudStorage')
+			.setInfo("https://airnativeextensions.com/extension/com.distriqt.CloudStorage")
+				.setWiki("https://distriqt.github.io/ANE-CloudStorage/");
+			
 			
 			
 			//More setting needed to receive [APPGROUP] from user

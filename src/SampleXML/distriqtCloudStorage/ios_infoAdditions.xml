@@ -1,0 +1,29 @@
+<key>UIDeviceFamily</key>
+<array>
+	<string>3</string>
+</array>
+<key>UILaunchImages</key>
+<array>
+	<dict>
+		<key>UILaunchImageSize</key>
+		<string>{1920, 1080}</string>
+		<key>UILaunchImageName</key>
+		<string>LaunchImage</string>
+		<key>UILaunchImageMinimumOSVersion</key>
+		<string>9.0</string>
+		<key>UILaunchImageOrientation</key>
+		<string>Landscape</string>
+	</dict>
+</array>
+<key>TVTopShelfImage</key>
+<dict>
+	<key>TVTopShelfPrimaryImage</key>
+	<string>Top Shelf Image</string>
+	<key>TVTopShelfPrimaryImageWide</key>
+	<string>Top Shelf Image Wide</string>
+</dict>
+<key>CFBundleIcons</key>
+<dict>
+	<key>CFBundlePrimaryIcon</key>
+	<string>App Icon</string>
+</dict>
