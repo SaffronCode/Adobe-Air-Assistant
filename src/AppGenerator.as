@@ -486,6 +486,10 @@
 			addCheckBox('Distriqt Exceptions','distriqtExceptions')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.Exceptions");
 			
+			addCheckBox('Distriqt Expansion Files','distriqtExpansionFiles')
+			.setInfo("https://airnativeextensions.com/extension/com.distriqt.ExpansionFiles")
+				.setWiki("https://distriqt.github.io/ANE-ExpansionFiles/");
+			
 			
 			
 			//More setting needed to receive [APPGROUP] from user
