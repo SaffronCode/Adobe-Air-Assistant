@@ -484,8 +484,7 @@
 				.setWiki("https://distriqt.github.io/ANE-Dialog/");
 			
 			addCheckBox('Distriqt Exceptions','distriqtExceptions')
-			.setInfo("https://airnativeextensions.com/extension/com.distriqt.Exceptions")
-				.setWiki("https://distriqt.github.io/ANE-Dialog/");
+			.setInfo("https://airnativeextensions.com/extension/com.distriqt.Exceptions");
 			
 			
 			
