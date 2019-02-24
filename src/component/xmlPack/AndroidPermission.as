@@ -12,6 +12,11 @@
 		private var appId:String ;
 		private var URIScheme:String ;
 		
+		
+		public var addAirPreset:Boolean = true ;
+		
+		private static const package_name_list:Array = ['YOUR_APPLICATION_PACKAGE','APPLICATION_PACKAGE','APPLICATION_ID'] ;
+		
 		public function AndroidPermission()
 		{
 			reset();
@@ -24,6 +29,7 @@
 		
 		public function setAppId(appId:String):void
 		{
+			reset();
 			this.appId = appId ;
 		}
 		
@@ -48,13 +54,22 @@
 			return stringFormat;
 		}
 		
+		/**This will replace appId thru the descriptor file*/
+		private function injectAppId(source:String):String
+		{
+			for(var i:int = 0 ; i<package_name_list.length ; i++)
+			{
+				source = source.replace(new RegExp(package_name_list[i],'gi'),createAppId());
+			}
+			source = source.replace(/APPLICATION_LAUNCHER_ID/g,URIScheme);
+			source = source.replace(/air\.air\./g,'air.');
+			return source ;
+		}
+		
 		/**It will replace APPLICATION_PACKAGE with the ap id*/
 		public function add(AndroidPermissionXMLString:String):void
 		{
-			AndroidPermissionXMLString = AndroidPermissionXMLString.replace(/YOUR_APPLICATION_PACKAGE/gi,appId);
-			AndroidPermissionXMLString = AndroidPermissionXMLString.replace(/APPLICATION_PACKAGE/gi,appId);
-			AndroidPermissionXMLString = AndroidPermissionXMLString.replace(/APPLICATION_ID/gi,appId);
-			AndroidPermissionXMLString = AndroidPermissionXMLString.replace(/APPLICATION_LAUNCHER_ID/g,URIScheme);
+			AndroidPermissionXMLString = injectAppId(AndroidPermissionXMLString);// AndroidPermissionXMLString.replace(/air\.air\./g,'air.');
 			var AndroidPermissionXML:XML ;
 			try
 			{
@@ -76,6 +91,12 @@
 			}
 		}
 		
+		/**Create application id*/
+		private function createAppId():String
+		{
+			return (addAirPreset?'air.':'')+appId ;
+		}
+		
 		/**Returns true if the permission was already in your XML file founded*/
 		public function dohave(AndroidPermissionXMLString:String):Boolean
 		{
@@ -83,10 +104,7 @@
 			{
 				return true ;
 			}
-			AndroidPermissionXMLString = AndroidPermissionXMLString.replace(/YOUR_APPLICATION_PACKAGE/gi,appId);
-			AndroidPermissionXMLString = AndroidPermissionXMLString.replace(/APPLICATION_PACKAGE/gi,appId);
-			AndroidPermissionXMLString = AndroidPermissionXMLString.replace(/APPLICATION_ID/gi,appId);
-			AndroidPermissionXMLString = AndroidPermissionXMLString.replace(/APPLICATION_LAUNCHER_ID/g,URIScheme);
+			AndroidPermissionXMLString = injectAppId(AndroidPermissionXMLString);//AndroidPermissionXMLString.replace(/APPLICATION_LAUNCHER_ID/g,URIScheme);
 			var AndroidPermissionXML:XML ;
 			try
 			{
@@ -105,10 +123,7 @@
 		{
 			if(AndroidPermissionXMLString=='')
 				return ;
-			AndroidPermissionXMLString = AndroidPermissionXMLString.replace(/YOUR_APPLICATION_PACKAGE/gi,appId);
-			AndroidPermissionXMLString = AndroidPermissionXMLString.replace(/APPLICATION_PACKAGE/gi,appId);
-			AndroidPermissionXMLString = AndroidPermissionXMLString.replace(/APPLICATION_ID/gi,appId);
-			AndroidPermissionXMLString = AndroidPermissionXMLString.replace(/APPLICATION_LAUNCHER_ID/g,URIScheme);
+			AndroidPermissionXMLString = injectAppId(AndroidPermissionXMLString);//AndroidPermissionXMLString.replace(/APPLICATION_LAUNCHER_ID/g,URIScheme);
 			var AndroidPermissionXML:XML ;
 			try
 			{
@@ -311,104 +326,10 @@
 		}
 		
 		
-		/**Returns true if both nodes have same name and same atribute names
-		private function updateIfTheyAreSame(node1:XML,node2:XML)
-		{
-			//TODO not completed
-			if(node1.name() == node2.name())
-			{
-				var atribs1:XMLList = node1.attributes();
-				var atribs2:XMLList = node2.attributes();
-				for(var i:int = 0 ; i<atribs1.length() ; i++)
-				{
-					var didIFoundThisAtrib:Boolean = false ;
-					for(var j:int = 0 ; j<atribs2.length() ; j++)
-					{
-						if(atribs2[j].name() == atribs1[i].name())
-						{
-							if(atribs2[j] == atribs1[i])
-							{
-								//The atribute data are same to. skip this
-								break;
-							}
-							else if(!isNaN(Number(atribs1[i])) && !isNaN(Number(atribs2[j])))
-							{
-								
-							}
-						}
-					}
-					if(!didIFoundThisAtrib)
-					{
-						return false ;
-					}
-				}
-				return true ;
-			}
-		}*/
-		
-			/**Returns true if both nodes have same name and same atribute names
-			private function updateIfTheyAreSame(node1:XML,node2:XML)
-			{
-				//TODO not completed
-				if(node1.name() == node2.name())
-				{
-					var atribs1:XMLList = node1.attributes();
-					var atribs2:XMLList = node2.attributes();
-					for(var i:int = 0 ; i<atribs1.length() ; i++)
-					{
-						var didIFoundThisAtrib:Boolean = false ;
-						for(var j:int = 0 ; j<atribs2.length() ; j++)
-						{
-							if(atribs2[j].name() == atribs1[i].name())
-							{
-								if(atribs2[j] == atribs1[i])
-								{
-									//The atribute data are same to. skip this
-									break;
-								}
-								else if(!isNaN(Number(atribs1[i])) && !isNaN(Number(atribs2[j])))
-								{
-									
-								}
-							}
-						}
-						if(!didIFoundThisAtrib)
-						{
-							return false ;
-						}
-					}
-					return true ;
-				}
-			}
-			
-			private function updateNode(mainNode:XML,secondNode:XML):void
-			{
-				//TODO
-			}*/
-		
-		/*private function insertNodeToXML(newList:XML, node:XML):void
-		{
-			var androidNS:Namespace = new Namespace('android',androidNameSpace);
-			//myXML.item.(@name==e.target.name).@full;
-			//<uses-permission android:name="com.oppo.launcher.permission.READ_SETTINGS" />
-			//trace("Can you fine one for me?? "+newList.child(new QName(androidNameSpace,'uses-permission')).toXMLString());
-			var nodeName:String = node.name();
-			trace("Node Name : "+node.name());
-			var nodeAtributes:XMLList = node.attributes();
-			for(var i:int = 0 ; i<nodeAtributes.length() ; i++)
-			{
-				var atribName:String = nodeAtributes[i].name() ;
-				trace("note atribs : "+nodeAtributes[i].name()+' > '+nodeAtributes[i]);
-				trace("Can you search for me??"+node.attribute(new QName(androidNameSpace,'name')));
-			}
-			trace("Can i get the atib directly?? "+node.@androidNS::name);
-			//trace("Can you fine one for me?? "+newList.child(new QName(androidNameSpace,'uses-permission')).attribute(new QName(androidNameSpace,'name'))[0].name());
-			//trace("newList : "+newList.toXMLString());
-			//trace("node : "+node.toXMLString());
-		}*/
 		
 		public function setAppScheme(URIScheme:String):void
 		{
+			reset();
 			this.URIScheme = URIScheme ;
 		}
 	}
