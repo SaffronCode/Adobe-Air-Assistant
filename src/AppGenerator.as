@@ -129,8 +129,8 @@
 			
 			nativeCheckContainerMC = Obj.get("natives_mc",this);
 			var nativeContainerBackMC:MovieClip = Obj.get("back_mc",nativeCheckContainerMC);
-			nativeCheckContainerMC.graphics.beginFill(0,0);
-			nativeCheckContainerMC.graphics.drawRect(0,0,nativeContainerBackMC.width,nativeContainerBackMC.height+300);
+			//nativeCheckContainerMC.graphics.beginFill(0,0);
+			//nativeCheckContainerMC.graphics.drawRect(0,0,nativeContainerBackMC.width,nativeContainerBackMC.height+300);
 			new ScrollMT(nativeCheckContainerMC,new Rectangle(nativeCheckContainerMC.x,nativeCheckContainerMC.y,nativeContainerBackMC.width,nativeContainerBackMC.height),null,true,false,true,false,false,0,null,true);
 			nativeContainerBackMC.visible = false ;
 			
@@ -582,7 +582,9 @@
 					}
 					else
 					{
+						checkBox.y = 0 ; 
 						checkBox.visible = false ;
+						//checkBox.alpha = 0.5 ;
 					}
 				}
 			}
