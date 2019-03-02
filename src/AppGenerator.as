@@ -510,6 +510,11 @@
 				.setWiki("https://distriqt.github.io/ANE-Flurry/");
 				
 			
+			addCheckBox('Distriqt Force Touch','distriqtForceTouch')
+			.setInfo("https://airnativeextensions.com/extension/com.distriqt.Flurry")
+				.setWiki("https://distriqt.github.io/ANE-Flurry/");
+				
+			
 			////Permissions
 			
 			
