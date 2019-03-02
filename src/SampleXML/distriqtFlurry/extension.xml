@@ -1,0 +1,4 @@
+<extensionID>com.distriqt.Flurry</extensionID>
+    <extensionID>com.distriqt.Core</extensionID>
+    <extensionID>com.distriqt.playservices.Base</extensionID>
+    <extensionID>com.distriqt.playservices.Analytics</extensionID>

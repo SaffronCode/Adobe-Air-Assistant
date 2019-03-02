@@ -1,0 +1,5 @@
+You should replace [APPGROUP] with your application group. This must be done in the meta-data tag and in the receiver. For example: group.com.distriqt.test
+<meta-data android:name="app_group" android:value="group.com.distriqt.test" />
+
+You also need to define an application authority, this must be different for each of your applications but must be matchable using the matcher. We suggest using the example above replacing [APPID] with your application id, for example an app_authority may be, group.com.distriqt.test.app1.provider as below:
+<meta-data android:name="app_authority" android:value="group.com.distriqt.test.app1.provider" />

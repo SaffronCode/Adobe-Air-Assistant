@@ -504,6 +504,10 @@
 			addCheckBox('Distriqt AppGroup Defaults','distriqtAppGroupDefaults')
 				.setInfo("https://airnativeextensions.com/extension/com.distriqt.AppGroupDefaults")
 				.setWiki("https://distriqt.github.io/ANE-AppGroupDefaults/");
+			
+			addCheckBox('Distriqt Flurry','distriqtFlurry')
+			.setInfo("https://airnativeextensions.com/extension/com.distriqt.Flurry")
+				.setWiki("https://distriqt.github.io/ANE-Flurry/");
 				
 			
 			////Permissions
