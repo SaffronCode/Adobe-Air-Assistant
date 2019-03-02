@@ -1,0 +1,8 @@
+    <extensionID>com.distriqt.GameServices</extensionID>
+    <extensionID>com.distriqt.Core</extensionID>
+    <extensionID>com.distriqt.androidsupport.V4</extensionID>
+    <extensionID>com.distriqt.androidsupport.AppCompatV7</extensionID>
+    <extensionID>com.distriqt.playservices.Base</extensionID>
+    <extensionID>com.distriqt.playservices.Drive</extensionID>
+    <extensionID>com.distriqt.playservices.Games</extensionID>
+    <extensionID>com.distriqt.playservices.Auth</extensionID>
