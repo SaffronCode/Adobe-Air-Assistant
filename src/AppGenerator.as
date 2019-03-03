@@ -517,11 +517,14 @@
 			addCheckBox('Distriqt Game Services','distriqtGameServices')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.Flurry")
 				.setWiki("https://distriqt.github.io/ANE-Flurry/");
-				
 			
 			addCheckBox('Distriqt Google Analytics','distriqtGoogleAnalytics')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.GoogleAnalytics")
 				.setWiki("https://distriqt.github.io/ANE-GoogleAnalytics/");
+			
+			addCheckBox('Distriqt Google Identity','distriqtGoogleIdentity')
+			.setInfo("https://airnativeextensions.com/extension/com.distriqt.GoogleIdentity")
+				.setWiki("https://distriqt.github.io/ANE-GoogleIdentity/");
 				
 			
 			////Permissions
