@@ -525,6 +525,10 @@
 			addCheckBox('Distriqt Google Identity','distriqtGoogleIdentity')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.GoogleIdentity")
 				.setWiki("https://distriqt.github.io/ANE-GoogleIdentity/");
+			
+			addCheckBox('Distriqt Google Plus','distriqtGooglePlus')
+			.setInfo("https://airnativeextensions.com/extension/com.distriqt.GooglePlus")
+				.setWiki("https://distriqt.github.io/ANE-GooglePlus/");
 				
 			
 			////Permissions

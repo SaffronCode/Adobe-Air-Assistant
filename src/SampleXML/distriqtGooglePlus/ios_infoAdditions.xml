@@ -1,0 +1,16 @@
+<key>UIDeviceFamily</key>
+	<array>
+		<string>1</string>
+	</array>
+	
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>URL_SCHEME</string>
+			</array>
+			<key>CFBundleURLName</key>
+			<string>URL_NAME</string>
+		</dict>
+	</array>
