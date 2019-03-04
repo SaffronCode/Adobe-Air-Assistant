@@ -607,6 +607,10 @@
 			addCheckBox('Distriqt WebP','distriqtWebP')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.WebP")
 				.setWiki("https://distriqt.github.io/ANE-WebP/");
+
+			addCheckBox('Distriqt Zip Utils','distriqtZipUtils')
+			.setInfo("https://airnativeextensions.com/extension/com.distriqt.ZipUtils")
+				.setWiki("https://distriqt.github.io/ANE-ZipUtils/");
 				
 			
 			////Permissions
