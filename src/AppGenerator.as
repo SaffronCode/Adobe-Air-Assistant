@@ -591,6 +591,10 @@
 			addCheckBox('Distriqt Permissions','distriqtPermissions')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.Permissions")
 				.setWiki("https://distriqt.github.io/ANE-Permissions/");
+			
+			addCheckBox('Distriqt System Gestures','distriqtSystemGestures')
+			.setInfo("https://airnativeextensions.com/extension/com.distriqt.SystemGestures")
+				.setWiki("https://distriqt.github.io/ANE-SystemGestures/");
 				
 			
 			////Permissions
