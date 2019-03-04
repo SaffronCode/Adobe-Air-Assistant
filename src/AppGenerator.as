@@ -542,6 +542,10 @@
 			addCheckBox('Distriqt IDFA','distriqtIDFA')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.IDFA")
 				.setWiki("https://distriqt.github.io/ANE-IDFA/");
+			
+			addCheckBox('Distriqt Image','distriqtImage')
+			.setInfo("https://airnativeextensions.com/extension/com.distriqt.Image")
+				.setWiki("https://distriqt.github.io/ANE-Image/");
 				
 			
 			////Permissions
