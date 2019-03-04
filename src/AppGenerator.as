@@ -558,6 +558,10 @@
 			addCheckBox('Distriqt Local Auth','distriqtLocalAuth')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.LocalAuth")
 				.setWiki("https://distriqt.github.io/ANE-LocalAuth/");
+			
+			addCheckBox('Distriqt Memory','distriqtMemory')
+			.setInfo("https://airnativeextensions.com/extension/com.distriqt.Memory")
+				.setWiki("https://github.com/distriqt/ANE-Memory");
 				
 			
 			////Permissions
