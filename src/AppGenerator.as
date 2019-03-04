@@ -566,6 +566,10 @@
 			addCheckBox('Distriqt Message','distriqtMessage')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.Message")
 				.setWiki("https://distriqt.github.io/ANE-Message/");
+			
+			addCheckBox('Distriqt Network Info','distriqtNetworkInfo')
+			.setInfo("https://airnativeextensions.com/extension/com.distriqt.NetworkInfo")
+				.setWiki("https://distriqt.github.io/ANE-NetworkInfo/");
 				
 			
 			////Permissions
