@@ -529,6 +529,10 @@
 			addCheckBox('Distriqt Google Plus','distriqtGooglePlus')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.GooglePlus")
 				.setWiki("https://distriqt.github.io/ANE-GooglePlus/");
+			
+			addCheckBox('Distriqt Google Tag Manager','distriqtGoogleTagManager')
+			.setInfo("https://airnativeextensions.com/extension/com.distriqt.GoogleTagManager")
+				.setWiki("https://distriqt.github.io/ANE-GoogleTagManager/");
 				
 			
 			////Permissions
