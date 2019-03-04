@@ -538,6 +538,10 @@
 			addCheckBox('Distriqt Gyroscope','distriqtGyroscope')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.Gyroscope")
 				.setWiki("https://distriqt.github.io/ANE-Gyroscope/");
+			
+			addCheckBox('Distriqt IDFA','distriqtIDFA')
+			.setInfo("https://airnativeextensions.com/extension/com.distriqt.IDFA")
+				.setWiki("https://distriqt.github.io/ANE-IDFA/");
 				
 			
 			////Permissions
