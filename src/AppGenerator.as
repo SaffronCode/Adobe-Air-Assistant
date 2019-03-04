@@ -583,6 +583,10 @@
 			addCheckBox('Distriqt Parse','distriqtParse')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.Parse")
 				.setWiki("https://distriqt.github.io/ANE-Parse/");
+			
+			addCheckBox('Distriqt PayPal SDK','distriqtPayPalSDK')
+			.setInfo("https://airnativeextensions.com/extension/com.distriqt.PayPalSDK")
+				.setWiki("https://distriqt.github.io/ANE-PayPalSDK/");
 				
 			
 			////Permissions
