@@ -580,6 +580,11 @@
 				.setWiki("https://distriqt.github.io/ANE-OCR/");
 				
 			
+			addCheckBox('Distriqt Parse','distriqtParse')
+			.setInfo("https://airnativeextensions.com/extension/com.distriqt.Parse")
+				.setWiki("https://distriqt.github.io/ANE-Parse/");
+				
+			
 			////Permissions
 			
 			
