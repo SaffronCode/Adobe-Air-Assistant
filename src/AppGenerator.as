@@ -599,6 +599,10 @@
 			addCheckBox('Distriqt System Vibration','distriqtVibration')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.Vibration")
 				.setWiki("https://distriqt.github.io/ANE-Vibration/");
+			
+			addCheckBox('Distriqt Volume','distriqtVolume')
+			.setInfo("https://airnativeextensions.com/extension/com.distriqt.Volume")
+				.setWiki("https://distriqt.github.io/ANE-Volume/");
 				
 			
 			////Permissions
