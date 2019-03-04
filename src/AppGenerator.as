@@ -603,6 +603,10 @@
 			addCheckBox('Distriqt Volume','distriqtVolume')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.Volume")
 				.setWiki("https://distriqt.github.io/ANE-Volume/");
+
+			addCheckBox('Distriqt WebP','distriqtWebP')
+			.setInfo("https://airnativeextensions.com/extension/com.distriqt.WebP")
+				.setWiki("https://distriqt.github.io/ANE-WebP/");
 				
 			
 			////Permissions
