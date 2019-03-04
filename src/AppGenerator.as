@@ -587,6 +587,10 @@
 			addCheckBox('Distriqt PayPal SDK','distriqtPayPalSDK')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.PayPalSDK")
 				.setWiki("https://distriqt.github.io/ANE-PayPalSDK/");
+			
+			addCheckBox('Distriqt Permissions','distriqtPermissions')
+			.setInfo("https://airnativeextensions.com/extension/com.distriqt.Permissions")
+				.setWiki("https://distriqt.github.io/ANE-Permissions/");
 				
 			
 			////Permissions

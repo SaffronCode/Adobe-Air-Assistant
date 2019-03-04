@@ -1,0 +1,15 @@
+<manifest android:installLocation="auto">
+	<uses-sdk android:minSdkVersion="14" android:targetSdkVersion="23"/>
+	<uses-permission android:name="android.permission.INTERNET"/>
+	   
+	<!-- PERMISSIONS -->
+	<!-- You should add your permissions here normally -->
+	<uses-permission android:name="android.permission.CAMERA" />
+	   
+	<application>
+		<activity
+			android:name="com.distriqt.extension.permissions.permissions.AuthorisationActivity" 
+			android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+	</application>
+    
+</manifest>
