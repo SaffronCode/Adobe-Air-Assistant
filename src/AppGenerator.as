@@ -595,6 +595,10 @@
 			addCheckBox('Distriqt System Gestures','distriqtSystemGestures')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.SystemGestures")
 				.setWiki("https://distriqt.github.io/ANE-SystemGestures/");
+			
+			addCheckBox('Distriqt System Vibration','distriqtVibration')
+			.setInfo("https://airnativeextensions.com/extension/com.distriqt.Vibration")
+				.setWiki("https://distriqt.github.io/ANE-Vibration/");
 				
 			
 			////Permissions
