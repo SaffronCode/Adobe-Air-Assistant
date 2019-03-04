@@ -562,6 +562,10 @@
 			addCheckBox('Distriqt Memory','distriqtMemory')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.Memory")
 				.setWiki("https://github.com/distriqt/ANE-Memory");
+			
+			addCheckBox('Distriqt Message','distriqtMessage')
+			.setInfo("https://airnativeextensions.com/extension/com.distriqt.Message")
+				.setWiki("https://distriqt.github.io/ANE-Message/");
 				
 			
 			////Permissions

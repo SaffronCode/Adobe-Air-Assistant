@@ -1,0 +1,33 @@
+<manifest android:installLocation="auto">
+	<uses-permission android:name="android.permission.INTERNET"/>
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+	
+	<uses-permission android:name="android.permission.SEND_SMS" /> 
+	<uses-permission android:name="android.permission.READ_SMS" /> 
+	<uses-permission android:name="android.permission.RECEIVE_SMS" />
+	
+	<application>
+
+		<provider
+			android:name="com.distriqt.extension.message.content.MessageFileProvider"
+			android:authorities="APPLICATION_ID.messagefileprovider"
+			android:grantUriPermissions="true"
+			android:exported="false">
+			<meta-data
+				android:name="android.support.FILE_PROVIDER_PATHS"
+				android:resource="@xml/distriqt_message_paths" />
+		</provider>
+
+	
+		<!-- TO RECEIVE SMS -->
+		<receiver android:name="com.distriqt.extension.message.receivers.MessageSMSReceiver" android:exported="true" > 
+			<intent-filter android:priority="1000"> 
+				<action android:name="android.provider.Telephony.SMS_RECEIVED" />
+			</intent-filter> 
+		</receiver>
+
+		<!-- PERMISSIONS -->
+		<activity android:name="com.distriqt.extension.message.permissions.AuthorisationActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+	</application>
+</manifest>
