@@ -574,6 +574,10 @@
 			addCheckBox('Distriqt NFC','distriqtNFC')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.NFC")
 				.setWiki("https://distriqt.github.io/ANE-NFC/");
+			
+			addCheckBox('Distriqt OCR','distriqtOCR')
+			.setInfo("https://airnativeextensions.com/extension/com.distriqt.OCR")
+				.setWiki("https://distriqt.github.io/ANE-OCR/");
 				
 			
 			////Permissions
