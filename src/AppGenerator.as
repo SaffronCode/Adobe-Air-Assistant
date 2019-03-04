@@ -550,6 +550,10 @@
 			addCheckBox('Distriqt InApp Billing','distriqtInAppBilling')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.InAppBilling")
 				.setWiki("https://distriqt.github.io/ANE-InAppBilling/");
+			
+			addCheckBox('Distriqt JobScheduler','distriqtJobScheduler')
+			.setInfo("https://airnativeextensions.com/extension/com.distriqt.JobScheduler")
+				.setWiki("https://github.com/distriqt/ANE-JobScheduler/wiki");
 				
 			
 			////Permissions
