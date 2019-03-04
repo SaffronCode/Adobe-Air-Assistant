@@ -1,0 +1,2 @@
+If you have a large application and are supporting Android 4.x then you will need to ensure you enable your application to correctly support MultiDex to allow the application to be broken up into smaller dex packages.
+This is enabled by default with recent releases of AIR (25+), except in the Android 4.x case where you need to change the manifest additions for the application tag to match the following and use the MultiDexApplication:

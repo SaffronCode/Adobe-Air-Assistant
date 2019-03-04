@@ -546,6 +546,10 @@
 			addCheckBox('Distriqt Image','distriqtImage')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.Image")
 				.setWiki("https://distriqt.github.io/ANE-Image/");
+			
+			addCheckBox('Distriqt InApp Billing','distriqtInAppBilling')
+			.setInfo("https://airnativeextensions.com/extension/com.distriqt.InAppBilling")
+				.setWiki("https://distriqt.github.io/ANE-InAppBilling/");
 				
 			
 			////Permissions

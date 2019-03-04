@@ -1,0 +1,19 @@
+<manifest android:installLocation="auto">
+	<uses-permission android:name="android.permission.INTERNET"/>
+	
+	<uses-permission android:name="com.android.vending.BILLING" />
+
+	<application android:name="android.support.multidex.MultiDexApplication">
+
+		<activity 
+			android:name="com.distriqt.extension.inappbilling.activities.ProductViewActivity" 
+			android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+		<activity
+			android:name="com.android.billingclient.api.ProxyBillingActivity"
+			android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+			android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+	</application>
+
+</manifest>
