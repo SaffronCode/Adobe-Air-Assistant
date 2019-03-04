@@ -554,6 +554,10 @@
 			addCheckBox('Distriqt JobScheduler','distriqtJobScheduler')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.JobScheduler")
 				.setWiki("https://github.com/distriqt/ANE-JobScheduler/wiki");
+			
+			addCheckBox('Distriqt Local Auth','distriqtLocalAuth')
+			.setInfo("https://airnativeextensions.com/extension/com.distriqt.LocalAuth")
+				.setWiki("https://distriqt.github.io/ANE-LocalAuth/");
 				
 			
 			////Permissions
