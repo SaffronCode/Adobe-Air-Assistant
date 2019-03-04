@@ -570,6 +570,10 @@
 			addCheckBox('Distriqt Network Info','distriqtNetworkInfo')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.NetworkInfo")
 				.setWiki("https://distriqt.github.io/ANE-NetworkInfo/");
+			
+			addCheckBox('Distriqt NFC','distriqtNFC')
+			.setInfo("https://airnativeextensions.com/extension/com.distriqt.NFC")
+				.setWiki("https://distriqt.github.io/ANE-NFC/");
 				
 			
 			////Permissions

@@ -1,0 +1,12 @@
+<manifest android:installLocation="auto" >
+	<uses-sdk android:minSdkVersion="19" />
+
+    <uses-permission android:name="android.permission.NFC" />
+
+    <!-- OPTIONAL -->
+	<uses-feature android:name="android.hardware.nfc" android:required="true" />
+    
+    <application>
+        <activity android:name="com.distriqt.extension.nfc.activities.NFCActionActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+    </application>
+</manifest>
