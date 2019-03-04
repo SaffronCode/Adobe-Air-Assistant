@@ -535,6 +535,11 @@
 				.setWiki("https://distriqt.github.io/ANE-GoogleTagManager/");
 				
 			
+			addCheckBox('Distriqt Gyroscope','distriqtGyroscope')
+			.setInfo("https://airnativeextensions.com/extension/com.distriqt.Gyroscope")
+				.setWiki("https://distriqt.github.io/ANE-Gyroscope/");
+				
+			
 			////Permissions
 			
 			
