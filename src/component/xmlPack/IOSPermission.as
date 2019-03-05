@@ -105,7 +105,7 @@
 		
 		public function setAppId(id:String):void
 		{
-			reset();
+			//reset();
 			this.appId = id ;			
 		}
 		
@@ -257,7 +257,7 @@
 		
 		public function setTeamId(teamId:String):void
 		{
-			reset();
+			//reset();
 			this.teamId = teamId ;
 		}
 		
@@ -268,7 +268,7 @@
 		
 		public function setAppScheme(URIScheme:String):void
 		{
-			reset();
+			//reset();
 			this.URIScheme = URIScheme ;
 		}
 	}

@@ -519,6 +519,8 @@
 				iOSPermission.setTeamId(teamId);
 				id = XMLFunctions.getValueOfKey('application-identifier',mobileProvission.dict[0].dict[0].children()) ;
 				id = id.split(teamId+'.').join('');
+				iOSPermission.reset();
+				androidPermission.reset();
 				iOSPermission.setAppId(id);
 				return true ;
 			}

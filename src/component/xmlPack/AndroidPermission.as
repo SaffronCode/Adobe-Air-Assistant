@@ -29,7 +29,7 @@
 		
 		public function setAppId(appId:String):void
 		{
-			reset();
+			//reset();
 			this.appId = appId ;
 		}
 		
@@ -329,7 +329,7 @@
 		
 		public function setAppScheme(URIScheme:String):void
 		{
-			reset();
+			//reset();
 			this.URIScheme = URIScheme ;
 		}
 	}
