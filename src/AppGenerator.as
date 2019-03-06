@@ -612,7 +612,8 @@
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.ZipUtils")
 				.setWiki("https://distriqt.github.io/ANE-ZipUtils/");
 
-			addCheckBox('Background Location','backgroundLocation');
+			addCheckBox('Background Location(iOS)','backgroundLocation');
+			addCheckBox('Background Audio(iOS)','backgroundAudio');
 				
 			
 			////Permissions
