@@ -611,6 +611,8 @@
 			addCheckBox('Distriqt Zip Utils','distriqtZipUtils')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.ZipUtils")
 				.setWiki("https://distriqt.github.io/ANE-ZipUtils/");
+
+			addCheckBox('Background Location','backgroundLocation');
 				
 			
 			////Permissions
