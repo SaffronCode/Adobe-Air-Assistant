@@ -173,7 +173,15 @@
 						var foundedElement:XML = XMLFunctions.getValueOfKey(newList[i],Entitlements.children());
 						if(foundedElement!=null)
 						{
-							XMLFunctions.removeKeyValue(Entitlements,newList[i]);
+							if(foundedElement.name()=='array' && newList.length()>i+1 && newList[i+1].name()=='array')
+							{
+								addStringValueInArray(foundedElement,newList[i+1].children());
+								return ;
+							}
+							else
+							{
+								XMLFunctions.removeKeyValue(Entitlements,newList[i]);
+							}
 						}
 					}
 				}
@@ -195,7 +203,15 @@
 						var foundedElement:XML = XMLFunctions.getValueOfKey(newList[i],InfoAdditions.children());
 						if(foundedElement!=null)
 						{
-							XMLFunctions.removeKeyValue(InfoAdditions,newList[i]);
+							if(foundedElement.name()=='array' && newList.length()>i+1 && newList[i+1].name()=='array')
+							{
+								addStringValueInArray(foundedElement,newList[i+1].children());
+								return ;
+							}
+							else
+							{
+								XMLFunctions.removeKeyValue(InfoAdditions,newList[i]);
+							}
 						}
 					}
 				}
@@ -205,6 +221,28 @@
 			{
 				Alert.show("The entered xml InfoAdditions had problem. \n\n"+infoAdditions+'\n\n'+e.message);
 			}
+		}
+		
+		/**Add string item to a XML list*/
+		private function addStringValueInArray(destinationXML:XML,itemNames:XMLList,arreyItemName:String='string'):XML
+		{
+			var list:XMLList = destinationXML.children();
+			for(var j:int = 0 ; j<itemNames.length() ; j++)
+			{
+				var founded:Boolean = false ;
+				var newItemToAdd:String = itemNames[j].toString();
+				for(var i:int = 0 ; i<list.length() ; i++)
+				{
+					if(list[i].toString() == newItemToAdd)
+					{
+						founded = true ;
+						break ;
+					}
+				}
+				if(!founded)
+					destinationXML.appendChild(<{arreyItemName}>{newItemToAdd}</{arreyItemName}>);
+			}
+			return destinationXML ;
 		}
 		
 		/**Returns true if the permissions are already existed on the project*/
