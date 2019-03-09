@@ -612,6 +612,10 @@
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.ZipUtils")
 				.setWiki("https://distriqt.github.io/ANE-ZipUtils/");
 
+			addCheckBox('Distriqt Local Notifications','distriqtLocalNotification')
+			.setInfo("https://airnativeextensions.com/extension/com.distriqt.Notifications")
+				.setWiki("https://distriqt.github.io/ANE-Notifications/");
+
 			addCheckBox('Background Location(iOS)','backgroundLocation');
 			addCheckBox('Background Audio(iOS)','backgroundAudio');
 				
