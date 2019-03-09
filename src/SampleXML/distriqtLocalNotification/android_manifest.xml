@@ -1,36 +1,34 @@
-<manifestAdditions><![CDATA[
-	<manifest android:installLocation="auto">
+<manifest android:installLocation="auto">
 		
-		<uses-permission android:name="android.permission.INTERNET"/>
-		<uses-permission android:name="android.permission.VIBRATE"/>
-		<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+	<uses-permission android:name="android.permission.INTERNET"/>
+	<uses-permission android:name="android.permission.VIBRATE"/>
+	<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+	
+	<application>
+	
+		<!-- NOTIFICATIONS -->
+		<receiver android:name="com.distriqt.extension.notifications.notifications.receivers.NotificationReceiver">
+			<intent-filter>
+				<action android:name="APPLICATION_PACKAGE.NOTIFICATION_SELECTED" />
+				<action android:name="APPLICATION_PACKAGE.NOTIFICATION_DELETED" />
+				<action android:name="APPLICATION_PACKAGE.NOTIFICATION_ACTION" />
+				<action android:name="APPLICATION_PACKAGE.NOTIFICATION_DELAYED" />
+				<data android:scheme="dtn" />
+			</intent-filter>
+			<intent-filter>
+				<action android:name="android.intent.action.BOOT_COMPLETED" />
+			</intent-filter>
+		</receiver>
+		<provider
+			android:name="com.distriqt.extension.notifications.content.FileProvider"
+			android:authorities="APPLICATION_PACKAGE.notificationsfileprovider"
+			android:grantUriPermissions="true"
+			android:exported="false">
+			<meta-data 
+				android:name="android.support.FILE_PROVIDER_PATHS" 
+				android:resource="@xml/distriqt_notifications_paths" />
+		</provider>
 		
-		<application>
-		
-			<!-- NOTIFICATIONS -->
-			<receiver android:name="com.distriqt.extension.notifications.notifications.receivers.NotificationReceiver">
-				<intent-filter>
-					<action android:name="APPLICATION_PACKAGE.NOTIFICATION_SELECTED" />
-					<action android:name="APPLICATION_PACKAGE.NOTIFICATION_DELETED" />
-					<action android:name="APPLICATION_PACKAGE.NOTIFICATION_ACTION" />
-					<action android:name="APPLICATION_PACKAGE.NOTIFICATION_DELAYED" />
-					<data android:scheme="dtn" />
-				</intent-filter>
-				<intent-filter>
-					<action android:name="android.intent.action.BOOT_COMPLETED" />
-				</intent-filter>
-			</receiver>
-			<provider
-				android:name="com.distriqt.extension.notifications.content.FileProvider"
-				android:authorities="APPLICATION_PACKAGE.notificationsfileprovider"
-				android:grantUriPermissions="true"
-				android:exported="false">
-				<meta-data 
-					android:name="android.support.FILE_PROVIDER_PATHS" 
-					android:resource="@xml/distriqt_notifications_paths" />
-			</provider>
-			
-		</application>
-		
-	</manifest>
-)></manifestAdditions>
+	</application>
+	
+</manifest>
