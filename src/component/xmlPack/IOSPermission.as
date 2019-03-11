@@ -255,7 +255,7 @@
 					if(newList[i].name() == 'key')
 					{
 						var foundedElement:XML = XMLFunctions.getValueOfKey(newList[i],InfoAdditions.children());
-						if(foundedElement==null)
+						if(foundedElement==null || i==newList.length() || !XMLFunctions.isContain(foundedElement,newList[i+1]))
 						{
 							return false ;
 						}
