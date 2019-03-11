@@ -105,7 +105,7 @@ package component
 		
 		private function saveIconTo(imageBitmap:BitmapData,imageSize:uint,targetFolder:File):void
 		{
-			var resizedBitmapData:BitmapData = BitmapEffects.changeSize(imageBitmap,imageSize,imageSize,true,false,true);
+			var resizedBitmapData:BitmapData = BitmapEffects.changeSize(imageBitmap,imageSize,imageSize,true,true,true);
 			FileManager.seveFile(targetFolder.resolvePath(imageSize+'.png'),BitmapEffects.createPNG(resizedBitmapData));
 		}
 		
