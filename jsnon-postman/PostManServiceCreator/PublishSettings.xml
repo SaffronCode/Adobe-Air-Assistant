@@ -29,13 +29,14 @@
     <pngFileName>PostManServiceCreator.png</pngFileName>
     <swcFileName>PostManServiceCreator.swc</swcFileName>
     <oamFileName>PostManServiceCreator.oam</oamFileName>
+    <publishFormat id="3E6AA359-3A3C-4827-B709-9977BDDDACCB">0</publishFormat>
     <publishFormat id="BBC1F406-65F2-4219-9304-FA48C7549E44">0</publishFormat>
     <publishFormat id="BBC1F806-66F2-4339-9306-FA48C7549E59">0</publishFormat>
     <publishFormat id="BBC2F906-78F3-4239-9305-FA48C8549E59">0</publishFormat>
   </PublishFormatProperties>
   <PublishHtmlProperties enabled="true">
     <VersionDetectionIfAvailable>0</VersionDetectionIfAvailable>
-    <VersionInfo>0,0,0,0;20,0,0,0;19,0,0,0;18,0,0,0;17,0,0,0;16,0,0,0;14,0,0,0;13,0,0,0;12,0,0,0;11,9,0,0;11,8,0,0;11,7,0,0;11,6,0,0;11,5,0,0;11,4,0,0;11,3,0,0;11,2,0,0;11,1,0,0;10,3,0,0;10,2,153,0;10,1,52,0;9,0,124,0;8,0,24,0;7,0,14,0;6,0,79,0;5,0,58,0;4,0,32,0;3,0,8,0;2,0,1,12;1,0,0,1;</VersionInfo>
+    <VersionInfo>0,0,0,0;26,0,0,0;25,0,0,0;23,0,0,0;21,0,0,0;20,0,0,0;19,0,0,0;18,0,0,0;17,0,0,0;16,0,0,0;14,0,0,0;13,0,0,0;12,0,0,0;11,9,0,0;11,8,0,0;11,7,0,0;11,6,0,0;11,5,0,0;11,4,0,0;11,3,0,0;11,2,0,0;11,1,0,0;10,3,0,0;10,2,153,0;10,1,52,0;9,0,124,0;8,0,24,0;7,0,14,0;6,0,79,0;5,0,58,0;4,0,32,0;3,0,8,0;2,0,1,12;1,0,0,1;</VersionInfo>
     <UsingDefaultContentFilename>1</UsingDefaultContentFilename>
     <UsingDefaultAlternateFilename>1</UsingDefaultAlternateFilename>
     <ContentFilename>PostManServiceCreator_content.html</ContentFilename>
@@ -43,7 +44,7 @@
     <UsingOwnAlternateFile>0</UsingOwnAlternateFile>
     <OwnAlternateFilename></OwnAlternateFilename>
     <Width>650</Width>
-    <Height>700</Height>
+    <Height>450</Height>
     <Align>0</Align>
     <Units>0</Units>
     <Loop>1</Loop>
@@ -72,8 +73,8 @@
     <EventFormat>0</EventFormat>
     <EventCompress>7</EventCompress>
     <OverrideSounds>0</OverrideSounds>
-    <Version>36</Version>
-    <ExternalPlayer>AdobeAIR_25.0.0.118</ExternalPlayer>
+    <Version>43</Version>
+    <ExternalPlayer>AdobeAIR_32.0.0.89</ExternalPlayer>
     <ActionScriptVersion>3</ActionScriptVersion>
     <PackageExportFrame>1</PackageExportFrame>
     <PackagePaths></PackagePaths>
@@ -116,7 +117,7 @@
   </PublishFlashProperties>
   <PublishJpegProperties enabled="true">
     <Width>650</Width>
-    <Height>700</Height>
+    <Height>450</Height>
     <Progressive>0</Progressive>
     <DPI>4718592</DPI>
     <Size>0</Size>
@@ -125,7 +126,7 @@
   </PublishJpegProperties>
   <PublishGifProperties enabled="true">
     <Width>650</Width>
-    <Height>700</Height>
+    <Height>450</Height>
     <Animated>0</Animated>
     <MatchMovieDim>1</MatchMovieDim>
     <Loop>1</Loop>
@@ -134,6 +135,8 @@
     <MaxColors>255</MaxColors>
   </PublishGifProperties>
   <PublishPNGProperties enabled="true">
+    <Width>650</Width>
+    <Height>450</Height>
     <MatchMovieDim>1</MatchMovieDim>
     <Smooth>1</Smooth>
     <BitDepth>24-bit with Alpha</BitDepth>
@@ -141,12 +144,16 @@
   </PublishPNGProperties>
   <PublishOamProperties enabled="true">
     <Width>650</Width>
-    <Height>700</Height>
+    <Height>450</Height>
     <CurrentFramePNG>1</CurrentFramePNG>
     <CustomPNG>0</CustomPNG>
     <PNGFilePath></PNGFilePath>
     <Transparency>0</Transparency>
   </PublishOamProperties>
+  <PublishProperties id="3E6AA359-3A3C-4827-B709-9977BDDDACCB" name="SWF Archive" otf="true" enabled="true">
+    <Property name="default">true</Property>
+    <Property name="filename">PostManServiceCreator.zip</Property>
+  </PublishProperties>
   <PublishProperties id="BBC1F406-65F2-4219-9304-FA48C7549E44" name="SVG Image" otf="true" enabled="true">
     <Property name="copy">true</Property>
     <Property name="default">true</Property>
@@ -195,13 +202,14 @@
     <pngFileName>PostManServiceCreator.png</pngFileName>
     <swcFileName>PostManServiceCreator.swc</swcFileName>
     <oamFileName>PostManServiceCreator.oam</oamFileName>
+    <publishFormat id="3E6AA359-3A3C-4827-B709-9977BDDDACCB">0</publishFormat>
     <publishFormat id="BBC1F406-65F2-4219-9304-FA48C7549E44">0</publishFormat>
     <publishFormat id="BBC1F806-66F2-4339-9306-FA48C7549E59">0</publishFormat>
     <publishFormat id="BBC2F906-78F3-4239-9305-FA48C8549E59">0</publishFormat>
   </PublishFormatProperties>
   <PublishHtmlProperties enabled="true">
     <VersionDetectionIfAvailable>0</VersionDetectionIfAvailable>
-    <VersionInfo>0,0,0,0;20,0,0,0;19,0,0,0;18,0,0,0;17,0,0,0;16,0,0,0;14,0,0,0;13,0,0,0;12,0,0,0;11,9,0,0;11,8,0,0;11,7,0,0;11,6,0,0;11,5,0,0;11,4,0,0;11,3,0,0;11,2,0,0;11,1,0,0;10,3,0,0;10,2,153,0;10,1,52,0;9,0,124,0;8,0,24,0;7,0,14,0;6,0,79,0;5,0,58,0;4,0,32,0;3,0,8,0;2,0,1,12;1,0,0,1;</VersionInfo>
+    <VersionInfo>0,0,0,0;26,0,0,0;25,0,0,0;23,0,0,0;21,0,0,0;20,0,0,0;19,0,0,0;18,0,0,0;17,0,0,0;16,0,0,0;14,0,0,0;13,0,0,0;12,0,0,0;11,9,0,0;11,8,0,0;11,7,0,0;11,6,0,0;11,5,0,0;11,4,0,0;11,3,0,0;11,2,0,0;11,1,0,0;10,3,0,0;10,2,153,0;10,1,52,0;9,0,124,0;8,0,24,0;7,0,14,0;6,0,79,0;5,0,58,0;4,0,32,0;3,0,8,0;2,0,1,12;1,0,0,1;</VersionInfo>
     <UsingDefaultContentFilename>1</UsingDefaultContentFilename>
     <UsingDefaultAlternateFilename>1</UsingDefaultAlternateFilename>
     <ContentFilename>PostManServiceCreator_content.html</ContentFilename>
@@ -209,7 +217,7 @@
     <UsingOwnAlternateFile>0</UsingOwnAlternateFile>
     <OwnAlternateFilename></OwnAlternateFilename>
     <Width>650</Width>
-    <Height>700</Height>
+    <Height>450</Height>
     <Align>0</Align>
     <Units>0</Units>
     <Loop>1</Loop>
@@ -238,8 +246,8 @@
     <EventFormat>0</EventFormat>
     <EventCompress>7</EventCompress>
     <OverrideSounds>0</OverrideSounds>
-    <Version>36</Version>
-    <ExternalPlayer>AdobeAIR_25.0.0.118</ExternalPlayer>
+    <Version>43</Version>
+    <ExternalPlayer>AdobeAIR_32.0.0.89</ExternalPlayer>
     <ActionScriptVersion>3</ActionScriptVersion>
     <PackageExportFrame>1</PackageExportFrame>
     <PackagePaths></PackagePaths>
@@ -282,7 +290,7 @@
   </PublishFlashProperties>
   <PublishJpegProperties enabled="true">
     <Width>650</Width>
-    <Height>700</Height>
+    <Height>450</Height>
     <Progressive>0</Progressive>
     <DPI>4718592</DPI>
     <Size>0</Size>
@@ -291,7 +299,7 @@
   </PublishJpegProperties>
   <PublishGifProperties enabled="true">
     <Width>650</Width>
-    <Height>700</Height>
+    <Height>450</Height>
     <Animated>0</Animated>
     <MatchMovieDim>1</MatchMovieDim>
     <Loop>1</Loop>
@@ -300,6 +308,8 @@
     <MaxColors>255</MaxColors>
   </PublishGifProperties>
   <PublishPNGProperties enabled="true">
+    <Width>650</Width>
+    <Height>450</Height>
     <MatchMovieDim>1</MatchMovieDim>
     <Smooth>1</Smooth>
     <BitDepth>24-bit with Alpha</BitDepth>
@@ -307,12 +317,16 @@
   </PublishPNGProperties>
   <PublishOamProperties enabled="true">
     <Width>650</Width>
-    <Height>700</Height>
+    <Height>450</Height>
     <CurrentFramePNG>1</CurrentFramePNG>
     <CustomPNG>0</CustomPNG>
     <PNGFilePath></PNGFilePath>
     <Transparency>0</Transparency>
   </PublishOamProperties>
+  <PublishProperties id="3E6AA359-3A3C-4827-B709-9977BDDDACCB" name="SWF Archive" otf="true" enabled="true">
+    <Property name="default">true</Property>
+    <Property name="filename">PostManServiceCreator.zip</Property>
+  </PublishProperties>
   <PublishProperties id="BBC1F406-65F2-4219-9304-FA48C7549E44" name="SVG Image" otf="true" enabled="true">
     <Property name="copy">true</Property>
     <Property name="default">true</Property>

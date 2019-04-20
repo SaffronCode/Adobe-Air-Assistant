@@ -1,15 +1,22 @@
-<DOMDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" width="650" height="700" currentTimeline="1" xflVersion="2.7" creatorInfo="Adobe Animate CC" platform="Windows" versionInfo="Saved by Animate Windows 15.1 build 210" majorVersion="15" minorVersion="1" buildNumber="210" viewAngle3D="63.2009559306251" previewMode="full" nextSceneIdentifier="2" playOptionsPlayLoop="false" playOptionsPlayPages="false" playOptionsPlayFrameActions="false" filetypeGUID="DD0DDBBF-5BEF-45B2-9F24-A3048D2A676F">
+<DOMDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" width="650" height="450" currentTimeline="1" xflVersion="2.96" creatorInfo="Adobe Animate CC" platform="Windows" versionInfo="Saved by Animate Windows 18.0 build 115" majorVersion="18" buildNumber="115" viewAngle3D="63.2009559306251" vanishingPoint3DX="325" vanishingPoint3DY="225" previewMode="full" nextSceneIdentifier="2" playOptionsPlayLoop="false" playOptionsPlayPages="false" playOptionsPlayFrameActions="false" filetypeGUID="DD0DDBBF-5BEF-45B2-9F24-A3048D2A676F" fileGUID="F631D2CF0D202A449ED661E249A0D975">
+     <folders>
+          <DOMFolderItem name="Duplicate Items Folder" itemID="5cb6b3fb-00002283"/>
+     </folders>
      <media>
           <DOMBitmapItem name="Bitmap 1" itemID="5a6c335e-00001b5d" sourceLastImported="1517040478" allowSmoothing="true" originalCompressionType="lossless" quality="50" href="Bitmap 1" bitmapDataHRef="M 1 1517040478.dat" frameRight="4500" frameBottom="4500"/>
-          <DOMBitmapItem name="Bitmap 2-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1.png" itemID="5b0ab355-0000032d" sourceExternalFilepath="./LIBRARY/Bitmap 2-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1.png" sourceLastImported="1527427368" externalFileSize="4469" allowSmoothing="true" useImportedJPEGData="false" compressionType="lossless" originalCompressionType="lossless" quality="50" href="Bitmap 2-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1.png" bitmapDataHRef="M 4 1527427221.dat" frameRight="12360" frameBottom="5160"/>
-          <DOMBitmapItem name="Bitmap 3-1-1-1-1-1-1-1-1-1-1-1.png" itemID="5b0ab5cc-00000332" sourceExternalFilepath="./LIBRARY/Bitmap 3" sourceLastImported="1527428102" externalFileSize="30388" allowSmoothing="true" useImportedJPEGData="false" compressionType="lossless" originalCompressionType="lossless" quality="50" href="Bitmap 3-1-1-1-1-1-1-1-1-1-1-1.png" bitmapDataHRef="M 3 1517040508.dat" frameRight="4500" frameBottom="4500"/>
-          <DOMBitmapItem name="Bitmap 4-1-1-1-1-1-1.png" itemID="5b0ab5cc-00000333" sourceExternalFilepath="./LIBRARY/Bitmap 4" sourceLastImported="1527428057" externalFileSize="15449" allowSmoothing="true" useImportedJPEGData="false" compressionType="lossless" originalCompressionType="lossless" quality="50" href="Bitmap 4-1-1-1-1-1-1.png" bitmapDataHRef="M 4 1517040740.dat" frameRight="7140" frameBottom="2820"/>
+          <DOMBitmapItem name="Bitmap 2-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1.png" itemID="5b0ab355-0000032d" sourceExternalFilepath="../PostManServiceCreator/LIBRARY/Bitmap 2-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1.png" sourceLastImported="1527427368" externalFileSize="4469" allowSmoothing="true" useImportedJPEGData="false" compressionType="lossless" originalCompressionType="lossless" quality="50" href="Bitmap 2-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1.png" bitmapDataHRef="M 4 1527427221.dat" frameRight="12360" frameBottom="5160"/>
+          <DOMBitmapItem name="Bitmap 3-1-1-1-1-1-1-1-1-1-1-1.png" itemID="5b0ab5cc-00000332" sourceExternalFilepath="../PostManServiceCreator/LIBRARY/Bitmap 3" sourceLastImported="1527428102" externalFileSize="30388" allowSmoothing="true" useImportedJPEGData="false" compressionType="lossless" originalCompressionType="lossless" quality="50" href="Bitmap 3-1-1-1-1-1-1-1-1-1-1-1.png" bitmapDataHRef="M 3 1517040508.dat" frameRight="4500" frameBottom="4500"/>
+          <DOMBitmapItem name="Bitmap 4-1-1-1-1-1-1.png" itemID="5b0ab5cc-00000333" sourceExternalFilepath="../PostManServiceCreator/LIBRARY/Bitmap 4" sourceLastImported="1527428057" externalFileSize="15449" allowSmoothing="true" useImportedJPEGData="false" compressionType="lossless" originalCompressionType="lossless" quality="50" href="Bitmap 4-1-1-1-1-1-1.png" bitmapDataHRef="M 4 1517040740.dat" frameRight="7140" frameBottom="2820"/>
      </media>
      <symbols>
+          <Include href="Duplicate Items Folder/Symbol 25 copy 2.xml" loadImmediate="false" itemID="586a0459-00000c5d" lastModified="1555478181"/>
           <Include href="Symbol 1.xml" loadImmediate="false" itemID="590045ac-00000211" lastModified="1493190060"/>
           <Include href="Symbol 2.xml" loadImmediate="false" itemID="5a6c33a1-00001b64" lastModified="1517040571"/>
           <Include href="Symbol 2 copy.xml" loadImmediate="false" itemID="5a6c34ef-00001b7b" lastModified="1517040883"/>
           <Include href="Symbol 4.xml" loadImmediate="false" itemID="5b050d6f-00000059" lastModified="1527057775"/>
+          <Include href="Symbol 5.xml" loadImmediate="false" itemID="5b278623-0000019f" lastModified="1529316899"/>
+          <Include href="Symbol 6 copy.xml" loadImmediate="false" itemID="5cb6b4c0-00002298" lastModified="1555477699"/>
+          <Include href="Symbol 6 copy 3.xml" loadImmediate="false" itemID="5b93b0f2-000009a5" lastModified="1555477647"/>
      </symbols>
      <timelines>
           <DOMTimeline name="Scene 1">
@@ -19,8 +26,14 @@
                               <DOMFrame index="0" keyMode="9728">
                                    <elements>
                                         <DOMGroup>
+                                             <matrix>
+                                                  <Matrix ty="-151"/>
+                                             </matrix>
                                              <members>
                                                   <DOMShape>
+                                                       <matrix>
+                                                            <Matrix ty="-151"/>
+                                                       </matrix>
                                                        <strokes>
                                                             <StrokeStyle index="1">
                                                                  <SolidStroke scaleMode="normal">
@@ -31,7 +44,7 @@
                                                             </StrokeStyle>
                                                        </strokes>
                                                        <edges>
-                                                            <Edge strokeStyle="1" edges="!103 7392S4|12897 7392"/>
+                                                            <Edge strokeStyle="1" edges="!103 7392|12897 7392"/>
                                                        </edges>
                                                   </DOMShape>
                                              </members>
@@ -46,12 +59,12 @@
                                    <elements>
                                         <DOMGroup>
                                              <matrix>
-                                                  <Matrix tx="8.35" ty="513.65"/>
+                                                  <Matrix ty="-248.35"/>
                                              </matrix>
                                              <members>
                                                   <DOMShape selected="true" isDrawingObject="true">
                                                        <matrix>
-                                                            <Matrix a="0.486221313476563" d="0.486221313476563" tx="-323.85" ty="450.7"/>
+                                                            <Matrix a="0.486221313476563" d="0.486221313476563" tx="-323.85" ty="202.35"/>
                                                        </matrix>
                                                        <fills>
                                                             <FillStyle index="1">
@@ -99,7 +112,7 @@
                                                   </DOMShape>
                                                   <DOMShape selected="true" isDrawingObject="true">
                                                        <matrix>
-                                                            <Matrix a="0.486221313476563" d="0.486221313476563" tx="-323.85" ty="450.7"/>
+                                                            <Matrix a="0.486221313476563" d="0.486221313476563" tx="-323.85" ty="202.35"/>
                                                        </matrix>
                                                        <fills>
                                                             <FillStyle index="1">
@@ -108,9 +121,9 @@
                                                        </fills>
                                                        <edges>
                                                             <Edge fillStyle0="1" edges="
-!14639 9516[14567 9516 14543 9544!14543 9544[14520 9572 14520 9653!14520 9653[14520 9734 14543 9762!14543 9762[14567 9789 14640 9789!14640 9789[14712 9789 14736 9762!14736 9762[14759 9734 14759 9652!14759 9652[14759 9572 14736 9544!14736
- 9544[14712 9516 14639 9516!14689 9726[14679 9736 14639 9736!14639 9736[14600 9736 14590 9726!14590 9726[14581 9708 14581 9653!14581 9653[14581 9598 14590 9580!14590 9580[14601 9569 14639 9569!14639 9569|14640 9569!14640 9569[14682 9569
- 14689 9580!14689 9580[14698 9592 14698 9652!14698 9652[14698 9714 14689 9726"/>
+!14689 9726[14679 9736 14639 9736!14639 9736[14600 9736 14590 9726!14590 9726[14581 9708 14581 9653!14581 9653[14581 9598 14590 9580!14590 9580[14601 9569 14639 9569!14639 9569|14640 9569!14640 9569[14682 9569 14689 9580!14689 9580[14698
+ 9592 14698 9652!14698 9652[14698 9714 14689 9726!14639 9516[14567 9516 14543 9544!14543 9544[14520 9572 14520 9653!14520 9653[14520 9734 14543 9762!14543 9762[14567 9789 14640 9789!14640 9789[14712 9789 14736 9762!14736 9762[14759 9734
+ 14759 9652!14759 9652[14759 9572 14736 9544!14736 9544[14712 9516 14639 9516"/>
                                                             <Edge cubics="!14689 9726(;14686,9729 14677,9736 14639,9736q14689 9726Q14679 9736q14639 9736);"/>
                                                             <Edge cubics="!14639 9736(;14602,9736 14593,9729 14590,9726q14639 9736Q14600 9736q14590 9726);"/>
                                                             <Edge cubics="!14590 9726(14590,9726;14588,9722 14581,9708 14581,9653q14590 9726Q14581 9708q14581 9653)14581,9653;"/>
@@ -132,7 +145,7 @@
                                                   </DOMShape>
                                                   <DOMShape selected="true" isDrawingObject="true">
                                                        <matrix>
-                                                            <Matrix a="0.486221313476563" d="0.486221313476563" tx="-323.85" ty="450.7"/>
+                                                            <Matrix a="0.486221313476563" d="0.486221313476563" tx="-323.85" ty="202.35"/>
                                                        </matrix>
                                                        <fills>
                                                             <FillStyle index="1">
@@ -171,7 +184,7 @@
                                                   </DOMShape>
                                                   <DOMShape selected="true" isDrawingObject="true">
                                                        <matrix>
-                                                            <Matrix a="0.486221313476563" d="0.486221313476563" tx="-323.85" ty="450.7"/>
+                                                            <Matrix a="0.486221313476563" d="0.486221313476563" tx="-323.85" ty="202.35"/>
                                                        </matrix>
                                                        <fills>
                                                             <FillStyle index="1">
@@ -205,7 +218,7 @@
                                                   </DOMShape>
                                                   <DOMShape selected="true" isDrawingObject="true">
                                                        <matrix>
-                                                            <Matrix a="0.486221313476563" d="0.486221313476563" tx="-323.85" ty="450.7"/>
+                                                            <Matrix a="0.486221313476563" d="0.486221313476563" tx="-323.85" ty="202.35"/>
                                                        </matrix>
                                                        <fills>
                                                             <FillStyle index="1">
@@ -277,7 +290,7 @@
                                                   </DOMShape>
                                                   <DOMShape selected="true" isDrawingObject="true">
                                                        <matrix>
-                                                            <Matrix a="0.486221313476563" d="0.486221313476563" tx="-323.85" ty="450.7"/>
+                                                            <Matrix a="0.486221313476563" d="0.486221313476563" tx="-323.85" ty="202.35"/>
                                                        </matrix>
                                                        <fills>
                                                             <FillStyle index="1">
@@ -312,7 +325,7 @@
                                                   </DOMShape>
                                                   <DOMShape selected="true" isDrawingObject="true">
                                                        <matrix>
-                                                            <Matrix a="0.486221313476563" d="0.486221313476563" tx="-323.85" ty="450.7"/>
+                                                            <Matrix a="0.486221313476563" d="0.486221313476563" tx="-323.85" ty="202.35"/>
                                                        </matrix>
                                                        <fills>
                                                             <FillStyle index="1">
@@ -342,7 +355,7 @@
                                                   </DOMShape>
                                                   <DOMShape selected="true" isDrawingObject="true">
                                                        <matrix>
-                                                            <Matrix a="0.486221313476563" d="0.486221313476563" tx="-323.85" ty="450.7"/>
+                                                            <Matrix a="0.486221313476563" d="0.486221313476563" tx="-323.85" ty="202.35"/>
                                                        </matrix>
                                                        <fills>
                                                             <FillStyle index="1">
@@ -383,7 +396,7 @@
                                                   </DOMShape>
                                                   <DOMShape selected="true" isDrawingObject="true">
                                                        <matrix>
-                                                            <Matrix a="0.486221313476563" d="0.486221313476563" tx="-323.85" ty="450.7"/>
+                                                            <Matrix a="0.486221313476563" d="0.486221313476563" tx="-323.85" ty="202.35"/>
                                                        </matrix>
                                                        <fills>
                                                             <FillStyle index="1">
@@ -410,7 +423,7 @@
                                                   </DOMShape>
                                                   <DOMShape selected="true" isDrawingObject="true">
                                                        <matrix>
-                                                            <Matrix a="0.486221313476563" d="0.486221313476563" tx="-323.85" ty="450.7"/>
+                                                            <Matrix a="0.486221313476563" d="0.486221313476563" tx="-323.85" ty="202.35"/>
                                                        </matrix>
                                                        <fills>
                                                             <FillStyle index="1">
@@ -444,12 +457,12 @@
                                         </DOMGroup>
                                         <DOMGroup>
                                              <matrix>
-                                                  <Matrix tx="91.5" ty="513.65"/>
+                                                  <Matrix ty="-248.35"/>
                                              </matrix>
                                              <members>
                                                   <DOMShape selected="true" isDrawingObject="true">
                                                        <matrix>
-                                                            <Matrix a="0.330123901367188" d="0.330123901367188" tx="592.65" ty="501.2"/>
+                                                            <Matrix a="0.330123901367188" d="0.330123901367188" tx="592.65" ty="252.85"/>
                                                        </matrix>
                                                        <fills>
                                                             <FillStyle index="1">
@@ -468,7 +481,7 @@
                                                   </DOMShape>
                                                   <DOMShape selected="true" isDrawingObject="true">
                                                        <matrix>
-                                                            <Matrix a="0.330123901367188" d="0.330123901367188" tx="592.65" ty="501.2"/>
+                                                            <Matrix a="0.330123901367188" d="0.330123901367188" tx="592.65" ty="252.85"/>
                                                        </matrix>
                                                        <fills>
                                                             <FillStyle index="1">
@@ -494,7 +507,7 @@
                                                   </DOMShape>
                                                   <DOMShape selected="true" isDrawingObject="true">
                                                        <matrix>
-                                                            <Matrix a="0.330123901367188" d="0.330123901367188" tx="592.65" ty="501.2"/>
+                                                            <Matrix a="0.330123901367188" d="0.330123901367188" tx="592.65" ty="252.85"/>
                                                        </matrix>
                                                        <fills>
                                                             <FillStyle index="1">
@@ -534,84 +547,142 @@
                               </DOMFrame>
                          </frames>
                     </DOMLayer>
-                    <DOMLayer name="icons" color="#FF4FFF" current="true" isSelected="true" autoNamed="false">
+                    <DOMLayer name="icons" color="#FF4FFF" autoNamed="false">
                          <frames>
                               <DOMFrame index="0" keyMode="9728">
                                    <elements>
-                                        <DOMGroup selected="true">
+                                        <DOMBitmapInstance libraryItemName="Bitmap 1">
+                                             <matrix>
+                                                  <Matrix a="0.195083618164063" d="0.195083618164063" tx="40" ty="171"/>
+                                             </matrix>
+                                        </DOMBitmapInstance>
+                                        <DOMBitmapInstance libraryItemName="Bitmap 3-1-1-1-1-1-1-1-1-1-1-1.png">
+                                             <matrix>
+                                                  <Matrix a="0.195083618164063" d="0.195083618164063" tx="40" ty="116"/>
+                                             </matrix>
+                                        </DOMBitmapInstance>
+                                        <DOMGroup>
+                                             <matrix>
+                                                  <Matrix a="0.666671752929688" tx="19.45" ty="3.45"/>
+                                             </matrix>
                                              <members>
-                                                  <DOMBitmapInstance libraryItemName="Bitmap 1">
+                                                  <DOMShape>
                                                        <matrix>
-                                                            <Matrix a="0.80084228515625" d="0.80084228515625" tx="409.35" ty="130.2"/>
+                                                            <Matrix a="0.666671752929688" tx="19.45" ty="3.45"/>
                                                        </matrix>
-                                                  </DOMBitmapInstance>
-                                                  <DOMBitmapInstance selected="true" libraryItemName="Bitmap 3-1-1-1-1-1-1-1-1-1-1-1.png">
-                                                       <matrix>
-                                                            <Matrix a="0.80084228515625" d="0.80084228515625" tx="60.45" ty="130.2"/>
-                                                       </matrix>
-                                                  </DOMBitmapInstance>
+                                                       <strokes>
+                                                            <StrokeStyle index="1">
+                                                                 <SolidStroke scaleMode="normal">
+                                                                      <fill>
+                                                                           <SolidColor color="#F15A25"/>
+                                                                      </fill>
+                                                                 </SolidStroke>
+                                                            </StrokeStyle>
+                                                       </strokes>
+                                                       <edges>
+                                                            <Edge strokeStyle="1" edges="
+!1136 3269S4|1255 3150!1255 3150|1255 3478!1255 3478|1374 3359"/>
+                                                       </edges>
+                                                  </DOMShape>
                                              </members>
                                         </DOMGroup>
-                                        <DOMSymbolInstance libraryItemName="Symbol 2" name="recreate_mc">
+                                        <DOMGroup>
                                              <matrix>
-                                                  <Matrix tx="330.75" ty="327.45"/>
+                                                  <Matrix ty="90.05"/>
                                              </matrix>
-                                             <transformationPoint>
-                                                  <Point x="135.9" y="24.75"/>
-                                             </transformationPoint>
-                                        </DOMSymbolInstance>
+                                             <members>
+                                                  <DOMShape>
+                                                       <matrix>
+                                                            <Matrix ty="90.05"/>
+                                                       </matrix>
+                                                       <strokes>
+                                                            <StrokeStyle index="1">
+                                                                 <SolidStroke scaleMode="normal">
+                                                                      <fill>
+                                                                           <SolidColor color="#F15A25"/>
+                                                                      </fill>
+                                                                 </SolidStroke>
+                                                            </StrokeStyle>
+                                                       </strokes>
+                                                       <edges>
+                                                            <Edge strokeStyle="1" edges="
+!1146 3338|1226 3219!1226 3219|1226 3547!1226 3547|1305 3428"/>
+                                                       </edges>
+                                                  </DOMShape>
+                                             </members>
+                                        </DOMGroup>
                                    </elements>
                               </DOMFrame>
                          </frames>
                     </DOMLayer>
-                    <DOMLayer name="Layer 5" color="#009999" autoNamed="false" visible="false">
+                    <DOMLayer name="Layer 5" color="#009999" autoNamed="false">
                          <frames>
                               <DOMFrame index="0" keyMode="9728">
                                    <elements>
-                                        <DOMSymbolInstance libraryItemName="Symbol 1" selected="true">
+                                        <DOMSymbolInstance libraryItemName="Symbol 1">
                                              <matrix>
-                                                  <Matrix a="1.20263671875" d="0.9217529296875" tx="330.75" ty="184.35"/>
+                                                  <Matrix a="1.20263671875" d="0.546463012695313" tx="-385.6" ty="109.3"/>
                                              </matrix>
                                              <transformationPoint>
-                                                  <Point/>
+                                                  <Point x="0.05" y="0.2"/>
                                              </transformationPoint>
                                              <color>
                                                   <Color alphaMultiplier="0"/>
                                              </color>
                                         </DOMSymbolInstance>
-                                   </elements>
-                              </DOMFrame>
-                         </frames>
-                    </DOMLayer>
-                    <DOMLayer name="lables" color="#4F80FF" autoNamed="false">
-                         <frames>
-                              <DOMFrame index="0" keyMode="9728">
-                                   <elements>
-                                        <DOMStaticText fontRenderingMode="standard" width="424.35" height="93" antiAliasSharpness="-279" antiAliasThickness="100" isSelectable="false">
+                                        <DOMStaticText fontRenderingMode="standard" left="-16.3" width="253.2" height="41.1" isSelectable="false">
                                              <matrix>
-                                                  <Matrix tx="182.2" ty="14.5"/>
+                                                  <Matrix tx="129.4" ty="142.9"/>
                                              </matrix>
                                              <textRuns>
                                                   <DOMTextRun>
                                                        <characters>Drag Postman exported JSON file here to create Saffron Classes</characters>
                                                        <textAttrs>
-                                                            <DOMTextAttrs alignment="center" aliasText="false" lineHeight="45.5" size="30" bitmapSize="600" face="BYekan"/>
+                                                            <DOMTextAttrs aliasText="false" lineHeight="19.55" size="16" bitmapSize="320" face="Calibri-Italic" fillColor="#666666"/>
                                                        </textAttrs>
                                                   </DOMTextRun>
                                              </textRuns>
                                         </DOMStaticText>
-                                        <DOMSymbolInstance libraryItemName="Symbol 2 copy" name="json_mc">
+                                   </elements>
+                              </DOMFrame>
+                         </frames>
+                    </DOMLayer>
+                    <DOMLayer name="lables" color="#4F80FF" current="true" isSelected="true" autoNamed="false">
+                         <frames>
+                              <DOMFrame index="0" keyMode="9728">
+                                   <elements>
+                                        <DOMBitmapInstance libraryItemName="Bitmap 4-1-1-1-1-1-1.png">
                                              <matrix>
-                                                  <Matrix tx="325" ty="668.9"/>
+                                                  <Matrix a="0.148895263671875" d="0.148895263671875" tx="36" ty="229"/>
+                                             </matrix>
+                                        </DOMBitmapInstance>
+                                        <DOMBitmapInstance libraryItemName="Bitmap 1">
+                                             <matrix>
+                                                  <Matrix a="0.203033447265625" d="0.203033447265625" tx="38" ty="257"/>
+                                             </matrix>
+                                        </DOMBitmapInstance>
+                                        <DOMStaticText fontRenderingMode="standard" left="117.55" width="26.45" height="32.95" autoExpand="true" isSelectable="false">
+                                             <matrix>
+                                                  <Matrix a="0.497421264648438" d="0.497421264648438" tx="-161.35" ty="235.45"/>
+                                             </matrix>
+                                             <textRuns>
+                                                  <DOMTextRun>
+                                                       <characters>To</characters>
+                                                       <textAttrs>
+                                                            <DOMTextAttrs alignment="right" aliasText="false" lineHeight="32.95" size="27" bitmapSize="540" face="Impact"/>
+                                                       </textAttrs>
+                                                  </DOMTextRun>
+                                             </textRuns>
+                                        </DOMStaticText>
+                                        <DOMSymbolInstance libraryItemName="Duplicate Items Folder/Symbol 25 copy 2" name="back_mc" selected="true" centerPoint3DX="475.8" centerPoint3DY="262.6">
+                                             <matrix>
+                                                  <Matrix a="1.35084533691406" d="1.14666748046875" tx="602.85" ty="267.35"/>
                                              </matrix>
                                              <transformationPoint>
-                                                  <Point x="135.9" y="24.75"/>
+                                                  <Point x="0.1" y="0.05"/>
                                              </transformationPoint>
                                         </DOMSymbolInstance>
                                         <DOMGroup>
-                                             <matrix>
-                                                  <Matrix tx="14.2" ty="7.25"/>
-                                             </matrix>
                                              <members>
                                                   <DOMShape selected="true" isDrawingObject="true">
                                                        <matrix>
@@ -686,8 +757,8 @@
                                                        </fills>
                                                        <edges>
                                                             <Edge fillStyle0="1" edges="
-!14601 7640|14324 7640!14324 7640|14324 7567!14324 7567|14601 7567!14601 7567|14601 7362!14601 7362|14120 7362!14120 7362|14120 8121!14120 8121|14601 8121!14601 8121|14601 7640!14397 7917|14324 7917!14324 7917|14324 7844!14324 7844|14397
- 7844!14397 7844|14397 7917"/>
+!14397 7917|14324 7917!14324 7917|14324 7844!14324 7844|14397 7844!14397 7844|14397 7917!14601 7640|14324 7640!14324 7640|14324 7567!14324 7567|14601 7567!14601 7567|14601 7362!14601 7362|14120 7362!14120 7362|14120 8121!14120 8121|14601
+ 8121!14601 8121|14601 7640"/>
                                                             <Edge cubics="!14397 7917(;14397,7917 14324,7917 14324,7917q14397 7917 14324 7917)14324,7917;"/>
                                                             <Edge cubics="!14324 7917(;14324,7917 14324,7844 14324,7844q14324 7917 14324 7844)14324,7844;"/>
                                                             <Edge cubics="!14324 7844(;14324,7844 14397,7844 14397,7844q14324 7844 14397 7844);"/>
@@ -792,8 +863,8 @@
 |15552 7969!15552 7969|15552 8094!15552 8094|15433 8094!15433 8094|15433 8114!15433 8114|15552 8114!15552 8114|15552 8383!15552 8383|15433 8383!15433 8383|15433 8403!15433 8403|15552 8403!15552 8403|15552 8528!15552 8528|15433 8528!15433
  8528|15433 8548!15433 8548|15552 8548!15552 8548|15552 8729!15552 8729|15571 8729!15571 8729|15571 8548!15571 8548|15716 8548!15716 8548|15716 8403!15716 8403|15759 8403!15759 8403|15759 8383!15759 8383|15716 8383!15716 8383|15716 8114
 !15716 8114|15813 8114!15813 8114|15813 8094!15813 8094|15716 8094!15716 8094|15716 7969!15716 7969|15813 7969!15696 7660|15571 7660!15571 7660|15571 7535!15571 7535|15696 7535!15696 7535|15696 7660!15696 7949|15571 7949!15571 7949|15571
- 7679!15571 7679|15696 7679!15696 7679|15696 7949!15696 8094|15571 8094!15571 8094|15571 7969!15571 7969|15696 7969!15696 7969|15696 8094!15696 8528|15571 8528!15571 8528|15571 8403!15571 8403|15696 8403!15696 8403|15696 8528!15696 8383
-|15571 8383!15571 8383|15571 8114!15571 8114|15696 8114!15696 8114|15696 8383"/>
+ 7679!15571 7679|15696 7679!15696 7679|15696 7949!15696 8094|15571 8094!15571 8094|15571 7969!15571 7969|15696 7969!15696 7969|15696 8094!15696 8383|15571 8383!15571 8383|15571 8114!15571 8114|15696 8114!15696 8114|15696 8383!15696 8528
+|15571 8528!15571 8528|15571 8403!15571 8403|15696 8403!15696 8403|15696 8528"/>
                                                             <Edge cubics="!15696 7660(;15696,7660 15571,7660 15571,7660q15696 7660 15571 7660);"/>
                                                             <Edge cubics="!15571 7660(;15571,7660 15571,7535 15571,7535q15571 7660 15571 7535);"/>
                                                             <Edge cubics="!15571 7535(;15571,7535 15696,7535 15696,7535q15571 7535 15696 7535);"/>
@@ -880,7 +951,7 @@
 |13979 7338!13979 7338|13959 7338!13959 7338|13959 7515!13959 7515|13814 7515!13814 7515|13814 7660!13814 7660|13792 7660!13792 7660|13792 7679!13792 7679|13814 7679!13814 7679|13814 7949!13814 7949|13735 7949!13735 7949|13735 7969!13735
  7969|13814 7969!13814 7969|13814 8094!13814 8094|13735 8094!13735 8094|13735 8114!13735 8114|13814 8114!13814 8114|13814 8383!13814 8383|13792 8383!13792 8383|13792 8403!13792 8403|13814 8403!13814 8403|13814 8548!13814 8548|13959 8548
 !13959 8548|13959 8729!13959 8729|13979 8729!13979 8729|13979 8548!13979 8548|14120 8548!14120 8548|14120 8528!13959 7660|13834 7660!13834 7660|13834 7535!13834 7535|13959 7535!13959 7535|13959 7660!13959 7949|13834 7949!13834 7949|13834
- 7679!13834 7679|13959 7679!13959 7679|13959 7949!13959 8383|13834 8383!13834 8383|13834 8114!13834 8114|13959 8114!13959 8114|13959 8383!13959 8094|13834 8094!13834 8094|13834 7969!13834 7969|13959 7969!13959 7969|13959 8094!13959 8528
+ 7679!13834 7679|13959 7679!13959 7679|13959 7949!13959 8094|13834 8094!13834 8094|13834 7969!13834 7969|13959 7969!13959 7969|13959 8094!13959 8383|13834 8383!13834 8383|13834 8114!13834 8114|13959 8114!13959 8114|13959 8383!13959 8528
 |13834 8528!13834 8528|13834 8403!13834 8403|13959 8403!13959 8403|13959 8528"/>
                                                             <Edge cubics="!13959 7660(;13959,7660 13834,7660 13834,7660q13959 7660 13834 7660);"/>
                                                             <Edge cubics="!13834 7660(13834,7660;13834,7660 13834,7535 13834,7535q13834 7660 13834 7535);"/>
@@ -1037,8 +1108,8 @@
  7245!14827 7245|14827 7363!14827 7363|14847 7363!14847 7363|14847 7245!14847 7245|15117 7245!15117 7245|15117 7363!15117 7363|15137 7363!15137 7363|15137 7245!15137 7245|15262 7245!15262 7245|15262 7363!15262 7363|15282 7363!15282 7363
 |15282 7245!15282 7245|15471 7245!15471 7245|15471 7225!15471 7225|15282 7225!15282 7225|15282 7080!15282 7080|15137 7080!15137 7080|15137 7050!15137 7050|15117 7050!15117 7050|15117 7080!15117 7080|14847 7080!14847 7080|14847 6980!14847
  6980|14827 6980!14827 6980|14827 7080!14827 7080|14702 7080!14702 7080|14702 6980!14702 6980|14683 6980!14683 6980|14683 7080!14683 7080|14413 7080!14413 7080|14413 7050!14413 7050|14393 7050!14393 7050|14393 7080!14393 7080|14249 7080
-!14249 7080|14249 7225!14249 7225|14080 7225!14080 7225|14080 7245!14080 7245|14249 7245!14249 7245|14249 7363!14413 7100|14683 7100!14683 7100|14683 7225!14683 7225|14413 7225!14413 7225|14413 7100!14269 7100|14393 7100!14393 7100|14393
- 7225!14393 7225|14269 7225!14269 7225|14269 7100!14847 7100|15117 7100!15117 7100|15117 7225!15117 7225|14847 7225!14847 7225|14847 7100!15137 7100|15262 7100!15262 7100|15262 7225!15262 7225|15137 7225!15137 7225|15137 7100!14702 7100
+!14249 7080|14249 7225!14249 7225|14080 7225!14080 7225|14080 7245!14080 7245|14249 7245!14249 7245|14249 7363!14269 7100|14393 7100!14393 7100|14393 7225!14393 7225|14269 7225!14269 7225|14269 7100!14413 7100|14683 7100!14683 7100|14683
+ 7225!14683 7225|14413 7225!14413 7225|14413 7100!15137 7100|15262 7100!15262 7100|15262 7225!15262 7225|15137 7225!15137 7225|15137 7100!14847 7100|15117 7100!15117 7100|15117 7225!15117 7225|14847 7225!14847 7225|14847 7100!14702 7100
 |14827 7100!14827 7100|14827 7225!14827 7225|14702 7225!14702 7225|14702 7100"/>
                                                             <Edge cubics="!14269 7100(;14269,7100 14393,7100 14393,7100q14269 7100 14393 7100);"/>
                                                             <Edge cubics="!14393 7100(;14393,7100 14393,7225 14393,7225q14393 7100 14393 7225);"/>
@@ -1112,101 +1183,78 @@
                                                   </DOMShape>
                                              </members>
                                         </DOMGroup>
-                                        <DOMGroup>
+                                        <DOMStaticText fontRenderingMode="standard" width="192.8" height="30.35" antiAliasSharpness="-279" antiAliasThickness="100" isSelectable="false">
                                              <matrix>
-                                                  <Matrix tx="60.7"/>
-                                             </matrix>
-                                             <members>
-                                                  <DOMStaticText selected="true" fontRenderingMode="standard" left="117.55" width="26.45" height="32.95" autoExpand="true" isSelectable="false">
-                                                       <matrix>
-                                                            <Matrix a="2.39344787597656" d="2.39344787597656" tx="12" ty="190.75"/>
-                                                       </matrix>
-                                                       <textRuns>
-                                                            <DOMTextRun>
-                                                                 <characters>To</characters>
-                                                                 <textAttrs>
-                                                                      <DOMTextAttrs alignment="right" aliasText="false" lineHeight="32.95" size="27" bitmapSize="540" face="Impact"/>
-                                                                 </textAttrs>
-                                                            </DOMTextRun>
-                                                       </textRuns>
-                                                  </DOMStaticText>
-                                             </members>
-                                        </DOMGroup>
-                                        <DOMGroup>
-                                             <members>
-                                                  <DOMBitmapInstance libraryItemName="Bitmap 4-1-1-1-1-1-1.png">
-                                                       <matrix>
-                                                            <Matrix a="0.58734130859375" d="0.58734130859375" tx="60.45" ty="408.8"/>
-                                                       </matrix>
-                                                  </DOMBitmapInstance>
-                                                  <DOMBitmapInstance libraryItemName="Bitmap 1">
-                                                       <matrix>
-                                                            <Matrix a="0.80084228515625" d="0.80084228515625" tx="409.35" ty="356.2"/>
-                                                       </matrix>
-                                                  </DOMBitmapInstance>
-                                                  <DOMStaticText fontRenderingMode="standard" left="117.55" width="26.45" height="32.95" autoExpand="true" isSelectable="false">
-                                                       <matrix>
-                                                            <Matrix a="2.39344787597656" d="2.39344787597656" tx="11.75" ty="403.4"/>
-                                                       </matrix>
-                                                       <textRuns>
-                                                            <DOMTextRun>
-                                                                 <characters>To</characters>
-                                                                 <textAttrs>
-                                                                      <DOMTextAttrs alignment="right" aliasText="false" lineHeight="32.95" size="27" bitmapSize="540" face="Impact"/>
-                                                                 </textAttrs>
-                                                            </DOMTextRun>
-                                                       </textRuns>
-                                                  </DOMStaticText>
-                                             </members>
-                                        </DOMGroup>
-                                        <DOMInputText name="json_txt" fontRenderingMode="device" top="25.3" width="332" height="45.5" border="true" lineType="multiline">
-                                             <matrix>
-                                                  <Matrix tx="257.4" ty="489.2"/>
-                                             </matrix>
-                                             <textRuns>
-                                                  <DOMTextRun>
-                                                       <characters></characters>
-                                                       <textAttrs>
-                                                            <DOMTextAttrs aliasText="false" lineHeight="45.5" size="30" bitmapSize="600" face="BYekan"/>
-                                                       </textAttrs>
-                                                  </DOMTextRun>
-                                             </textRuns>
-                                        </DOMInputText>
-                                        <DOMStaticText fontRenderingMode="standard" width="192.8" height="45.5" antiAliasSharpness="-279" antiAliasThickness="100" isSelectable="false">
-                                             <matrix>
-                                                  <Matrix tx="60.6" ty="514.5"/>
+                                                  <Matrix tx="105.6" ty="270.35"/>
                                              </matrix>
                                              <textRuns>
                                                   <DOMTextRun>
                                                        <characters>JSON in String :</characters>
                                                        <textAttrs>
-                                                            <DOMTextAttrs alignment="center" aliasText="false" lineHeight="45.5" size="30" bitmapSize="600" face="BYekan"/>
+                                                            <DOMTextAttrs aliasText="false" lineHeight="30.35" size="20" bitmapSize="400" face="BYekan" fillColor="#333333"/>
                                                        </textAttrs>
                                                   </DOMTextRun>
                                              </textRuns>
                                         </DOMStaticText>
-                                        <DOMStaticText fontRenderingMode="standard" width="229.9" height="45.5" antiAliasSharpness="-279" antiAliasThickness="100" isSelectable="false">
+                                        <DOMStaticText fontRenderingMode="standard" width="229.9" height="30.35" antiAliasSharpness="-279" antiAliasThickness="100" isSelectable="false">
                                              <matrix>
-                                                  <Matrix tx="60.6" ty="579"/>
+                                                  <Matrix tx="105.6" ty="225.7"/>
                                              </matrix>
                                              <textRuns>
                                                   <DOMTextRun>
                                                        <characters>Root Class Name :</characters>
                                                        <textAttrs>
-                                                            <DOMTextAttrs alignment="center" aliasText="false" lineHeight="45.5" size="30" bitmapSize="600" face="BYekan"/>
+                                                            <DOMTextAttrs aliasText="false" lineHeight="30.35" size="20" bitmapSize="400" face="BYekan" fillColor="#333333"/>
                                                        </textAttrs>
                                                   </DOMTextRun>
                                              </textRuns>
                                         </DOMStaticText>
-                                        <DOMInputText name="as_name_txt" fontRenderingMode="device" top="25.3" width="287" height="45.5" border="true" lineType="multiline">
+                                        <DOMSymbolInstance libraryItemName="Duplicate Items Folder/Symbol 25 copy 2" name="back_mc" centerPoint3DX="475.8" centerPoint3DY="302.6">
                                              <matrix>
-                                                  <Matrix tx="302.4" ty="553.7"/>
+                                                  <Matrix a="1.35084533691406" d="2.14999389648438" tx="602.85" ty="340.6"/>
+                                             </matrix>
+                                             <transformationPoint>
+                                                  <Point x="0.05" y="0.05"/>
+                                             </transformationPoint>
+                                        </DOMSymbolInstance>
+                                        <DOMSymbolInstance libraryItemName="Symbol 6 copy 3" name="json_mc">
+                                             <matrix>
+                                                  <Matrix tx="473.25" ty="357.35"/>
+                                             </matrix>
+                                             <transformationPoint>
+                                                  <Point x="156.45" y="20.55"/>
+                                             </transformationPoint>
+                                        </DOMSymbolInstance>
+                                        <DOMSymbolInstance libraryItemName="Symbol 6 copy" name="recreate_mc">
+                                             <matrix>
+                                                  <Matrix tx="473.25" ty="144.9"/>
+                                             </matrix>
+                                             <transformationPoint>
+                                                  <Point x="156.45" y="20.55"/>
+                                             </transformationPoint>
+                                        </DOMSymbolInstance>
+                                        <DOMInputText name="as_name_txt" fontRenderingMode="device" top="25.3" width="352.5" height="24.4" lineType="multiline">
+                                             <matrix>
+                                                  <Matrix tx="276.7" ty="210.65"/>
                                              </matrix>
                                              <textRuns>
                                                   <DOMTextRun>
                                                        <characters>rootClass</characters>
                                                        <textAttrs>
-                                                            <DOMTextAttrs aliasText="false" lineHeight="45.5" size="30" bitmapSize="600" face="BYekan"/>
+                                                            <DOMTextAttrs aliasText="false" lineHeight="24.4" size="20" bitmapSize="400" face="Calibri"/>
+                                                       </textAttrs>
+                                                  </DOMTextRun>
+                                             </textRuns>
+                                        </DOMInputText>
+                                        <DOMInputText name="json_txt" fontRenderingMode="device" top="25.3" left="3.35" width="352.25" height="50.8" lineType="multiline">
+                                             <matrix>
+                                                  <Matrix tx="272.7" ty="253.1"/>
+                                             </matrix>
+                                             <textRuns>
+                                                  <DOMTextRun>
+                                                       <characters>31 &#xD;2</characters>
+                                                       <textAttrs>
+                                                            <DOMTextAttrs aliasText="false" lineHeight="24.4" size="20" bitmapSize="400" face="Calibri"/>
                                                        </textAttrs>
                                                   </DOMTextRun>
                                              </textRuns>
@@ -1260,21 +1308,23 @@
                </layers>
           </DOMTimeline>
      </timelines>
+     <scripts/>
      <persistentData>
           <PD n="com.air.artemis.airdest" v="PostManServiceCreator.exe"/>
-          <PD n="ane.tmp.unzipped.folder" v="C:\Users\Admin\AppData\Local\Temp\Tmp_ANE_File_Unzipped_Packages"/>
+          <PD n="ane.tmp.unzipped.folder" v="C:\Users\Sepehr\AppData\Local\Temp\Tmp_ANE_File_Unzipped_Packages"/>
           <PD n="com.air.oldTargetPlatform" v="Desktop"/>
-          <PD n="com.air.sdk.path" v="D:\air\AIRSDK_25_118"/>
+          <PD n="com.air.sdk.path" v="D:\air\AIR32"/>
           <PD n="com.air.artemis.pubair" v="false"/>
           <PD n="com.air.artemis.pubipa" v="false"/>
           <PD n="flash.swf.basename" v="PostManServiceCreator"/>
           <PD n="com.air.artemis.pubcaptive" v="false"/>
-          <PD n="flash.fla.filepath" v="D:/Sepehr/SWF/AppGenerator/jsnon-postman/PostManServiceCreator/PostManServiceCreator.xfl"/>
           <PD n="swf.folder.path" v="D:/Sepehr/SWF/AppGenerator/jsnon-postman/"/>
+          <PD n="flash.fla.filepath" v="D:/Sepehr/SWF/AppGenerator/jsnon-postman/PostManServiceCreator/PostManServiceCreator.xfl"/>
           <PD n="com.air.artemis.pubexe" v="true"/>
      </persistentData>
      <PrinterSettings/>
      <publishHistory>
+          <PublishItem publishSize="116005" publishTime="1555478151"/>
           <PublishItem publishSize="107451" publishTime="1527427927"/>
           <PublishItem publishSize="107382" publishTime="1527427882"/>
           <PublishItem publishSize="107341" publishTime="1527427854"/>
@@ -1294,6 +1344,5 @@
           <PublishItem publishSize="18898" publishTime="1504771715" publishDebug="true"/>
           <PublishItem publishSize="18894" publishTime="1504771566"/>
           <PublishItem publishSize="18870" publishTime="1504771484"/>
-          <PublishItem publishSize="18869" publishTime="1504769779"/>
      </publishHistory>
 </DOMDocument>

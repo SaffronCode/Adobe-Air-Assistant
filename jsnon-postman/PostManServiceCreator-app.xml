@@ -16,7 +16,7 @@
 	<text xml:lang="ja">Japanese App name goes here</text>
 	</name>
 -->
-<application xmlns="http://ns.adobe.com/air/application/25.0">
+<application xmlns="http://ns.adobe.com/air/application/32.0">
   <id>PostManServiceCreator</id>
   <versionNumber>1.0</versionNumber>
   <filename>PostManServiceCreator</filename>
