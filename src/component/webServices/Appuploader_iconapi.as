@@ -6,7 +6,7 @@ import restDoaService.RestDoaServiceCaller;
 public class Appuploader_iconapi extends RestDoaServiceCaller
 {
 
-    private var data:ByteArray = new ByteArray();
+    public var data:ByteArray = new ByteArray();
 
     public function Appuploader_iconapi()
     {
@@ -16,7 +16,7 @@ public class Appuploader_iconapi extends RestDoaServiceCaller
 
     public function load(iconFile:ByteArray)
     {
-        super.loadParam({key:"7033a2395f212dbe1eca548fc92c11e7"/*,iconFile:iconFil*/},true);
+        super.loadParam({key:"7033a2395f212dbe1eca548fc92c11e7",iconFile:iconFile},true);
     }
 }
 }
