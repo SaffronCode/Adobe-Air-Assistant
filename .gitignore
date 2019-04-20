@@ -43,3 +43,5 @@ $RECYCLE.BIN/
 *.lnk
 src/RECOVER_AppGenerator.fla
 *.swf
+.idea
+*.iml

@@ -1,7 +1,9 @@
 package component
 	//component.AppIconGenerator
 {
-	import flash.desktop.ClipboardFormats;
+import component.webServices.Appuploader_iconapi;
+
+import flash.desktop.ClipboardFormats;
 	import flash.desktop.NativeApplication;
 	import flash.desktop.NativeDragManager;
 	import flash.display.BitmapData;
@@ -23,6 +25,8 @@ package component
 		private var iconSizes:Array = [];
 		
 		public var iconDirectoryName:String = "AppIconsForPublish";
+
+		private var iconGeneratorService:Appuploader_iconapi ;
 		
 		public function AppIconGenerator()
 		{
@@ -31,6 +35,10 @@ package component
 			
 			NativeDragManager.acceptDragDrop(this);
 			this.addEventListener(NativeDragEvent.NATIVE_DRAG_ENTER, onDragged);
+
+			iconGeneratorService = new Appuploader_iconapi();
+			FileManager.saveFile(File.desktopDirectory.resolvePath("image.png"),BitmapEffects.createPNG(new BitmapData(1024,1024,false,0xff0000)))
+			iconGeneratorService.load(BitmapEffects.createPNG(new BitmapData(1024,1024,false,0xff0000)));
 		}
 		
 		protected function onDragged(event:NativeDragEvent):void
