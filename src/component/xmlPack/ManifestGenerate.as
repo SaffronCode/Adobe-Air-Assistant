@@ -44,7 +44,7 @@
 		//Extentions
 		private var extensionsList:Vector.<String> = new Vector.<String>();
 		//Parameters
-		public var 	airVersion:String = '29.0',
+		public var 	airVersion:String = '32.0',
 					id:String='com.mteamapps.saffron',
 					versionNumber:String = '0.0.0',
 					description:String = '';
