@@ -18,7 +18,7 @@
 -->
 <application xmlns="http://ns.adobe.com/air/application/32.0">
   <id>PostManServiceCreator</id>
-  <versionNumber>1.0</versionNumber>
+  <versionNumber>1.1</versionNumber>
   <filename>JSON Tools</filename>
   <description/>
   <name>JSON Tools</name>
@@ -41,4 +41,3 @@
   <customUpdateUI>false</customUpdateUI>
   <allowBrowserInvocation>false</allowBrowserInvocation>
 </application>
-	
