@@ -1,6 +1,5 @@
 ﻿package
 {
-	import com.mteamapp.JSONParser;
 	import com.mteamapp.StringFunctions;
 	
 	import flash.desktop.Clipboard;
@@ -12,10 +11,7 @@
 	import flash.events.MouseEvent;
 	import flash.events.NativeDragEvent;
 	import flash.filesystem.File;
-	import flash.filesystem.FileMode;
-	import flash.filesystem.FileStream;
 	import flash.text.TextField;
-	import flash.utils.ByteArray;
 	
 	import contents.TextFile;
 	import contents.alert.Alert;
@@ -25,8 +21,6 @@
 	import otherPlatforms.dragAndDrow.DragAndDrop;
 	import otherPlatforms.dynamicVersionControl.GitHubVersionCheck;
 	import otherPlatforms.postMan.PostManToASFiles;
-	
-	import restDoaService.RestDoaService;
 	
 	public class WebServiceGenerator extends Sprite
 	{
@@ -128,6 +122,7 @@
 			if(jsonCreatorButtonMC)
 			{
 				jsonCreatorButtonMC.addEventListener(MouseEvent.CLICK,createASFilesFromJSON);
+				jsonCreatorButtonMC.addEventListener(MouseEvent.MOUSE_OUT,createASFilesFromJSON)
 			}
 		}
 		
@@ -165,6 +160,10 @@
 		
 		protected function createASFilesFromJSON(event:MouseEvent):void
 		{
+			if(event.type == MouseEvent.MOUSE_OUT && !event.buttonDown)
+			{
+				return ;
+			}
 			trace("Pure json : "+jsonText.text);
 			var jsonString:String = jsonText.text;//StringFunctions.utfToUnicode(jsonText.text) ;
 			//Remove enters 
@@ -183,16 +182,30 @@
 				return ;
 			}
 			
-			var asFileTarget:File = new File();
-			asFileTarget.addEventListener(Event.SELECT,saveThisJSONTo);
-			asFileTarget.browseForDirectory("Select a folder to save your as files");
-			
-			function saveThisJSONTo(e:Event):void
+			if(event.type == MouseEvent.CLICK)
 			{
-				trace("Start saving : "+JSON.stringify(jsonObject,null,' '));
-				PostManToASFiles.SaveJSONtoAs(jsonObject,asFileTarget,StringFunctions.clearSpacesAndTabs(asClassName.text));
+				var asFileTarget:File = new File();
+				asFileTarget.addEventListener(Event.SELECT,saveThisJSONTo);
+				asFileTarget.browseForDirectory("Select a folder to save your as files");
+				
+				function saveThisJSONTo(e:Event):void
+				{
+					trace("Start saving : "+JSON.stringify(jsonObject,null,' '));
+					PostManToASFiles.SaveJSONtoAs(jsonObject,asFileTarget,StringFunctions.clearSpacesAndTabs(asClassName.text));
+				}
+			}
+			else if(event.type == MouseEvent.MOUSE_OUT)
+			{
+				var fileForUser:File = PostManToASFiles.SaveJSONtoAs(jsonObject,File.createTempDirectory(),StringFunctions.clearSpacesAndTabs(asClassName.text));
+				DragAndDrop.startDrag(jsonCreatorButtonMC,[fileForUser]);
 			}
 		}
+		
+		
+		/*private function saveJSONTo(file:File):void
+		{
+			PostManToASFiles.SaveJSONtoAs(jsonObject,asFileTarget,StringFunctions.clearSpacesAndTabs(asClassName.text));
+		}*/
 		
 		public static function log(str:String):void
 		{
