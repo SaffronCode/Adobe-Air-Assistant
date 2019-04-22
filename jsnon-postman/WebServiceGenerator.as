@@ -21,6 +21,7 @@
 	
 	import dynamicFrame.FrameGenerator;
 	
+	import otherPlatforms.dynamicVersionControl.GitHubVersionCheck;
 	import otherPlatforms.postMan.PostManToASFiles;
 	
 	import restDoaService.RestDoaService;
@@ -36,14 +37,24 @@
 		
 		private var jsonText:TextField,
 					asClassName:TextField;
+					
+					
+		private var postmanDropAreaMC:MovieClip,
+					button_import_postmanMC:MovieClip;
 		
 		public function WebServiceGenerator()
 		{
 			super();
 			FrameGenerator.createFrame(stage);
-			this.addEventListener(NativeDragEvent.NATIVE_DRAG_ENTER, onDragged);
+			
+			postmanDropAreaMC = Obj.get("postman_area_mc",this);
+			
+			button_import_postmanMC = Obj.get("import_mc",this);
+			button_import_postmanMC.buttonMode = true ;
+			button_import_postmanMC.addEventListener(MouseEvent.CLICK,openFileBrowserToOpenPostmanFile);
 			
 			recreateButtonMC = Obj.get("recreate_mc",this);
+			recreateButtonMC.visible = false ;
 			jsonCreatorButtonMC = Obj.get("json_mc",this);
 			jsonText = Obj.get("json_txt",this);
 			asClassName = Obj.get("as_name_txt",this);
@@ -64,33 +75,37 @@
 			loggerBackMC.addEventListener(MouseEvent.CLICK,hideLogger);
 			loggerTF.mouseEnabled = false ;
 			
-			/*var areaMC:Sprite = new Sprite();
-			areaMC.graphics.beginFill(0xff0000);
-			areaMC.graphics.drawRect(0,0,stage.stageWidth,stage.stageHeight);
-			this.addChild(areaMC);
-			areaMC.alpha = 0 ;*/
-			
-			NativeDragManager.acceptDragDrop(this);
-			//NativeDragManager.doDrag(;
-			
-			//var service:String = TextFile.load(File.desktopDirectory.resolvePath("Panjereh-video share.postman_collection.json"));
-			//trace(service);
-				//PostManToASFiles.saveClasses(File.desktopDirectory.resolvePath('classes'),service);
-				//PostManToASFiles.SaveJSONtoAs(JSON.parse(service),File.desktopDirectory.resolvePath('classes'),'PostManMain');
-			/*RestDoaService.setUp("http://");
-			var myservice:GetVideoGroupComments = new GetVideoGroupComments();
-			myservice.load('1026');
-			var saveComment:RegisterVideoGroupComment = new RegisterVideoGroupComment();
-			saveComment.load('hi',"78f242e7-c6ea-4879-93c0-500032350d65",1026);*/
-			
-			if(recreateButtonMC)
+			var newVersionMC:MovieClip = Obj.get("new_version_mc",this);
+			newVersionMC.visible = false ;
+			var hintTF:TextField = Obj.get("hint_mc",newVersionMC);
+			newVersionMC.addEventListener(MouseEvent.CLICK,openUpdator);
+			GitHubVersionCheck.compairVersionWithOnline("https://raw.githubusercontent.com/SaffronCode/Adobe-Air-Assistant/master/jsnon-postman/JSONtool-app.xml",needToUpdate);
+			function needToUpdate():void
 			{
-				recreateButtonMC.addEventListener(MouseEvent.CLICK,reload);
+				newVersionMC.visible = true ;
+				newVersionMC.alpha = 0 ;
+				AnimData.fadeIn(newVersionMC);
 			}
-			else
+			
+			function openUpdator(e:MouseEvent=null):void
 			{
-				stage.addEventListener(MouseEvent.CLICK,reload);
+				GitHubVersionCheck.dowloadInstallerAndLaunch("https://github.com/SaffronCode/Adobe-Air-Assistant/raw/master/build/PostMan-JSON-Creator.exe",showDownloadProgress,downloadCompleted);
+				
+				function showDownloadProgress(precent:Number):void
+				{
+					hintTF.text = "Please wait ...(%"+precent+")" ;
+				}
+				
+				function downloadCompleted():void
+				{
+					hintTF.text = "The installer should be open now...";
+				}
 			}
+			
+			NativeDragManager.acceptDragDrop(postmanDropAreaMC);
+			postmanDropAreaMC.addEventListener(NativeDragEvent.NATIVE_DRAG_ENTER, onDraggedForPostman);
+			
+			recreateButtonMC.addEventListener(MouseEvent.CLICK,createPostManOutPut);
 			
 			
 			if(jsonCreatorButtonMC)
@@ -99,6 +114,7 @@
 			}
 		}
 		
+		/**Hide the logger screen*/
 		private function hideLogger(e:MouseEvent):void
 		{
 			loggerBackMC.visible = false ;
@@ -151,7 +167,7 @@
 			loggerTF.text = '' ;
 		}
 		
-		protected function reload(event:MouseEvent):void
+		/*protected function reload(event:MouseEvent):void
 		{
 			if(currentFile!=null && currentFile.exists)
 			{
@@ -160,35 +176,57 @@
 				var typeFolders:File = currentFile.parent.resolvePath(dataFolderName) ;
 				PostManToASFiles.saveClasses(serviceFolder,TextFile.load(currentFile),typeFolders);
 			}
-		}
+		}*/
 		
-		private var currentFile:File;
+		private var currentPostManJSONFile:File;
 
 		private var serviceFolderName:String = "service";;
 
 		private var dataFolderName:String = "types";
 
-		protected function onDragged(event:NativeDragEvent):void
+		protected function onDraggedForPostman(event:NativeDragEvent):void
 		{
 			var files:Array = event.clipboard.getData(ClipboardFormats.FILE_LIST_FORMAT) as Array;
-			currentFile = files[0];
-			var arrPath:Array = currentFile.name.split('.');
+			currentPostManJSONFile = files[0];
+			var arrPath:Array = currentPostManJSONFile.name.split('.');
 			var type:String = arrPath[arrPath.length-1];
-			if (!currentFile.isDirectory && (type == 'json' || type == 'txt')) {
+			if (!currentPostManJSONFile.isDirectory && (type == 'json')) {
 				NativeDragManager.acceptDragDrop(this);
-				this.addEventListener(NativeDragEvent.NATIVE_DRAG_DROP, onDropped);
+				this.addEventListener(NativeDragEvent.NATIVE_DRAG_DROP, onDroppeddForPostman);
 			}
 		}
 		
-		private function onDropped(event:NativeDragEvent):void
+		private function openFileBrowserToOpenPostmanFile(e:MouseEvent):void
+		{
+			FileManager.browse(onFileSelected,['*.json','*.JSON'],'Select the Postman output (Collection V2)');
+			function onFileSelected(selectedFile:File):void
+			{
+				currentPostManJSONFile = selectedFile ;
+				recreateButtonMC.visible = true ;
+			}
+		}
+		
+		private function onDroppeddForPostman(event:NativeDragEvent):void
 		{
 			clearLog();
-			this.removeEventListener(NativeDragEvent.NATIVE_DRAG_DROP, onDropped);
-			var serviceFolder:File = currentFile.parent.resolvePath(serviceFolderName) ;
-			serviceFolder.createDirectory()
-			var typeFolders:File = currentFile.parent.resolvePath(dataFolderName) ;
-			typeFolders.createDirectory()
-			PostManToASFiles.saveClasses(serviceFolder,TextFile.load(currentFile),typeFolders);
+			this.removeEventListener(NativeDragEvent.NATIVE_DRAG_DROP, onDroppeddForPostman);
+			recreateButtonMC.visible = true ;
+			
+			createPostManOutPut();
 		}
+		
+			/**Re generate postman file again*/
+			private function createPostManOutPut(e:*=null):void
+			{
+				FileManager.browseForDirecory(selectFolderToSave,"Select the output directory");
+				function selectFolderToSave(selectedDirectory:File):void
+				{
+					var serviceFolder:File = selectedDirectory.resolvePath(serviceFolderName) ;
+					serviceFolder.createDirectory();
+					var typeFolders:File = selectedDirectory.resolvePath(dataFolderName) ;
+					typeFolders.createDirectory();
+					PostManToASFiles.saveClasses(serviceFolder,TextFile.load(currentPostManJSONFile),typeFolders);
+				}
+			}
 	}
 }
