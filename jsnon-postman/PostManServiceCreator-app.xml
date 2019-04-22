@@ -19,9 +19,9 @@
 <application xmlns="http://ns.adobe.com/air/application/32.0">
   <id>PostManServiceCreator</id>
   <versionNumber>1.0</versionNumber>
-  <filename>PostManServiceCreator</filename>
+  <filename>JSON Tools</filename>
   <description/>
-  <name>PostManServiceCreator</name>
+  <name>JSON Tools</name>
   <copyright/>
   <initialWindow>
     <content>PostManServiceCreator.swf</content>
