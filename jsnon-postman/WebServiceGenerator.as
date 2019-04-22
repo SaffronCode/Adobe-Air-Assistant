@@ -100,7 +100,7 @@
 			
 			function openUpdator(e:MouseEvent=null):void
 			{
-				GitHubVersionCheck.dowloadInstallerAndLaunch("https://github.com/SaffronCode/Adobe-Air-Assistant/raw/master/build/PostMan-JSON-Creator.exe",showDownloadProgress,downloadCompleted);
+				GitHubVersionCheck.dowloadInstallerAndLaunch("https://github.com/SaffronCode/Adobe-Air-Assistant/raw/master/build/JSONtool.air",showDownloadProgress,downloadCompleted);
 				
 				function showDownloadProgress(precent:Number):void
 				{
