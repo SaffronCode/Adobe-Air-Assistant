@@ -41,7 +41,7 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
-src/RECOVER_AppGenerator.fla
+RECOVER_*
 *.swf
 .idea
 *.iml
