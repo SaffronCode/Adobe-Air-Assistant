@@ -3,6 +3,7 @@
 	import com.mteamapp.JSONParser;
 	import com.mteamapp.StringFunctions;
 	
+	import flash.desktop.Clipboard;
 	import flash.desktop.ClipboardFormats;
 	import flash.desktop.NativeDragManager;
 	import flash.display.MovieClip;
@@ -21,6 +22,7 @@
 	
 	import dynamicFrame.FrameGenerator;
 	
+	import otherPlatforms.dragAndDrow.DragAndDrop;
 	import otherPlatforms.dynamicVersionControl.GitHubVersionCheck;
 	import otherPlatforms.postMan.PostManToASFiles;
 	
@@ -33,13 +35,16 @@
 							
 		private var recreateButtonMC:MovieClip ;
 		
-		private var jsonCreatorButtonMC:MovieClip ;
+		private var jsonCreatorButtonMC:MovieClip,
+					pasteJSONMC:MovieClip,
+					jsonObjectAreaMC:MovieClip;
 		
 		private var jsonText:TextField,
 					asClassName:TextField;
 					
 					
 		private var postmanDropAreaMC:MovieClip,
+					button_importJSJON:MovieClip,
 					button_import_postmanMC:MovieClip;
 		
 		public function WebServiceGenerator()
@@ -56,8 +61,20 @@
 			recreateButtonMC = Obj.get("recreate_mc",this);
 			recreateButtonMC.visible = false ;
 			jsonCreatorButtonMC = Obj.get("json_mc",this);
+			pasteJSONMC = Obj.get("paste_json_mc",this);
 			jsonText = Obj.get("json_txt",this);
 			asClassName = Obj.get("as_name_txt",this);
+			
+			button_importJSJON = Obj.get("import_json_object_mc",this);
+			button_importJSJON.buttonMode = true ;
+			button_importJSJON.addEventListener(MouseEvent.CLICK,importJSONObject);
+			jsonObjectAreaMC = Obj.get("json_object_area_mc",this);
+			DragAndDrop.activateDragAndDrop(jsonObjectAreaMC,addThisJSONObject,['json','txt']);
+			
+			pasteJSONMC.buttonMode = true ;
+			pasteJSONMC.addEventListener(MouseEvent.CLICK,function(e){
+				jsonText.text = String(Clipboard.generalClipboard.getData(ClipboardFormats.TEXT_FORMAT));
+			});
 			
 			loggerBackMC = new MovieClip();
 			loggerBackMC.graphics.beginFill(0x000000,0.8);
@@ -113,6 +130,31 @@
 				jsonCreatorButtonMC.addEventListener(MouseEvent.CLICK,createASFilesFromJSON);
 			}
 		}
+		
+		private function addThisJSONObject(jsonObjectFiles:Vector.<File>):void
+		{
+			jsonObjectFounded(jsonObjectFiles[0]);
+		}
+		
+		/**Load JSON object to the text area*/
+		private function importJSONObject(e:MouseEvent):void
+		{
+			FileManager.browse(jsonObjectFounded,['*.json','*.JSON','*.text',"*.TEXT"],"Select your JSON object file");
+		}
+		
+			private function jsonObjectFounded(selectedFile:File):void
+			{
+				var loadedJSON:String = TextFile.load(selectedFile);
+				try
+				{
+					JSON.parse(loadedJSON);
+					jsonText.text = loadedJSON ;
+				}
+				catch(e)
+				{
+					Alert.show("JSON parse error");
+				}
+			}
 		
 		/**Hide the logger screen*/
 		private function hideLogger(e:MouseEvent):void
