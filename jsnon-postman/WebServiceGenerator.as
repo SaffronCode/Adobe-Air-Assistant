@@ -3,11 +3,6 @@
 	import com.mteamapp.JSONParser;
 	import com.mteamapp.StringFunctions;
 	
-	import contents.TextFile;
-	import contents.alert.Alert;
-	
-	import dynamicFrame.FrameGenerator;
-	
 	import flash.desktop.ClipboardFormats;
 	import flash.desktop.NativeDragManager;
 	import flash.display.MovieClip;
@@ -20,6 +15,11 @@
 	import flash.filesystem.FileStream;
 	import flash.text.TextField;
 	import flash.utils.ByteArray;
+	
+	import contents.TextFile;
+	import contents.alert.Alert;
+	
+	import dynamicFrame.FrameGenerator;
 	
 	import otherPlatforms.postMan.PostManToASFiles;
 	
@@ -60,7 +60,8 @@
 			this.addChild(loggerTF);
 			loggerBackMC.visible = false ;
 			loggerTF.visible = false ;
-			loggerBackMC.mouseEnabled = loggerBackMC.mouseChildren = false ;
+			//loggerBackMC.mouseEnabled = loggerBackMC.mouseChildren = false ;
+			loggerBackMC.addEventListener(MouseEvent.CLICK,hideLogger);
 			loggerTF.mouseEnabled = false ;
 			
 			/*var areaMC:Sprite = new Sprite();
@@ -96,6 +97,12 @@
 			{
 				jsonCreatorButtonMC.addEventListener(MouseEvent.CLICK,createASFilesFromJSON);
 			}
+		}
+		
+		private function hideLogger(e:MouseEvent):void
+		{
+			loggerBackMC.visible = false ;
+			loggerTF.visible = false ;
 		}
 		
 		protected function createASFilesFromJSON(event:MouseEvent):void
