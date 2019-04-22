@@ -24,7 +24,7 @@
   <name>JSON Tools</name>
   <copyright/>
   <initialWindow>
-    <content>PostManServiceCreator.swf</content>
+    <content>JSONtool.swf</content>
     <systemChrome>none</systemChrome>
     <transparent>true</transparent>
     <visible>true</visible>
@@ -41,3 +41,4 @@
   <customUpdateUI>false</customUpdateUI>
   <allowBrowserInvocation>false</allowBrowserInvocation>
 </application>
+	
