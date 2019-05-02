@@ -100,6 +100,7 @@
 			
 			function openUpdator(e:MouseEvent=null):void
 			{
+				newVersionMC.removeEventListener(MouseEvent.CLICK,openUpdator);
 				GitHubVersionCheck.dowloadInstallerAndLaunch("https://github.com/SaffronCode/Adobe-Air-Assistant/raw/master/build/JSONtool.air",showDownloadProgress,downloadCompleted);
 				
 				function showDownloadProgress(precent:Number):void
@@ -273,7 +274,7 @@
 			/**Re generate postman file again*/
 			private function createPostManOutPut(e:*=null):void
 			{
-				FileManager.browseForDirecory(selectFolderToSave,"Select the output directory");
+				FileManager.browseForDirectory(selectFolderToSave,"Select the output directory");
 				function selectFolderToSave(selectedDirectory:File):void
 				{
 					var serviceFolder:File = selectedDirectory.resolvePath(serviceFolderName) ;
