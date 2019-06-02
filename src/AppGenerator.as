@@ -31,6 +31,11 @@
 	
 	import popForm.PopField;
 	import popForm.PopFieldBoolean;
+	import deng.fzip.FZip;
+	import flash.filesystem.FileStream;
+	import flash.filesystem.FileMode;
+	import component.googleServices.GoogleServiceJSON;
+	import com.mteamapp.JSONParser;
 
 ;
 
@@ -970,8 +975,93 @@
 
 		private function generateFCMforDistriqt(aneFile:File):void
 		{
+			FileManager.browse(onGoogleJSONSelected,['*.json'],"Select google-services.json");
 
+			function onGoogleJSONSelected(selectedJSON:File):void
+			{
+				var jsonString:String = TextFile.load(selectedJSON);
+				if(jsonString==null)
+					return;
+				var jsonObject:GoogleServiceJSON = new GoogleServiceJSON();
+				JSONParser.parsParams(JSON.parse(jsonString),jsonObject);
+
+				var client_id:String = null ;
+				if(jsonObject.client.length==0)
+				{
+					Alert.show("Google-services file has problem!")
+					return;
+				}
+				for(var iii:int = 0 ; iii<jsonObject.client[0].oauth_client.length ; iii++)
+				{
+					if(jsonObject.client[0].oauth_client[iii].client_type==3)
+					{
+						client_id = jsonObject.client[0].oauth_client[iii].client_id ;
+						break ;
+					}
+				}
+
+				var zip:FZip = new FZip();
+				//zip.addEventListener(Event.OPEN, onOpen);
+				zip.addEventListener(Event.COMPLETE, onComplete);
+				zip.load(new URLRequest(aneFile.url));
+
+				function onComplete(e:*=null):void
+				{
+
+					var i:int;
+					var data:XML = <resources>
+										<string name="default_web_client_id" translatable="false">{client_id}</string>
+										<string name="firebase_database_url" translatable="false">{jsonObject.project_info.firebase_url}</string>
+										<string name="gcm_defaultSenderId" translatable="false">{jsonObject.project_info.project_number}</string>
+										<string name="google_api_key" translatable="false">{jsonObject.client[0].api_key[0].current_key}</string>
+										<string name="google_app_id" translatable="false">{jsonObject.client[0].client_info.mobilesdk_app_id}</string>
+										<string name="google_crash_reporting_api_key" translatable="false">{jsonObject.client[0].api_key[0].current_key}</string>
+										<string name="google_storage_bucket" translatable="false">{jsonObject.project_info.storage_bucket}</string>
+									</resources>;
+					//var whereToSave:File = File.desktopDirectory.resolvePath('ane2.ane') ;
+
+
+					for( i=0 ; i<zip.getFileCount() ; i++)
+					{
+						if(zip.getFileAt(i).filename == "META-INF/ANE/Android-ARM/distriqt-extension-customresources-res/values/values.xml")
+						{
+							trace("File remvoed! : "+zip.getFileAt(i).filename);
+							zip.removeFileAt(i);
+							zip.addFileFromStringAt(i,"META-INF/ANE/Android-ARM/distriqt-extension-customresources-res/values/values.xml",'<?xml version="1.0" encoding="utf-8"?>'+data.toXMLString());
+						}
+						if(zip.getFileAt(i).filename == "META-INF/ANE/Android-x86/distriqt-extension-customresources-res/values/values.xml")
+						{
+							trace("File remvoed! : "+zip.getFileAt(i).filename);
+							zip.removeFileAt(i);
+							zip.addFileFromStringAt(i,"META-INF/ANE/Android-x86/distriqt-extension-customresources-res/values/values.xml",'<?xml version="1.0" encoding="utf-8"?>'+data.toXMLString());
+						}
+
+					}
+
+					function changeImage(w:int,h:int,target:String)
+
+
+					FileManager.browseForDirectory(aneDirectorySelected,'Select a directory for your custom ane file');
+
+					function aneDirectorySelected(aneDirectory:File):void
+					{
+						const nativeFolderName:String = 'native';
+						if(aneDirectory.name!=nativeFolderName)
+						{
+							aneDirectory = aneDirectory.resolvePath(nativeFolderName);
+							aneDirectory.createDirectory();
+						}
+						aneDirectory = aneDirectory.resolvePath(aneFile.name);
+						var targetStream:FileStream = new FileStream();
+						targetStream.open(aneDirectory,FileMode.WRITE);
+						zip.serialize(targetStream);
+						targetStream.close();
+					}
+				}
+			}
 		}
+
+
 
 	}
 }
