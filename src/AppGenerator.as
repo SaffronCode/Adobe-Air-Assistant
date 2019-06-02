@@ -382,7 +382,7 @@
 			})
 				.setInfo("https://airnativeextensions.com/extension/com.distriqt.PushNotifications")
 				.setWiki("https://distriqt.github.io/ANE-PushNotifications/s.Firebase%20Cloud%20Messaging")
-				.addSetting(generateFCMforDistriqt);
+				.addCustomANE(xmlFolder,"com.distriqt.CustomResources.ane",generateFCMforDistriqt);
 			addCheckBox('Distriqt Share','distriqtShare',function(check:ACheckBox){
 				addPDFReader.useSecondAndroid = check.status ;
 				//Alert.show("addPDFReader.useSecondAndroid : "+addPDFReader.useSecondAndroid);

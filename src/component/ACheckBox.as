@@ -14,6 +14,8 @@
 	import flash.net.navigateToURL;
 	
 	import spark.components.Label;
+	import flash.filesystem.File;
+	import contents.alert.Alert;
 
 	public class ACheckBox extends MovieClip
 	{
@@ -72,7 +74,11 @@
 			
 			settingMC = Obj.get("setting_mc",this);
 			if(settingMC)
+			{
 				settingMC.visible = false ;
+				settingMC.addEventListener(MouseEvent.CLICK,triggerCustomANE,false,2);
+				settingMC.buttonMode = true ;
+			}
 			
 			titleTF = Obj.findThisClass(TitleText,this);
 			if(titleTF)
@@ -240,6 +246,31 @@
 				}
 			}
 			return isFounded;
+		}
+
+
+
+//////////////////////////////////////////////////
+
+		private var myCustomANE:File ;
+
+		private var customButtonTriggered:Function ;
+
+		public function addCustomANE(filesDirectory:File,customAneFileName:String,triggerCustomBuild:Function):ACheckBox
+		{
+			myCustomANE = filesDirectory.resolvePath(folderName).resolvePath(customAneFileName);
+			settingMC.visible = myCustomANE.exists ;
+			customButtonTriggered = triggerCustomBuild ;
+			return this ;
+		}
+
+		private function triggerCustomANE(e:MouseEvent):void
+		{
+			if(getStatus())
+			{
+				e.stopImmediatePropagation();
+			}
+			customButtonTriggered(myCustomANE);
 		}
 	}
 }
