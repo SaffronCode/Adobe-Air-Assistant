@@ -315,7 +315,8 @@
 			var checkBoxClass:Class = Obj.getObjectClass(checkBoxSample);
 			Obj.remove(checkBoxSample);
 				
-			function addCheckBox(checkBoxName:String,manifestDirectoryName:String,onTrigered:Function=null,addItToList:Boolean=true,defaultStatus:Boolean=false):ACheckBox
+			function addCheckBox(checkBoxName:String,manifestDirectoryName:String,onTrigered:Function=null,
+			addItToList:Boolean=true,defaultStatus:Boolean=false):ACheckBox
 			{
 				var checkBox:ACheckBox = new checkBoxClass();
 				
@@ -380,7 +381,8 @@
 				}
 			})
 				.setInfo("https://airnativeextensions.com/extension/com.distriqt.PushNotifications")
-				.setWiki("https://distriqt.github.io/ANE-PushNotifications/s.Firebase%20Cloud%20Messaging");;
+				.setWiki("https://distriqt.github.io/ANE-PushNotifications/s.Firebase%20Cloud%20Messaging")
+				.addSetting(generateFCMforDistriqt);
 			addCheckBox('Distriqt Share','distriqtShare',function(check:ACheckBox){
 				addPDFReader.useSecondAndroid = check.status ;
 				//Alert.show("addPDFReader.useSecondAndroid : "+addPDFReader.useSecondAndroid);
@@ -959,5 +961,17 @@
 			
 			updateInformations();
 		}
+
+
+
+
+
+	////////////////////////////////////////////////ANE Settings part
+
+		private function generateFCMforDistriqt(aneFile:File):void
+		{
+
+		}
+
 	}
 }

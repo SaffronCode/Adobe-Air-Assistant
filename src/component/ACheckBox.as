@@ -34,7 +34,8 @@
 		private var titleTFX0:Number ;
 		
 		private var wikiMC:MovieClip,infoMC:MovieClip,infoContainerMC:MovieClip,
-					infoContainerAnim:Anim_Frame_Controller;
+					infoContainerAnim:Anim_Frame_Controller,
+					settingMC:MovieClip;
 					
 		/**Make it be able to add to the list of ANEs*/
 		public var addItToList:Boolean;
@@ -69,6 +70,9 @@
 				}
 			}
 			
+			settingMC = Obj.get("setting_mc",this);
+			if(settingMC)
+				settingMC.visible = false ;
 			
 			titleTF = Obj.findThisClass(TitleText,this);
 			if(titleTF)
@@ -136,6 +140,11 @@
 			if(wiki!=null && wikiMC!=null)
 				wikiMC.visible = true ;
 			return this;
+		}
+
+		public function addSetting(onANEFileLocated:Function):void
+		{
+			settingMC.visible = true ;
 		}
 		
 		public function changeStatus(event:MouseEvent=null):void
