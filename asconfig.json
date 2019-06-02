@@ -1,0 +1,24 @@
+{
+	"animateOptions": {
+		"file": "./src/AppGenerator.fla"
+	},
+	"files":
+	[
+		"./src/AppGenerator.as"
+	],
+		"type": "app",
+		"config": "airmobile",
+		"compilerOptions": {
+			"source-path": [
+				"./src",
+				"D://Sepehr//Aban-Forushgah-app//src",
+				"D://Sepehr//gitHub//MteamGoogleMapAPI//src",
+				"D://Sepehr//gitHub//sepehrEngine//SaffronEngine",
+				"D://Sepehr//gitHub//ASPack",
+			],
+			"external-library-path": [
+				"D://Sepehr//gitHub//FlexLibs-andOthers"
+			]
+		}
+	
+}
