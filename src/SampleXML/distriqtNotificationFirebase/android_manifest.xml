@@ -21,8 +21,8 @@
 			android:exported="false"/>
 
 		<!-- FIREBASE CLOUD MESSAGING -->
-		<meta-data android:name="com.google.firebase.messaging.default_notification_icon" android:resource="@drawable/ic_stat_distriqt_embedded" />
-        <meta-data android:name="com.google.firebase.messaging.default_notification_color" android:resource="@color/blue" />
+		<meta-data android:name="com.google.firebase.messaging.default_notification_icon" android:resource="@drawable/ic_stat_distriqt" />
+        <meta-data android:name="com.google.firebase.messaging.default_notification_color" android:resource="@color/black" />
 		<meta-data android:name="com.google.firebase.messaging.default_notification_channel_id" android:value="default_channel_id" />
 
 		<service android:name="com.distriqt.extension.pushnotifications.fcm.FcmMessagingService">
