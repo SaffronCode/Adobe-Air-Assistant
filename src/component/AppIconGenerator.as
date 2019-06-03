@@ -24,6 +24,8 @@ import restDoaService.RestDoaEvent;
 	{
 		private var sampleImag:LightImage ;
 		private var currentFile:File;
+
+		public var cashedBitmap:BitmapData ;
 		
 		private var iconSizes:Array = [];
 		
@@ -105,6 +107,8 @@ import restDoaService.RestDoaEvent;
 				{
 					iconGeneratorService = new Appuploader_iconapi();
 					iconGeneratorService.addEventListener(RestDoaEvent.SERVER_RESULT,assetLoaded);
+
+					cashedBitmap = DeviceImage.imageBitmapData.clone();
 
 					iconGeneratorService.load(BitmapEffects.createPNG(BitmapEffects.changeSize(DeviceImage.imageBitmapData,1024,1024,true,true,true)));
 				}

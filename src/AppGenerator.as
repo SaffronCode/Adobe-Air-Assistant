@@ -975,7 +975,7 @@
 
 		private function generateFCMforDistriqt(aneFile:File):void
 		{
-			FileManager.browse(onGoogleJSONSelected,['*.json'],"Select google-services.json");
+			FileManager.browse(onGoogleJSONSelected,['*.json'],"Select google-services.json (BETA)");
 
 			function onGoogleJSONSelected(selectedJSON:File):void
 			{
@@ -1020,25 +1020,69 @@
 									</resources>;
 					//var whereToSave:File = File.desktopDirectory.resolvePath('ane2.ane') ;
 
+					var iconList:Array = [] ;
+					var iconSize:Array = [] ;
+
+					var iconFixPart1:String = "META-INF/ANE/Android-ARM/distriqt-extension-customresources-res/";
+					var iconFixPart2:String = "META-INF/ANE/Android-x86/distriqt-extension-customresources-res/";
+					iconList.push(iconFixPart1+"drawable-hdpi/ic_stat_distriqt.png");
+					iconList.push(iconFixPart2+"drawable-hdpi/ic_stat_distriqt.png");
+					iconSize.push(38,38);
+					iconList.push(iconFixPart1+"drawable-hdpi-v11/ic_stat_distriqt.png");//W
+					iconList.push(iconFixPart2+"drawable-hdpi-v11/ic_stat_distriqt.png");//W
+					iconSize.push(36,36);
+					iconList.push(iconFixPart1+"drawable-mdpi/ic_stat_distriqt.png");
+					iconList.push(iconFixPart2+"drawable-mdpi/ic_stat_distriqt.png");
+					iconSize.push(25,25);
+					iconList.push(iconFixPart1+"drawable-mdpi-v11/ic_stat_distriqt.png");//W
+					iconList.push(iconFixPart2+"drawable-mdpi-v11/ic_stat_distriqt.png");//W
+					iconSize.push(24,24);
+					iconList.push(iconFixPart1+"drawable-xhdpi/ic_stat_distriqt.png");
+					iconList.push(iconFixPart2+"drawable-xhdpi/ic_stat_distriqt.png");
+					iconSize.push(50,50);
+					iconList.push(iconFixPart1+"drawable-xhdpi-v11/ic_stat_distriqt.png");//W
+					iconList.push(iconFixPart2+"drawable-xhdpi-v11/ic_stat_distriqt.png");//W
+					iconSize.push(48,48);
+					iconList.push(iconFixPart1+"drawable-xxhdpi/ic_stat_distriqt.png");
+					iconList.push(iconFixPart2+"drawable-xxhdpi/ic_stat_distriqt.png");
+					iconSize.push(75,75);
+					iconList.push(iconFixPart1+"drawable-xxhdpi-v11/ic_stat_distriqt.png");//W
+					iconList.push(iconFixPart2+"drawable-xxhdpi-v11/ic_stat_distriqt.png");//W
+					iconSize.push(72,72);
+					iconList.push(iconFixPart1+"drawable-xxxhdpi/ic_stat_distriqt.png");
+					iconList.push(iconFixPart2+"drawable-xxxhdpi/ic_stat_distriqt.png");
+					iconSize.push(100,100);
+					iconList.push(iconFixPart1+"drawable-xxxhdpi-v11/ic_stat_distriqt.png");//W
+					iconList.push(iconFixPart2+"drawable-xxxhdpi-v11/ic_stat_distriqt.png");//W
+					iconSize.push(96,96);
 
 					for( i=0 ; i<zip.getFileCount() ; i++)
 					{
-						if(zip.getFileAt(i).filename == "META-INF/ANE/Android-ARM/distriqt-extension-customresources-res/values/values.xml")
+						var fileName:String = zip.getFileAt(i).filename ;
+						if(fileName == "META-INF/ANE/Android-ARM/distriqt-extension-customresources-res/values/values.xml")
 						{
-							trace("File remvoed! : "+zip.getFileAt(i).filename);
+							trace("File remvoed! : "+fileName);
 							zip.removeFileAt(i);
 							zip.addFileFromStringAt(i,"META-INF/ANE/Android-ARM/distriqt-extension-customresources-res/values/values.xml",'<?xml version="1.0" encoding="utf-8"?>'+data.toXMLString());
 						}
-						if(zip.getFileAt(i).filename == "META-INF/ANE/Android-x86/distriqt-extension-customresources-res/values/values.xml")
+						if(fileName == "META-INF/ANE/Android-x86/distriqt-extension-customresources-res/values/values.xml")
 						{
-							trace("File remvoed! : "+zip.getFileAt(i).filename);
+							trace("File remvoed! : "+fileName);
 							zip.removeFileAt(i);
 							zip.addFileFromStringAt(i,"META-INF/ANE/Android-x86/distriqt-extension-customresources-res/values/values.xml",'<?xml version="1.0" encoding="utf-8"?>'+data.toXMLString());
 						}
-
+						
+						if(iconGenerator.cashedBitmap!=null)
+						{
+							var isImage:int = iconList.indexOf(fileName);
+							if(isImage>=0)
+							{
+								trace("File must replace : "+fileName);
+								zip.removeFileAt(i);
+								zip.addFileAt(i,fileName,BitmapEffects.createPNG(BitmapEffects.changeSize(iconGenerator.cashedBitmap,iconSize[isImage],iconSize[isImage],true,true)));
+							}
+						}
 					}
-
-					function changeImage(w:int,h:int,target:String)
 
 
 					FileManager.browseForDirectory(aneDirectorySelected,'Select a directory for your custom ane file');
