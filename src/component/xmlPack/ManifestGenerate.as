@@ -370,7 +370,8 @@
 
 		public function removeAndroidPermission(AndroidPermission:String):void
 		{
-			androidPermission.remove(AndroidPermission);
+			if(AndroidPermission!=null)
+				androidPermission.remove(AndroidPermission);
 		}
 		
 		/**Add the iOS entitlement to the project*/
