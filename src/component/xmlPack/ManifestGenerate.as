@@ -359,13 +359,14 @@
 		/**Dont forget to add  xmlns:android="android"   to the root node of the permission xml to make it work*/
 		public function addAndroidPermission(AndroidPermission:String):void
 		{
+			if(AndroidPermission!=null)
 			androidPermission.add(AndroidPermission);
 		}
 
 		/**Returns true if the permission was existed*/
 		public function doAndroidPermissionHave(AndroidPermission:String):Boolean
 		{
-			return androidPermission.dohave(AndroidPermission);
+			return AndroidPermission!=null && androidPermission.dohave(AndroidPermission);
 		}
 
 		public function removeAndroidPermission(AndroidPermission:String):void
