@@ -1002,6 +1002,8 @@
 				fcmImage2:LightImage,
 				fcmImage3:LightImage;
 
+			
+
 			fcmGeneratorMC = Obj.get("distiqt_fcm_mc",this);
 			imageAreaMC = Obj.get("image_area_mc",fcmGeneratorMC);
 			loadImageMC = Obj.get("change_icon_mc",fcmGeneratorMC);
@@ -1011,24 +1013,29 @@
 			cancelMC = Obj.get("cancel_mc",fcmGeneratorMC);
 			saveMC = Obj.get("save_mc",fcmGeneratorMC);
 			saveMC.buttonMode = true ;
+			imageAreaMC.visible = false ;
+			
 
-			imageW = imageAreaMC.width/3-margin;
+			imageW = (imageAreaMC.width-margin*2)/3;
 			imageH = imageAreaMC.height ;
 
 			fcmImage1 = new LightImage();
 			fcmGeneratorMC.addChild(fcmImage1);
 			fcmImage1.y = imageAreaMC.y ;
+			fcmImage1.buttonMode = true ;
 
 			fcmImage2 = new LightImage();
 			fcmGeneratorMC.addChild(fcmImage2);
 			fcmImage2.y = imageAreaMC.y ;
 			fcmImage2.setUp('');
+			fcmImage2.buttonMode = true ;
 
 			fcmImage3 = new LightImage();
 			fcmGeneratorMC.addChild(fcmImage3);
 			fcmImage3.y = imageAreaMC.y ;
 			fcmImage2.setUp('');
 			fcmImage2.addEventListener(Event.COMPLETE,updateImagePosition);
+			fcmImage2.buttonMode = true ;
 
 			updateImagePosition();
 
@@ -1038,7 +1045,7 @@
 				{
 					fcmImage2.x = imageAreaMC.x + imageW+margin;
 					fcmImage1.x = imageAreaMC.x ;
-					fcmImage3.x = imageAreaMC.x+(imageW)*2+margin*3 ;
+					fcmImage3.x = imageAreaMC.x+(imageW)*2+margin*2 ;
 				}
 				else if(fcmImage2.getBitmapData()!=null && fcmImage3.getBitmapData()==null)
 				{
@@ -1057,7 +1064,7 @@
 			}
 
 			fcmGeneratorMC.visible = false ;
-			imageAreaMC.visible = false ;
+			
 
 			cancelMC.buttonMode = true ;
 			cancelMC.addEventListener(MouseEvent.CLICK,function(e){
