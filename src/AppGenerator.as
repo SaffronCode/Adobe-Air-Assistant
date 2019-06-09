@@ -984,7 +984,12 @@
 
 		private function setUpFCMForDistriqt():void
 		{
-			const id_latest_image:String = "id_latest_image3";
+			const 	id_latest_image:String = "id_latest_image3",
+					id_last_selected_image:String = "id_last_selected_image" ;
+
+			var selectedImageIndex:int = GlobalStorage.load(id_last_selected_image) as int ;
+
+
 			
 			var fcmGeneratorMC:MovieClip,
 				imageAreaMC:MovieClip,
@@ -998,11 +1003,12 @@
 				imageH:Number,
 				margin:Number = 20 ;
 
-			var fcmImage1:LightImage,
-				fcmImage2:LightImage,
-				fcmImage3:LightImage;
-
-			
+			/**ANE file */
+			var fcmImage1:LightImage;
+			/**User's file */
+			var fcmImage2:LightImage;
+			/**App icon file */
+			var fcmImage3:LightImage;
 
 			fcmGeneratorMC = Obj.get("distiqt_fcm_mc",this);
 			imageAreaMC = Obj.get("image_area_mc",fcmGeneratorMC);
@@ -1023,19 +1029,61 @@
 			fcmGeneratorMC.addChild(fcmImage1);
 			fcmImage1.y = imageAreaMC.y ;
 			fcmImage1.buttonMode = true ;
+			fcmImage1.addEventListener(MouseEvent.CLICK,function(e){
+				selectedImageIndex = 1 ;
+				GlobalStorage.save(id_last_selected_image,selectedImageIndex);
+			});
 
 			fcmImage2 = new LightImage();
 			fcmGeneratorMC.addChild(fcmImage2);
 			fcmImage2.y = imageAreaMC.y ;
 			fcmImage2.setUp('');
 			fcmImage2.buttonMode = true ;
+			fcmImage2.addEventListener(Event.COMPLETE,updateImagePosition);
+			fcmImage2.addEventListener(MouseEvent.CLICK,function(e){
+				selectedImageIndex = 2 ;
+				GlobalStorage.save(id_last_selected_image,selectedImageIndex);
+			});
 
 			fcmImage3 = new LightImage();
 			fcmGeneratorMC.addChild(fcmImage3);
 			fcmImage3.y = imageAreaMC.y ;
-			fcmImage2.setUp('');
-			fcmImage2.addEventListener(Event.COMPLETE,updateImagePosition);
-			fcmImage2.buttonMode = true ;
+			fcmImage3.setUp('');
+			fcmImage3.buttonMode = true ;
+			fcmImage3.addEventListener(MouseEvent.CLICK,function(e){
+				selectedImageIndex = 3 ;
+				GlobalStorage.save(id_last_selected_image,selectedImageIndex);
+			});
+
+			this.addEventListener(Event.ENTER_FRAME,updateSelectedImageInterface);
+
+			function updateSelectedImageInterface(e:Event):void
+			{
+				var selectedItemAlpha:Number = 1.0;
+				var unselectedItemAlpha:Number = 0.3 ;
+				
+				var image1Alpha:Number = unselectedItemAlpha,
+					image2Alpha:Number = unselectedItemAlpha,
+					image3Alpha:Number = unselectedItemAlpha;
+
+				switch(selectedImageIndex)
+				{
+					case 0:
+					case 1:
+						image1Alpha = selectedItemAlpha ;
+						break;
+					case 2:
+						image2Alpha = selectedItemAlpha ;
+						break;
+					case 3:
+						image3Alpha = selectedItemAlpha ;
+						break;
+				}
+
+				fcmImage1.alpha += (image1Alpha-fcmImage1.alpha)/4;
+				fcmImage2.alpha += (image2Alpha-fcmImage2.alpha)/4;
+				fcmImage3.alpha += (image3Alpha-fcmImage3.alpha)/4;
+			}
 
 			updateImagePosition();
 
@@ -1080,6 +1128,7 @@
 			{
 				onNewIconFoundedForFCM(new File(cashedImageURL));
 			}
+			
 
 			function loadNewImageForFCM(e:MouseEvent):void
 			{
@@ -1088,6 +1137,7 @@
 
 			function onNewIconFoundedForFCM(SelectedImageFile:File):void
 			{
+				selectedImageIndex = 2 ;
 				GlobalStorage.save(id_latest_image,SelectedImageFile.url)
 				fcmImage2.setUp(SelectedImageFile.url,true,imageW,imageH);
 				updateImagePosition();
@@ -1104,6 +1154,13 @@
 				else
 				{
 					fcmImage3.setUp('');
+					if(selectedImageIndex==3)
+					{
+						if(fcmImage2.getBitmapData()!=null)
+							selectedImageIndex = 2 ;
+						else
+							selectedImageIndex = 1 ;
+					}
 				}
 				updateImagePosition();
 
