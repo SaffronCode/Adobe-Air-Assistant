@@ -1315,6 +1315,7 @@
 							
 					saveMC.mouseEnabled = false;
 					saveMC.alpha = 0.5;
+					googleServiceTitle.setUp('',false);
 					return;
 				}
 				else
