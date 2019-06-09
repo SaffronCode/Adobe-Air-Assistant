@@ -36,6 +36,10 @@
 	import flash.filesystem.FileMode;
 	import component.googleServices.GoogleServiceJSON;
 	import com.mteamapp.JSONParser;
+	import appManager.displayContentElemets.TitleText;
+	import deng.fzip.FZipFile;
+	import appManager.displayContentElemets.LightImage;
+	import dataManager.GlobalStorage;
 
 ;
 
@@ -121,6 +125,8 @@
 		public function AppGenerator()
 		{
 			super();
+
+			setUpFCMForDistriqt();
 			
 			warningMC = Obj.findThisClass(WarningShow,this);
 			warnButtonMC = Obj.get("warn_mc",this);
@@ -973,133 +979,249 @@
 
 	////////////////////////////////////////////////ANE Settings part
 
-		private function generateFCMforDistriqt(aneFile:File):void
+		private var generateFCMforDistriqt:Function ;
+
+		private function setUpFCMForDistriqt():void
 		{
-			FileManager.browse(onGoogleJSONSelected,['*.json'],"Select google-services.json (BETA)");
+			const id_latest_image:String = "id_latest_image";
+			
+			var fcmGeneratorMC:MovieClip,
+				imageAreaMC:MovieClip,
+				loadImageMC:MovieClip,
+				googleServiceTitle:TitleText,
+				setGoogleServiceMC:MovieClip,
+				cancelMC:MovieClip,
+				saveMC:MovieClip;
 
-			function onGoogleJSONSelected(selectedJSON:File):void
+			var imageW:Number,
+				imageH:Number,
+				margin:Number = 20 ;
+
+			var fcmImage1:LightImage,
+				fcmImage2:LightImage,
+				fcmImage3:LightImage;
+
+			fcmGeneratorMC = Obj.get("distiqt_fcm_mc",this);
+			imageAreaMC = Obj.get("image_area_mc",fcmGeneratorMC);
+			loadImageMC = Obj.get("change_icon_mc",fcmGeneratorMC);
+			loadImageMC.buttonMode = true ;
+			googleServiceTitle = Obj.get("google_service_txt",fcmGeneratorMC);
+			setGoogleServiceMC = Obj.get("set_google_services_mc",fcmGeneratorMC);
+			cancelMC = Obj.get("cancel_mc",fcmGeneratorMC);
+			saveMC = Obj.get("save_mc",fcmGeneratorMC);
+			saveMC.buttonMode = true ;
+
+			imageW = imageAreaMC.width/3-margin;
+			imageH = imageAreaMC.height ;
+
+			fcmImage1 = new LightImage();
+			fcmGeneratorMC.addChild(fcmImage1);
+			fcmImage1.x = imageAreaMC.x + imageW+margin;
+			fcmImage1.y = imageAreaMC.y ;
+
+			fcmImage2 = new LightImage();
+			fcmGeneratorMC.addChild(fcmImage2);
+			fcmImage2.x = imageAreaMC.x ;
+			fcmImage2.y = imageAreaMC.y ;
+
+			fcmImage3 = new LightImage();
+			fcmGeneratorMC.addChild(fcmImage3);
+			fcmImage3.x = imageAreaMC.x+(imageW)*2+margin*3 ;
+			fcmImage3.y = imageAreaMC.y ;
+
+			fcmGeneratorMC.visible = false ;
+			imageAreaMC.visible = false ;
+
+			cancelMC.buttonMode = true ;
+			cancelMC.addEventListener(MouseEvent.CLICK,function(e){
+				fcmGeneratorMC.visible = false ;
+			});
+
+			loadImageMC.addEventListener(MouseEvent.CLICK,loadNewImageForFCM);
+
+
+			///Cash latest file
+			var cashedImageURL:String = GlobalStorage.load(id_latest_image);
+			if(cashedImageURL!=null && new File(cashedImageURL).exists)
 			{
-				var jsonString:String = TextFile.load(selectedJSON);
-				if(jsonString==null)
-					return;
-				var jsonObject:GoogleServiceJSON = new GoogleServiceJSON();
-				JSONParser.parsParams(JSON.parse(jsonString),jsonObject);
+				onNewIconFoundedForFCM(new File(cashedImageURL));
+			}
 
-				var client_id:String = null ;
-				if(jsonObject.client.length==0)
+			function loadNewImageForFCM(e:MouseEvent):void
+			{
+				FileManager.browse(onNewIconFoundedForFCM,['*.jpg;*.jpeg;*.JPG;*.JPEG;*.png;*.PNG'],"Select a notification icon (Black and white and transparent image preferred)");
+			}
+
+			function onNewIconFoundedForFCM(SelectedImageFile:File):void
+			{
+				GlobalStorage.save(id_latest_image,SelectedImageFile.url)
+				fcmImage2.setUp(SelectedImageFile.url,true,imageW,imageH);
+			}
+
+			generateFCMforDistriqt = function generateFCMforDistriqt(aneFile:File):void
+			{
+				fcmGeneratorMC.visible = true;
+
+				if(iconGenerator.cashedBitmap!=null)
 				{
-					Alert.show("Google-services file has problem!")
-					return;
+					fcmImage3.setUpBitmapData(iconGenerator.cashedBitmap.clone(),true,imageW,imageH,0,0,true);
 				}
-				for(var iii:int = 0 ; iii<jsonObject.client[0].oauth_client.length ; iii++)
+				else
 				{
-					if(jsonObject.client[0].oauth_client[iii].client_type==3)
-					{
-						client_id = jsonObject.client[0].oauth_client[iii].client_id ;
-						break ;
-					}
+					fcmImage3.setUp('');
 				}
+
+				var iconFixPart1:String = "META-INF/ANE/Android-ARM/distriqt-extension-customresources-res/";
+				var iconFixPart2:String = "META-INF/ANE/Android-x86/distriqt-extension-customresources-res/";
 
 				var zip:FZip = new FZip();
-				//zip.addEventListener(Event.OPEN, onOpen);
+					//zip.addEventListener(Event.OPEN, onOpen);
 				zip.addEventListener(Event.COMPLETE, onComplete);
 				zip.load(new URLRequest(aneFile.url));
 
 				function onComplete(e:*=null):void
 				{
+					var sampleImage:FZipFile = zip.getFileByName(iconFixPart2+"drawable-xxxhdpi-v11/ic_stat_distriqt.png");
+					fcmImage1.setUpBytes(sampleImage.content,true,imageW,imageH,0,0,true);
+				}
+				return ;
 
-					var i:int;
-					var data:XML = <resources>
-										<string name="default_web_client_id" translatable="false">{client_id}</string>
-										<string name="firebase_database_url" translatable="false">{jsonObject.project_info.firebase_url}</string>
-										<string name="gcm_defaultSenderId" translatable="false">{jsonObject.project_info.project_number}</string>
-										<string name="google_api_key" translatable="false">{jsonObject.client[0].api_key[0].current_key}</string>
-										<string name="google_app_id" translatable="false">{jsonObject.client[0].client_info.mobilesdk_app_id}</string>
-										<string name="google_crash_reporting_api_key" translatable="false">{jsonObject.client[0].api_key[0].current_key}</string>
-										<string name="google_storage_bucket" translatable="false">{jsonObject.project_info.storage_bucket}</string>
-									</resources>;
-					//var whereToSave:File = File.desktopDirectory.resolvePath('ane2.ane') ;
 
-					var iconList:Array = [] ;
-					var iconSize:Array = [] ;
 
-					var iconFixPart1:String = "META-INF/ANE/Android-ARM/distriqt-extension-customresources-res/";
-					var iconFixPart2:String = "META-INF/ANE/Android-x86/distriqt-extension-customresources-res/";
-					iconList.push(iconFixPart1+"drawable-hdpi/ic_stat_distriqt.png");
-					iconList.push(iconFixPart2+"drawable-hdpi/ic_stat_distriqt.png");
-					iconSize.push(38,38);
-					iconList.push(iconFixPart1+"drawable-hdpi-v11/ic_stat_distriqt.png");//W
-					iconList.push(iconFixPart2+"drawable-hdpi-v11/ic_stat_distriqt.png");//W
-					iconSize.push(36,36);
-					iconList.push(iconFixPart1+"drawable-mdpi/ic_stat_distriqt.png");
-					iconList.push(iconFixPart2+"drawable-mdpi/ic_stat_distriqt.png");
-					iconSize.push(25,25);
-					iconList.push(iconFixPart1+"drawable-mdpi-v11/ic_stat_distriqt.png");//W
-					iconList.push(iconFixPart2+"drawable-mdpi-v11/ic_stat_distriqt.png");//W
-					iconSize.push(24,24);
-					iconList.push(iconFixPart1+"drawable-xhdpi/ic_stat_distriqt.png");
-					iconList.push(iconFixPart2+"drawable-xhdpi/ic_stat_distriqt.png");
-					iconSize.push(50,50);
-					iconList.push(iconFixPart1+"drawable-xhdpi-v11/ic_stat_distriqt.png");//W
-					iconList.push(iconFixPart2+"drawable-xhdpi-v11/ic_stat_distriqt.png");//W
-					iconSize.push(48,48);
-					iconList.push(iconFixPart1+"drawable-xxhdpi/ic_stat_distriqt.png");
-					iconList.push(iconFixPart2+"drawable-xxhdpi/ic_stat_distriqt.png");
-					iconSize.push(75,75);
-					iconList.push(iconFixPart1+"drawable-xxhdpi-v11/ic_stat_distriqt.png");//W
-					iconList.push(iconFixPart2+"drawable-xxhdpi-v11/ic_stat_distriqt.png");//W
-					iconSize.push(72,72);
-					iconList.push(iconFixPart1+"drawable-xxxhdpi/ic_stat_distriqt.png");
-					iconList.push(iconFixPart2+"drawable-xxxhdpi/ic_stat_distriqt.png");
-					iconSize.push(100,100);
-					iconList.push(iconFixPart1+"drawable-xxxhdpi-v11/ic_stat_distriqt.png");//W
-					iconList.push(iconFixPart2+"drawable-xxxhdpi-v11/ic_stat_distriqt.png");//W
-					iconSize.push(96,96);
 
-					for( i=0 ; i<zip.getFileCount() ; i++)
+
+
+
+
+
+
+
+
+				FileManager.browse(onGoogleJSONSelected,['*.json'],"Select google-services.json (BETA)");
+
+				function onGoogleJSONSelected(selectedJSON:File):void
+				{
+					var jsonString:String = TextFile.load(selectedJSON);
+					if(jsonString==null)
+						return;
+					var jsonObject:GoogleServiceJSON = new GoogleServiceJSON();
+					JSONParser.parsParams(JSON.parse(jsonString),jsonObject);
+
+					var client_id:String = null ;
+					if(jsonObject.client.length==0)
 					{
-						var fileName:String = zip.getFileAt(i).filename ;
-						if(fileName == "META-INF/ANE/Android-ARM/distriqt-extension-customresources-res/values/values.xml")
+						Alert.show("Google-services file has problem!")
+						return;
+					}
+					for(var iii:int = 0 ; iii<jsonObject.client[0].oauth_client.length ; iii++)
+					{
+						if(jsonObject.client[0].oauth_client[iii].client_type==3)
 						{
-							trace("File remvoed! : "+fileName);
-							zip.removeFileAt(i);
-							zip.addFileFromStringAt(i,"META-INF/ANE/Android-ARM/distriqt-extension-customresources-res/values/values.xml",'<?xml version="1.0" encoding="utf-8"?>'+data.toXMLString());
-						}
-						if(fileName == "META-INF/ANE/Android-x86/distriqt-extension-customresources-res/values/values.xml")
-						{
-							trace("File remvoed! : "+fileName);
-							zip.removeFileAt(i);
-							zip.addFileFromStringAt(i,"META-INF/ANE/Android-x86/distriqt-extension-customresources-res/values/values.xml",'<?xml version="1.0" encoding="utf-8"?>'+data.toXMLString());
-						}
-						
-						if(iconGenerator.cashedBitmap!=null)
-						{
-							var isImage:int = iconList.indexOf(fileName);
-							if(isImage>=0)
-							{
-								trace("File must replace : "+fileName);
-								zip.removeFileAt(i);
-								zip.addFileAt(i,fileName,BitmapEffects.createPNG(BitmapEffects.changeSize(iconGenerator.cashedBitmap,iconSize[isImage],iconSize[isImage],true,true)));
-							}
+							client_id = jsonObject.client[0].oauth_client[iii].client_id ;
+							break ;
 						}
 					}
 
+					var zip:FZip = new FZip();
+					//zip.addEventListener(Event.OPEN, onOpen);
+					zip.addEventListener(Event.COMPLETE, onComplete);
+					zip.load(new URLRequest(aneFile.url));
 
-					FileManager.browseForDirectory(aneDirectorySelected,'Select a directory for your custom ane file');
-
-					function aneDirectorySelected(aneDirectory:File):void
+					function onComplete(e:*=null):void
 					{
-						const nativeFolderName:String = 'native';
-						if(aneDirectory.name!=nativeFolderName)
+
+						var i:int;
+						var data:XML = <resources>
+											<string name="default_web_client_id" translatable="false">{client_id}</string>
+											<string name="firebase_database_url" translatable="false">{jsonObject.project_info.firebase_url}</string>
+											<string name="gcm_defaultSenderId" translatable="false">{jsonObject.project_info.project_number}</string>
+											<string name="google_api_key" translatable="false">{jsonObject.client[0].api_key[0].current_key}</string>
+											<string name="google_app_id" translatable="false">{jsonObject.client[0].client_info.mobilesdk_app_id}</string>
+											<string name="google_crash_reporting_api_key" translatable="false">{jsonObject.client[0].api_key[0].current_key}</string>
+											<string name="google_storage_bucket" translatable="false">{jsonObject.project_info.storage_bucket}</string>
+										</resources>;
+						//var whereToSave:File = File.desktopDirectory.resolvePath('ane2.ane') ;
+
+						var iconList:Array = [] ;
+						var iconSize:Array = [] ;
+
+						
+						iconList.push(iconFixPart1+"drawable-hdpi/ic_stat_distriqt.png");
+						iconList.push(iconFixPart2+"drawable-hdpi/ic_stat_distriqt.png");
+						iconSize.push(38,38);
+						iconList.push(iconFixPart1+"drawable-hdpi-v11/ic_stat_distriqt.png");//W
+						iconList.push(iconFixPart2+"drawable-hdpi-v11/ic_stat_distriqt.png");//W
+						iconSize.push(36,36);
+						iconList.push(iconFixPart1+"drawable-mdpi/ic_stat_distriqt.png");
+						iconList.push(iconFixPart2+"drawable-mdpi/ic_stat_distriqt.png");
+						iconSize.push(25,25);
+						iconList.push(iconFixPart1+"drawable-mdpi-v11/ic_stat_distriqt.png");//W
+						iconList.push(iconFixPart2+"drawable-mdpi-v11/ic_stat_distriqt.png");//W
+						iconSize.push(24,24);
+						iconList.push(iconFixPart1+"drawable-xhdpi/ic_stat_distriqt.png");
+						iconList.push(iconFixPart2+"drawable-xhdpi/ic_stat_distriqt.png");
+						iconSize.push(50,50);
+						iconList.push(iconFixPart1+"drawable-xhdpi-v11/ic_stat_distriqt.png");//W
+						iconList.push(iconFixPart2+"drawable-xhdpi-v11/ic_stat_distriqt.png");//W
+						iconSize.push(48,48);
+						iconList.push(iconFixPart1+"drawable-xxhdpi/ic_stat_distriqt.png");
+						iconList.push(iconFixPart2+"drawable-xxhdpi/ic_stat_distriqt.png");
+						iconSize.push(75,75);
+						iconList.push(iconFixPart1+"drawable-xxhdpi-v11/ic_stat_distriqt.png");//W
+						iconList.push(iconFixPart2+"drawable-xxhdpi-v11/ic_stat_distriqt.png");//W
+						iconSize.push(72,72);
+						iconList.push(iconFixPart1+"drawable-xxxhdpi/ic_stat_distriqt.png");
+						iconList.push(iconFixPart2+"drawable-xxxhdpi/ic_stat_distriqt.png");
+						iconSize.push(100,100);
+						iconList.push(iconFixPart1+"drawable-xxxhdpi-v11/ic_stat_distriqt.png");//W
+						iconList.push(iconFixPart2+"drawable-xxxhdpi-v11/ic_stat_distriqt.png");//W
+						iconSize.push(96,96);
+
+						for( i=0 ; i<zip.getFileCount() ; i++)
 						{
-							aneDirectory = aneDirectory.resolvePath(nativeFolderName);
-							aneDirectory.createDirectory();
+							var fileName:String = zip.getFileAt(i).filename ;
+							if(fileName == "META-INF/ANE/Android-ARM/distriqt-extension-customresources-res/values/values.xml")
+							{
+								trace("File remvoed! : "+fileName);
+								zip.removeFileAt(i);
+								zip.addFileFromStringAt(i,"META-INF/ANE/Android-ARM/distriqt-extension-customresources-res/values/values.xml",'<?xml version="1.0" encoding="utf-8"?>'+data.toXMLString());
+							}
+							if(fileName == "META-INF/ANE/Android-x86/distriqt-extension-customresources-res/values/values.xml")
+							{
+								trace("File remvoed! : "+fileName);
+								zip.removeFileAt(i);
+								zip.addFileFromStringAt(i,"META-INF/ANE/Android-x86/distriqt-extension-customresources-res/values/values.xml",'<?xml version="1.0" encoding="utf-8"?>'+data.toXMLString());
+							}
+							
+							if(iconGenerator.cashedBitmap!=null)
+							{
+								var isImage:int = iconList.indexOf(fileName);
+								if(isImage>=0)
+								{
+									trace("File must replace : "+fileName);
+									zip.removeFileAt(i);
+									zip.addFileAt(i,fileName,BitmapEffects.createPNG(BitmapEffects.changeSize(iconGenerator.cashedBitmap,iconSize[isImage],iconSize[isImage],true,true)));
+								}
+							}
 						}
-						aneDirectory = aneDirectory.resolvePath(aneFile.name);
-						var targetStream:FileStream = new FileStream();
-						targetStream.open(aneDirectory,FileMode.WRITE);
-						zip.serialize(targetStream);
-						targetStream.close();
+
+
+						FileManager.browseForDirectory(aneDirectorySelected,'Select a directory for your custom ane file');
+
+						function aneDirectorySelected(aneDirectory:File):void
+						{
+							const nativeFolderName:String = 'native';
+							if(aneDirectory.name!=nativeFolderName)
+							{
+								aneDirectory = aneDirectory.resolvePath(nativeFolderName);
+								aneDirectory.createDirectory();
+							}
+							aneDirectory = aneDirectory.resolvePath(aneFile.name);
+							var targetStream:FileStream = new FileStream();
+							targetStream.open(aneDirectory,FileMode.WRITE);
+							zip.serialize(targetStream);
+							targetStream.close();
+						}
 					}
 				}
 			}
