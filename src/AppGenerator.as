@@ -40,6 +40,7 @@
 	import deng.fzip.FZipFile;
 	import appManager.displayContentElemets.LightImage;
 	import dataManager.GlobalStorage;
+	import googleAPI.type.address_componentsClass;
 
 ;
 
@@ -983,7 +984,7 @@
 
 		private function setUpFCMForDistriqt():void
 		{
-			const id_latest_image:String = "id_latest_image";
+			const id_latest_image:String = "id_latest_image3";
 			
 			var fcmGeneratorMC:MovieClip,
 				imageAreaMC:MovieClip,
@@ -1016,18 +1017,44 @@
 
 			fcmImage1 = new LightImage();
 			fcmGeneratorMC.addChild(fcmImage1);
-			fcmImage1.x = imageAreaMC.x + imageW+margin;
 			fcmImage1.y = imageAreaMC.y ;
 
 			fcmImage2 = new LightImage();
 			fcmGeneratorMC.addChild(fcmImage2);
-			fcmImage2.x = imageAreaMC.x ;
 			fcmImage2.y = imageAreaMC.y ;
+			fcmImage2.setUp('');
 
 			fcmImage3 = new LightImage();
 			fcmGeneratorMC.addChild(fcmImage3);
-			fcmImage3.x = imageAreaMC.x+(imageW)*2+margin*3 ;
 			fcmImage3.y = imageAreaMC.y ;
+			fcmImage2.setUp('');
+			fcmImage2.addEventListener(Event.COMPLETE,updateImagePosition);
+
+			updateImagePosition();
+
+			function updateImagePosition(e:*=null):void
+			{
+				if(fcmImage2.getBitmapData()!=null && fcmImage3.getBitmapData()!=null)
+				{
+					fcmImage2.x = imageAreaMC.x + imageW+margin;
+					fcmImage1.x = imageAreaMC.x ;
+					fcmImage3.x = imageAreaMC.x+(imageW)*2+margin*3 ;
+				}
+				else if(fcmImage2.getBitmapData()!=null && fcmImage3.getBitmapData()==null)
+				{
+					fcmImage2.x = imageAreaMC.x + imageW+margin+(imageW+margin)/2;
+					fcmImage1.x = imageAreaMC.x +(imageW+margin)/2;
+				}
+				else if(fcmImage3.getBitmapData()!=null && fcmImage2.getBitmapData()==null)
+				{
+					fcmImage3.x = imageAreaMC.x + imageW+margin+(imageW+margin)/2;
+					fcmImage1.x = imageAreaMC.x +(imageW+margin)/2;
+				}
+				else if(fcmImage2.getBitmapData()==null && fcmImage3.getBitmapData()==null)
+				{
+					fcmImage1.x = imageAreaMC.x + imageW+margin;
+				}
+			}
 
 			fcmGeneratorMC.visible = false ;
 			imageAreaMC.visible = false ;
@@ -1056,6 +1083,7 @@
 			{
 				GlobalStorage.save(id_latest_image,SelectedImageFile.url)
 				fcmImage2.setUp(SelectedImageFile.url,true,imageW,imageH);
+				updateImagePosition();
 			}
 
 			generateFCMforDistriqt = function generateFCMforDistriqt(aneFile:File):void
@@ -1070,6 +1098,7 @@
 				{
 					fcmImage3.setUp('');
 				}
+				updateImagePosition();
 
 				var iconFixPart1:String = "META-INF/ANE/Android-ARM/distriqt-extension-customresources-res/";
 				var iconFixPart2:String = "META-INF/ANE/Android-x86/distriqt-extension-customresources-res/";
