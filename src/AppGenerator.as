@@ -985,7 +985,7 @@
 
 		private function setUpFCMForDistriqt():void
 		{
-			const 	id_latest_image:String = "id_latest_image3",
+			const 	id_latest_image:String = "id_latest_image4",
 					id_last_selected_image:String = "id_last_selected_image",
 					id_last_google_service:String = "id_last_google_service" ;
 
@@ -1260,6 +1260,7 @@
 				else if(fcmImage2.getBitmapData()==null && fcmImage3.getBitmapData()==null)
 				{
 					fcmImage1.x = imageAreaMC.x + imageW+margin;
+					selectedImageIndex = 1 ;
 				}
 			}
 
