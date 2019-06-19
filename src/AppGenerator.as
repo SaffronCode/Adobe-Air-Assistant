@@ -1155,6 +1155,8 @@
 						targetStream.open(aneDirectory,FileMode.WRITE);
 						zip.serialize(targetStream);
 						targetStream.close();
+
+						fcmGeneratorMC.visible = false ;
 					}
 				}
 			}
