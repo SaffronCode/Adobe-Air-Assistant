@@ -1005,8 +1005,6 @@
 				imageH:Number,
 				margin:Number = 20 ;
 
-				
-
 			const iconFixPart1:String = "META-INF/ANE/Android-ARM/distriqt-extension-customresources-res/";
 			const iconFixPart2:String = "META-INF/ANE/Android-x86/distriqt-extension-customresources-res/";
 
@@ -1019,6 +1017,9 @@
 			var fcmImage2:LightImage;
 			/**App icon file */
 			var fcmImage3:LightImage;
+
+			/**FCM images frame */
+			var selectedImageFrame:Sprite ;
 
 			/**ANE file sample */
 			var aneFile:File ;
@@ -1179,8 +1180,12 @@
 			imageH = imageAreaMC.height ;
 
 			fcmImage1 = new LightImage();
+			selectedImageFrame = new Sprite();
+			selectedImageFrame.graphics.lineStyle(5,0xffffff);
+			selectedImageFrame.graphics.drawRoundRect(0,0,imageW,imageH,10,10);
+			fcmGeneratorMC.addChild(selectedImageFrame);
 			fcmGeneratorMC.addChild(fcmImage1);
-			fcmImage1.y = imageAreaMC.y ;
+			selectedImageFrame.y = fcmImage1.y = imageAreaMC.y ;
 			fcmImage1.buttonMode = true ;
 			fcmImage1.addEventListener(MouseEvent.CLICK,function(e){
 				selectedImageIndex = 1 ;
@@ -1220,23 +1225,31 @@
 					image2Alpha:Number = unselectedItemAlpha,
 					image3Alpha:Number = unselectedItemAlpha;
 
+
+				var selectedImage:LightImage ;
+
 				switch(selectedImageIndex)
 				{
 					case 0:
 					case 1:
 						image1Alpha = selectedItemAlpha ;
+						selectedImage = fcmImage1;
 						break;
 					case 2:
 						image2Alpha = selectedItemAlpha ;
+						selectedImage = fcmImage2;
 						break;
 					case 3:
 						image3Alpha = selectedItemAlpha ;
+						selectedImage = fcmImage3;
 						break;
 				}
 
 				fcmImage1.alpha += (image1Alpha-fcmImage1.alpha)/4;
 				fcmImage2.alpha += (image2Alpha-fcmImage2.alpha)/4;
 				fcmImage3.alpha += (image3Alpha-fcmImage3.alpha)/4;
+
+				selectedImageFrame.x += (selectedImage.x-selectedImageFrame.x)/4;
 			}
 
 			updateImagePosition();
