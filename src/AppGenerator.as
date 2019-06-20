@@ -19,6 +19,8 @@
 	import flash.text.TextField;
 	import flash.utils.setTimeout;
 	
+	import appManager.displayObjects.SwitchButtonAnimated ;
+
 	import component.ACheckBox;
 	import component.AppIconGenerator;
 	import component.WarningShow;
@@ -42,6 +44,7 @@
 	import dataManager.GlobalStorage;
 	import googleAPI.type.address_componentsClass;
 	import flash.display.BitmapData;
+	import component.FCM.AllFCMIcons;
 
 ;
 
@@ -983,6 +986,11 @@
 
 		private var generateFCMforDistriqt:Function ;
 
+		private var allFCMIcons:AllFCMIcons,
+					basicFCMIcons:Sprite ;
+
+		private var fcmAdvancedButton:SwitchButtonAnimated ;
+
 		private function setUpFCMForDistriqt():void
 		{
 			const 	id_latest_image:String = "id_latest_image4",
@@ -1026,6 +1034,10 @@
 			var googleFile:File ;
 
 			fcmGeneratorMC = Obj.get("distiqt_fcm_mc",this);
+			allFCMIcons = Obj.get("all_icons_mc",fcmGeneratorMC);
+			fcmAdvancedButton = Obj.get("advanced_switch_mc",fcmGeneratorMC);
+			basicFCMIcons = new Sprite();
+			fcmGeneratorMC.addChild(basicFCMIcons);
 			imageAreaMC = Obj.get("image_area_mc",fcmGeneratorMC);
 			loadImageMC = Obj.get("change_icon_mc",fcmGeneratorMC);
 			loadImageMC.buttonMode = true ;
@@ -1040,6 +1052,50 @@
 			saveMC.mouseChildren = false ;
 			saveMC.alpha = 0.5;
 			saveMC.addEventListener(MouseEvent.CLICK,saveANEFile);
+
+			
+			var iconList:Array = [] ;
+			var iconSize:Array = [] ;
+
+			
+			iconList.push(iconFixPart1+"drawable-hdpi/ic_stat_distriqt.png");
+			iconList.push(iconFixPart2+"drawable-hdpi/ic_stat_distriqt.png");
+			iconSize.push(38,38);
+			iconList.push(iconFixPart1+"drawable-hdpi-v11/ic_stat_distriqt.png");//W
+			iconList.push(iconFixPart2+"drawable-hdpi-v11/ic_stat_distriqt.png");//W
+			iconSize.push(36,36);
+			iconList.push(iconFixPart1+"drawable-mdpi/ic_stat_distriqt.png");
+			iconList.push(iconFixPart2+"drawable-mdpi/ic_stat_distriqt.png");
+			iconSize.push(25,25);
+			iconList.push(iconFixPart1+"drawable-mdpi-v11/ic_stat_distriqt.png");//W
+			iconList.push(iconFixPart2+"drawable-mdpi-v11/ic_stat_distriqt.png");//W
+			iconSize.push(24,24);
+			iconList.push(iconFixPart1+"drawable-xhdpi/ic_stat_distriqt.png");
+			iconList.push(iconFixPart2+"drawable-xhdpi/ic_stat_distriqt.png");
+			iconSize.push(50,50);
+			iconList.push(iconFixPart1+"drawable-xhdpi-v11/ic_stat_distriqt.png");//W
+			iconList.push(iconFixPart2+"drawable-xhdpi-v11/ic_stat_distriqt.png");//W
+			iconSize.push(48,48);
+			iconList.push(iconFixPart1+"drawable-xxhdpi/ic_stat_distriqt.png");
+			iconList.push(iconFixPart2+"drawable-xxhdpi/ic_stat_distriqt.png");
+			iconSize.push(75,75);
+			iconList.push(iconFixPart1+"drawable-xxhdpi-v11/ic_stat_distriqt.png");//W
+			iconList.push(iconFixPart2+"drawable-xxhdpi-v11/ic_stat_distriqt.png");//W
+			iconSize.push(72,72);
+			iconList.push(iconFixPart1+"drawable-xxxhdpi/ic_stat_distriqt.png");
+			iconList.push(iconFixPart2+"drawable-xxxhdpi/ic_stat_distriqt.png");
+			iconSize.push(100,100);
+			iconList.push(iconFixPart1+"drawable-xxxhdpi-v11/ic_stat_distriqt.png");//W
+			iconList.push(iconFixPart2+"drawable-xxxhdpi-v11/ic_stat_distriqt.png");//W
+			iconSize.push(96,96);
+
+			allFCMIcons.setUp(iconList);
+
+			fcmAdvancedButton.addEventListener(Event.CHANGE,function(e){
+				allFCMIcons.visible = fcmAdvancedButton.status ;
+				basicFCMIcons.visible = !fcmAdvancedButton.status ;
+				//Whant to reset allFCMLIcon? 
+			})
 
 			function saveANEFile(e:MouseEvent):void
 			{
@@ -1057,40 +1113,6 @@
 								</resources>;
 				//var whereToSave:File = File.desktopDirectory.resolvePath('ane2.ane') ;
 
-				var iconList:Array = [] ;
-				var iconSize:Array = [] ;
-
-				
-				iconList.push(iconFixPart1+"drawable-hdpi/ic_stat_distriqt.png");
-				iconList.push(iconFixPart2+"drawable-hdpi/ic_stat_distriqt.png");
-				iconSize.push(38,38);
-				iconList.push(iconFixPart1+"drawable-hdpi-v11/ic_stat_distriqt.png");//W
-				iconList.push(iconFixPart2+"drawable-hdpi-v11/ic_stat_distriqt.png");//W
-				iconSize.push(36,36);
-				iconList.push(iconFixPart1+"drawable-mdpi/ic_stat_distriqt.png");
-				iconList.push(iconFixPart2+"drawable-mdpi/ic_stat_distriqt.png");
-				iconSize.push(25,25);
-				iconList.push(iconFixPart1+"drawable-mdpi-v11/ic_stat_distriqt.png");//W
-				iconList.push(iconFixPart2+"drawable-mdpi-v11/ic_stat_distriqt.png");//W
-				iconSize.push(24,24);
-				iconList.push(iconFixPart1+"drawable-xhdpi/ic_stat_distriqt.png");
-				iconList.push(iconFixPart2+"drawable-xhdpi/ic_stat_distriqt.png");
-				iconSize.push(50,50);
-				iconList.push(iconFixPart1+"drawable-xhdpi-v11/ic_stat_distriqt.png");//W
-				iconList.push(iconFixPart2+"drawable-xhdpi-v11/ic_stat_distriqt.png");//W
-				iconSize.push(48,48);
-				iconList.push(iconFixPart1+"drawable-xxhdpi/ic_stat_distriqt.png");
-				iconList.push(iconFixPart2+"drawable-xxhdpi/ic_stat_distriqt.png");
-				iconSize.push(75,75);
-				iconList.push(iconFixPart1+"drawable-xxhdpi-v11/ic_stat_distriqt.png");//W
-				iconList.push(iconFixPart2+"drawable-xxhdpi-v11/ic_stat_distriqt.png");//W
-				iconSize.push(72,72);
-				iconList.push(iconFixPart1+"drawable-xxxhdpi/ic_stat_distriqt.png");
-				iconList.push(iconFixPart2+"drawable-xxxhdpi/ic_stat_distriqt.png");
-				iconSize.push(100,100);
-				iconList.push(iconFixPart1+"drawable-xxxhdpi-v11/ic_stat_distriqt.png");//W
-				iconList.push(iconFixPart2+"drawable-xxxhdpi-v11/ic_stat_distriqt.png");//W
-				iconSize.push(96,96);
 
 				var bitmapToReplace:BitmapData ;
 				switch(selectedImageIndex)
@@ -1111,7 +1133,7 @@
 				zip.load(new URLRequest(aneFile.url));
 
 				function onComplete(e:*=null):void
-					{
+				{
 					for( i=0 ; i<zip.getFileCount() ; i++)
 					{
 						var fileName:String = zip.getFileAt(i).filename ;
@@ -1180,20 +1202,23 @@
 			imageH = imageAreaMC.height ;
 
 			fcmImage1 = new LightImage();
-			selectedImageFrame = new Sprite();
-			selectedImageFrame.graphics.lineStyle(5,0xffffff);
-			selectedImageFrame.graphics.drawRoundRect(0,0,imageW,imageH,10,10);
-			fcmGeneratorMC.addChild(selectedImageFrame);
-			fcmGeneratorMC.addChild(fcmImage1);
-			selectedImageFrame.y = fcmImage1.y = imageAreaMC.y ;
+			basicFCMIcons.addChild(fcmImage1);
 			fcmImage1.buttonMode = true ;
 			fcmImage1.addEventListener(MouseEvent.CLICK,function(e){
 				selectedImageIndex = 1 ;
 				GlobalStorage.save(id_last_selected_image,selectedImageIndex);
 			});
 
+			selectedImageFrame = new Sprite();
+			selectedImageFrame.graphics.lineStyle(5,0xffffff);
+			selectedImageFrame.graphics.drawRoundRect(0,0,imageW,imageH,10,10);
+			basicFCMIcons.addChild(selectedImageFrame);
+			selectedImageFrame.y = fcmImage1.y = imageAreaMC.y ;
+
+
+
 			fcmImage2 = new LightImage();
-			fcmGeneratorMC.addChild(fcmImage2);
+			basicFCMIcons.addChild(fcmImage2);
 			fcmImage2.y = imageAreaMC.y ;
 			fcmImage2.setUp('');
 			fcmImage2.buttonMode = true ;
@@ -1204,7 +1229,7 @@
 			});
 
 			fcmImage3 = new LightImage();
-			fcmGeneratorMC.addChild(fcmImage3);
+			basicFCMIcons.addChild(fcmImage3);
 			fcmImage3.y = imageAreaMC.y ;
 			fcmImage3.setUp('');
 			fcmImage3.buttonMode = true ;
