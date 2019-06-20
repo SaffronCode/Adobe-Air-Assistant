@@ -999,6 +999,8 @@
 
 			var selectedImageIndex:int = GlobalStorage.load(id_last_selected_image) as int ;
 
+			var lastSelectedImageIndex:int = -1 ;
+
 
 			
 			var fcmGeneratorMC:MovieClip,
@@ -1270,6 +1272,13 @@
 						image3Alpha = selectedItemAlpha ;
 						selectedImage = fcmImage3;
 						break;
+				}
+
+				if(lastSelectedImageIndex!=selectedImageIndex && selectedImage.getBitmapData()!=null)
+				{
+					lastSelectedImageIndex = selectedImageIndex ;
+					//Alert.show("Selected image on "+selectedImageIndex+" is : "+selectedImage);
+					allFCMIcons.setDefaultImage(selectedImage.getBitmapData());
 				}
 
 				fcmImage1.alpha += (image1Alpha-fcmImage1.alpha)/4;

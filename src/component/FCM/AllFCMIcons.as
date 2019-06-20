@@ -4,6 +4,7 @@ package component.FCM
     import flash.display.MovieClip;
     import flash.geom.Rectangle;
     import flash.display.Sprite;
+    import flash.display.BitmapData;
 
     public class AllFCMIcons extends MovieClip
     {
@@ -34,9 +35,17 @@ package component.FCM
             icons = new Vector.<SingleIconFCM>();
             for(var i:int = 0 ; i<directories.length ; i++)
             {
-                var icon:SingleIconFCM = new SingleIconFCM();
+                var icon:SingleIconFCM = new SingleIconFCM(directories[i]);
                 icons.push(icon);
                 iconsContainer.addChild(icon);
+            }
+        }
+
+        public function setDefaultImage(newIcon:BitmapData)
+        {
+            for(var i:int = 0 ; i<icons.length ; i++)
+            {
+                icons[i].setIcon(newIcon);
             }
         }
 
