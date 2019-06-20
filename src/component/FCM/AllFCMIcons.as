@@ -36,6 +36,7 @@ package component.FCM
             {
                 var icon:SingleIconFCM = new SingleIconFCM();
                 icons.push(icon);
+                iconsContainer.addChild(icon);
             }
         }
 

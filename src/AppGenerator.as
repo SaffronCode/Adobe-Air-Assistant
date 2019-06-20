@@ -1091,13 +1091,15 @@
 
 			allFCMIcons.setUp(iconList);
 
-			fcmAdvancedButton.addEventListener(Event.CHANGE,function(e){
+			fcmAdvancedButton.addEventListener(Event.CHANGE,showAdvancedOptionOrBasic);
+			function showAdvancedOptionOrBasic(e:Event=null){
 				allFCMIcons.visible = fcmAdvancedButton.status ;
-				basicFCMIcons.visible = !fcmAdvancedButton.status ;
+				loadImageMC.visible = basicFCMIcons.visible = !fcmAdvancedButton.status ;
 				//Whant to reset allFCMLIcon? 
-			})
+			}
+			showAdvancedOptionOrBasic();
 
-			function saveANEFile(e:MouseEvent):void
+			function saveANEFile(e:Event):void
 			{
 				onGoolgeJSONSelected(googleFile);
 
