@@ -33,9 +33,14 @@ package component.FCM
             iconsContainer.removeChildren();
             directories = directoryNames.concat() ;
             icons = new Vector.<SingleIconFCM>();
+            const margin:Number = 30 ;
+            var XN:Number = margin ;
             for(var i:int = 0 ; i<directories.length ; i++)
             {
                 var icon:SingleIconFCM = new SingleIconFCM(directories[i]);
+                icon.x = XN ;
+                icon.y = (H-icon.height)/2;
+                XN += margin + icon.width ;
                 icons.push(icon);
                 iconsContainer.addChild(icon);
             }
