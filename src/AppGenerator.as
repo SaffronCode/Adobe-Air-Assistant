@@ -997,6 +997,7 @@
 		{
 			const 	id_latest_image:String = "id_latest_image4",
 					id_last_selected_image:String = "id_last_selected_image",
+					id_fcm_advanced_mode:String = "id_fcm_advanced_mode",
 					id_last_google_service:String = "id_last_google_service" ;
 
 			var selectedImageIndex:int = GlobalStorage.load(id_last_selected_image) as int ;
@@ -1040,6 +1041,7 @@
 			fcmGeneratorMC = Obj.get("distiqt_fcm_mc",this);
 			allFCMIcons = Obj.get("all_icons_mc",fcmGeneratorMC);
 			fcmAdvancedButton = Obj.get("advanced_switch_mc",fcmGeneratorMC);
+			fcmAdvancedButton.status = Boolean(GlobalStorage.load(id_fcm_advanced_mode));
 			basicFCMIcons = new Sprite();
 			fcmGeneratorMC.addChild(basicFCMIcons);
 			imageAreaMC = Obj.get("image_area_mc",fcmGeneratorMC);
@@ -1062,41 +1064,34 @@
 			var iconSize:Array = [] ;
 
 			
-			iconList.push(iconFixPart1+"drawable-hdpi/ic_stat_distriqt.png");
-			iconList.push(iconFixPart2+"drawable-hdpi/ic_stat_distriqt.png");
-			iconSize.push(38,38);
-			iconList.push(iconFixPart1+"drawable-hdpi-v11/ic_stat_distriqt.png");//W
-			iconList.push(iconFixPart2+"drawable-hdpi-v11/ic_stat_distriqt.png");//W
-			iconSize.push(36,36);
-			iconList.push(iconFixPart1+"drawable-mdpi/ic_stat_distriqt.png");
-			iconList.push(iconFixPart2+"drawable-mdpi/ic_stat_distriqt.png");
-			iconSize.push(25,25);
-			iconList.push(iconFixPart1+"drawable-mdpi-v11/ic_stat_distriqt.png");//W
-			iconList.push(iconFixPart2+"drawable-mdpi-v11/ic_stat_distriqt.png");//W
-			iconSize.push(24,24);
-			iconList.push(iconFixPart1+"drawable-xhdpi/ic_stat_distriqt.png");
-			iconList.push(iconFixPart2+"drawable-xhdpi/ic_stat_distriqt.png");
-			iconSize.push(50,50);
-			iconList.push(iconFixPart1+"drawable-xhdpi-v11/ic_stat_distriqt.png");//W
-			iconList.push(iconFixPart2+"drawable-xhdpi-v11/ic_stat_distriqt.png");//W
-			iconSize.push(48,48);
-			iconList.push(iconFixPart1+"drawable-xxhdpi/ic_stat_distriqt.png");
-			iconList.push(iconFixPart2+"drawable-xxhdpi/ic_stat_distriqt.png");
-			iconSize.push(75,75);
-			iconList.push(iconFixPart1+"drawable-xxhdpi-v11/ic_stat_distriqt.png");//W
-			iconList.push(iconFixPart2+"drawable-xxhdpi-v11/ic_stat_distriqt.png");//W
-			iconSize.push(72,72);
-			iconList.push(iconFixPart1+"drawable-xxxhdpi/ic_stat_distriqt.png");
-			iconList.push(iconFixPart2+"drawable-xxxhdpi/ic_stat_distriqt.png");
-			iconSize.push(100,100);
-			iconList.push(iconFixPart1+"drawable-xxxhdpi-v11/ic_stat_distriqt.png");//W
-			iconList.push(iconFixPart2+"drawable-xxxhdpi-v11/ic_stat_distriqt.png");//W
-			iconSize.push(96,96);
+			iconList.push("drawable-mdpi/ic_stat_distriqt.png");
+			iconSize.push(25);
+			iconList.push("drawable-mdpi-v11/ic_stat_distriqt.png");//W
+			iconSize.push(24);
+			iconList.push("drawable-hdpi/ic_stat_distriqt.png");
+			iconSize.push(38);
+			iconList.push("drawable-hdpi-v11/ic_stat_distriqt.png");//W
+			iconSize.push(36);
+			iconList.push("drawable-xhdpi/ic_stat_distriqt.png");
+			iconSize.push(50);
+			iconList.push("drawable-xhdpi-v11/ic_stat_distriqt.png");//W
+			iconSize.push(48);
+			iconList.push("drawable-xxhdpi/ic_stat_distriqt.png");
+			iconSize.push(75);
+			iconList.push("drawable-xxhdpi-v11/ic_stat_distriqt.png");//W
+			iconSize.push(72);
+			iconList.push("drawable-xxxhdpi/ic_stat_distriqt.png");
+			iconSize.push(100);
+			iconList.push("drawable-xxxhdpi-v11/ic_stat_distriqt.png");//W
+			iconSize.push(96);
+
+			//??DO not save duplicate item for each size. set icon sizes then duplicate them
 
 			allFCMIcons.setUp(iconList);
 
 			fcmAdvancedButton.addEventListener(Event.CHANGE,showAdvancedOptionOrBasic);
 			function showAdvancedOptionOrBasic(e:Event=null){
+				GlobalStorage.save(id_fcm_advanced_mode,fcmAdvancedButton.status);
 				allFCMIcons.visible = fcmAdvancedButton.status ;
 				loadImageMC.visible = basicFCMIcons.visible = !fcmAdvancedButton.status ;
 				//Whant to reset allFCMLIcon? 
@@ -1156,14 +1151,14 @@
 							zip.addFileFromStringAt(i,"META-INF/ANE/Android-x86/distriqt-extension-customresources-res/values/values.xml",'<?xml version="1.0" encoding="utf-8"?>'+data.toXMLString());
 						}
 						
-						if(bitmapToReplace!=null)
+						for(var j:int = 0 ; j<iconList.length ; j++)
 						{
-							var isImage:int = iconList.indexOf(fileName);
-							if(isImage>=0)
+							trace("iconFixPart1+iconList[i] : "+iconFixPart1+iconList[j]+" vs "+fileName)
+							if(iconFixPart1+iconList[j] == fileName || iconFixPart2+iconList[j] == fileName)
 							{
-								trace("File must replace : "+fileName);
+								//Alert.show("File must replace : "+fileName);
 								zip.removeFileAt(i);
-								zip.addFileAt(i,fileName,BitmapEffects.createPNG(BitmapEffects.changeSize(bitmapToReplace,iconSize[isImage],iconSize[isImage],true,true)));
+								zip.addFileAt(i,fileName,BitmapEffects.createPNG(BitmapEffects.changeSize(allFCMIcons.getImage(iconList[j]),iconSize[j],iconSize[j],true,true)));
 							}
 						}
 					}

@@ -25,15 +25,16 @@ package component.FCM
 
             iconsContainer = new Sprite();
             this.addChild(iconsContainer);
-            new ScrollMT(iconsContainer,new Rectangle(0,0,W,H),null,false,true);
+            new ScrollMT(iconsContainer,new Rectangle(0,0,W,H),null,false,true,false,false,false,0,false,true);
         }
 
         public function setUp(directoryNames:Array):void
         {
             iconsContainer.removeChildren();
+            iconsContainer.graphics.clear();
             directories = directoryNames.concat() ;
             icons = new Vector.<SingleIconFCM>();
-            const margin:Number = 30 ;
+            const margin:Number = 0 ;
             var XN:Number = margin ;
             for(var i:int = 0 ; i<directories.length ; i++)
             {
@@ -44,6 +45,21 @@ package component.FCM
                 icons.push(icon);
                 iconsContainer.addChild(icon);
             }
+            iconsContainer.graphics.beginFill(0,0);
+            iconsContainer.graphics.drawRect(0,0,iconsContainer.width,H);
+        }
+
+        public function getImage(fileName:String):BitmapData
+        {
+            for(var i:int = 0 ; i<icons.length ; i++)
+            {
+                trace(icons[i].fileName+' vs '+fileName);
+                if(icons[i].fileName == fileName)
+                {
+                    return icons[i].getBitmapData();
+                }
+            }
+            return null ;
         }
 
         public function setDefaultImage(newIcon:BitmapData)
