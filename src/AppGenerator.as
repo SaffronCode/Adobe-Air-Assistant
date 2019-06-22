@@ -131,6 +131,8 @@
 		{
 			super();
 
+			TextPutter.defaultResolution = 1 ;
+
 			setUpFCMForDistriqt();
 			
 			warningMC = Obj.findThisClass(WarningShow,this);
@@ -143,7 +145,7 @@
 			
 			searchMC = Obj.get("search_text",this);
 			
-			nativeCheckContainerMC = Obj.get("natives_mc",this);
+			nativeCheckContainerMC = Obj.get("natives_mc",Obj.get("natives_mc",this));
 			var nativeContainerBackMC:MovieClip = Obj.get("back_mc",nativeCheckContainerMC);
 			//nativeCheckContainerMC.graphics.beginFill(0,0);
 			//nativeCheckContainerMC.graphics.drawRect(0,0,nativeContainerBackMC.width,nativeContainerBackMC.height+300);
