@@ -19,6 +19,7 @@ import component.webServices.Appuploader_iconapi;
 import darkBox.ImageFile;
 
 import restDoaService.RestDoaEvent;
+import spark.components.Alert;
 	
 	public class AppIconGenerator extends MovieClip
 	{
@@ -90,8 +91,8 @@ import restDoaService.RestDoaEvent;
 				currentFile = file ;
 				
 				button_save.visible = true ;
-				button_save_asset.visible = false ;
-				preloaderMC.visible = true ;
+				//button_save_asset.visible = false ;
+				preloaderMC.visible = false ;
 
 				sampleImag.setUp(currentFile.nativePath,true);
 				
@@ -100,22 +101,8 @@ import restDoaService.RestDoaEvent;
 					iconGeneratorService.cansel();
 				}
 				
+				button_save_asset.visible = true ;
 				//var fileLoader:ByteArray = FileManager.loadFile(file,false);
-				DeviceImage.loadFile(imageLoadedForAssis,currentFile,1024,1024);
-				
-				function imageLoadedForAssis():void
-				{
-					iconGeneratorService = new Appuploader_iconapi();
-					iconGeneratorService.addEventListener(RestDoaEvent.SERVER_RESULT,assetLoaded);
-
-					cashedBitmap = DeviceImage.imageBitmapData.clone();
-
-					iconGeneratorService.load(BitmapEffects.createPNG(BitmapEffects.changeSize(DeviceImage.imageBitmapData,1024,1024,true,true,true)));
-				}
-				
-				
-				
-				
 			}
 			
 				private function saveIcons(e:*=null):void
@@ -174,14 +161,32 @@ import restDoaService.RestDoaEvent;
 			
 			
 			
-				private function assetLoaded(e:RestDoaEvent):void
-				{
-					preloaderMC.visible = false ;
-					button_save_asset.visible = true ;
-				}
-				
+								
 					private function saveAssetsFile(e:*=null):void
 					{
+						DeviceImage.loadFile(imageLoadedForAssis,currentFile,1024,1024);
+				
+						function imageLoadedForAssis():void
+						{
+							button_save_asset.visible = false ;
+							preloaderMC.visible = true ;
+
+							iconGeneratorService = new Appuploader_iconapi();
+							iconGeneratorService.addEventListener(RestDoaEvent.SERVER_RESULT,assetLoaded);
+							iconGeneratorService.addEventListener(RestDoaEvent.CONNECTION_ERROR,noNetTogetIcon);
+
+							cashedBitmap = DeviceImage.imageBitmapData.clone();
+
+							iconGeneratorService.load(BitmapEffects.createPNG(BitmapEffects.changeSize(DeviceImage.imageBitmapData,1024,1024,true,true,true)));
+						}
+					}
+
+					
+
+					private function assetLoaded(e:RestDoaEvent):void
+					{
+						button_save_asset.visible = true ;
+						preloaderMC.visible = false ;
 						var targetFolder:File = new File();
 						targetFolder.addEventListener(Event.SELECT,locationFounded);
 						targetFolder.browseForDirectory("Select a locatoin to save your Assets.car file for iOS");
@@ -190,6 +195,14 @@ import restDoaService.RestDoaEvent;
 							targetFolder = targetFolder.resolvePath("Assets.car") ;
 							FileManager.saveFile(targetFolder,iconGeneratorService.data);
 						}
+					}
+
+
+					private function noNetTogetIcon(e:Event):void
+					{
+						button_save_asset.visible = true;
+						preloaderMC.visible = false ;
+						Alert.show("Connection error on getting Assets.car file");
 					}
 		
 		private function saveIconTo(imageBitmap:BitmapData,imageSize:uint,targetFolder:File):void
