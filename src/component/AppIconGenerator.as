@@ -19,7 +19,7 @@ import component.webServices.Appuploader_iconapi;
 import darkBox.ImageFile;
 
 import restDoaService.RestDoaEvent;
-import spark.components.Alert;
+import contents.alert.Alert;
 	
 	public class AppIconGenerator extends MovieClip
 	{
