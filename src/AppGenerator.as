@@ -45,6 +45,10 @@
 	import googleAPI.type.address_componentsClass;
 	import flash.display.BitmapData;
 	import component.FCM.AllFCMIcons;
+	import com.mteamapp.VersionController;
+	import flash.net.URLRequestMethod;
+	import restDoaService.RestDoaServiceCaller;
+	import flash.net.URLVariables;
 
 ;
 
@@ -132,6 +136,19 @@
 			super();
 
 			TextPutter.defaultResolution = 1 ;
+			RestDoaServiceCaller
+
+			var versionContrllURL:String = 'http://www.saffroncodesdk.com/api/Projects/versioncontrol' ;
+			//Alert.show("Version controll : "+versionContrllURL);
+			var versionRequest:URLRequest = new URLRequest(versionContrllURL);
+			versionRequest.contentType = 'application/json';
+			versionRequest.method = URLRequestMethod.POST ;
+			versionRequest.data = JSON.stringify({AppId:"com.saffroncodesdk."+DevicePrefrence.appID}) ;
+			VersionController.controllVersion(function(){
+				//Alert.show("Version is OK");
+			},function(){
+				//Alert.show("Version is not OK!")
+			},versionRequest,DevicePrefrence.appVersion,false);
 
 			setUpFCMForDistriqt();
 			
