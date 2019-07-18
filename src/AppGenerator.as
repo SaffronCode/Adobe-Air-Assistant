@@ -130,10 +130,37 @@
 		
 					lastWarningText:String ,
 					lastWarningFunction:Function ;
+
+		private var aneSettingMC:MovieClip,
+					aneDirectory:File,
+					createAneDirectoryMC:MovieClip;
+		private const id_ane_directory:String = "id_ane_directory" ;
 		
 		public function AppGenerator()
 		{
 			super();
+
+			///ANE directory
+			aneSettingMC = Obj.get("ane_setting_mc",this);
+			aneSettingMC.buttonMode = true ;
+			aneSettingMC.addEventListener(MouseEvent.CLICK,function(e){
+				FileManager.browseForDirectory(aneDirectorySelected,"Select your local native files directory");
+				function aneDirectorySelected(AneDirectory:File)
+				{
+					aneDirectory = AneDirectory;
+					GlobalStorage.save(id_ane_directory,aneDirectory.nativePath);
+					createAneDirectoryMC.visible = true ;
+				}
+			});
+			if(GlobalStorage.load(id_ane_directory)!=null)
+			{
+				aneDirectory = new File(GlobalStorage.load(id_ane_directory));
+			}
+			createAneDirectoryMC = Obj.get("save_anes_mc",this);
+			createAneDirectoryMC.buttonMode = true ;
+			createAneDirectoryMC.visible = aneDirectory!=null?true:false;
+			createAneDirectoryMC.addEventListener(MouseEvent.CLICK,saveAllanesToProjectPath);
+			//////↑
 
 			TextPutter.defaultResolution = 1 ;
 			RestDoaServiceCaller
@@ -1436,6 +1463,104 @@
 					var sampleImage:FZipFile = zip.getFileByName(iconFixPart2+"drawable-xxxhdpi-v11/ic_stat_distriqt.png");
 					fcmImage1.setUpBytes(sampleImage.content,true,imageW,imageH,0,0,true);
 				}
+			}
+		}
+
+		private function saveAllanesToProjectPath(e:MouseEvent):void
+		{
+			var neededExtensionList:Array = [] ;
+			var anyANESelected:Boolean = false ;
+			for(var i:int = 0 ; i<checkList.length ; i++)
+			{
+				if(checkList[i].status)
+				{
+					var extensionListFile:File = xmlFolder.resolvePath(checkList[i].folderName).resolvePath("extension.xml");
+					if(extensionListFile.exists)
+					{
+						try
+						{
+							var loadedExtensionsXMLList:XMLList = new XMLList(TextFile.load(extensionListFile));
+							if(anyANESelected==false)
+								anyANESelected = loadedExtensionsXMLList.length()>0 ;
+							for(var j:int = 0 ; j<loadedExtensionsXMLList.length() ; j++)
+							{
+								if(neededExtensionList.indexOf(loadedExtensionsXMLList[j].toString())==-1)
+								neededExtensionList.push(loadedExtensionsXMLList[j].toString());
+							}
+						}
+						catch(e){}
+					}
+				}
+			}
+			if(anyANESelected==false)
+			{
+				Alert.show("You don't need to have any native file.");
+				return;
+			}
+			var aneFiles:Vector.<File> = new Vector.<File>();
+			for(i = 0 ; i<neededExtensionList.length ; i++)
+			{
+				var aneFile:File = aneDirectory.resolvePath(neededExtensionList[i]+".ane");
+				if(aneFile.exists)
+				{
+					neededExtensionList.removeAt(i);
+					i--;
+					aneFiles.push(aneFile);
+				}
+			}
+
+			if(aneFiles.length==0)
+			{
+				Alert.show("You don't have any of these ane files on your local directory. Get them online.");
+			}
+			else
+			{
+				FileManager.browseForDirectory(function(nativeDirectory:File){
+					if(nativeDirectory.name != 'native')
+					{
+						nativeDirectory = nativeDirectory.resolvePath('native');
+						if(!nativeDirectory.exists)
+						{
+							nativeDirectory.createDirectory();
+						}
+						var allExistingANEFiles:Array = nativeDirectory.getDirectoryListing();
+						for(i = 0 ; i<allExistingANEFiles.length ; i++)
+						{
+							var aneF:File = allExistingANEFiles[i] as File ;
+							if(aneF.name.toLowerCase().indexOf('custom')==-1)
+							{
+								try
+								{
+									if(aneF.isDirectory)
+									{
+										FileManager.deleteAllFiles(aneF);
+									}
+									else
+									{
+										aneF.deleteFile();
+									}
+								}
+								catch(e:Error){
+									//Alert.show("Proplem on file Delet"+e.message)
+								};
+							}
+						}
+						for(i = 0 ; i<aneFiles.length ; i++)
+						{
+							aneFiles[i].copyTo(nativeDirectory.resolvePath(aneFiles[i].name),true);
+						}
+					}
+
+				},"Select you project directory to store all required native files there.")
+			}
+			if(neededExtensionList.length>0)
+			{
+				var warning:String = 'You should add these ANE files to your native folder manualy.\n\n' ;
+				for(i = 0 ; i<neededExtensionList.length ; i++)
+				{
+					warning += neededExtensionList[i]+'\n';
+				}
+				warningMC.show(warning);
 			}
 		}
 	}

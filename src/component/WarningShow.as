@@ -10,7 +10,7 @@ package component
 	{
 		private var paragTF:TextParag ;
 		
-		private var hideButton:MovieClip,okButton:MovieClip ;
+		private var hideButton:MovieClip,okButton:MovieClip,hideButton2:MovieClip ;
 		
 		private var onDone:Function ;
 		
@@ -20,14 +20,17 @@ package component
 			
 			paragTF = Obj.findThisClass(TextParag,this);
 			hideButton = Obj.get("cancel_mc",this);
+			hideButton2 = Obj.get("cancel2_mc",this);
 			okButton = Obj.get("open_mc",this);
 			hideButton.buttonMode = true ;
+			hideButton2.buttonMode = true ;
 			okButton.buttonMode = true ;
 			
 			hide();
 			this.alpha = 0 ;
 			
 			hideButton.addEventListener(MouseEvent.CLICK,hide);
+			hideButton2.addEventListener(MouseEvent.CLICK,hide);
 			okButton.addEventListener(MouseEvent.CLICK,openForm);
 		}
 		
@@ -40,6 +43,8 @@ package component
 			this.mouseEnabled = true ;
 			this.mouseChildren = true ;
 			AnimData.fadeIn(this);
+			hideButton2.visible = onDone==null ;
+			hideButton.visible = okButton.visible = onDone!=null ;
 		}
 		
 		/**Hide warning*/
