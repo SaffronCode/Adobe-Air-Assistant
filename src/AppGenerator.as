@@ -1048,7 +1048,7 @@
 
 			var lastSelectedImageIndex:int = -1 ;
 
-
+			var imageUpdated:Boolean = false ;
 			
 			var fcmGeneratorMC:MovieClip,
 				imageAreaMC:MovieClip,
@@ -1315,11 +1315,13 @@
 						break;
 				}
 
-				if(lastSelectedImageIndex!=selectedImageIndex && selectedImage.getBitmapData()!=null)
+				if((lastSelectedImageIndex!=selectedImageIndex && selectedImage.getBitmapData()!=null) || imageUpdated)
 				{
 					lastSelectedImageIndex = selectedImageIndex ;
 					//Alert.show("Selected image on "+selectedImageIndex+" is : "+selectedImage);
 					allFCMIcons.setDefaultImage(selectedImage.getBitmapData());
+
+					imageUpdated = false ;
 				}
 
 				fcmImage1.alpha += (image1Alpha-fcmImage1.alpha)/4;
@@ -1371,7 +1373,7 @@
 			var cashedImageURL:String = GlobalStorage.load(id_latest_image);
 			if(cashedImageURL!=null && new File(cashedImageURL).exists)
 			{
-				onNewIconFoundedForFCM(new File(cashedImageURL));
+				onNewIconFoundedForFCM(new File(cashedImageURL),false);
 			}
 			
 
@@ -1380,12 +1382,13 @@
 				FileManager.browse(onNewIconFoundedForFCM,['*.jpg;*.jpeg;*.JPG;*.JPEG;*.png;*.PNG'],"Select a notification icon (Black and white and transparent image preferred)");
 			}
 
-			function onNewIconFoundedForFCM(SelectedImageFile:File):void
+			function onNewIconFoundedForFCM(SelectedImageFile:File,updateImage:Boolean=true):void
 			{
 				selectedImageIndex = 2 ;
 				GlobalStorage.save(id_latest_image,SelectedImageFile.url)
 				fcmImage2.setUp(SelectedImageFile.url,true,imageW,imageH);
 				updateImagePosition();
+				imageUpdated = updateImage ;
 			}
 			function onGoolgeJSONSelected(googleFiles:File):void
 			{
