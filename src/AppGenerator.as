@@ -836,7 +836,8 @@
 			
 			for(var i:int = 0 ; i<checkList.length ; i++)
 			{
-				checkList[i].status = checkIfExistsBefor(xmlFolder.resolvePath(checkList[i].folderName)) ; 
+				if(checkList[i].addItToList)
+					checkList[i].status = checkIfExistsBefor(xmlFolder.resolvePath(checkList[i].folderName)) ; 
 			}
 		}
 		
@@ -902,7 +903,7 @@
 		private function addDistManifestFrom(folder:File):String
 		{
 			var loadedDistEntitlements:String = TextFile.load(folder.resolvePath("ios_Entitlements-dist.xml")) ;
-			if(loadedDistEntitlements!='')
+			if(loadedDistEntitlements!='' && loadedDistEntitlements!=null)
 			{
 				manifestGenerate.addIosEntitlements(loadedDistEntitlements);
 				return manifestGenerate.toString();
