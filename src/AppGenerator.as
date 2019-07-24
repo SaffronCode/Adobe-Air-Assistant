@@ -165,7 +165,7 @@
 			TextPutter.defaultResolution = 1 ;
 			RestDoaServiceCaller
 
-			var versionContrllURL:String = 'http://www.saffroncodesdk.com/api/Projects/versioncontrol' ;
+			var versionContrllURL:String = 'https://saffroncodesdk.com/api/Projects/versioncontrol' ;
 			//Alert.show("Version controll : "+versionContrllURL);
 			var versionRequest:URLRequest = new URLRequest(versionContrllURL);
 			versionRequest.contentType = 'application/json';
