@@ -1,3 +1,5 @@
 <manifest android:installLocation="auto">
-	<application android:enabled="true" android:hardwareAccelerated="true"/>
+	<application android:enabled="true" android:hardwareAccelerated="true">
+		<meta-data android:name="android.max_aspect" android:value="2.0" />
+	</application>
 </manifest>
