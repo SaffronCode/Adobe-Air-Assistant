@@ -268,7 +268,7 @@
 			iconGenerator.setIconList(iconSizes);
 			
 			
-			manifestGenerate = new ManifestGenerate(iconSizes,'29');
+			manifestGenerate = new ManifestGenerate(iconSizes,'32');
 			
 			//stage.addEventListener(MouseEvent.CLICK,convertSampleXML);
 			
@@ -836,8 +836,8 @@
 			
 			for(var i:int = 0 ; i<checkList.length ; i++)
 			{
-				if(checkList[i].addItToList)
-					checkList[i].status = checkIfExistsBefor(xmlFolder.resolvePath(checkList[i].folderName)) ; 
+				//if(checkList[i].addItToList) I have more items out side of the list that I should controll them to
+				checkList[i].status = checkIfExistsBefor(xmlFolder.resolvePath(checkList[i].folderName)) ; 
 			}
 		}
 		
@@ -877,6 +877,8 @@
 		
 		private function checkIfExistsBefor(folder:File):Boolean
 		{
+			trace("folder : "+folder.name);
+			
 			var con1:Boolean = manifestGenerate.doAndroidPermissionHave(TextFile.load(folder.resolvePath("android_manifest.xml")));
 			if(con1 == false && folder.resolvePath("android_manifest2.xml").exists)
 			{
