@@ -378,11 +378,11 @@
 			Obj.remove(checkBoxSample);
 				
 			function addCheckBox(checkBoxName:String,manifestDirectoryName:String,onTrigered:Function=null,
-			addItToList:Boolean=true,defaultStatus:Boolean=false):ACheckBox
+			addItToList:Boolean=true,defaultStatus:Boolean=false,lockCheckBox:Boolean=false):ACheckBox
 			{
 				var checkBox:ACheckBox = new checkBoxClass();
 				
-				checkBox.setUp(defaultStatus,checkBoxName,manifestDirectoryName);
+				checkBox.setUp(defaultStatus,checkBoxName,manifestDirectoryName,lockCheckBox);
 				checkList.push(checkBox);
 				checkBox.addItToList = addItToList ;
 				
@@ -461,7 +461,7 @@
 			addCheckBox('Distriqt Scanner','distriqtScanner')
 				.setInfo("https://airnativeextensions.com/extension/com.distriqt.Scanner")
 				.setWiki("https://distriqt.github.io/ANE-Scanner/");
-			addCheckBox('Default Manifests','baseXMLs',null,false,true);
+			addCheckBox('Default Manifests','baseXMLs',null,false,true,true);
 			addCheckBox('Distriqt Location','distriqtLocation')
 				.setInfo("https://airnativeextensions.com/extension/com.distriqt.Location")
 				.setWiki("https://airnativeextensions.com/extension/com.distriqt.Location");
