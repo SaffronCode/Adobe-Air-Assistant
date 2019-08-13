@@ -43,6 +43,9 @@
 		public var addItToList:Boolean;
 		private var myLabel:String;
 		
+		/**Prevent User or code to be able to change the checkBox status */
+		private var lockCheckBox:Boolean = false ;
+
 		public function ACheckBox()
 		{
 			super();
@@ -155,7 +158,8 @@
 		
 		public function changeStatus(event:MouseEvent=null):void
 		{
-			this.gotoAndStop(((this.currentFrame-1)+1)%this.totalFrames+1);
+			if(!lockCheckBox)
+				this.gotoAndStop(((this.currentFrame-1)+1)%this.totalFrames+1);
 			this.dispatchEvent(new Event(Event.CHANGE));
 			if(getStatus())
 			{
@@ -169,11 +173,13 @@
 			if(val)
 			{
 				increasePriority();
-				this.gotoAndStop(2);
+				if(!lockCheckBox)
+					this.gotoAndStop(2);
 			}
 			else
 			{
-				this.gotoAndStop(1);
+				if(!lockCheckBox)
+					this.gotoAndStop(1);
 			}
 			if(lastStatus!=getStatus())
 			{
@@ -188,6 +194,7 @@
 		
 		private function getStatus():Boolean
 		{
+			trace("this.folderName : "+this.folderName);
 			if(this.currentFrame==0)
 			{
 				return _status ;
@@ -198,11 +205,12 @@
 			}
 		}
 		
-		public function setUp(status:Boolean=false,label:String='',folderName:String=''):void
+		public function setUp(status:Boolean=false,label:String='',folderName:String='',lockCheckBox:Boolean=false):void
 		{
 			this.folderName = folderName ;
 			const distriqtName:String = "distriqt" ;
 			this.myLabel = label ;
+			this.lockCheckBox = lockCheckBox ;
 			if(distriqtMC!=null && label.toLowerCase().indexOf(distriqtName)!=-1)
 			{
 				label = label.substring(distriqtName.length);
