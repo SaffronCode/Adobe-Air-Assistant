@@ -49,6 +49,7 @@
 	import flash.net.URLRequestMethod;
 	import restDoaService.RestDoaServiceCaller;
 	import flash.net.URLVariables;
+	import component.DefaultImageGenerator;
 
 ;
 
@@ -140,11 +141,15 @@
 					aneDirectory:File,
 					createAneDirectoryMC:MovieClip;
 		private const id_ane_directory:String = "id_ane_directory" ;
+
+
+		private var defaultImageGenerator:DefaultImageGenerator ;
 		
 		public function AppGenerator()
 		{
 			super();
 
+			defaultImageGenerator = Obj.findThisClass(DefaultImageGenerator,this);
 			///ANE directory
 			aneSettingMC = Obj.get("ane_setting_mc",this);
 			aneSettingMC.buttonMode = true ;
@@ -301,8 +306,25 @@
 			
 			aspectRatio_text_textMC = Obj.get("aspectRatio_text",this);
 			aspectRatio_text_textMC.setUp('Aspect Ratio:','',null,false,true,false,1,1,2,0,['portrait','landscape','auto'],false,true,null,null,true);
+			defaultImageGenerator.setToPortrate(true);
+			defaultImageGenerator.setToLandscape(false);
 			aspectRatio_text_textMC.addEventListener(Event.CHANGE,function(e){
 				manifestGenerate.aspectRatio = aspectRatio_text_textMC.text ;
+				if(aspectRatio_text_textMC.text == "portrait")
+				{
+					defaultImageGenerator.setToPortrate(true);
+					defaultImageGenerator.setToLandscape(false);
+				}
+				else if(aspectRatio_text_textMC.text == "landscape")
+				{
+					defaultImageGenerator.setToLandscape(true);
+					defaultImageGenerator.setToPortrate(false);
+				}
+				else
+				{
+					defaultImageGenerator.setToLandscape(true);
+					defaultImageGenerator.setToPortrate(true);
+				}
 			});
 
 			fullscreen_textMC = Obj.get("fullscreen_text",this);
