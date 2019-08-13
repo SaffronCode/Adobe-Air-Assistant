@@ -102,9 +102,14 @@
 					field_teamIdMC:PopField,
 					field_uriLauncherMC:PopField,
 					field_airVersionMC:PopField,
-					fullscreen_textMC:PopFieldBoolean,
+
+					fullscreen_textMC:ACheckBox,
+
 					render_mode_textMC:PopField,
-					auto_orients_txtMC:PopFieldBoolean,
+					aspectRatio_text_textMC:PopField,
+					
+					auto_orients_txtMC:ACheckBox,
+
 					swf_name_textMC:PopField,
 					file_name_textMC:PopField,
 					copyright_textMC:PopField,
@@ -293,17 +298,23 @@
 			render_mode_textMC.addEventListener(Event.CHANGE,function(e){
 				manifestGenerate.renderMode = render_mode_textMC.text ;
 			});
+			
+			aspectRatio_text_textMC = Obj.get("aspectRatio_text",this);
+			aspectRatio_text_textMC.setUp('Aspect Ratio:','',null,false,true,false,1,1,2,0,['portrait','landscape','auto'],false,true,null,null,true);
+			aspectRatio_text_textMC.addEventListener(Event.CHANGE,function(e){
+				manifestGenerate.aspectRatio = aspectRatio_text_textMC.text ;
+			});
 
 			fullscreen_textMC = Obj.get("fullscreen_text",this);
-			fullscreen_textMC.setUp('Full Screen:',false,false);
+			fullscreen_textMC.setUp(false,'Full Screen:');
 			fullscreen_textMC.addEventListener(Event.CHANGE,function(e){
-				manifestGenerate.fullScreen = fullscreen_textMC.data ;
+				manifestGenerate.fullScreen = fullscreen_textMC.status ;
 			});
 
 			auto_orients_txtMC = Obj.get("auto_orients_txt",this);
-			auto_orients_txtMC.setUp('Auto Orients:',false,false);
+			auto_orients_txtMC.setUp(false,'Auto Orients:');
 			auto_orients_txtMC.addEventListener(Event.CHANGE,function(e){
-				manifestGenerate.autoOrients = auto_orients_txtMC.data ;
+				manifestGenerate.autoOrients = auto_orients_txtMC.status ;
 			});
  
 			field_nameMC = Obj.get("app_name_text",this);
@@ -825,8 +836,9 @@
 			field_airVersionMC.text = manifestGenerate.airVersion ;
 			field_uriLauncherMC.text = manifestGenerate.uriLauncher ;
 			render_mode_textMC.text = manifestGenerate.renderMode ;
-			fullscreen_textMC.data = manifestGenerate.fullScreen ;
-			auto_orients_txtMC.data = manifestGenerate.autoOrients ;
+			aspectRatio_text_textMC.text = manifestGenerate.aspectRatio ;
+			fullscreen_textMC.status = manifestGenerate.fullScreen ;
+			auto_orients_txtMC.status = manifestGenerate.autoOrients ;
 			swf_name_textMC.text = manifestGenerate.content ;
 			file_name_textMC.text = manifestGenerate.filename ;
 			copyright_textMC.text = manifestGenerate.copyright ;
@@ -1510,7 +1522,7 @@
 				if(aneFile.exists)
 				{
 					neededExtensionList.removeAt(i);
-					i--;
+					i--
 					aneFiles.push(aneFile);
 				}
 			}
