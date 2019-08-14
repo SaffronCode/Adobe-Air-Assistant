@@ -328,13 +328,13 @@
 			});
 
 			fullscreen_textMC = Obj.get("fullscreen_text",this);
-			fullscreen_textMC.setUp(false,'Full Screen:');
+			fullscreen_textMC.setUp(false,'Full Screen');
 			fullscreen_textMC.addEventListener(Event.CHANGE,function(e){
 				manifestGenerate.fullScreen = fullscreen_textMC.status ;
 			});
 
 			auto_orients_txtMC = Obj.get("auto_orients_txt",this);
-			auto_orients_txtMC.setUp(false,'Auto Orients:');
+			auto_orients_txtMC.setUp(false,'Auto Orients');
 			auto_orients_txtMC.addEventListener(Event.CHANGE,function(e){
 				manifestGenerate.autoOrients = auto_orients_txtMC.status ;
 			});
