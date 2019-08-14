@@ -7,6 +7,10 @@ package component
     import flash.filesystem.File;
     import flash.utils.ByteArray;
     import contents.alert.Alert;
+    import flash.desktop.NativeDragManager;
+    import flash.events.NativeDragEvent;
+    import flash.desktop.ClipboardFormats;
+    import appManager.displayContentElemets.LightImage;
 
     public class DefaultImageGenerator extends MovieClip
     {
@@ -22,13 +26,31 @@ package component
         private var isPortrate:Boolean = false,
                     isLandscape:Boolean = false;
 
+        private var currentFile:File ;
+
+        private var loadedImage:BitmapData ;
+
+        private var sampleImage:LightImage ;
+
         public function DefaultImageGenerator()
         {
             super();
 
+
+            loadedImage = new BitmapData(4000,4000,false,0);
+
             sampleAreaMC = Obj.get("sample_image_area_mc",this);
+            sampleImage = new LightImage();
+            sampleImage.x = sampleAreaMC.x ;
+            sampleImage.y = sampleAreaMC.y ;
+            this.addChild(sampleImage);
+
             loadImageMC = Obj.get("load_default_images_mc",this);
             generateDefaultsMC = Obj.get("generate_default_images_mc",this);
+
+            loadImageMC.addEventListener(MouseEvent.CLICK,function(e){
+                FileManager.browse(loadThisImage,['jpg','png','jpeg'],"Select a default image for iOS projects");
+            })
 
 
             defaultsPortrate = [];
@@ -52,7 +74,36 @@ package component
             defaultsLandscape.push(["Default-Landscape-1112h@2x.png",2224,1668]);
 
             generateDefaultsMC.addEventListener(MouseEvent.CLICK,exportDefaults);
+
+            NativeDragManager.acceptDragDrop(this);
+			this.addEventListener(NativeDragEvent.NATIVE_DRAG_ENTER, onDragged);
         }
+
+            protected function onDragged(event:NativeDragEvent):void
+            {
+                var files:Array = event.clipboard.getData(ClipboardFormats.FILE_LIST_FORMAT) as Array;
+                currentFile = files[0];
+                var arrPath:Array = currentFile.name.split('.');
+                var type:String = String(arrPath[arrPath.length-1]).toLowerCase();
+                if (!currentFile.isDirectory && (type == 'jpg' || type == 'png' || type == 'jpeg')) {
+                    NativeDragManager.acceptDragDrop(this);
+                    this.addEventListener(NativeDragEvent.NATIVE_DRAG_DROP, onDropped);
+                }
+            }
+            
+            private function onDropped(event:NativeDragEvent):void
+            {
+                this.removeEventListener(NativeDragEvent.NATIVE_DRAG_DROP, onDropped);
+                loadThisImage(currentFile);
+            }
+
+            private function loadThisImage(imageFile:File):void
+            {
+                sampleImage.setUp(imageFile.url,false,sampleAreaMC.width,sampleAreaMC.height);
+                DeviceImage.loadFile(function(){
+                    loadedImage = DeviceImage.imageBitmapData.clone();
+                },imageFile,4000,4000);
+            }
 
         public function setToLandscape(status:Boolean=true):void
         {
@@ -66,7 +117,6 @@ package component
 
         private function exportDefaults(e:MouseEvent):void
         {
-            var loadedImage:BitmapData = new BitmapData(4000,4000,false,0);
             FileManager.browseForDirectory(saveInThisDirectory,"Select your project default directory");
             function saveInThisDirectory(directory:File):void
             {
@@ -94,6 +144,7 @@ package component
                 fileBytes = BitmapEffects.createPNG(BitmapEffects.changeSize(originalImage,list[i][1],list[i][2],true,false,true)); 
                 FileManager.saveFile(targetFile,fileBytes);
             }
+            ScrollMT
         }
     }
 }
