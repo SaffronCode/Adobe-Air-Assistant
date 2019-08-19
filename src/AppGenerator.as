@@ -90,6 +90,7 @@
 		private var manifestGenerate:ManifestGenerate;
 		private var mainXMLFile:File;
 		private var manifestExporterMC:MovieClip ;
+		private var manifestReplaceMC:MovieClip ;
 		private var loadMobileProvisionMC:MovieClip ;
 		
 					
@@ -284,6 +285,10 @@
 			
 			manifestExporterMC = Obj.get("export_manifest_mc",this);
 			manifestExporterMC.addEventListener(MouseEvent.CLICK,exportSavedManifest);
+
+			manifestReplaceMC = Obj.get("replace_xml_mc",this);
+			manifestReplaceMC.addEventListener(MouseEvent.CLICK,exportSavedManifest);
+			manifestReplaceMC.visible = false ;
 			//manifestExporterMC.visible = false ;
 			
 			manifestLoaderMC = Obj.get("load_manifest_mc",this) ;
@@ -976,7 +981,6 @@
 					}
 				}
 			}
-			FileManager.browseToSave(saveFileThere,"Select a destination for your new Manifest file",'xml');
 			
 			var newManifest:String = manifestGenerate.toString();
 			//System.setClipboard(newManifest);
@@ -994,6 +998,16 @@
 			}
 			//updateInformations();
 			
+			var inReplaceMode:Boolean = e.currentTarget==manifestReplaceMC ;
+
+			if(inReplaceMode)
+			{
+				saveFileThere(mainXMLFile);
+			}
+			else
+			{
+				FileManager.browseToSave(saveFileThere,"Select a destination for your new Manifest file",'xml');
+			}
 			
 			function saveFileThere(fileTarget:File):void
 			{
@@ -1022,6 +1036,11 @@
 				else
 				{
 					warnButtonMC.visible = false ;
+				}
+
+				if(inReplaceMode)
+				{
+					Alert.show(fileTarget.name+" file is replaced.")
 				}
 			}
 		}
@@ -1057,6 +1076,7 @@
 			manifestGenerate.convert(TextFile.load(mainXMLFile));
 			manifestGenerate.uriLauncher = schemFromId() ;
 			
+			manifestReplaceMC.visible = true ;
 			
 			updateInformations();
 		}
