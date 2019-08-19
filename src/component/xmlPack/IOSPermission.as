@@ -88,6 +88,8 @@
 		
 		private function insertAppIdAndTeamIds(xmlString:String):String
 		{
+			if(xmlString==null)
+				return null ;
 			xmlString = xmlString.replace(/BUNDLE_SEED_ID/g,teamId);
 			xmlString = xmlString.replace(/null/g,teamId);
 			xmlString = xmlString.replace(/BUNDLE_IDENTIFIER/g,appId);
@@ -139,6 +141,7 @@
 		/**Add and update entitlements*/
 		public function doEntitlementsHave(entitlements:String):Boolean
 		{
+			entitlements = insertAppIdAndTeamIds(entitlements);
 			try{
 				var newList:XMLList = new XMLList(entitlements);
 				for(var i:int = 0 ; i<newList.length() ; i++)
@@ -248,6 +251,7 @@
 		/**Returns true if the permissions are already existed on the project*/
 		public function doInfoAdditionsHave(infoAdditions:String):Boolean
 		{
+			infoAdditions = insertAppIdAndTeamIds(infoAdditions);
 			try{
 				var newList:XMLList = new XMLList(infoAdditions);
 				for(var i:int = 0 ; i<newList.length() ; i++)
