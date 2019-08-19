@@ -851,7 +851,7 @@
 		/**Creats scheme from id*/
 		private function schemFromId():String
 		{
-			return manifestGenerate.id.slice(manifestGenerate.id.lastIndexOf('.')+1).toLowerCase();
+			return manifestGenerate.getSchemFromId();
 		}		
 		
 		private function updateInformations():void

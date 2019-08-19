@@ -127,6 +127,32 @@
 			
 			setAppId(id);
 		}
+
+		public function getSchemFromId():String
+		{
+			/**<array>
+			 <dict>
+				<key>CFBundleURLName</key>
+				<string>com.footbalino.Footbalino</string>
+				<key>CFBundleURLSchemes</key>
+				<array>
+				<string>sportmagazine</string>
+				</array>
+			</dict>
+			</array> */
+			var foundedScheme:XML = iOSPermission.getValueOfInfoAddition("CFBundleURLTypes");
+			if(!foundedScheme==null)
+			{
+				var foundedScheme2:XML = XMLFunctions.getValueOfKey("CFBundleURLSchemes",foundedScheme[0]);
+				if(foundedScheme2!=null)
+				{
+					return String(foundedScheme2[0][0])
+				}
+			}
+
+
+				return id.slice(id.lastIndexOf('.')+1).toLowerCase();
+		}
 		
 		
 		private function saveCurrentStatusToCash(e:*=null):void

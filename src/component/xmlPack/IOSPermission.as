@@ -247,6 +247,11 @@
 			}
 			return destinationXML ;
 		}
+
+		public function getValueOfInfoAddition(keyName:String):XML
+		{
+			return XMLFunctions.getValueOfKey(keyName,InfoAdditions.children());
+		}
 		
 		/**Returns true if the permissions are already existed on the project*/
 		public function doInfoAdditionsHave(infoAdditions:String):Boolean
