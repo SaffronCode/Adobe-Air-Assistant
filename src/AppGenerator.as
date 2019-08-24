@@ -600,6 +600,10 @@
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.Firebase")
 				.setWiki("https://distriqt.github.io/ANE-Firebase/");
 			
+			addCheckBox('Milkman AddMob','MiklmanAdMob');
+			//setInfo("https://airnativeextensions.com/extension/com.distriqt.Firebase")
+			//	.setWiki("https://distriqt.github.io/ANE-Firebase/");
+			
 			
 			
 			//More setting needed to receive [APPGROUP] from user
