@@ -63,9 +63,15 @@
 				Entitlements.appendChild(xmlList);
 				for(var i:int = 0 ; i<xmlList.length() ; i++)
 				{
-					if((xmlList[i] as XML).name() == "key" && String(xmlList[i]) == "application-identifier" && i<xmlList.length()-1)
+					if((xmlList[i] as XML).name() == "key" && ( String(xmlList[i]) == "keychain-access-groups" || String(xmlList[i]) == "application-identifier") && i<xmlList.length()-1)
 					{
-						var teamPart:String = String(xmlList[i+1]) ;
+						var xm:XML = xmlList[i+1];
+						
+						while(!xm.hasSimpleContent())
+						{
+							xm = xm.children()[0];
+						}
+						var teamPart:String = String(xm) ;
 						var teamPartSplited:Array = teamPart.split('.');
 						if(teamPart.length>0 && teamPartSplited.length>1)
 						{
