@@ -378,7 +378,7 @@
 		/**Add the iOS entitlement to the project*/
 		public function addIosEntitlements(ios_Entitlements:String=''):void
 		{
-			if(ios_Entitlements=='')
+			if(ios_Entitlements=='' || ios_Entitlements==null)
 			{
 				return ;
 			}
@@ -394,7 +394,7 @@
 		/**Remove xml from iOS*/
 		public function removeIosEntitlements(ios_Entitlements:String=''):void
 		{
-			if(ios_Entitlements=='')
+			if(ios_Entitlements=='' || ios_Entitlements==null)
 			{
 				return ;
 			}
