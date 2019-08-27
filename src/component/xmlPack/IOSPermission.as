@@ -79,6 +79,7 @@
 						}
 						break;
 					}
+					
 				}
 			}
 			catch(e:Error)
@@ -182,7 +183,7 @@
 						var foundedElement:XML = XMLFunctions.getValueOfKey(newList[i],Entitlements.children());
 						if(foundedElement!=null)
 						{
-							if(foundedElement.name()=='array' && newList.length()>i+1 && newList[i+1].name()=='array')
+							if(false && foundedElement.name()=='array' && newList.length()>i+1 && newList[i+1].name()=='array')
 							{
 								addStringValueInArray(foundedElement,newList[i+1].children());
 								return ;
