@@ -32,11 +32,7 @@
 		
 		private function addDefaultInfoAditions():void
 		{
-			addInfoAdditions('<key>UIDeviceFamily</key>'+
-								'<array>'+
-									'<string>1</string>'+
-									'<string>2</string>'+
-								'</array>');
+			addInfoAdditions('');
 		}
 		
 		public function importInfoAdditions(InfoAdditionsXMLString:String):void
