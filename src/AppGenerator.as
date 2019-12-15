@@ -383,7 +383,7 @@
 			swf_name_textMC = Obj.get("swf_name_text",this);
 			swf_name_textMC.setUp('SWF Name:','',null,false,true,false,1,1,2,0,null,false,false,null,null,true);
 			swf_name_textMC.addEventListener(Event.CHANGE,function(e){
-				manifestGenerate.content = swf_name_textMC.text ;
+				manifestGenerate.content = (swf_name_textMC.text.toLowerCase().indexOf('.swf')==-1)? swf_name_textMC.text+'.swf':swf_name_textMC.text ;
 			});
 			
 			field_appIdMC = Obj.get("app_id_text",this);
@@ -732,6 +732,10 @@
 			var permCameraMC:ACheckBox = Obj.get("permission_camera_mc",this);
 			permCameraMC.setUp(false,'Camera','camera');
 			checkList.push(permCameraMC);
+			
+			var vibrateMC:ACheckBox = Obj.get("vibrate_text",this);
+			vibrateMC.setUp(false,'VIBRATE','vibrate');
+			checkList.push(vibrateMC);
 			
 			var permInternetMC:ACheckBox = Obj.get("permission_internet_mc",this);
 			permInternetMC.setUp(true,'Internet Access','internet');
