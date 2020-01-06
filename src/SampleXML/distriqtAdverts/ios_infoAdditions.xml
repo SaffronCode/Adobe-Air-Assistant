@@ -7,3 +7,5 @@
 	<key>NSAllowsArbitraryLoadsInWebContent</key>
 	<true/>
 </dict>
+<key>GADApplicationIdentifier</key>
+<string>ca-app-pub-AAAAAAAAAAAAAAAA~XXXXXXXXXX</string>
