@@ -1081,7 +1081,8 @@
 			trace("mainXML file is : "+mainXMLFile.nativePath);
 			//convertSampleXML();
 			manifestExporterMC.visible = true ;
-			manifestGenerate.convert(TextFile.load(mainXMLFile));
+			//I had to replace this part to prevent side effects for earlier users
+			manifestGenerate.convert(TextFile.load(mainXMLFile).split('<meta-data android:name="android.max_aspect" android:value="2.0"/>').join(''));
 			manifestGenerate.uriLauncher = schemFromId() ;
 			
 			manifestReplaceMC.visible = true ;
