@@ -1,4 +1,2 @@
 <key>get-task-allow</key>
-	<true/> 
-<key>aps-environment</key>
-	<string>development</string>
+	<true/>
