@@ -67,6 +67,9 @@
 		/**gpu or cpu*/
 		public var renderMode:String = "gpu"
 		
+		/**pan or none*/
+		public var softKeyboardBehavior:String = "pan"
+		
 		/**set the aspectRatio parameter*/
 		public const 	aspectRatio_portrait = "portrait",
 						aspectRatio_landscape = "landscape";
