@@ -85,7 +85,7 @@
 		
 		
 		//android
-		private var containsVideo:Boolean = true ;
+		private var containsVideo:Boolean = false ;
 		
 		//iOS
 		private var requestedDisplayResolution:String = "high" ;
