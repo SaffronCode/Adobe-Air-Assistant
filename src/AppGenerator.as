@@ -50,6 +50,7 @@
 	import restDoaService.RestDoaServiceCaller;
 	import flash.net.URLVariables;
 	import component.DefaultImageGenerator;
+	import contents.displayPages.LinkItem;
 
 ;
 
@@ -154,9 +155,9 @@
 			///ANE directory
 			aneSettingMC = Obj.get("ane_setting_mc",this);
 			aneSettingMC.buttonMode = true ;
-			aneSettingMC.addEventListener(MouseEvent.CLICK,function(e){
+			aneSettingMC.addEventListener(MouseEvent.CLICK,function(e:*):void{
 				FileManager.browseForDirectory(aneDirectorySelected,"Select your local native files directory");
-				function aneDirectorySelected(AneDirectory:File)
+				function aneDirectorySelected(AneDirectory:File):void
 				{
 					aneDirectory = AneDirectory;
 					GlobalStorage.save(id_ane_directory,aneDirectory.nativePath);
@@ -1543,7 +1544,11 @@
 			{
 				if(checkList[i].status)
 				{
-					var extensionListFile:File = xmlFolder.resolvePath(checkList[i].folderName).resolvePath("extension.xml");
+					var extensionListFile:File = xmlFolder.resolvePath(checkList[i].folderName).resolvePath("files.xml");
+					if(!extensionListFile.exists)
+					{
+						extensionListFile = xmlFolder.resolvePath(checkList[i].folderName).resolvePath("extension.xml");
+					}
 					if(extensionListFile.exists)
 					{
 						try
