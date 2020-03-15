@@ -1,5 +1,7 @@
 <key>NSPhotoLibraryUsageDescription</key>
 <string>Access to photo library is required to save images.</string>
+<key>NSPhotoLibraryAddUsageDescription</key>
+<string>Access to photo library is required to save images.</string>
 <key>LSApplicationQueriesSchemes</key>
 <array>
 	<string>instagram</string>
