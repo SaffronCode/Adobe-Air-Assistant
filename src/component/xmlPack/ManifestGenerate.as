@@ -54,7 +54,17 @@
 		/**Dont use complex charachters for this field*/
 		public var filename:String="Saffron";
 		/**This is the application name.*/
-		public var name:String ="Saffron";
+		private var _name:String = "Saffron";
+
+		public function get name():String
+		{
+			return  UnicodeStatic.KaafYeReveted(_name);
+		}
+
+		public function set name(value:String):void
+		{
+			_name = value;
+		}
 		public var copyright:String ="SaffronCode Co.";
 		
 		//initialWindow
