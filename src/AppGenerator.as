@@ -1130,8 +1130,9 @@
 				imageH:Number,
 				margin:Number = 20 ;
 
-			const iconFixPart1:String = "META-INF/ANE/Android-ARM/distriqt-extension-customresources-res/";
-			const iconFixPart2:String = "META-INF/ANE/Android-x86/distriqt-extension-customresources-res/";
+			const iconFixPart1:String = "META-INF/ANE/Android-ARM/customresources/";
+			const iconFixPart2:String = "META-INF/ANE/Android-ARM64/customresources/";
+			const iconFixPart3:String = "META-INF/ANE/Android-x86/customresources/";
 
 			var client_id:String = null ;
 			var jsonObject:GoogleServiceJSON = new GoogleServiceJSON();
@@ -1176,26 +1177,61 @@
 			var iconSize:Array = [] ;
 
 			
-			iconList.push("drawable-mdpi/ic_stat_distriqt.png");
-			iconSize.push(25);
-			iconList.push("drawable-mdpi-v11/ic_stat_distriqt.png");//W
-			iconSize.push(24);
 			iconList.push("drawable-hdpi/ic_stat_distriqt.png");
-			iconSize.push(38);
-			iconList.push("drawable-hdpi-v11/ic_stat_distriqt.png");//W
 			iconSize.push(36);
+			iconList.push("drawable-hdpi/ic_stat_distriqt_default.png");
+			iconSize.push(36);
+			
+			iconList.push("drawable-mdpi/ic_stat_distriqt.png");
+			iconSize.push(24);
+			iconList.push("drawable-mdpi/ic_stat_distriqt_default.png");
+			iconSize.push(24);
+			
 			iconList.push("drawable-xhdpi/ic_stat_distriqt.png");
-			iconSize.push(50);
-			iconList.push("drawable-xhdpi-v11/ic_stat_distriqt.png");//W
 			iconSize.push(48);
+			iconList.push("drawable-xhdpi/ic_stat_distriqt_default.png");
+			iconSize.push(48);
+			
 			iconList.push("drawable-xxhdpi/ic_stat_distriqt.png");
-			iconSize.push(75);
-			iconList.push("drawable-xxhdpi-v11/ic_stat_distriqt.png");//W
 			iconSize.push(72);
+			iconList.push("drawable-xxhdpi/ic_stat_distriqt_default.png");
+			iconSize.push(72);
+			
 			iconList.push("drawable-xxxhdpi/ic_stat_distriqt.png");
-			iconSize.push(100);
-			iconList.push("drawable-xxxhdpi-v11/ic_stat_distriqt.png");//W
 			iconSize.push(96);
+			iconList.push("drawable-xxxhdpi/ic_stat_distriqt_default.png");
+			iconSize.push(96);
+			
+			iconList.push("mipmap-hdpi/ic_launcher.png");
+			iconSize.push(72);
+			
+			iconList.push("mipmap-mdpi/ic_launcher.png");
+			iconSize.push(48);
+			
+			iconList.push("mipmap-xhdpi/ic_launcher.png");
+			iconSize.push(96);
+			
+				iconList.push("mipmap-xhdpi/drawable-hdpi/ic_stat_distriqt_default.png");
+				iconSize.push(36);
+
+				iconList.push("mipmap-xhdpi/drawable-mdpi/ic_stat_distriqt_default.png");
+				iconSize.push(24);
+
+				iconList.push("mipmap-xhdpi/drawable-xhdpi/ic_stat_distriqt_default.png");
+				iconSize.push(48);
+
+				iconList.push("mipmap-xhdpi/drawable-xxhdpi/ic_stat_distriqt_default.png");
+				iconSize.push(72);
+
+				iconList.push("mipmap-xhdpi/drawable-xxxhdpi/ic_stat_distriqt_default.png");
+				iconSize.push(96);
+			
+			iconList.push("mipmap-xxhdpi/ic_launcher.png");
+			iconSize.push(144);
+			
+			iconList.push("mipmap-xxxhdpi/ic_launcher.png");
+			iconSize.push(192);
+			
 
 			//??DO not save duplicate item for each size. set icon sizes then duplicate them
 
@@ -1250,29 +1286,37 @@
 					for( i=0 ; i<zip.getFileCount() ; i++)
 					{
 						var fileName:String = zip.getFileAt(i).filename ;
-						if(fileName == "META-INF/ANE/Android-ARM/distriqt-extension-customresources-res/values/values.xml")
+						if(fileName == "META-INF/ANE/Android-ARM/customresources/values/values.xml")
 						{
 							trace("File remvoed! : "+fileName);
 							zip.removeFileAt(i);
-							zip.addFileFromStringAt(i,"META-INF/ANE/Android-ARM/distriqt-extension-customresources-res/values/values.xml",'<?xml version="1.0" encoding="utf-8"?>'+data.toXMLString());
+							zip.addFileFromStringAt(i,"META-INF/ANE/Android-ARM/customresources/values/values.xml",'<?xml version="1.0" encoding="utf-8"?>'+data.toXMLString());
 						}
-						if(fileName == "META-INF/ANE/Android-x86/distriqt-extension-customresources-res/values/values.xml")
+						if(fileName == "META-INF/ANE/Android-x86/customresources/values/values.xml")
 						{
 							trace("File remvoed! : "+fileName);
 							zip.removeFileAt(i);
-							zip.addFileFromStringAt(i,"META-INF/ANE/Android-x86/distriqt-extension-customresources-res/values/values.xml",'<?xml version="1.0" encoding="utf-8"?>'+data.toXMLString());
+							zip.addFileFromStringAt(i,"META-INF/ANE/Android-x86/customresources/values/values.xml",'<?xml version="1.0" encoding="utf-8"?>'+data.toXMLString());
+						}
+						
+						if(fileName == "META-INF/ANE/Android-ARM64/customresources/values/values.xml")
+						{
+							trace("File remvoed! : "+fileName);
+							zip.removeFileAt(i);
+							zip.addFileFromStringAt(i,"META-INF/ANE/Android-ARM64/customresources/values/values.xml",'<?xml version="1.0" encoding="utf-8"?>'+data.toXMLString());
 						}
 						
 						for(var j:int = 0 ; j<iconList.length ; j++)
 						{
 							trace("iconFixPart1+iconList[i] : "+iconFixPart1+iconList[j]+" vs "+fileName)
-							if(iconFixPart1+iconList[j] == fileName || iconFixPart2+iconList[j] == fileName)
+							if(iconFixPart1+iconList[j] == fileName || iconFixPart2+iconList[j] == fileName || iconFixPart3+iconList[j] == fileName)
 							{
 								//Alert.show("File must replace : "+fileName);
 								zip.removeFileAt(i);
 								zip.addFileAt(i,fileName,BitmapEffects.createPNG(BitmapEffects.changeSize(allFCMIcons.getImage(iconList[j]),iconSize[j],iconSize[j],true,true)));
 							}
 						}
+						FarsiInputCorrection
 					}
 
 
@@ -1531,7 +1575,7 @@
 
 				function onComplete(e:*=null):void
 				{
-					var sampleImage:FZipFile = zip.getFileByName(iconFixPart2+"drawable-xxxhdpi-v11/ic_stat_distriqt.png");
+					var sampleImage:FZipFile = zip.getFileByName(iconFixPart3+"drawable-xxxhdpi/ic_stat_distriqt.png");
 					fcmImage1.setUpBytes(sampleImage.content,true,imageW,imageH,0,0,true);
 				}
 			}
