@@ -1,0 +1,17 @@
+{
+	"animateOptions": {
+		"file": ".\\JSONtool.fla"
+	},
+	"files": [
+		".\\WebServiceGenerator.as"
+	],
+	"compilerOptions": {
+		"source-path": [
+			"D:\\Sepehr\\gitHub\\sepehrEngine\\SaffronEngine",
+			"D:\\Sepehr\\gitHub\\ASPack"
+		],
+		"external-library-path": []
+	},
+	"config": "airmobile",
+	"type": "app"
+}

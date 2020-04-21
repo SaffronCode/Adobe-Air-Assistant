@@ -1,17 +1,21 @@
 <manifest android:installLocation="auto">
-	<uses-sdk android:minSdkVersion="14" />
-	
+	<uses-sdk android:minSdkVersion="19" android:targetSdkVersion="28" />
+
 	<uses-permission android:name="android.permission.INTERNET"/>
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 	<uses-permission android:name="android.permission.WAKE_LOCK"/>
-	
-	<uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" /> <!-- Required by older versions of Google Play services to create IID tokens -->
+
+	<uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" /> 
+	<!-- Required by older versions of Google Play services to create IID tokens -->
 	<uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
-	<permission android:name="YOUR_APPLICATION_PACKAGE.permission.C2D_MESSAGE" android:protectionLevel="signature" />
-	<uses-permission android:name="YOUR_APPLICATION_PACKAGE.permission.C2D_MESSAGE" />
+
+	<permission android:name="APPLICATION_PACKAGE.permission.C2D_MESSAGE" android:protectionLevel="signature" />
+	<uses-permission android:name="APPLICATION_PACKAGE.permission.C2D_MESSAGE" />
 	
 	
-	<application android:name="android.support.multidex.MultiDexApplication">
+	<application
+		android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+		android:name="androidx.multidex.MultiDexApplication">
 		
 		<meta-data
 			android:name="com.google.android.gms.version"
@@ -20,23 +24,30 @@
 		<activity android:name="com.google.android.gms.common.api.GoogleApiActivity" 
 			android:theme="@android:style/Theme.Translucent.NoTitleBar" 
 			android:exported="false"/>
-			
-			
+
+
 		<!-- FIREBASE CORE -->
 		<!-- common -->
-		<service android:name="com.google.firebase.components.ComponentDiscoveryService" >
+		<service
+			android:name="com.google.firebase.components.ComponentDiscoveryService"
+			android:directBootAware="true"
+			android:exported="false" >
 			<meta-data
 				android:name="com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar"
+				android:value="com.google.firebase.components.ComponentRegistrar" />
+			<meta-data
+				android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar"
 				android:value="com.google.firebase.components.ComponentRegistrar" />
 			<meta-data
 				android:name="com.google.firebase.components:com.google.firebase.iid.Registrar"
 				android:value="com.google.firebase.components.ComponentRegistrar" />
 		</service>
 		<provider
-			android:authorities="YOUR_APPLICATION_PACKAGE.firebaseinitprovider"
 			android:name="com.google.firebase.provider.FirebaseInitProvider"
+			android:authorities="APPLICATION_PACKAGE.firebaseinitprovider"
 			android:exported="false"
 			android:initOrder="100" />
+
 
 
 		<!-- analytics -->
@@ -73,22 +84,7 @@
 			android:permission="com.google.android.c2dm.permission.SEND" >
 			<intent-filter>
 				<action android:name="com.google.android.c2dm.intent.RECEIVE" />
-
-				<category android:name="YOUR_APPLICATION_PACKAGE" />
 			</intent-filter>
 		</receiver>
-		<!--
-				FirebaseInstanceIdService performs security checks at runtime,
-				no need for explicit permissions despite exported="true"
-		-->
-		<service
-			android:name="com.google.firebase.iid.FirebaseInstanceIdService"
-			android:exported="true" >
-			<intent-filter android:priority="-500" >
-				<action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
-			</intent-filter>
-		</service>
-		
-	</application>
 	
 </manifest>

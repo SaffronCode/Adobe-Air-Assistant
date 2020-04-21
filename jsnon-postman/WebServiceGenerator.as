@@ -277,11 +277,17 @@
 				FileManager.browseForDirectory(selectFolderToSave,"Select the output directory");
 				function selectFolderToSave(selectedDirectory:File):void
 				{
-					var serviceFolder:File = selectedDirectory.resolvePath(serviceFolderName) ;
+					/*var serviceFolder:File = selectedDirectory.resolvePath(serviceFolderName) ;
 					serviceFolder.createDirectory();
 					var typeFolders:File = selectedDirectory.resolvePath(dataFolderName) ;
-					typeFolders.createDirectory();
-					PostManToASFiles.saveClasses(serviceFolder,TextFile.load(currentPostManJSONFile),typeFolders);
+					typeFolders.createDirectory();*/
+					selectedDirectory = selectedDirectory.resolvePath(currentPostManJSONFile.name.substring(0,currentPostManJSONFile.name.lastIndexOf('.')));
+					if(selectedDirectory.exists)
+					{
+						selectedDirectory.deleteDirectory();
+					}
+					selectedDirectory.createDirectory();
+					PostManToASFiles.saveClasses(selectedDirectory,TextFile.load(currentPostManJSONFile),selectedDirectory);
 				}
 			}
 	}
