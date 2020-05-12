@@ -169,6 +169,11 @@
 			var jsonString:String = jsonText.text;//StringFunctions.utfToUnicode(jsonText.text) ;
 			//Remove enters 
 			jsonString = jsonString.split('\n').join('').split('\r').join('') ;
+			jsonString = StringFunctions.trim(jsonString);
+			if(jsonString.indexOf('"')==0 && jsonString.lastIndexOf('"')==jsonString.length-1)
+			{
+				jsonString = jsonString.substring(1,jsonString.length-1);
+			}
 			var jsonObject:Object ;
 			
 			trace("Entered JSON is :\n\n"+jsonString);
@@ -179,8 +184,18 @@
 			}
 			catch(e)
 			{
-				Alert.show("JSON parse error");
-				return ;
+				trace("jsonString : "+jsonString);
+				jsonString = jsonString.split('\\"').join('"');
+				try
+				{
+					jsonObject = JSON.parse(jsonString) ;
+				}
+				catch(e)
+				{
+					trace("jsonString : "+jsonString);
+					Alert.show("JSON parse error");
+					return ;
+				}
 			}
 			
 			if(event.type == MouseEvent.CLICK)
@@ -198,7 +213,7 @@
 			else if(event.type == MouseEvent.MOUSE_OUT)
 			{
 				var fileForUser:File = PostManToASFiles.SaveJSONtoAs(jsonObject,File.createTempDirectory(),StringFunctions.clearSpacesAndTabs(asClassName.text));
-				DragAndDrop.startDrag(jsonCreatorButtonMC,[fileForUser]);
+				DragAndDrop.startDrag(jsonCreatorButtonMC,fileForUser.getDirectoryListing());
 			}
 		}
 		
