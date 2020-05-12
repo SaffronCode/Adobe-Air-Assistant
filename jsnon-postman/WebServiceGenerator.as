@@ -21,6 +21,9 @@
 	import otherPlatforms.dragAndDrow.DragAndDrop;
 	import otherPlatforms.dynamicVersionControl.GitHubVersionCheck;
 	import otherPlatforms.postMan.PostManToASFiles;
+	import flash.net.URLRequest;
+	import flash.net.URLRequestMethod;
+	import com.mteamapp.VersionController;
 	
 	public class WebServiceGenerator extends Sprite
 	{
@@ -45,6 +48,18 @@
 		{
 			super();
 			FrameGenerator.createFrame(stage);
+
+			var versionContrllURL:String = 'https://saffroncodesdk.com/api/Projects/versioncontrol' ;
+			//Alert.show("Version controll : "+versionContrllURL);
+			var versionRequest:URLRequest = new URLRequest(versionContrllURL);
+			versionRequest.contentType = 'application/json';
+			versionRequest.method = URLRequestMethod.POST ;
+			versionRequest.data = JSON.stringify({AppId:"com.saffroncodesdk."+DevicePrefrence.appID}) ;
+			VersionController.controllVersion(function(){
+				//Alert.show("Version is OK");
+			},function(){
+				//Alert.show("Version is not OK!")
+			},versionRequest,DevicePrefrence.appVersion,false);
 			
 			postmanDropAreaMC = Obj.get("postman_area_mc",this);
 			
