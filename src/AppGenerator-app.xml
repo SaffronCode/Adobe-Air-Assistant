@@ -18,7 +18,7 @@
 -->
 <application xmlns="http://ns.adobe.com/air/application/32.0">
   <id>AppGenerator</id>
-  <versionNumber>2.6.2</versionNumber>
+  <versionNumber>2.6.3</versionNumber>
   <filename>Adobe Air Assistant</filename>
   <description>Adobe Air descriptor xml creator.</description>
   <name>Adobe Air Assistant</name>
