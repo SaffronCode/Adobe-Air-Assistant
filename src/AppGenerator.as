@@ -176,7 +176,6 @@
 			//////↑
 
 			TextPutter.defaultResolution = 1 ;
-			RestDoaServiceCaller
 
 			var versionContrllURL:String = 'https://saffroncodesdk.com/api/Projects/versioncontrol' ;
 			//Alert.show("Version controll : "+versionContrllURL);
@@ -1642,32 +1641,32 @@
 						{
 							nativeDirectory.createDirectory();
 						}
-						var allExistingANEFiles:Array = nativeDirectory.getDirectoryListing();
-						for(i = 0 ; i<allExistingANEFiles.length ; i++)
+					}
+					var allExistingANEFiles:Array = nativeDirectory.getDirectoryListing();
+					for(i = 0 ; i<allExistingANEFiles.length ; i++)
+					{
+						var aneF:File = allExistingANEFiles[i] as File ;
+						if(aneF.name.toLowerCase().indexOf('custom')==-1)
 						{
-							var aneF:File = allExistingANEFiles[i] as File ;
-							if(aneF.name.toLowerCase().indexOf('custom')==-1)
+							try
 							{
-								try
+								if(aneF.isDirectory)
 								{
-									if(aneF.isDirectory)
-									{
-										FileManager.deleteAllFiles(aneF);
-									}
-									else
-									{
-										aneF.deleteFile();
-									}
+									FileManager.deleteAllFiles(aneF);
 								}
-								catch(e:Error){
-									//Alert.show("Proplem on file Delet"+e.message)
-								};
+								else
+								{
+									aneF.deleteFile();
+								}
 							}
+							catch(e:Error){
+								//Alert.show("Proplem on file Delet"+e.message)
+							};
 						}
-						for(i = 0 ; i<aneFiles.length ; i++)
-						{
-							aneFiles[i].copyTo(nativeDirectory.resolvePath(aneFiles[i].name),true);
-						}
+					}
+					for(i = 0 ; i<aneFiles.length ; i++)
+					{
+						aneFiles[i].copyTo(nativeDirectory.resolvePath(aneFiles[i].name),true);
 					}
 
 				},"Select you project directory to store all required native files there.")
