@@ -96,6 +96,7 @@
 			xmlString = xmlString.replace(/BUNDLE_SEED_ID/g,teamId);
 			xmlString = xmlString.replace(/null/g,teamId);
 			xmlString = xmlString.replace(/BUNDLE_IDENTIFIER/g,appId);
+			xmlString = xmlString.replace(/YOUR_PACKAGE_NAME/g,appId);
 			xmlString = xmlString.replace(/YOUR_APPLICATION_IDENTIFIER/g,appId);
 			xmlString = xmlString.replace(/APPLICATION_LAUNCHER_ID/g,URIScheme);
 			xmlString = xmlString.replace(/URL_SCHEME/g,URIScheme);

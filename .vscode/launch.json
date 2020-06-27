@@ -1,0 +1,12 @@
+{
+	"configurations": [
+		{
+			"request": "launch",
+			"preLaunchTask": "Adobe Animate: compile debug - AppGenerator.fla",
+			"name": "Debug (desktop2)",
+			"program": ".\\src\\AppGenerator-app.xml",
+			"type": "swf"
+		}
+	],
+	"version": "0.2.0"
+}

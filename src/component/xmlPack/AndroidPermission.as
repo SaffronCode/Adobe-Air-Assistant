@@ -15,7 +15,7 @@
 		
 		public var addAirPreset:Boolean = true ;
 		
-		private static const package_name_list:Array = ['YOUR_APPLICATION_PACKAGE','YOUR_APP_ID','APPLICATION_PACKAGE','APPLICATION_ID'] ;
+		private static const package_name_list:Array = ['YOUR_PACKAGE_NAME','YOUR_APPLICATION_PACKAGE','YOUR_APP_ID','APPLICATION_PACKAGE','APPLICATION_ID'] ;
 		
 		public function AndroidPermission()
 		{
