@@ -543,6 +543,10 @@
 			addCheckBox('Distriqt Bluetooth LE','distriqtBluetoothLE')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.BluetoothLE")
 				.setWiki("https://distriqt.github.io/ANE-BluetoothLE/");
+
+				
+			addCheckBox('Distriqt RootChecker','distriqtRootChecker')
+				.setInfo("https://airnativeextensions.com/extension/com.distriqt.RootChecker")
 				
 			addCheckBox('Distriqt Branch','distriqtBranch',function(check:ACheckBox):void
 				{
