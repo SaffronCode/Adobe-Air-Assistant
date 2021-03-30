@@ -542,7 +542,7 @@
 				
 			addCheckBox('Distriqt Bluetooth','distriqtBluetooth')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.Bluetooth")
-				.setWiki("https://distriqt.github.io/ANE-Bluetooth/");
+				.setWiki("https://docs.airnativeextensions.com/docs/bluetooth/");
 				
 			addCheckBox('Distriqt Bluetooth LE','distriqtBluetoothLE')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.BluetoothLE")
