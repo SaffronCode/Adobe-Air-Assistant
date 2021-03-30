@@ -1,22 +1,30 @@
 <manifest android:installLocation="auto">
 	
-	<meta-data android:name="app_group" android:value="[APPGROUP]" />
-	<meta-data android:name="app_authority" android:value="group.air.APPLICATION_ID.provider" />
-	<meta-data android:name="app_authority_matcher" android:value="group\\.(?:[a-z,1-9]{1,}\\.)*provider" />
+	<application>
+                
+		<meta-data android:name="app_group" android:value="[APPGROUP]" />
+		<meta-data android:name="app_authority" android:value="group.[APPID].provider" />
+		<meta-data android:name="app_authority_matcher" android:value="group\\.(?:[a-z,1-9]{1,}\\.)*provider" />
 
-	<provider
-		android:name="com.distriqt.extension.appgroupdefaults.provider.SharedProvider"
-		android:authorities="group.air.APPLICATION_ID.provider"
-		android:exported="true" >
-	</provider>
-		
-	<receiver
-		android:name="com.distriqt.extension.appgroupdefaults.provider.SharedContentChangedReceiver"
-		android:enabled="true"
-		android:exported="true" >
-		<intent-filter>
-			<action android:name="[APPGROUP]"/>
-		</intent-filter>
-	</receiver>
+		<provider
+			android:name="com.distriqt.extension.appgroupdefaults.provider.SharedProvider"
+			android:authorities="group.[APPID].provider"
+			android:exported="true" >
+		</provider>
+			
+		<receiver
+			android:name="com.distriqt.extension.appgroupdefaults.provider.SharedContentChangedReceiver"
+			android:enabled="true"
+			android:exported="true" >
+			<intent-filter>
+				<action android:name="[APPGROUP]"/>
+			</intent-filter>
+		</receiver>
+
+	</application>
+	
+	<uses-permission android:name="android.permission.INTERNET"/>
+	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 	
 </manifest>
