@@ -530,7 +530,7 @@
 
 			addCheckBox('Distriqt Application Rater','distriqtApplicationRater')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.ApplicationRater")
-				.setWiki("https://distriqt.github.io/ANE-ApplicationRater/");
+				.setWiki("https://docs.airnativeextensions.com/docs/applicationrater/");
 
 			addCheckBox('Distriqt Battery','distriqtBattery')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.Battery")

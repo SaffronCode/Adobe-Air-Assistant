@@ -1,5 +1,27 @@
 <manifest android:installLocation="auto">
-		<uses-permission android:name="android.permission.INTERNET"/>
-		<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+	<uses-permission android:name="android.permission.INTERNET"/>
+	<uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
-	</manifest>
+	<application>
+
+		<!-- com.google.android.play -->
+		<activity
+			android:name="com.google.android.play.core.missingsplits.PlayCoreMissingSplitsActivity"
+			android:enabled="false"
+			android:exported="false"
+			android:launchMode="singleInstance"
+			android:process=":playcore_missing_splits_activity"
+			android:stateNotNeeded="true" />
+		<activity
+			android:name="com.google.android.play.core.common.PlayCoreDialogWrapperActivity"
+			android:enabled="false"
+			android:exported="false"
+			android:stateNotNeeded="true"
+			android:theme="@style/Theme.PlayCore.Transparent" />
+		<service
+			android:name="com.google.android.play.core.assetpacks.AssetPackExtractionService"
+			android:enabled="false"
+			android:exported="true" />
+
+	</application>
+</manifest>
