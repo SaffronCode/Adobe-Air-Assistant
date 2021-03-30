@@ -1,1 +1,1 @@
-Add a GADApplicationIdentifier key with a string value of your AdMob app ID into the info additions node. You can find your App ID in the AdMob UI. replace ca-app-pub-AAAAAAAAAAAAAAAA~XXXXXXXXXX with your App ID
+replace ca-app-pub-AAAAAAAAAAAAAAAA~XXXXXXXXXX in the additions. You can find your App ID in the AdMob UI

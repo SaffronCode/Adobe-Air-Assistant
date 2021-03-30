@@ -518,7 +518,7 @@
 			
 			addCheckBox('Distriqt Adverts','distriqtAdverts')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.Adverts")
-				.setWiki("https://distriqt.github.io/ANE-Adverts/");
+				.setWiki("https://docs.airnativeextensions.com/docs/adverts/");//1400
 
 			addCheckBox('Distriqt Application','distriqtApplication')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.Application")

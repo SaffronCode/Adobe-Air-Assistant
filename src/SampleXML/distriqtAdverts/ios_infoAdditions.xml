@@ -1,3 +1,9 @@
+<key>UIDeviceFamily</key>
+<array>
+	<string>1</string>
+	<string>2</string>
+</array>
+
 <key>NSAppTransportSecurity</key>
 <dict>
 	<key>NSAllowsArbitraryLoads</key>
@@ -7,5 +13,17 @@
 	<key>NSAllowsArbitraryLoadsInWebContent</key>
 	<true/>
 </dict>
+
 <key>GADApplicationIdentifier</key>
 <string>ca-app-pub-AAAAAAAAAAAAAAAA~XXXXXXXXXX</string>
+
+<key>NSUserTrackingUsageDescription</key>
+<string>This identifier will be used to deliver personalized ads to you.</string>
+
+<key>SKAdNetworkItems</key>
+<array>
+	<dict>
+		<key>SKAdNetworkIdentifier</key>
+		<string>cstr6suwn9.skadnetwork</string>
+	</dict>
+</array>

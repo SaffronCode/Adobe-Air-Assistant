@@ -1,5 +1,15 @@
 <extensionID>com.distriqt.Adverts</extensionID>
 <extensionID>com.distriqt.Core</extensionID>
-<extensionID>com.distriqt.androidsupport.V4</extensionID>
-<extensionID>com.distriqt.playservices.Ads</extensionID>
+
 <extensionID>com.distriqt.playservices.Base</extensionID>
+<extensionID>com.distriqt.playservices.Ads</extensionID>
+<extensionID>com.distriqt.playservices.AdsIdentifier</extensionID>
+
+<extensionID>androidx.appcompat</extensionID>
+<extensionID>androidx.browser</extensionID>
+<extensionID>androidx.core</extensionID>
+<extensionID>androidx.constraintlayout</extensionID>
+<extensionID>androidx.vectordrawable</extensionID>
+<extensionID>androidx.room</extensionID>
+<extensionID>androidx.work</extensionID>
+<extensionID>com.google.code.gson</extensionID>
