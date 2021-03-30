@@ -1,7 +1,12 @@
 <!-- OTHER SETTINGS --> 
 
+<key>NSBluetoothAlwaysUsageDescription</key>
+<string>Usage description</string>
+
+<!-- For iOS versions earlier than 13 -->
 <key>NSBluetoothPeripheralUsageDescription</key>
-<string>Some description of the bluetooth usage</string>
+<string>Usage description</string>
+
 
 <key>UIBackgroundModes</key>
 <array>

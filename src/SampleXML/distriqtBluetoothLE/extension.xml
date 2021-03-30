@@ -1,3 +1,4 @@
 <extensionID>com.distriqt.BluetoothLE</extensionID>
 <extensionID>com.distriqt.Core</extensionID>
-<extensionID>com.distriqt.androidsupport.V4</extensionID>
+
+<extensionID>androidx.core</extensionID>

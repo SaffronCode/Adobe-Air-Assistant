@@ -538,15 +538,15 @@
 
 			addCheckBox('Distriqt Beacon','distriqtBeacon')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.Beacon")
-				.setWiki("https://docs.airnativeextensions.com/docs/beacon/");
+				.setWiki("https://docs.airnativeextensions.com/docs/beacon/");//1400
 				
 			addCheckBox('Distriqt Bluetooth','distriqtBluetooth')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.Bluetooth")
-				.setWiki("https://docs.airnativeextensions.com/docs/bluetooth/");
+				.setWiki("https://docs.airnativeextensions.com/docs/bluetooth/");//1400
 				
 			addCheckBox('Distriqt Bluetooth LE','distriqtBluetoothLE')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.BluetoothLE")
-				.setWiki("https://distriqt.github.io/ANE-BluetoothLE/");
+				.setWiki("https://docs.airnativeextensions.com/docs/bluetoothle/");
 
 				
 			addCheckBox('Distriqt RootChecker','distriqtRootChecker')
