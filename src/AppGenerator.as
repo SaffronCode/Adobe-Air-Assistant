@@ -546,7 +546,7 @@
 				
 			addCheckBox('Distriqt Bluetooth LE','distriqtBluetoothLE')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.BluetoothLE")
-				.setWiki("https://docs.airnativeextensions.com/docs/bluetoothle/");
+				.setWiki("https://docs.airnativeextensions.com/docs/bluetoothle/");//1400
 
 				
 			addCheckBox('Distriqt RootChecker','distriqtRootChecker')
@@ -560,7 +560,7 @@
 					}
 				}
 			).setInfo("https://airnativeextensions.com/extension/io.branch.nativeExtensions.Branch")
-				.setWiki("https://github.com/distriqt/ANE-BranchIO/wiki")
+				.setWiki("https://docs.airnativeextensions.com/docs/branch/");//1400
 				
 			addCheckBox('Distriqt Calendar','distriqtCalendar')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.Calendar")

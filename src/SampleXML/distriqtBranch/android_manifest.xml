@@ -1,32 +1,27 @@
 <manifest android:installLocation="auto">
-	
+	<uses-permission android:name="android.permission.INTERNET"/>
+
 	<uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" />
 
 	<application>
-		<receiver android:name="io.branch.referral.InstallListener" android:exported="true">
+		<activity android:launchMode="singleTask">
 			<intent-filter>
-				<action android:name="com.android.vending.INSTALL_REFERRER" />
+				<action android:name="android.intent.action.MAIN"/>
+				<category android:name="android.intent.category.LAUNCHER"/>
 			</intent-filter>
-		</receiver>
-	</application>
-	
-	<meta-data android:name="io.branch.sdk.TestMode" android:value="false" />
-	<meta-data android:name="io.branch.sdk.BranchKey" android:value="key_live_XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" />
-	<meta-data android:name="io.branch.sdk.BranchKey.test" android:value="key_test_XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" />
-	
-	<activity android:launchMode="singleTask">
-		<intent-filter>
-			<action android:name="android.intent.action.MAIN"/>
-			<category android:name="android.intent.category.LAUNCHER"/>
-		</intent-filter>
 
-		<!-- Branch URI scheme -->
-		<intent-filter>
-			<data android:scheme="myapp" android:host="open" />
-			<action android:name="android.intent.action.VIEW" />
-			<category android:name="android.intent.category.DEFAULT" />
-			<category android:name="android.intent.category.BROWSABLE" />
-		</intent-filter>
-	</activity>
-	
+			<!-- Branch URI scheme -->
+			<intent-filter>
+				<data android:scheme="myapp" android:host="open" />
+				<action android:name="android.intent.action.VIEW" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<category android:name="android.intent.category.BROWSABLE" />
+			</intent-filter>
+		</activity>
+
+		<meta-data android:name="io.branch.sdk.TestMode" android:value="true" />
+		<meta-data android:name="io.branch.sdk.BranchKey" android:value="key_live_XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" />
+		<meta-data android:name="io.branch.sdk.BranchKey.test" android:value="key_test_XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" />
+
+	</application>
 </manifest>

@@ -1,5 +1,11 @@
 <extensionID>io.branch.nativeExtensions.Branch</extensionID>
+
 <extensionID>com.distriqt.Core</extensionID>
-<extensionID>com.distriqt.androidsupport.V4</extensionID>
-<extensionID>com.distriqt.androidsupport.CustomTabs</extensionID>
-<extensionID>com.distriqt.androidsupport.InstallReferrer</extensionID>
+
+<extensionID>androidx.core</extensionID>
+<extensionID>androidx.appcompat</extensionID>
+<extensionID>androidx.browser</extensionID>
+<extensionID>com.android.installreferrer</extensionID>
+
+<extensionID>com.distriqt.playservices.Base</extensionID>
+<extensionID>com.distriqt.playservices.AdsIdentifier</extensionID>
