@@ -613,7 +613,9 @@
 			//setInfo("https://airnativeextensions.com/extension/com.distriqt.Firebase")
 			//	.setWiki("https://distriqt.github.io/ANE-Firebase/");
 			
-			
+			addCheckBox('Distriqt AppleSignIn','distriqtAppleSignIn')
+				.setInfo("https://airnativeextensions.com/extension/com.distriqt.AppleSignIn")
+				.setWiki("https://docs.airnativeextensions.com/docs/applesignin/");//1400	
 			
 			//More setting needed to receive [APPGROUP] from user
 			addCheckBox('Distriqt AppGroup Defaults','distriqtAppGroupDefaults')
