@@ -526,7 +526,7 @@
 
 			addCheckBox('Distriqt Application','distriqtApplication')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.Application")
-				.setWiki("https://distriqt.github.io/ANE-Application/");
+				.setWiki("https://docs.airnativeextensions.com/docs/application/");//1400
 
 			addCheckBox('Distriqt Application Rater','distriqtApplicationRater')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.ApplicationRater")
