@@ -504,7 +504,7 @@
 			addCheckBox('Distriqt Location','distriqtLocation')
 				.setInfo("https://airnativeextensions.com/extension/com.distriqt.Location")
 				.setWiki("https://airnativeextensions.com/extension/com.distriqt.Location");
-			addCheckBox('Distriqt Audio Recorder','distriqtAudioRecorder')
+			addCheckBox('Distriqt Audio Recorder','distriqtAudioRecorder');//1400
 				.setInfo("https://airnativeextensions.com/extension/com.distriqt.AudioRecorder")
 				.setWiki("https://docs.airnativeextensions.com/docs/audiorecorder/");
 			addCheckBox('Distriqt Native WebView','distriqtNativeWebView')
@@ -533,8 +533,8 @@
 				.setWiki("https://docs.airnativeextensions.com/docs/applicationrater/");//1400
 
 			addCheckBox('Distriqt Battery','distriqtBattery')
-			.setInfo("https://airnativeextensions.com/extension/com.distriqt.Battery")
-				.setWiki("https://distriqt.github.io/ANE-Battery/");
+				.setInfo("https://airnativeextensions.com/extension/com.distriqt.Battery")
+				.setWiki("https://docs.airnativeextensions.com/docs/battery/");
 
 			addCheckBox('Distriqt Beacon','distriqtBeacon')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.Beacon")
