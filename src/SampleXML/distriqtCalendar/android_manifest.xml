@@ -1,11 +1,11 @@
 <manifest android:installLocation="auto">
-	<uses-permission android:name="android.permission.INTERNET"/>
-	<uses-permission android:name="android.permission.READ_CALENDAR"/>
-	<uses-permission android:name="android.permission.WRITE_CALENDAR"/>
-	
-	<application>
-		<activity android:name="com.distriqt.extension.calendar.activities.CalendarAddEventWithUIActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"></activity>
-	
-		<activity android:name="com.distriqt.extension.calendar.permissions.AuthorisationActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-	</application>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.READ_CALENDAR"/>
+    <uses-permission android:name="android.permission.WRITE_CALENDAR"/>
+    
+    <application>
+        <activity android:name="com.distriqt.extension.calendar.activities.CalendarAddEventWithUIActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"></activity>
+    
+        <activity android:name="com.distriqt.extension.calendar.permissions.AuthorisationActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+    </application>
 </manifest>
