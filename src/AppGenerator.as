@@ -519,6 +519,10 @@
 			addCheckBox('Distriqt Adverts','distriqtAdverts')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.Adverts")
 				.setWiki("https://docs.airnativeextensions.com/docs/adverts/");//1400
+			
+			addCheckBox('Distriqt Adverts - Huawei','distriqtAdvertsHuawei')
+			.setInfo("https://airnativeextensions.com/extension/com.distriqt.Adverts")
+				.setWiki("https://docs.airnativeextensions.com/docs/adverts/platform/huawei");//1400
 
 			addCheckBox('Distriqt Application','distriqtApplication')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.Application")

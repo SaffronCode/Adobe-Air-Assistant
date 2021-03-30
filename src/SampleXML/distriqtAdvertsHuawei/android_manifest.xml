@@ -1,0 +1,74 @@
+<manifest android:installLocation="auto">
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
+    <application 
+        android:hardwareAccelerated="true"
+        android:appComponentFactory="androidx.core.app.CoreComponentFactory">
+
+        <activity android:name="com.huawei.openalliance.ad.activity.PPSLauncherActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="hwpps" android:host="APPLICATION_PACKAGE"/>
+            </intent-filter>
+            <meta-data android:name="hwc-theme" android:value="androidhwext:style/Theme.Emui.Translucent.NoTitleBar" />
+        </activity>
+        <activity
+            android:name="com.huawei.openalliance.ad.activity.PPSBridgeActivity"
+            android:exported="false"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+            <meta-data
+                android:name="hwc-theme"
+                android:value="androidhwext:style/Theme.Emui.Translucent.NoTitleBar" />
+        </activity>
+        <activity
+            android:name="com.huawei.openalliance.ad.activity.PPSNotificationActivity"
+            android:exported="false"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+            <meta-data
+                android:name="hwc-theme"
+                android:value="androidhwext:style/Theme.Emui.Translucent.NoTitleBar" />
+        </activity>
+        <activity
+            android:name="com.huawei.openalliance.ad.activity.AgProtocolActivity"
+            android:configChanges="orientation|screenSize"
+            android:exported="false"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+            <meta-data
+                android:name="hwc-theme"
+                android:value="androidhwext:style/Theme.Emui.Translucent.NoTitleBar" />
+        </activity>
+
+
+        <meta-data android:name="com.huawei.hms.client.service.name:base" android:value="base:4.0.2.300" />
+        <meta-data android:name="com.huawei.hms.min_api_level:base:hmscore" android:value="1" />
+
+        <!-- HMS Ads Kit -->
+        <meta-data android:name="com.huawei.hms.client.service.name:ads-lite" android:value="ads-lite:13.4.30.301" />
+        <meta-data android:name="com.huawei.hms.client.service.name:ads-banner" android:value="ads-banner:13.4.30.301" />
+        <meta-data android:name="com.huawei.hms.client.service.name:ads-template" android:value="ads-template:13.4.30.301" />
+        <meta-data android:name="com.huawei.hms.client.service.name:ads-native" android:value="ads-native:13.4.30.301" />
+        <meta-data android:name="com.huawei.hms.client.service.name:ads-interstitial" android:value="ads-interstitial:13.4.30.301" />
+        <meta-data android:name="com.huawei.hms.client.service.name:ads-reward" android:value="ads-reward:13.4.30.301" />
+        <meta-data android:name="com.huawei.hms.client.service.name:ads-splash" android:value="ads-splash:13.4.30.301" />
+        <meta-data android:name="com.huawei.hms.client.service.name:ads-base" android:value="ads-base:13.4.30.301" />
+        <meta-data android:name="com.huawei.hms.client.service.name:ads-lang" android:value="ads-lang:13.4.30.301" />
+
+        <!-- HMS Ads Consent -->
+        <meta-data android:name="com.huawei.hms.client.service.name:ads-consent" android:value="ads-consent:3.4.34.301" />
+
+        <!-- HMS Ads Identifier -->
+        <meta-data android:name="com.huawei.hms.client.service.name:ads-identifier" android:value="ads-identifier:3.4.34.301" />
+
+            
+    </application>
+
+</manifest>
