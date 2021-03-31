@@ -588,7 +588,7 @@
 				
 			addCheckBox('Distriqt Device Motion','distriqtDeviceMotion')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.DeviceMotion")
-				.setWiki("https://distriqt.github.io/ANE-DeviceMotion/");
+				.setWiki("https://docs.airnativeextensions.com/docs/devicemotion/");//1400
 			
 			addCheckBox('Distriqt Dialog','distriqtDialog')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.Dialog")
