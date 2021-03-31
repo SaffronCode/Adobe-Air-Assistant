@@ -504,7 +504,7 @@
 			addCheckBox('Distriqt Location','distriqtLocation')
 				.setInfo("https://airnativeextensions.com/extension/com.distriqt.Location")
 				.setWiki("https://airnativeextensions.com/extension/com.distriqt.Location");
-			addCheckBox('Distriqt Audio Recorder','distriqtAudioRecorder')
+			addCheckBox('Distriqt Audio Recorder (33)','distriqtAudioRecorder')
 				.setInfo("https://airnativeextensions.com/extension/com.distriqt.AudioRecorder")
 				.setWiki("https://docs.airnativeextensions.com/docs/audiorecorder/");//1400
 			addCheckBox('Distriqt Native WebView','distriqtNativeWebView')
@@ -516,19 +516,19 @@
 			addCheckBox('JK Local Notifications','JKLocalNotifications');
 			addCheckBox('SystemProperties (mateusz)','SystemProperties');
 			
-			addCheckBox('Distriqt Adverts','distriqtAdverts')
+			addCheckBox('Distriqt Adverts (33)','distriqtAdverts')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.Adverts")
 				.setWiki("https://docs.airnativeextensions.com/docs/adverts/");//1400
 			
-			addCheckBox('Distriqt Adverts - Huawei','distriqtAdvertsHuawei')
+			addCheckBox('Distriqt Adverts - Huawei (33)','distriqtAdvertsHuawei')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.Adverts")
 				.setWiki("https://docs.airnativeextensions.com/docs/adverts/platform/huawei");//1400
 
-			addCheckBox('Distriqt Application','distriqtApplication')
+			addCheckBox('Distriqt Application (33)','distriqtApplication')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.Application")
 				.setWiki("https://docs.airnativeextensions.com/docs/application/");//1400
 
-			addCheckBox('Distriqt Application Rater','distriqtApplicationRater')
+			addCheckBox('Distriqt Application Rater (33)','distriqtApplicationRater')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.ApplicationRater")
 				.setWiki("https://docs.airnativeextensions.com/docs/applicationrater/");//1400
 
@@ -536,15 +536,15 @@
 				.setInfo("https://airnativeextensions.com/extension/com.distriqt.Battery")
 				.setWiki("https://docs.airnativeextensions.com/docs/battery/");
 
-			addCheckBox('Distriqt Beacon','distriqtBeacon')
+			addCheckBox('Distriqt Beacon (33)','distriqtBeacon')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.Beacon")
 				.setWiki("https://docs.airnativeextensions.com/docs/beacon/");//1400
 				
-			addCheckBox('Distriqt Bluetooth','distriqtBluetooth')
+			addCheckBox('Distriqt Bluetooth (33)','distriqtBluetooth')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.Bluetooth")
 				.setWiki("https://docs.airnativeextensions.com/docs/bluetooth/");//1400
 				
-			addCheckBox('Distriqt Bluetooth LE','distriqtBluetoothLE')
+			addCheckBox('Distriqt Bluetooth LE (33)','distriqtBluetoothLE')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.BluetoothLE")
 				.setWiki("https://docs.airnativeextensions.com/docs/bluetoothle/");//1400
 
@@ -552,7 +552,7 @@
 			addCheckBox('Distriqt RootChecker','distriqtRootChecker')
 				.setInfo("https://airnativeextensions.com/extension/com.distriqt.RootChecker")
 				
-			addCheckBox('Distriqt Branch','distriqtBranch',function(check:ACheckBox):void
+			addCheckBox('Distriqt Branch (33)','distriqtBranch',function(check:ACheckBox):void
 				{
 					if(check.enabled)
 					{
@@ -562,62 +562,62 @@
 			).setInfo("https://airnativeextensions.com/extension/io.branch.nativeExtensions.Branch")
 				.setWiki("https://docs.airnativeextensions.com/docs/branch/");//1400
 				
-			addCheckBox('Distriqt Calendar','distriqtCalendar')
+			addCheckBox('Distriqt Calendar (33)','distriqtCalendar')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.Calendar")
 				.setWiki("https://docs.airnativeextensions.com/docs/calendar/");//1400
 				
-			addCheckBox('Distriqt Camera','distriqtCamera')
+			addCheckBox('Distriqt Camera (33)','distriqtCamera')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.Camera")
 				.setWiki("https://docs.airnativeextensions.com/docs/camera/");//1400
 				
-			addCheckBox('Distriqt Camera Roll Extended','distriqtCameraRollExtended')
+			addCheckBox('Distriqt Camera Roll Extended (33)','distriqtCameraRollExtended')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.CameraRollExtended")
 				.setWiki("hhttps://docs.airnativeextensions.com/docs/camerarollextended/");;//1400
 				
-			addCheckBox('Distriqt CloudStorage','distriqtCloudStorage')
+			addCheckBox('Distriqt CloudStorage (33)','distriqtCloudStorage')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.CloudStorage")
 				.setWiki("https://docs.airnativeextensions.com/docs/cloudstorage/");//1400
 				
-			addCheckBox('Distriqt Compass','distriqtCompass')
+			addCheckBox('Distriqt Compass (33)','distriqtCompass')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.Compass")
 				.setWiki("https://docs.airnativeextensions.com/docs/compass/add-the-extension");;//1400
 				
-			addCheckBox('Distriqt Contacts','distriqtContacts')
+			addCheckBox('Distriqt Contacts (33)','distriqtContacts')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.Contacts")
 				.setWiki("https://docs.airnativeextensions.com/docs/contacts/");//1400
 				
-			addCheckBox('Distriqt Device Motion','distriqtDeviceMotion')
+			addCheckBox('Distriqt Device Motion (33)','distriqtDeviceMotion')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.DeviceMotion")
 				.setWiki("https://docs.airnativeextensions.com/docs/devicemotion/");//1400
 			
-			addCheckBox('Distriqt Dialog','distriqtDialog')
+			addCheckBox('Distriqt Dialog (33)','distriqtDialog')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.Dialog")
 				.setWiki("https://docs.airnativeextensions.com/docs/dialog/");//1400
 			
-			addCheckBox('Distriqt DynamicIcon','distriqtDynamicIcon')
+			addCheckBox('Distriqt DynamicIcon (33)','distriqtDynamicIcon')
 			.setInfo("https://docs.airnativeextensions.com/docs/dynamicicon");//1400
 			
-			addCheckBox('Distriqt Exceptions','distriqtExceptions')
+			addCheckBox('Distriqt Exceptions (33)','distriqtExceptions')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.Exceptions")
 				.setWiki("https://docs.airnativeextensions.com/docs/exceptions/");//1400
 			
-			addCheckBox('Distriqt Expansion Files','distriqtExpansionFiles')
+			addCheckBox('Distriqt Expansion Files (33)','distriqtExpansionFiles')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.ExpansionFiles")
 				.setWiki("https://docs.airnativeextensions.com/docs/expansionfiles/");//1400
 			
-			addCheckBox('Distriqt Facebook API-Core','distriqtFacebookAPI')
+			addCheckBox('Distriqt Facebook API-Core (33)','distriqtFacebookAPI')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.FacebookAPI")
 				.setWiki("https://docs.airnativeextensions.com/docs/facebookapi/core/overview");//1400
 			
-			addCheckBox('Distriqt Facebook API-Login','distriqtFacebookAPI-login')
+			addCheckBox('Distriqt Facebook API-Login (33)','distriqtFacebookAPI-login')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.FacebookAPI")
 				.setWiki("https://docs.airnativeextensions.com/docs/facebookapi/login/overview");//1400
 			
-			addCheckBox('Distriqt Facebook API-Share','distriqtFacebookAPI-share')
+			addCheckBox('Distriqt Facebook API-Share (33)','distriqtFacebookAPI-share')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.FacebookAPI")
 				.setWiki("https://docs.airnativeextensions.com/docs/facebookapi/share/overview");//1400
 			
-			addCheckBox('Distriqt Facebook API-Gaming','distriqtFacebookAPI-game')
+			addCheckBox('Distriqt Facebook API-Gaming (33)','distriqtFacebookAPI-game')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.FacebookAPI")
 				.setWiki("https://docs.airnativeextensions.com/docs/facebookapi/gamingservices/overview");//1400
 			
@@ -629,12 +629,12 @@
 			//setInfo("https://airnativeextensions.com/extension/com.distriqt.Firebase")
 			//	.setWiki("https://distriqt.github.io/ANE-Firebase/");
 			
-			addCheckBox('Distriqt AppleSignIn','distriqtAppleSignIn')
+			addCheckBox('Distriqt AppleSignIn (33)','distriqtAppleSignIn')
 				.setInfo("https://airnativeextensions.com/extension/com.distriqt.AppleSignIn")
 				.setWiki("https://docs.airnativeextensions.com/docs/applesignin/");//1400	
 			
 			//More setting needed to receive [APPGROUP] from user
-			addCheckBox('Distriqt AppGroup Defaults','distriqtAppGroupDefaults')
+			addCheckBox('Distriqt AppGroup Defaults (33)','distriqtAppGroupDefaults')
 				.setInfo("https://airnativeextensions.com/extension/com.distriqt.AppGroupDefaults")
 				.setWiki("https://docs.airnativeextensions.com/docs/appgroupdefaults/");//1400
 			
