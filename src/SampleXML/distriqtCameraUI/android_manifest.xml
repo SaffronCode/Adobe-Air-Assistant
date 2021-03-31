@@ -1,25 +1,25 @@
 <manifest android:installLocation="auto">
-	<uses-permission android:name="android.permission.INTERNET"/>
-	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-	
-	<!-- optional if your application REQUIRES the camera -->
-	<uses-feature android:name="android.hardware.camera" android:required="true" />
-	
-	<application android:hardwareAccelerated="true">
-		
-		<provider
-			android:name="android.support.v4.content.FileProvider"
-			android:authorities="air.APPLICATION_ID.fileprovider"
-			android:grantUriPermissions="true"
-			android:exported="false">
-			<meta-data 
-				android:name="android.support.FILE_PROVIDER_PATHS" 
-				android:resource="@xml/distriqt_cameraui_paths" />
-		</provider>
-		
-		<activity 	android:name="com.distriqt.extension.cameraui.permissions.AuthorisationActivity" 
-					android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    
+    <!-- optional if your application REQUIRES the camera -->
+    <uses-feature android:name="android.hardware.camera" android:required="true" />
+    
+    <application android:hardwareAccelerated="true">
+        
+        <provider
+            android:name="com.distriqt.extension.cameraui.content.FileProvider"
+            android:authorities="YOUR_APPLICATION_PACKAGE.camerauifileprovider"
+            android:grantUriPermissions="true"
+            android:exported="false">
+            <meta-data 
+                android:name="android.support.FILE_PROVIDER_PATHS" 
+                android:resource="@xml/distriqt_cameraui_paths" />
+        </provider>
+        
+        <activity   android:name="com.distriqt.extension.cameraui.permissions.AuthorisationActivity" 
+                    android:theme="@android:style/Theme.Translucent.NoTitleBar" />
 
-	</application>
+    </application>
 </manifest>

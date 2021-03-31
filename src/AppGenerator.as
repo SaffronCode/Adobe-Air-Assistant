@@ -453,7 +453,7 @@
 			
 			addCheckBox('Distriqt CameraUI','distriqtCameraUI')
 				.setInfo("https://airnativeextensions.com/extension/com.distriqt.CameraUI")
-				.setWiki("https://distriqt.github.io/ANE-CameraUI/");
+				.setWiki("https://docs.airnativeextensions.com/docs/cameraui/");
 			var milkman_push:ACheckBox = 
 				addCheckBox('Milkman Easy Push','MilkmanNotification',function(check:ACheckBox){
 				if(check.status)
