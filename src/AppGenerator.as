@@ -453,7 +453,7 @@
 			
 			addCheckBox('Distriqt CameraUI','distriqtCameraUI')
 				.setInfo("https://airnativeextensions.com/extension/com.distriqt.CameraUI")
-				.setWiki("https://docs.airnativeextensions.com/docs/cameraui/");
+				.setWiki("https://docs.airnativeextensions.com/docs/cameraui/");//1400
 			var milkman_push:ACheckBox = 
 				addCheckBox('Milkman Easy Push','MilkmanNotification',function(check:ACheckBox){
 				if(check.status)
@@ -576,7 +576,7 @@
 				
 			addCheckBox('Distriqt CloudStorage','distriqtCloudStorage')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.CloudStorage")
-				.setWiki("https://distriqt.github.io/ANE-CloudStorage/");
+				.setWiki("https://docs.airnativeextensions.com/docs/cloudstorage/");//1400
 				
 			addCheckBox('Distriqt Compass','distriqtCompass')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.Compass")

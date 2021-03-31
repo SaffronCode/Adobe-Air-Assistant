@@ -2,5 +2,5 @@
 <string>BUNDLE_SEED_ID.BUNDLE_IDENTIFIER</string>
 <key>com.apple.developer.ubiquity-container-identifiers</key>
 <array>
-	<string>iCloud.com.distriqt.test.testcontainer</string>
+    <string>iCloud.com.BUNDLE_IDENTIFIER</string>
 </array>
