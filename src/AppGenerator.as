@@ -592,7 +592,7 @@
 			
 			addCheckBox('Distriqt Dialog','distriqtDialog')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.Dialog")
-				.setWiki("https://distriqt.github.io/ANE-Dialog/");
+				.setWiki("https://docs.airnativeextensions.com/docs/dialog/");//1400
 			
 			addCheckBox('Distriqt Exceptions','distriqtExceptions')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.Exceptions");

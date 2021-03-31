@@ -1,4 +1,5 @@
     <extensionID>com.distriqt.Dialog</extensionID>
     <extensionID>com.distriqt.Core</extensionID>
-    <extensionID>com.distriqt.androidsupport.V4</extensionID>
-    <extensionID>com.distriqt.androidsupport.AppCompatV7</extensionID>
+    <extensionID>androidx.appcompat</extensionID>
+    <extensionID>androidx.core</extensionID>
+    <extensionID>androidx.vectordrawable</extensionID>
