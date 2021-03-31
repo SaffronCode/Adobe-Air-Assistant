@@ -8,6 +8,11 @@
         android:appComponentFactory="androidx.core.app.CoreComponentFactory"
 		android:name="android.support.multidex.MultiDexApplication"
         android:hardwareAccelerated="true">
+		
+		<!-- Share -->
+		<provider android:authorities="com.facebook.app.FacebookContentProviderFACEBOOK_APP_ID"
+			android:name="com.facebook.FacebookContentProvider"
+			android:exported="true"/>
 
         <!-- IMPORTANT: Do not remove the backslash and space at the beginning of the following value string. -->
         <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="\ FACEBOOK_APP_ID"/>

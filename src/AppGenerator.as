@@ -605,9 +605,21 @@
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.ExpansionFiles")
 				.setWiki("https://docs.airnativeextensions.com/docs/expansionfiles/");
 			
-			addCheckBox('Distriqt Facebook API','distriqtFacebookAPI')
+			addCheckBox('Distriqt Facebook API-Core','distriqtFacebookAPI')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.FacebookAPI")
-				.setWiki("https://distriqt.github.io/ANE-FacebookAPI/");
+				.setWiki("https://docs.airnativeextensions.com/docs/facebookapi/core/overview");//1400
+			
+			addCheckBox('Distriqt Facebook API-Login','distriqtFacebookAPI-login')
+			.setInfo("https://airnativeextensions.com/extension/com.distriqt.FacebookAPI")
+				.setWiki("https://docs.airnativeextensions.com/docs/facebookapi/login/overview");//1400
+			
+			addCheckBox('Distriqt Facebook API-Share','distriqtFacebookAPI-share')
+			.setInfo("https://airnativeextensions.com/extension/com.distriqt.FacebookAPI")
+				.setWiki("https://docs.airnativeextensions.com/docs/facebookapi/share/overview");//1400
+			
+			addCheckBox('Distriqt Facebook API-Gaming','distriqtFacebookAPI-game')
+			.setInfo("https://airnativeextensions.com/extension/com.distriqt.FacebookAPI")
+				.setWiki("https://docs.airnativeextensions.com/docs/facebookapi/gamingservices/overview");//1400
 			
 			addCheckBox('Distriqt Firebase','distriqtFirebase')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.Firebase")
