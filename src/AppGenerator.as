@@ -572,7 +572,7 @@
 				
 			addCheckBox('Distriqt Camera Roll Extended','distriqtCameraRollExtended')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.CameraRollExtended")
-				.setWiki("https://distriqt.github.io/ANE-CameraRollExtended/");
+				.setWiki("hhttps://docs.airnativeextensions.com/docs/camerarollextended/");;//1400
 				
 			addCheckBox('Distriqt CloudStorage','distriqtCloudStorage')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.CloudStorage")

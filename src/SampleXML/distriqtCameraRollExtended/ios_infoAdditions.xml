@@ -1,2 +1,4 @@
 <key>NSPhotoLibraryUsageDescription</key>
-<string>This app would like to access your photos</string>
+<string>Access to photo library is required to save images.</string>
+<key>NSPhotoLibraryAddUsageDescription</key>
+<string>Access to photo library is required to save images.</string>

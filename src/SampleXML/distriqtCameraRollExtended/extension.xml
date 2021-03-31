@@ -1,5 +1,7 @@
     <extensionID>com.distriqt.CameraRollExtended</extensionID>
     <extensionID>com.distriqt.Core</extensionID>
-    <extensionID>com.distriqt.androidsupport.V4</extensionID>
-	<extensionID>com.distriqt.square.okhttp</extensionID>
+    <extensionID>androidx.core</extensionID>
+    <extensionID>androidx.appcompat</extensionID>
+    <extensionID>androidx.exifinterface</extensionID>
+    <extensionID>com.distriqt.square.okhttp3</extensionID>
     <extensionID>com.distriqt.square.picasso</extensionID>
