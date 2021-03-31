@@ -598,7 +598,8 @@
 			.setInfo("https://docs.airnativeextensions.com/docs/dynamicicon");//1400
 			
 			addCheckBox('Distriqt Exceptions','distriqtExceptions')
-			.setInfo("https://airnativeextensions.com/extension/com.distriqt.Exceptions");
+			.setInfo("https://airnativeextensions.com/extension/com.distriqt.Exceptions")
+				.setWiki("https://docs.airnativeextensions.com/docs/exceptions/");//1400
 			
 			addCheckBox('Distriqt Expansion Files','distriqtExpansionFiles')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.ExpansionFiles")
