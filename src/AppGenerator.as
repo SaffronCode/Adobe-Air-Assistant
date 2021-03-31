@@ -584,7 +584,7 @@
 				
 			addCheckBox('Distriqt Contacts','distriqtContacts')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.Contacts")
-				.setWiki("https://distriqt.github.io/ANE-Contacts/");
+				.setWiki("https://docs.airnativeextensions.com/docs/contacts/");//1400
 				
 			addCheckBox('Distriqt Device Motion','distriqtDeviceMotion')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.DeviceMotion")
