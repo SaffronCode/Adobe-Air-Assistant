@@ -504,9 +504,9 @@
 			addCheckBox('Distriqt Location','distriqtLocation')
 				.setInfo("https://airnativeextensions.com/extension/com.distriqt.Location")
 				.setWiki("https://airnativeextensions.com/extension/com.distriqt.Location");
-			addCheckBox('Distriqt Audio Recorder','distriqtAudioRecorder');//1400
+			addCheckBox('Distriqt Audio Recorder','distriqtAudioRecorder')
 				.setInfo("https://airnativeextensions.com/extension/com.distriqt.AudioRecorder")
-				.setWiki("https://docs.airnativeextensions.com/docs/audiorecorder/");
+				.setWiki("https://docs.airnativeextensions.com/docs/audiorecorder/");//1400
 			addCheckBox('Distriqt Native WebView','distriqtNativeWebView')
 				.setInfo("https://airnativeextensions.com/extension/com.distriqt.NativeWebView")
 				.setWiki("https://distriqt.github.io/ANE-NativeWebView/");

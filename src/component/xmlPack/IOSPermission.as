@@ -213,12 +213,8 @@
 							if(foundedElement.name()=='array' && newList.length()>i+1 && newList[i+1].name()=='array')
 							{
 								addStringValueInArray(foundedElement,newList[i+1].children());
-								return ;
 							}
-							else
-							{
-								XMLFunctions.removeKeyValue(InfoAdditions,newList[i]);
-							}
+							XMLFunctions.removeKeyValue(InfoAdditions,newList[i]);//Remove the last key from destination InfoAddition anyway
 						}
 					}
 				}

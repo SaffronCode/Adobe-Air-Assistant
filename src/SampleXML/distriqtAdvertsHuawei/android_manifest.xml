@@ -8,6 +8,7 @@
 
     <application 
         android:hardwareAccelerated="true"
+		android:name="androidx.multidex.MultiDexApplication"
         android:appComponentFactory="androidx.core.app.CoreComponentFactory">
 
         <activity android:name="com.huawei.openalliance.ad.activity.PPSLauncherActivity"
