@@ -580,7 +580,7 @@
 				
 			addCheckBox('Distriqt Compass','distriqtCompass')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.Compass")
-				.setWiki("https://distriqt.github.io/ANE-Compass/");
+				.setWiki("https://docs.airnativeextensions.com/docs/compass/add-the-extension");;//1400
 				
 			addCheckBox('Distriqt Contacts','distriqtContacts')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.Contacts")

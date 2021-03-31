@@ -1,0 +1,12 @@
+<key>NSLocationUsageDescription</key>
+<string>This application would like to use your location.</string>
+
+<!-- iOS 8 + -->
+<key>NSLocationWhenInUseUsageDescription</key>
+<string>This application would like to use your location when in use.</string>
+<key>NSLocationAlwaysUsageDescription</key>
+<string>This application would like to use your location in the background.</string>
+
+<!-- iOS 11 + -->
+<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+<string>This application would like to use your location in the background and the foreground.</string>
