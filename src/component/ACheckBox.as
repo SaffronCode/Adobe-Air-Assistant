@@ -226,7 +226,7 @@
 			}
 			
 			if(titleTF)
-				titleTF.setUp(label,false,false,0,false) ;
+				titleTF.setUp(label,false,false,1,false) ;
 			
 			_status = status ;
 			if(status)
