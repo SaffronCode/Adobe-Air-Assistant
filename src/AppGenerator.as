@@ -603,7 +603,7 @@
 			
 			addCheckBox('Distriqt Expansion Files','distriqtExpansionFiles')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.ExpansionFiles")
-				.setWiki("https://distriqt.github.io/ANE-ExpansionFiles/");
+				.setWiki("https://docs.airnativeextensions.com/docs/expansionfiles/");
 			
 			addCheckBox('Distriqt Facebook API','distriqtFacebookAPI')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.FacebookAPI")
