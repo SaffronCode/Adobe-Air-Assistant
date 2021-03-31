@@ -1,0 +1,58 @@
+<key>CFBundleIcons</key>
+<dict>
+    <key>CFBundlePrimaryIcon</key>
+    <dict>
+        <key>CFBundleIconFiles</key>
+        <array>
+            <string>Icon-Ipad-152.png</string>
+            <string>Icon-Iphone-120.png</string>
+            <string>Icon@2x.png</string>
+            <string>Icon-Ipad-76.png</string>
+            <string>Icon-Large.png</string>
+            <string>Icon.png</string>
+            <string>Icon-Small-50.png</string>
+            <string>Icon-Small.png</string>
+        </array>
+        <key>CFBundleIconName</key>
+        <string>AppIcon</string>
+    </dict>
+</dict>
+<key>CFBundleAlternateIcons</key>
+<dict>
+    <key>IconName</key>
+    <dict>
+        <key>CFBundleIconFiles</key>
+        <array>
+            <string>IconName</string>
+        </array>
+    </dict>
+</dict>
+<key>CFBundleIcons</key>
+<dict>
+    <key>CFBundleAlternateIcons</key>
+    <dict>
+        <key>AlternateIcon</key>
+        <dict>
+            <key>CFBundleIconFiles</key>
+            <array>
+                <string>AlternateIcon</string>
+            </array>
+        </dict>
+    </dict>
+    <key>CFBundlePrimaryIcon</key>
+    <dict>
+        <key>CFBundleIconFiles</key>
+        <array>
+            <string>Icon-Ipad-152.png</string>
+            <string>Icon-Iphone-120.png</string>
+            <string>Icon@2x.png</string>
+            <string>Icon-Ipad-76.png</string>
+            <string>Icon-Large.png</string>
+            <string>Icon.png</string>
+            <string>Icon-Small-50.png</string>
+            <string>Icon-Small.png</string>
+        </array>
+        <key>CFBundleIconName</key>
+        <string>AppIcon</string>
+    </dict>
+</dict>
