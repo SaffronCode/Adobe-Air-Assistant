@@ -621,9 +621,9 @@
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.FacebookAPI")
 				.setWiki("https://docs.airnativeextensions.com/docs/facebookapi/gamingservices/overview");//1400
 			
-			addCheckBox('Distriqt Firebase','distriqtFirebase')
+			addCheckBox('Distriqt Firebase (33)','distriqtFirebase')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.Firebase")
-				.setWiki("https://distriqt.github.io/ANE-Firebase/");
+				.setWiki("https://docs.airnativeextensions.com/docs/firebase/");//1400
 			
 			//addCheckBox('Milkman AddMob','MiklmanAdMob');
 			//setInfo("https://airnativeextensions.com/extension/com.distriqt.Firebase")

@@ -1,10 +1,12 @@
     <extensionID>com.distriqt.Firebase</extensionID>
-	
-    <extensionID>com.distriqt.Core</extensionID>
+    <extensionID>com.google.protobuflite</extensionID>
     <extensionID>com.google.firebase.core</extensionID>
-    <extensionID>com.distriqt.playservices.Base</extensionID>
-	
-	<extensionID>androidx.core</extensionID>
-    
 
-	<extensionID>com.distriqt.CustomResources</extensionID>
+    <extensionID>com.distriqt.Core</extensionID>
+
+    <extensionID>androidx.core</extensionID>
+
+    <extensionID>com.distriqt.playservices.Base</extensionID>
+    <extensionID>com.distriqt.playservices.AdsIdentifier</extensionID>
+
+    <extensionID>com.distriqt.CustomResources</extensionID>

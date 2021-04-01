@@ -1,2 +1,4 @@
 <key>FirebaseAppDelegateProxyEnabled</key>
 <false/>
+<key>FirebaseAutomaticScreenReportingEnabled</key>
+<false/>
