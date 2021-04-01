@@ -1,2 +1,2 @@
-Make sure you add the com.google.android.gms.ads.APPLICATION_ADMOB_ID meta-data tag with a string value of your AdMob app ID into the application node.
-replace ca-app-pub-AAAAAAAAAAAAAAAA~XXXXXXXXXX in the additions. You can find your App ID in the AdMob UI
+Replace the com.google.android.gms.ads.APPLICATION_ADMOB_ID meta-data tag with a string value of your AdMob app ID.
+Replace ca-app-pub-AAAAAAAAAAAAAAAA~XXXXXXXXXX in the additions. You can find your App ID in the AdMob UI
