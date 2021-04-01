@@ -1,0 +1,14 @@
+    <extensionID>com.distriqt.Core</extensionID>
+    <extensionID>com.distriqt.playservices.Base</extensionID>
+    <extensionID>com.distriqt.playservices.AdsIdentifier</extensionID>
+
+    <extensionID>com.google.protobuflite</extensionID>
+    <extensionID>com.google.firebase.core</extensionID>
+    <extensionID>androidx.appcompat</extensionID>
+    <extensionID>androidx.core</extensionID>
+    <extensionID>androidx.multidex</extensionID>
+
+    <extensionID>com.distriqt.Firebase</extensionID>
+    <extensionID>com.distriqt.firebase.Auth</extensionID>
+
+    <extensionID>com.distriqt.CustomResources</extensionID>

@@ -625,6 +625,10 @@
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.Firebase")
 				.setWiki("https://docs.airnativeextensions.com/docs/firebase/");//1400
 			
+			addCheckBox('Distriqt Firebase - Develope(33)','distriqtFirebase-develope')
+			.setInfo("https://airnativeextensions.com/extension/com.distriqt.Firebase")
+				.setWiki("https://docs.airnativeextensions.com/docs/firebase/auth/add-the-extensions");//1400
+			
 			//addCheckBox('Milkman AddMob','MiklmanAdMob');
 			//setInfo("https://airnativeextensions.com/extension/com.distriqt.Firebase")
 			//	.setWiki("https://distriqt.github.io/ANE-Firebase/");
