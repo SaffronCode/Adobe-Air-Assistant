@@ -1,7 +1,17 @@
+<extensionID>com.distriqt.PushNotifications</extensionID>
+<extensionID>com.distriqt.Core</extensionID>
 
-    <extensionID>com.distriqt.PushNotifications</extensionID>
-    <extensionID>com.distriqt.Core</extensionID>
-    <extensionID>com.distriqt.androidsupport.V4</extensionID>
-    <extensionID>com.distriqt.playservices.Base</extensionID>
-    <extensionID>com.distriqt.Firebase</extensionID>
-	<extensionID>com.distriqt.CustomResources</extensionID>
+<extensionID>com.distriqt.playservices.Base</extensionID>
+<extensionID>com.distriqt.playservices.CloudMessaging</extensionID>
+
+<extensionID>com.google.firebase.core</extensionID>
+<extensionID>com.google.android.datatransport</extensionID>
+<extensionID>com.google.dagger</extensionID>
+<extensionID>com.google.protobuflite</extensionID>
+
+<extensionID>androidx.core</extensionID>
+<extensionID>androidx.browser</extensionID>
+<extensionID>androidx.appcompat</extensionID>
+<extensionID>androidx.cardview</extensionID>
+<extensionID>androidx.constraintlayout</extensionID>
+<extensionID>androidx.vectordrawable</extensionID>

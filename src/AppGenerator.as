@@ -474,7 +474,7 @@
 				.setWiki("https://distriqt.github.io/ANE-PushNotifications/s.OneSignal");
 			
 			var distriqt_firebase:ACheckBox = 
-				addCheckBox('Distriqt Push Notifications Firebase','distriqtNotificationFirebase',function(check:ACheckBox){
+				addCheckBox('Distriqt Push Notifications Firebase Cloud(33)','distriqtNotificationFirebase',function(check:ACheckBox){
 				if(check.status)
 				{
 					milkman_push.status = false ;
@@ -482,8 +482,8 @@
 				}
 			})
 				.setInfo("https://airnativeextensions.com/extension/com.distriqt.PushNotifications")
-				.setWiki("https://distriqt.github.io/ANE-PushNotifications/s.Firebase%20Cloud%20Messaging")
-				.addCustomANE(xmlFolder,"com.distriqt.CustomResources.ane",generateFCMforDistriqt);
+				.setWiki("https://docs.airnativeextensions.com/docs/pushnotifications")
+				.addCustomANE(xmlFolder,"com.distriqt.CustomResources.ane",generateFCMforDistriqt);//1400
 			addCheckBox('Distriqt Share (33)','distriqtShare',function(check:ACheckBox){
 				addPDFReader.useSecondAndroid = check.status ;
 				//Alert.show("addPDFReader.useSecondAndroid : "+addPDFReader.useSecondAndroid);

@@ -1,137 +1,149 @@
 <manifest android:installLocation="auto">
-	<uses-sdk android:minSdkVersion="14" />
+    
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    
+    <!-- OPTIONAL -->
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    
+    <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" /> 
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <permission android:name="APPLICATION_PACKAGE.permission.C2D_MESSAGE" android:protectionLevel="signature" />
+    <uses-permission android:name="APPLICATION_PACKAGE.permission.C2D_MESSAGE" />
+    
+    <application>
 	
-	<uses-permission android:name="android.permission.INTERNET" />
-	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-	<uses-permission android:name="android.permission.WAKE_LOCK" />
-	
-	<!-- OPTIONAL -->
-	<uses-permission android:name="android.permission.VIBRATE"/>
-	<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-	
-	<uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
-	<permission android:name="air.APPLICATION_PACKAGE.permission.C2D_MESSAGE" android:protectionLevel="signature" />
-	<uses-permission android:name="air.APPLICATION_PACKAGE.permission.C2D_MESSAGE" />
-	
-	<application>
-		<meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
+        <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
 
-		<activity android:name="com.google.android.gms.common.api.GoogleApiActivity" 
-			android:theme="@android:style/Theme.Translucent.NoTitleBar" 
-			android:exported="false"/>
+        <activity android:name="com.google.android.gms.common.api.GoogleApiActivity" 
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" 
+            android:exported="false"/>
 
-		<!-- FIREBASE CLOUD MESSAGING -->
-		<meta-data android:name="com.google.firebase.messaging.default_notification_icon" android:resource="@drawable/ic_stat_distriqt" />
+
+        <!-- NOTIFICATIONS -->
+        <receiver android:name="com.distriqt.extension.pushnotifications.notifications.receivers.NotificationReceiver">
+            <intent-filter>
+                <action android:name="APPLICATION_PACKAGE.NOTIFICATION_SELECTED" />
+                <action android:name="APPLICATION_PACKAGE.NOTIFICATION_DELETED" />
+                <action android:name="APPLICATION_PACKAGE.NOTIFICATION_ACTION" />
+                <data android:scheme="dtpn" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+        <provider
+            android:name="com.distriqt.extension.pushnotifications.content.FileProvider"
+            android:authorities="APPLICATION_PACKAGE.pushnotificationsfileprovider"
+            android:grantUriPermissions="true"
+            android:exported="false">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/distriqt_pushnotifications_paths" />
+        </provider>
+
+
+
+        <!-- FIREBASE CLOUD MESSAGING -->
+        <meta-data android:name="com.google.firebase.messaging.default_notification_icon" android:resource="@drawable/ic_stat_distriqt" />
         <meta-data android:name="com.google.firebase.messaging.default_notification_color" android:resource="@color/blue" />
-		<meta-data android:name="com.google.firebase.messaging.default_notification_channel_id" android:value="default_channel_id" />
+        <meta-data android:name="com.google.firebase.messaging.default_notification_channel_id" android:value="test_sound_res_channel"/>
 
-		<service android:name="com.distriqt.extension.pushnotifications.fcm.FcmMessagingService">
-			<intent-filter>
-				<action android:name="com.google.firebase.MESSAGING_EVENT"/>
-			</intent-filter>
-		</service>
-		<service android:name="com.distriqt.extension.pushnotifications.fcm.FcmInstanceIDService">
-			<intent-filter>
-				<action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
-			</intent-filter>
-		</service>
-		
-
-
-		<!-- NOTIFICATIONS -->
-		<receiver android:name="com.distriqt.extension.pushnotifications.notifications.receivers.NotificationReceiver">
-			<intent-filter>
-				<action android:name="air.APPLICATION_PACKAGE.NOTIFICATION_SELECTED" />
-				<action android:name="air.APPLICATION_PACKAGE.NOTIFICATION_DELETED" />
-				<action android:name="air.APPLICATION_PACKAGE.NOTIFICATION_ACTION" />
-				<data android:scheme="dtpn" />
-			</intent-filter>
-			<intent-filter>
-				<action android:name="android.intent.action.BOOT_COMPLETED" />
-			</intent-filter>
-		</receiver>
-		<provider
-			android:name="com.distriqt.extension.pushnotifications.content.FileProvider"
-			android:authorities="air.APPLICATION_PACKAGE.pushnotificationsfileprovider"
-			android:grantUriPermissions="true"
-			android:exported="false">
-			<meta-data 
-				android:name="android.support.FILE_PROVIDER_PATHS" 
-				android:resource="@xml/distriqt_pushnotifications_paths" />
-		</provider>
+        <service android:name="com.distriqt.extension.pushnotifications.fcm.FcmMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
+        <service
+            android:name="com.distriqt.extension.pushnotifications.fcm.FcmInstanceIDService"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
+            </intent-filter>
+        </service>
+        <receiver
+            android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"
+            android:exported="true"
+            android:permission="com.google.android.c2dm.permission.SEND" >
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+            </intent-filter>
+        </receiver>
 
 
-			
 
-		<!-- FIREBASE CORE -->
-		<!-- common -->
-		<service android:name="com.google.firebase.components.ComponentDiscoveryService" >
-			<meta-data
-				android:name="com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar"
-				android:value="com.google.firebase.components.ComponentRegistrar" />
-			<meta-data
-				android:name="com.google.firebase.components:com.google.firebase.iid.Registrar"
-				android:value="com.google.firebase.components.ComponentRegistrar" />
-		</service>
-		<provider
-			android:authorities="air.APPLICATION_PACKAGE.firebaseinitprovider"
-			android:name="com.google.firebase.provider.FirebaseInitProvider"
-			android:exported="false"
-			android:initOrder="100" />
+        <!-- FIREBASE CORE -->
+        <receiver
+            android:name="com.google.android.gms.measurement.AppMeasurementReceiver"
+            android:enabled="true"
+            android:exported="false" >
+        </receiver>
+
+        <service
+            android:name="com.google.android.gms.measurement.AppMeasurementService"
+            android:enabled="true"
+            android:exported="false" />
+        <service
+            android:name="com.google.android.gms.measurement.AppMeasurementJobService"
+            android:enabled="true"
+            android:exported="false"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+        <service
+            android:name="com.google.firebase.components.ComponentDiscoveryService"
+            android:directBootAware="true"
+            android:exported="false" >
+            <meta-data
+                android:name="com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar"
+                android:value="com.google.firebase.components.ComponentRegistrar" />
+            <meta-data
+                android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar"
+                android:value="com.google.firebase.components.ComponentRegistrar" />
+
+            <meta-data
+                android:name="com.google.firebase.components:com.google.firebase.dynamicloading.DynamicLoadingRegistrar"
+                android:value="com.google.firebase.components.ComponentRegistrar" />
+
+            <!-- Firebase Cloud Messaging -->
+            <meta-data
+                android:name="com.google.firebase.components:com.google.firebase.iid.Registrar"
+                android:value="com.google.firebase.components.ComponentRegistrar" />
+            <meta-data
+                android:name="com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingRegistrar"
+                android:value="com.google.firebase.components.ComponentRegistrar" />
+            <meta-data
+                android:name="com.google.firebase.components:com.google.firebase.datatransport.TransportRegistrar"
+                android:value="com.google.firebase.components.ComponentRegistrar" />
+            
+        </service>
+
+        <provider
+            android:name="com.google.firebase.provider.FirebaseInitProvider"
+            android:authorities="APPLICATION_PACKAGE.firebaseinitprovider"
+            android:exported="false"
+            android:initOrder="100" />
 
 
-		<!-- analytics -->
-		<receiver
-			android:name="com.google.android.gms.measurement.AppMeasurementReceiver"
-			android:enabled="true"
-			android:exported="false" >
-		</receiver>
-		<receiver
-			android:name="com.google.android.gms.measurement.AppMeasurementInstallReferrerReceiver"
-			android:enabled="true"
-			android:exported="true"
-			android:permission="android.permission.INSTALL_PACKAGES" >
-			<intent-filter>
-				<action android:name="com.android.vending.INSTALL_REFERRER" />
-			</intent-filter>
-		</receiver>
-
-		<service
-			android:name="com.google.android.gms.measurement.AppMeasurementService"
-			android:enabled="true"
-			android:exported="false" />
-		<service
-			android:name="com.google.android.gms.measurement.AppMeasurementJobService"
-			android:enabled="true"
-			android:exported="false"
-			android:permission="android.permission.BIND_JOB_SERVICE" />
-
-
-		<!-- iid -->
-		<receiver
-			android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"
-			android:exported="true"
-			android:permission="com.google.android.c2dm.permission.SEND" >
-			<intent-filter>
-				<action android:name="com.google.android.c2dm.intent.RECEIVE" />
-
-				<category android:name="air.APPLICATION_PACKAGE" />
-			</intent-filter>
-		</receiver>
-		<!--
-				FirebaseInstanceIdService performs security checks at runtime,
-				no need for explicit permissions despite exported="true"
-		-->
-		<service
-			android:name="com.google.firebase.iid.FirebaseInstanceIdService"
-			android:exported="true" >
-			<intent-filter android:priority="-500" >
-				<action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
-			</intent-filter>
-		</service>
-		
-		
-		
-	</application>
-	
+        <!-- datatransport -->
+        <service
+            android:name="com.google.android.datatransport.runtime.backends.TransportBackendDiscovery"
+            android:exported="false" >
+            <meta-data
+                android:name="backend:com.google.android.datatransport.cct.CctBackendFactory"
+                android:value="cct" />
+        </service>
+        <service
+            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService"
+            android:exported="false"
+            android:permission="android.permission.BIND_JOB_SERVICE" >
+        </service>
+        <receiver
+            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver"
+            android:exported="false" />
+        
+        
+        
+    </application>
+    
 </manifest>
