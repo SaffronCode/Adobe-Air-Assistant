@@ -1,3 +1,10 @@
-<extensionID>com.distriqt.PDFReader</extensionID>
-    <extensionID>com.distriqt.Core</extensionID>
-    <extensionID>com.distriqt.androidsupport.V4</extensionID>
+<key>UIDeviceFamily</key>
+<array>
+    <string>1</string>
+    <string>2</string>
+</array>
+<key>NSAppTransportSecurity</key>
+<dict>
+    <key>NSAllowsArbitraryLoads</key>
+    <true/>
+</dict>

@@ -490,9 +490,9 @@
 			})
 				.setInfo("https://airnativeextensions.com/extension/com.distriqt.Share")
 				.setWiki("https://docs.airnativeextensions.com/docs/share/");//1400
-			var addPDFReader:ACheckBox = addCheckBox('Distriqt PDF Reader','distriqtPdf')
+			var addPDFReader:ACheckBox = addCheckBox('Distriqt PDF Reader (33)','distriqtPdf')
 				.setInfo("https://airnativeextensions.com/extension/com.distriqt.PDFReader")
-				.setWiki("https://distriqt.github.io/ANE-PDFReader/");
+				.setWiki("https://docs.airnativeextensions.com/docs/pdfreader/");//1400
 			addCheckBox('Distriqt Media Player (33)','distriqtMediaPlayer')
 				.setInfo("https://airnativeextensions.com/extension/com.distriqt.MediaPlayer")
 				.setWiki("https://docs.airnativeextensions.com/docs/mediaplayer/");//1400
