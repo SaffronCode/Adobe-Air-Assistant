@@ -484,12 +484,12 @@
 				.setInfo("https://airnativeextensions.com/extension/com.distriqt.PushNotifications")
 				.setWiki("https://distriqt.github.io/ANE-PushNotifications/s.Firebase%20Cloud%20Messaging")
 				.addCustomANE(xmlFolder,"com.distriqt.CustomResources.ane",generateFCMforDistriqt);
-			addCheckBox('Distriqt Share','distriqtShare',function(check:ACheckBox){
-				addPDFReader.useSecondAndroid = check.status ;
+			addCheckBox('Distriqt Share (33)','distriqtShare',function(check:ACheckBox){
+				addPDFReader.useSecondAndroid = check.status ;Share
 				//Alert.show("addPDFReader.useSecondAndroid : "+addPDFReader.useSecondAndroid);
 			})
 				.setInfo("https://airnativeextensions.com/extension/com.distriqt.Share")
-					.setWiki("https://distriqt.github.io/ANE-Share/");
+				.setWiki("https://docs.airnativeextensions.com/docs/share/");//1400
 			var addPDFReader:ACheckBox = addCheckBox('Distriqt PDF Reader','distriqtPdf')
 				.setInfo("https://airnativeextensions.com/extension/com.distriqt.PDFReader")
 				.setWiki("https://distriqt.github.io/ANE-PDFReader/");
