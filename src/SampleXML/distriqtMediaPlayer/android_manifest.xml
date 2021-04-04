@@ -1,11 +1,11 @@
 <manifest android:installLocation="auto">
-  <uses-permission android:name="android.permission.INTERNET"/>
-  <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
-  
-  <application android:hardwareAccelerated="true">
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    
+    <application android:hardwareAccelerated="true">
 
-    <service android:name="com.distriqt.extension.mediaplayer.audio.AudioPlayerService" android:enabled="true" android:exported="true"></service>
+        <service android:name="com.distriqt.extension.mediaplayer.audio.AudioPlayerService" android:enabled="true" android:exported="true"></service>
 
-  </application>
+    </application>
 
 </manifest>

@@ -1,20 +1,20 @@
 <manifest android:installLocation="auto">
-	<uses-permission android:name="android.permission.INTERNET"/>
-	
-	<application android:hardwareAccelerated="true">
-		
-		<provider
-			android:name="com.distriqt.extension.share.content.ShareFileProvider"
-			android:authorities="APPLICATION_PACKAGE.sharefileprovider"
-			android:grantUriPermissions="true"
-			android:exported="false">
-			<meta-data 
-				android:name="android.support.FILE_PROVIDER_PATHS" 
-				android:resource="@xml/distriqt_share_paths" />
-		</provider>
-		
-		<!-- PERMISSIONS -->
-		<activity android:name="com.distriqt.extension.share.permissions.AuthorisationActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-		
-	</application>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    
+    <application android:hardwareAccelerated="true">
+        
+        <provider
+            android:name="com.distriqt.extension.share.content.ShareFileProvider"
+            android:authorities="APPLICATION_PACKAGE.sharefileprovider"
+            android:grantUriPermissions="true"
+            android:exported="false">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/distriqt_share_paths" />
+        </provider>
+
+        <!-- PERMISSIONS -->
+        <activity android:name="com.distriqt.extension.share.permissions.AuthorisationActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        
+    </application>
 </manifest>

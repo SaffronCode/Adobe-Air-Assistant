@@ -484,18 +484,18 @@
 				.setInfo("https://airnativeextensions.com/extension/com.distriqt.PushNotifications")
 				.setWiki("https://distriqt.github.io/ANE-PushNotifications/s.Firebase%20Cloud%20Messaging")
 				.addCustomANE(xmlFolder,"com.distriqt.CustomResources.ane",generateFCMforDistriqt);
-			addCheckBox('Distriqt Share','distriqtShare',function(check:ACheckBox){
+			addCheckBox('Distriqt Share (33)','distriqtShare',function(check:ACheckBox){
 				addPDFReader.useSecondAndroid = check.status ;
 				//Alert.show("addPDFReader.useSecondAndroid : "+addPDFReader.useSecondAndroid);
 			})
 				.setInfo("https://airnativeextensions.com/extension/com.distriqt.Share")
-					.setWiki("https://distriqt.github.io/ANE-Share/");
-			var addPDFReader:ACheckBox = addCheckBox('Distriqt PDF Reader','distriqtPdf')
+				.setWiki("https://docs.airnativeextensions.com/docs/share/");//1400
+			var addPDFReader:ACheckBox = addCheckBox('Distriqt PDF Reader (33)','distriqtPdf')
 				.setInfo("https://airnativeextensions.com/extension/com.distriqt.PDFReader")
-				.setWiki("https://distriqt.github.io/ANE-PDFReader/");
-			addCheckBox('Distriqt Media Player','distriqtMediaPlayer')
+				.setWiki("https://docs.airnativeextensions.com/docs/pdfreader/");//1400
+			addCheckBox('Distriqt Media Player (33)','distriqtMediaPlayer')
 				.setInfo("https://airnativeextensions.com/extension/com.distriqt.MediaPlayer")
-				.setWiki("https://distriqt.github.io/ANE-MediaPlayer/");
+				.setWiki("https://docs.airnativeextensions.com/docs/mediaplayer/");//1400
 			addCheckBox('Flashvisions Video Gallery','flashvisionsVideoGallery');
 			addCheckBox('Distriqt Scanner','distriqtScanner')
 				.setInfo("https://airnativeextensions.com/extension/com.distriqt.Scanner")
