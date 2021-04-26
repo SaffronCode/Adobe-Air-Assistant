@@ -142,8 +142,10 @@
 
 		private var aneSettingMC:MovieClip,
 					aneDirectory:File,
+					indexedANEAdresses:Object,
 					createAneDirectoryMC:MovieClip;
 		private const id_ane_directory:String = "id_ane_directory" ;
+		private const id_ane_directory_index:String = "id_ane_directory_index" ;
 
 
 		private var defaultImageGenerator:DefaultImageGenerator ;
@@ -151,6 +153,10 @@
 		public function AppGenerator()
 		{
 			super();
+
+			indexedANEAdresses = {};
+			indexedANEAdresses = GlobalStorage.loadObject(id_ane_directory_index,indexedANEAdresses);
+			if(indexedANEAdresses==null)indexedANEAdresses = {};
 
 			defaultImageGenerator = Obj.findThisClass(DefaultImageGenerator,this);
 			///ANE directory
@@ -1646,16 +1652,56 @@
 				return;
 			}
 			var aneFiles:Vector.<File> = new Vector.<File>();
+			var aneOtherDirectories:Array ;
+			var aneFounded:Boolean ;
 			for(i = 0 ; i<neededExtensionList.length ; i++)
 			{
-				var aneFile:File = aneDirectory.resolvePath(neededExtensionList[i]+".ane");
-				if(aneFile.exists)
+				var aneFile:File ;
+				if(indexedANEAdresses[neededExtensionList[i]]!=null)
 				{
-					neededExtensionList.removeAt(i);
-					i--
-					aneFiles.push(aneFile);
+					aneFile = new File(indexedANEAdresses[neededExtensionList[i]]);
+					if(aneFile.exists)
+					{
+						neededExtensionList.removeAt(i);
+						i--
+						aneFiles.push(aneFile);
+						continue;
+					}
+					else
+					{
+						indexedANEAdresses[neededExtensionList[i]] = null ;
+					}
 				}
+				aneFounded = false ;
+				aneOtherDirectories = [aneDirectory] ;
+				do
+				{
+					aneFile = (aneOtherDirectories[0] as File).resolvePath(neededExtensionList[i]+".ane");
+					if(aneFile.exists)
+					{
+						aneFounded = true ;
+						indexedANEAdresses[neededExtensionList[i]] = aneFile.nativePath ;
+						neededExtensionList.removeAt(i);
+						i--
+						aneFiles.push(aneFile);
+					}
+					else
+					{
+						if(aneOtherDirectories.length>0)
+						{
+							aneOtherDirectories = aneOtherDirectories.concat((aneOtherDirectories[0] as File).getDirectoryListing())
+							aneOtherDirectories.removeAt(0);
+						}
+						while(aneOtherDirectories.length>0 && (!(aneOtherDirectories[0] as File).isDirectory || (aneOtherDirectories[0] as File).isHidden))
+						{
+							aneOtherDirectories.removeAt(0);
+						}
+					}
+				}
+				while(aneFounded==false && aneOtherDirectories.length>0)
 			}
+
+			GlobalStorage.save(id_ane_directory_index,indexedANEAdresses);
 
 			if(aneFiles.length==0)
 			{
