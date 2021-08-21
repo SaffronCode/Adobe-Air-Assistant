@@ -457,7 +457,7 @@
 			
 			
 			
-			addCheckBox('Distriqt CameraUI','distriqtCameraUI')
+			addCheckBox('Distriqt CameraUI (33)','distriqtCameraUI')
 				.setInfo("https://airnativeextensions.com/extension/com.distriqt.CameraUI")
 				.setWiki("https://docs.airnativeextensions.com/docs/cameraui/");//1400
 			var milkman_push:ACheckBox = 
@@ -1286,14 +1286,16 @@
 				onGoolgeJSONSelected(googleFile);
 
 				var i:int;
+				//<string name="firebase_database_url" translatable="false">{jsonObject.project_info.firebase_url}</string>
 				var data:XML = <resources>
 									<string name="default_web_client_id" translatable="false">{client_id}</string>
-									<string name="firebase_database_url" translatable="false">{jsonObject.project_info.firebase_url}</string>
+									
 									<string name="gcm_defaultSenderId" translatable="false">{jsonObject.project_info.project_number}</string>
 									<string name="google_api_key" translatable="false">{jsonObject.client[0].api_key[0].current_key}</string>
 									<string name="google_app_id" translatable="false">{jsonObject.client[0].client_info.mobilesdk_app_id}</string>
 									<string name="google_crash_reporting_api_key" translatable="false">{jsonObject.client[0].api_key[0].current_key}</string>
 									<string name="google_storage_bucket" translatable="false">{jsonObject.project_info.storage_bucket}</string>
+									<string name="project_id" translatable="false">{jsonObject.project_info.project_id}</string>
 								</resources>;
 				//var whereToSave:File = File.desktopDirectory.resolvePath('ane2.ane') ;
 
@@ -1341,6 +1343,13 @@
 							zip.addFileFromStringAt(i,"META-INF/ANE/Android-ARM64/customresources/values/values.xml",'<?xml version="1.0" encoding="utf-8"?>'+data.toXMLString());
 						}
 						
+						if(fileName == "META-INF/ANE/Android-x64/customresources/values/values.xml")
+						{
+							trace("File remvoed! : "+fileName);
+							zip.removeFileAt(i);
+							zip.addFileFromStringAt(i,"META-INF/ANE/Android-x64/customresources/values/values.xml",'<?xml version="1.0" encoding="utf-8"?>'+data.toXMLString());
+						}
+						
 						for(var j:int = 0 ; j<iconList.length ; j++)
 						{
 							trace("iconFixPart1+iconList[i] : "+iconFixPart1+iconList[j]+" vs "+fileName)
@@ -1351,7 +1360,6 @@
 								zip.addFileAt(i,fileName,BitmapEffects.createPNG(BitmapEffects.changeSize(allFCMIcons.getImage(iconList[j]),iconSize[j],iconSize[j],true,true)));
 							}
 						}
-						FarsiInputCorrection
 					}
 
 
