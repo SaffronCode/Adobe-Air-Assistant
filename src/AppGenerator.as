@@ -686,9 +686,9 @@
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.IDFA")
 				.setWiki("https://docs.airnativeextensions.com/docs/idfa");
 			
-			addCheckBox('Distriqt Image','distriqtImage')
+			addCheckBox('Distriqt Image(33)','distriqtImage')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.Image")
-				.setWiki("https://distriqt.github.io/ANE-Image/");
+				.setWiki("https://docs.airnativeextensions.com/docs/image");
 			
 			addCheckBox('Distriqt InApp Billing','distriqtInAppBilling')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.InAppBilling")
