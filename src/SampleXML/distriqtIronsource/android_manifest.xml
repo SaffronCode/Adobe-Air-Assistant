@@ -1,0 +1,30 @@
+<manifest android:installLocation="auto">
+   <uses-sdk android:minSdkVersion="16" android:targetSdkVersion="29" />
+
+	<uses-permission android:name="android.permission.INTERNET"/>
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+	<application android:hardwareAccelerated="true">
+
+		<meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
+
+		<activity
+			android:name="com.ironsource.sdk.controller.ControllerActivity"
+			android:configChanges="orientation|screenSize"
+			android:hardwareAccelerated="true" />
+		<activity
+			android:name="com.ironsource.sdk.controller.InterstitialActivity"
+			android:configChanges="orientation|screenSize"
+			android:hardwareAccelerated="true"
+			android:theme="@android:style/Theme.Translucent" />
+		<activity
+			android:name="com.ironsource.sdk.controller.OpenUrlActivity"
+			android:configChanges="orientation|screenSize"
+			android:hardwareAccelerated="true"
+			android:theme="@android:style/Theme.Translucent" />
+		<provider
+			android:name="com.ironsource.lifecycle.IronsourceLifecycleProvider"
+			android:authorities="APPLICATION_PACKAGE.IronsourceLifecycleProvider" />
+
+	</application>
+</manifest>

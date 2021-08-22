@@ -694,6 +694,10 @@
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.InAppBilling")
 				.setWiki("https://docs.airnativeextensions.com/docs/inappbilling");
 			
+			addCheckBox('Distriqt Ironsource (33)','distriqtIronsource')
+			.setInfo("https://airnativeextensions.com/extension/com.distriqt.IronSource")
+				.setWiki("https://docs.airnativeextensions.com/docs/ironsource/");
+			
 			addCheckBox('Distriqt JobScheduler','distriqtJobScheduler')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.JobScheduler")
 				.setWiki("https://github.com/distriqt/ANE-JobScheduler/wiki");

@@ -1,0 +1,19 @@
+<key>NSAppTransportSecurity</key>
+<dict>
+    <key>NSAllowsArbitraryLoads</key>
+    <true/>
+    <key>NSAllowsArbitraryLoadsForMedia</key>
+    <true/>
+    <key>NSAllowsArbitraryLoadsInWebContent</key>
+    <true/>
+</dict>
+
+<!-- iOS 14 AdNetwork -->
+<key>SKAdNetworkItems</key>
+<array>
+    <dict>
+        <!-- IronSource -->
+        <key>SKAdNetworkIdentifier</key>
+        <string>SU67R6K2V3.skadnetwork</string> 
+    </dict>
+</array>
