@@ -1,10 +1,11 @@
-<!-- GAME CENTER SAVED GAMES ADDITIONS -->
-		<!-- You only need the following lines if you are going to support GameCenter Saves -->
-		<key>com.apple.developer.ubiquity-container-identifiers</key>
-		<array>
-			<string>CONTAINER_IDENTIFIER</string>
-		</array>
-		
-		<key>com.apple.developer.ubiquity-kvstore-identifier</key>
-		<string>BUNDLE_SEED_ID.YOUR_APPLICATION_IDENTIFIER</string>
-		<!-- END GAME CENTER SAVED GAMES ADDITIONS -->
+
+        <!-- GAME CENTER SAVED GAMES ADDITIONS -->
+        <!-- You only need the following lines if you are going to support GameCenter Saves -->
+        <key>com.apple.developer.ubiquity-container-identifiers</key>
+        <array>
+            <string>CONTAINER_IDENTIFIER</string>
+        </array>
+        
+        <key>com.apple.developer.ubiquity-kvstore-identifier</key>
+        <string>YOUR_APPLICATION_IDENTIFIER</string>
+        <!-- END GAME CENTER SAVED GAMES ADDITIONS -->

@@ -1,5 +1,5 @@
 Android:
-The Google Play Game Services require a few additions to the manifest to be able to start certain activities and set certain information. You should add the listing below to your manifest, replacing the XXXXXXXXXXXX with your application ID that you took note of when enabling Game Services in the console. (Note you must leave the \ before your application id).
+The Google Play Game Services require a few additions to the manifest to be able to start certain activities and set certain information. You should add the listing below to your manifest, replacing the XXXXXXXXXXXX with your application ID that you took note of when enabling Game Services in the console. (Note you must leave the \u003 before your application id).
 
 iOS:
 If you are supporting saved games on Game Center then you must add the additional iCloud configuration lines, replacing the CONTAINER_IDENTIFIER and YOUR_APPLICATION_IDENTIFIER with your container identifier you created earlier.

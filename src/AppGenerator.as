@@ -657,9 +657,9 @@
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.Flurry")
 				.setWiki("https://docs.airnativeextensions.com/docs/forcetouch");
 			
-			addCheckBox('Distriqt Game Services','distriqtGameServices')
+			addCheckBox('Distriqt Game Services (33)','distriqtGameServices')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.Flurry")
-				.setWiki("https://distriqt.github.io/ANE-Flurry/");
+				.setWiki("https://docs.airnativeextensions.com/docs/gameservices/");
 			
 			addCheckBox('Distriqt Google Analytics','distriqtGoogleAnalytics')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.GoogleAnalytics")
