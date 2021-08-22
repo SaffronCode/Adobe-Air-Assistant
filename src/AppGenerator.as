@@ -507,7 +507,7 @@
 				.setInfo("https://airnativeextensions.com/extension/com.distriqt.Scanner")
 				.setWiki("https://distriqt.github.io/ANE-Scanner/");
 			addCheckBox('Default Manifests','baseXMLs',null,false,true,true);
-			addCheckBox('Distriqt Location','distriqtLocation')
+			addCheckBox('Distriqt Location (33)','distriqtLocation')
 				.setInfo("https://airnativeextensions.com/extension/com.distriqt.Location")
 				.setWiki("https://airnativeextensions.com/extension/com.distriqt.Location");
 			addCheckBox('Distriqt Audio Recorder (33)','distriqtAudioRecorder')
