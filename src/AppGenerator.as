@@ -682,9 +682,9 @@
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.Gyroscope")
 				.setWiki("https://docs.airnativeextensions.com/docs/gyroscope");
 			
-			addCheckBox('Distriqt IDFA','distriqtIDFA')
+			addCheckBox('Distriqt IDFA (33)','distriqtIDFA')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.IDFA")
-				.setWiki("https://distriqt.github.io/ANE-IDFA/");
+				.setWiki("https://docs.airnativeextensions.com/docs/idfa");
 			
 			addCheckBox('Distriqt Image','distriqtImage')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.Image")
