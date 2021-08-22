@@ -690,9 +690,9 @@
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.Image")
 				.setWiki("https://docs.airnativeextensions.com/docs/image");
 			
-			addCheckBox('Distriqt InApp Billing','distriqtInAppBilling')
+			addCheckBox('Distriqt InApp Billing (33)','distriqtInAppBilling')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.InAppBilling")
-				.setWiki("https://distriqt.github.io/ANE-InAppBilling/");
+				.setWiki("https://docs.airnativeextensions.com/docs/inappbilling");
 			
 			addCheckBox('Distriqt JobScheduler','distriqtJobScheduler')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.JobScheduler")
