@@ -653,9 +653,9 @@
 				.setWiki("https://docs.airnativeextensions.com/docs/flurry");
 				
 			
-			addCheckBox('Distriqt Force Touch','distriqtForceTouch')
+			addCheckBox('Distriqt Force Touch (33)','distriqtForceTouch')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.Flurry")
-				.setWiki("https://distriqt.github.io/ANE-Flurry/");
+				.setWiki("https://docs.airnativeextensions.com/docs/forcetouch");
 			
 			addCheckBox('Distriqt Game Services','distriqtGameServices')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.Flurry")

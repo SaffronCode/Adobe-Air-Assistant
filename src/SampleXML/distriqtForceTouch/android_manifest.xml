@@ -1,0 +1,12 @@
+<manifest android:installLocation="auto">
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+
+    <application>
+
+        <activity android:name="com.distriqt.extension.forcetouch.shortcuts.ApplicationShortcutActivity"
+                    android:theme="@android:style/Theme.NoDisplay" />
+
+    </application>
+
+</manifest>
