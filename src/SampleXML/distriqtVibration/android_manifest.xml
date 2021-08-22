@@ -1,8 +1,8 @@
 <manifest android:installLocation="auto">
-	<uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
     <!-- OTHER PERMISSIONS -->
 
-	<uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
 
-	
+    
 </manifest>

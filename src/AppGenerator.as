@@ -743,9 +743,9 @@
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.SystemGestures")
 				.setWiki("https://distriqt.github.io/ANE-SystemGestures/");
 			
-			addCheckBox('Distriqt System Vibration','distriqtVibration')
+			addCheckBox('Distriqt System Vibration (33)','distriqtVibration')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.Vibration")
-				.setWiki("https://distriqt.github.io/ANE-Vibration/");
+				.setWiki("https://docs.airnativeextensions.com/docs/vibration");
 			
 			addCheckBox('Distriqt Volume','distriqtVolume')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.Volume")
