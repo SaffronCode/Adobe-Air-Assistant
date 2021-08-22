@@ -673,9 +673,9 @@
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.GooglePlus")
 				.setWiki("https://distriqt.github.io/ANE-GooglePlus/");
 			
-			addCheckBox('Distriqt Google Tag Manager','distriqtGoogleTagManager')
+			addCheckBox('Distriqt Google Tag Manager (33)','distriqtGoogleTagManager')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.GoogleTagManager")
-				.setWiki("https://distriqt.github.io/ANE-GoogleTagManager/");
+				.setWiki("https://docs.airnativeextensions.com/docs/googletagmanager");
 				
 			
 			addCheckBox('Distriqt Gyroscope','distriqtGyroscope')
