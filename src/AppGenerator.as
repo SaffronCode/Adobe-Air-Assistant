@@ -665,9 +665,9 @@
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.GoogleAnalytics")
 				.setWiki("https://docs.airnativeextensions.com/docs/googleanalytics");
 			
-			addCheckBox('Distriqt Google Identity','distriqtGoogleIdentity')
+			addCheckBox('Distriqt Google Identity (33)','distriqtGoogleIdentity')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.GoogleIdentity")
-				.setWiki("https://distriqt.github.io/ANE-GoogleIdentity/");
+				.setWiki("https://docs.airnativeextensions.com/docs/googleidentity/");
 			
 			addCheckBox('Distriqt Google Plus','distriqtGooglePlus')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.GooglePlus")

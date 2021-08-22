@@ -100,7 +100,7 @@
 			xmlString = xmlString.replace(/YOUR_APPLICATION_IDENTIFIER/g,appId);
 			xmlString = xmlString.replace(/APPLICATION_LAUNCHER_ID/g,URIScheme);
 			xmlString = xmlString.replace(/URL_SCHEME/g,URIScheme);
-			xmlString = xmlString.replace(/URL_NAME/g,URIScheme);
+			xmlString = xmlString.replace(/URL_NAME/g,appId);
 			return xmlString ;
 		}
 		
