@@ -678,9 +678,9 @@
 				.setWiki("https://docs.airnativeextensions.com/docs/googletagmanager");
 				
 			
-			addCheckBox('Distriqt Gyroscope','distriqtGyroscope')
+			addCheckBox('Distriqt Gyroscope (33)','distriqtGyroscope')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.Gyroscope")
-				.setWiki("https://distriqt.github.io/ANE-Gyroscope/");
+				.setWiki("https://docs.airnativeextensions.com/docs/gyroscope");
 			
 			addCheckBox('Distriqt IDFA','distriqtIDFA')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.IDFA")
