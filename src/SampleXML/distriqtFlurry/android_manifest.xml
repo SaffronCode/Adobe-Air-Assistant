@@ -1,11 +1,22 @@
 <manifest android:installLocation="auto">
-	<!-- Required permissions - Internet access -->
-	<uses-permission android:name="android.permission.INTERNET" /> 
-	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/> 
-				
+    <!-- Required permissions - Internet access -->
+    <uses-permission android:name="android.permission.INTERNET" /> 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/> 
+                
     <!-- Optional permission - Location based ad targeting -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <!-- OR -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <application>
+
+        <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version"/>
+    
+        <provider
+            android:name="com.flurry.android.agent.FlurryContentProvider"
+            android:authorities="APPLICATION_PACKAGE.FlurryContentProvider"
+            android:exported="false" />
+    
+    </application>
 
 </manifest>

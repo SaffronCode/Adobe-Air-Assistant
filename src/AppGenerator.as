@@ -648,9 +648,9 @@
 				.setInfo("https://airnativeextensions.com/extension/com.distriqt.AppGroupDefaults")
 				.setWiki("https://docs.airnativeextensions.com/docs/appgroupdefaults/");//1400
 			
-			addCheckBox('Distriqt Flurry','distriqtFlurry')
+			addCheckBox('Distriqt Flurry (33)','distriqtFlurry')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.Flurry")
-				.setWiki("https://distriqt.github.io/ANE-Flurry/");
+				.setWiki("https://docs.airnativeextensions.com/docs/flurry");
 				
 			
 			addCheckBox('Distriqt Force Touch','distriqtForceTouch')
