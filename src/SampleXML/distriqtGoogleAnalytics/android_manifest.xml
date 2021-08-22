@@ -1,170 +1,34 @@
 <manifest android:installLocation="auto">
-	
-	<uses-sdk android:minSdkVersion="8" android:targetSdkVersion="25"/>
-	
-	<uses-permission android:name="android.permission.INTERNET" />
-	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-	<uses-permission android:name="android.permission.WAKE_LOCK" />
-	<uses-permission android:name="android.permission.VIBRATE" />
-	<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
-	<uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
-	<permission android:name="air.APPLICATION_PACKAGE.permission.C2D_MESSAGE" android:protectionLevel="signature" />
-	<uses-permission android:name="air.APPLICATION_PACKAGE.permission.C2D_MESSAGE" />
-	<uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" />
+    <!-- Optional permission for reliable local dispatching on non-Google Play devices -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    
+    <application>
+        <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
+        
+        <service android:name="com.google.android.gms.analytics.AnalyticsService" android:enabled="true" android:exported="true" />
+        <service android:name="com.google.android.gms.analytics.AnalyticsJobService" android:enabled="true" android:exported="false" android:permission="android.permission.BIND_JOB_SERVICE" />
 
-
-	<!-- Samsung -->
-	<uses-permission android:name="com.sec.android.provider.badge.permission.READ" />
-    <uses-permission android:name="com.sec.android.provider.badge.permission.WRITE" /> 
-	<!-- HTC -->
-    <uses-permission android:name="com.htc.launcher.permission.READ_SETTINGS" />
-    <uses-permission android:name="com.htc.launcher.permission.UPDATE_SHORTCUT" /> 
-	<!-- Sony -->
-    <uses-permission android:name="com.sonyericsson.home.permission.BROADCAST_BADGE" />
-    <uses-permission android:name="com.sonymobile.home.permission.PROVIDER_INSERT_BADGE" /> 
-	<!-- Apex -->
-    <uses-permission android:name="com.anddoes.launcher.permission.UPDATE_COUNT" /> 
-	<!-- Solid -->
-    <uses-permission android:name="com.majeur.launcher.permission.UPDATE_BADGE" /> 
-	<!-- Huawei -->
-    <uses-permission android:name="com.huawei.android.launcher.permission.CHANGE_BADGE" />
-    <uses-permission android:name="com.huawei.android.launcher.permission.READ_SETTINGS" />
-    <uses-permission android:name="com.huawei.android.launcher.permission.WRITE_SETTINGS" /> 
-	<!-- ZUK -->
-    <uses-permission android:name="android.permission.READ_APP_BADGE" /> 
-	<!-- OPPO -->
-    <uses-permission android:name="com.oppo.launcher.permission.READ_SETTINGS" />
-    <uses-permission android:name="com.oppo.launcher.permission.WRITE_SETTINGS" /> 
-	<!-- EvMe -->
-    <uses-permission android:name="me.everything.badger.permission.BADGE_COUNT_READ" />
-    <uses-permission android:name="me.everything.badger.permission.BADGE_COUNT_WRITE" />
-	
-
-	<application>
-		<meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
-
-		<activity android:name="com.google.android.gms.common.api.GoogleApiActivity"
-			android:theme="@android:style/Theme.Translucent.NoTitleBar"
-			android:exported="false"/>
+        <receiver android:name="com.google.android.gms.analytics.AnalyticsReceiver" android:enabled="true">
+            <intent-filter>
+                <action android:name="com.google.android.gms.analytics.ANALYTICS_DISPATCH" />
+            </intent-filter>
+        </receiver>
 
 
-		<!-- ONE SIGNAL -->
-		<meta-data android:name="onesignal_google_project_number" android:value="str:REMOTE" />
+        <service android:name="com.google.android.gms.analytics.CampaignTrackingService"/>
+        <receiver android:name="com.google.android.gms.analytics.CampaignTrackingReceiver" android:exported="true" android:permission="android.permission.INSTALL_PACKAGES">
+            <intent-filter>
+                <action android:name="com.android.vending.INSTALL_REFERRER" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name="com.distriqt.extension.googleanalytics.InstallReferrerReceiver">
+            <intent-filter>
+                <action android:name="com.android.vending.INSTALL_REFERRER" />
+            </intent-filter>
+        </receiver>
 
-		<receiver
-			android:name="com.onesignal.GcmBroadcastReceiver"
-			android:permission="com.google.android.c2dm.permission.SEND" >
-
-			<!-- High priority so OneSignal payloads can be filtered from other GCM receivers if filterOtherGCMReceivers is enabled. -->
-			<intent-filter android:priority="999" >
-				<action android:name="com.google.android.c2dm.intent.RECEIVE" />
-				<category android:name="air.APPLICATION_PACKAGE" />
-			</intent-filter>
-		</receiver>
-		<receiver android:name="com.onesignal.NotificationOpenedReceiver" />
-
-		<service android:name="com.onesignal.GcmIntentService" /> <!-- For Android O -->
-		<service
-			android:name="com.onesignal.GcmIntentJobService"
-			android:permission="android.permission.BIND_JOB_SERVICE" />
-		<service
-			android:name="com.onesignal.SyncJobService"
-			android:permission="android.permission.BIND_JOB_SERVICE" />
-		<service
-			android:name="com.onesignal.RestoreJobService"
-			android:permission="android.permission.BIND_JOB_SERVICE" />
-		<service
-			android:name="com.onesignal.RestoreKickoffJobService"
-			android:permission="android.permission.BIND_JOB_SERVICE" /> <!-- END - For Android O -->
-		<service android:name="com.onesignal.SyncService" />
-
-		<activity
-			android:name="com.onesignal.PermissionsActivity"
-			android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-
-		<service android:name="com.onesignal.NotificationRestoreService" />
-
-		<receiver android:name="com.onesignal.BootUpReceiver" >
-			<intent-filter>
-				<action android:name="android.intent.action.ACTION_BOOT_COMPLETED" />
-				<action android:name="android.intent.action.BOOT_COMPLETED" />
-				<action android:name="android.intent.action.QUICKBOOT_POWERON" />
-			</intent-filter>
-		</receiver>
-		<receiver android:name="com.onesignal.UpgradeReceiver" >
-			<intent-filter>
-				<action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
-			</intent-filter>
-		</receiver>
-
-
-		<!-- FIREBASE CORE -->
-		<!-- common -->
-		<service android:name="com.google.firebase.components.ComponentDiscoveryService" >
-			<meta-data
-				android:name="com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar"
-				android:value="com.google.firebase.components.ComponentRegistrar" />
-			<meta-data
-				android:name="com.google.firebase.components:com.google.firebase.iid.Registrar"
-				android:value="com.google.firebase.components.ComponentRegistrar" />
-		</service>
-		<provider
-			android:authorities="air.APPLICATION_PACKAGE.firebaseinitprovider"
-			android:name="com.google.firebase.provider.FirebaseInitProvider"
-			android:exported="false"
-			android:initOrder="100" />
-
-		<!-- analytics -->
-		<receiver
-			android:name="com.google.android.gms.measurement.AppMeasurementReceiver"
-			android:enabled="true"
-			android:exported="false" >
-		</receiver>
-		<receiver
-			android:name="com.google.android.gms.measurement.AppMeasurementInstallReferrerReceiver"
-			android:enabled="true"
-			android:exported="true"
-			android:permission="android.permission.INSTALL_PACKAGES" >
-			<intent-filter>
-				<action android:name="com.android.vending.INSTALL_REFERRER" />
-			</intent-filter>
-		</receiver>
-
-		<service
-			android:name="com.google.android.gms.measurement.AppMeasurementService"
-			android:enabled="true"
-			android:exported="false" />
-		<service
-			android:name="com.google.android.gms.measurement.AppMeasurementJobService"
-			android:enabled="true"
-			android:exported="false"
-			android:permission="android.permission.BIND_JOB_SERVICE" />
-
-		<!-- iid -->
-		<receiver
-			android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"
-			android:exported="true"
-			android:permission="com.google.android.c2dm.permission.SEND" >
-			<intent-filter>
-				<action android:name="com.google.android.c2dm.intent.RECEIVE" />
-
-				<category android:name="air.APPLICATION_PACKAGE" />
-			</intent-filter>
-		</receiver>
-		<!--
-				FirebaseInstanceIdService performs security checks at runtime,
-				no need for explicit permissions despite exported="true"
-		-->
-		<service
-			android:name="com.google.firebase.iid.FirebaseInstanceIdService"
-			android:exported="true" >
-			<intent-filter android:priority="-500" >
-				<action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
-			</intent-filter>
-		</service>
-
-
-	</application>
-	
+    </application>
 </manifest>

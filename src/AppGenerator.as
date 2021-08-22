@@ -661,9 +661,9 @@
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.Flurry")
 				.setWiki("https://docs.airnativeextensions.com/docs/gameservices/");
 			
-			addCheckBox('Distriqt Google Analytics','distriqtGoogleAnalytics')
+			addCheckBox('Distriqt Google Analytics (33)','distriqtGoogleAnalytics')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.GoogleAnalytics")
-				.setWiki("https://distriqt.github.io/ANE-GoogleAnalytics/");
+				.setWiki("https://docs.airnativeextensions.com/docs/googleanalytics");
 			
 			addCheckBox('Distriqt Google Identity','distriqtGoogleIdentity')
 			.setInfo("https://airnativeextensions.com/extension/com.distriqt.GoogleIdentity")
