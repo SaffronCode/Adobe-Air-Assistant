@@ -1,6 +1,6 @@
 # 1.Adobe Air Assist
 
-<p  align="center"><a href="https://github.com/SaffronCode/Adobe-Air-Assistant/raw/master/build/AppGenerator.air"><img src="https://github.com/SaffronCode/Adobe-Air-Assistant/blob/master/src/AppIconsForPublish/128.png?raw=true" align="center"/><br>Download Saffron Air Assist now!</a><br/><a href="https://get.adobe.com/air/">(You need Adobe Air to run)</a></p>
+<p  align="center"><a href="https://github.com/SaffronCode/Adobe-Air-Assistant/raw/master/build/AppGenerator.air"><img src="https://github.com/SaffronCode/Adobe-Air-Assistant/blob/master/src/AppIconsForPublish/128.png?raw=true" align="center"/><br>Download Saffron Air Assist now!</a><br/><a href="https://airsdk.harman.com/runtime">(You need Adobe Air to run)</a></p>
 
 
 
