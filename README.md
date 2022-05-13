@@ -30,4 +30,3 @@ alt="Tutorial Video" width="70" border="10" /></a></p>
 <p  align="center"><a href="https://github.com/SaffronCode/Adobe-Air-Assistant/raw/master/build/JSONtool.air"><img src="https://github.com/SaffronCode/Adobe-Air-Assistant/blob/master/jsnon-postman/AppIconsForPublish/128.png?raw=true" align="center"/><br>Download JSON-PostMan convertor</a></p>
 <br/><br/><br/>
 
-<p  align="center"><a href="http://saffroncodesdk.com/">SaffronCodeSDK.com</a></p>
