@@ -8,7 +8,7 @@ Do you need a help to update your app.xml file for your Adobe Air projects? Is i
 
 Well, you are in a right place!
 
-The Adobe Air Assistant is a stand alone desctop application that helps you to update your current app.xml file without pain! It also adds some importand permission and required Adobe Air tags to your manifest automaticaly.
+The Adobe Air Assistant is a stand alone desktop application that helps you to update your current app.xml file without pain! It also adds some importand permission and required Adobe Air tags to your manifest automaticaly.
 And also,
 You can use the Adobe Air Assistant to gererate your App icons in any sizes that you could need to.
 
